@@ -1,17 +1,4 @@
-## Customize this file after creating the new REPO and remove this lines.
-
-What to adjust:  
-* Add the your project or repo name direct under the logo.
-* Add a short and long desciption.
-* Add links for your final repo to report a bug or request a feature.
-* Add list of used technologies.
-* If you have, add a roadmap or remove this section.
-* Fill up the section for set up and documentation.
- * Start in this file only with documentation and link to the docs folder.
-* Add project shields. Use [shields.io](https://shields.io/)
-
-## ------- end to remove -------
-<!-- add Project Logo, if existing -->
+![logo-footer-muenchen-de.svg](docs/images/logo-footer-muenchen-de.svg)
 
 # muc-patternlab-vue
 
