@@ -1,19 +1,23 @@
-name: build and test
+name: build and deploy
 
 on: [push]
 
 jobs:
-  compliance:
+  build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Advance Security Policy as Code
-        uses: advanced-security/policy-as-code@v2.7.2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          policy: it-at-m/policy-as-code
-          policy-path: default.yaml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          argvs: "--disable-dependabot --disable-secret-scanning --disable-code-scanning --display"
+          node-version: "20"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci        # install dependencies
+      - run: npm run build # or any other step to build your package
+      - run: npm publish   # publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # in der GitHub it-at-m Orga zentral hinterlegter Token
+
