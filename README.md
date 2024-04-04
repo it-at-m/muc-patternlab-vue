@@ -1,4 +1,5 @@
 ## Customize this file after creating the new REPO and remove this lines.
+
 What to adjust:  
 * Add the your project or repo name direct under the logo.
 * Add a short and long desciption.
@@ -12,40 +13,59 @@ What to adjust:
 ## ------- end to remove -------
 <!-- add Project Logo, if existing -->
 
-# repo or project name
+# muc-patternlab-vue
 
-*Add a description from your project here.*
+This repository contains a ready-to-use Vue-Components-Library based on munich.de's MDE5 Patternlab patternlab.muenchen.space
 
+In it's current state only some components exist. The library will continuely grow as the need for new components grows.
+
+We intend to let this project be a community project in which every developer who needs new components contributes the results of his work into this library.
 
 ### Built With
 
 The documentation project is built with technologies we use in our projects:
 
-* *write here the list of used technologies*
+* Vue 3
+* MDE5 Patternlab
 
 ## Roadmap
 
-*if you have a ROADMAP for your project add this here*
+In the near future we plan to
 
+- Integrate Storybook.js to showcase components
+- Create more components
+- Integrate MDE5 Patternlab npm-Package as soon as it's available
 
 See the [open issues](#) for a full list of proposed features (and known issues).
 
-
 ## Set up
-*how can i start and fly this project*
 
-## Documentation
-*what insights do you have to tell*
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+```shell
+git clone https://github.com/it-at-m/muc-patternlab-vue.git
+cd muc-patternlab-vue
+npm install
+npm run dev
 ```
 
-use [diagrams](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams).
+## Documentation
+
+### Adding a new Component
+
+1. Create a new Folder under `./src/components`-Directory
+2. Create Vue-Component (with composition api) and index.ts-File which exports your component
+3. Add your new Component to `./src/components/index.ts`
+
+### Using MDE Patternlab-Icons
+
+Patternlab-Icons are provided by a svg-Sprite which is automatically injected in this repos App.vue-File for local testing. You can expect the users of this library to do the same thing.
+
+So to use an icon from Patternlab you can simply follow the official documentation: https://patternlab.muenchen.space/?p=viewall-guidelines-icons
+
+```html
+<svg aria-hidden="true" class="icon">
+  <use xlink:href="#icon-{name}"></use>
+</svg>
+```
 
 ## Contributing
 
