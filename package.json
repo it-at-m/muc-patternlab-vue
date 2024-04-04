@@ -1,12 +1,20 @@
 {
-  "name": "mde5-patternlab-vue",
-  "author": "Fabian Wilms",
+  "name": "@muenchen/muc-patternlab-vue",
+  "author": "FabianWilms",
   "description": "A vue component library of some of the components available from https://patternlab.muenchen.space",
   "version": "0.1.0",
   "private": false,
   "type": "module",
   "main": "./dist/mde5-patternlab-vue.umd.cjs",
   "module": "./dist/mde5-patternlab-vue.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/it-at-m/muc-patternlab-vue"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "exports": {
     ".": {
       "import": "./dist/mde5-patternlab-vue.js",
