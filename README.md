@@ -2,7 +2,7 @@
 
 # muc-patternlab-vue
 
-This repository contains a ready-to-use Vue-Components-Library based on munich.de's MDE5 Patternlab patternlab.muenchen.space
+This repository contains a ready-to-use Vue-Components-Library based on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
 
 In it's current state only some components exist. The library will continuely grow as the need for new components grows.
 
@@ -13,7 +13,7 @@ We intend to let this project be a community project in which every developer wh
 The documentation project is built with technologies we use in our projects:
 
 * Vue 3
-* MDE5 Patternlab
+* [MDE5 Patternlab](https://patternlab.muenchen.space/)
 
 ## Roadmap
 
