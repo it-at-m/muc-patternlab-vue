@@ -45,7 +45,7 @@ const typeAriaLabel = computed(() => {
     case "emergency":
       return "Emergency";
     default:
-      return "dialog";
+      return "Information";
   }
 });
 </script>
