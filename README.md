@@ -8,13 +8,6 @@ In it's current state only some components exist. The library will continuely gr
 
 We intend to let this project be a community project in which every developer who needs new components contributes the results of his work into this library.
 
-### Built With
-
-The documentation project is built with technologies we use in our projects:
-
-* Vue 3
-* [MDE5 Patternlab](https://patternlab.muenchen.space/)
-
 ## Roadmap
 
 In the near future we plan to
@@ -25,7 +18,37 @@ In the near future we plan to
 
 See the [open issues](#) for a full list of proposed features (and known issues).
 
-## Set up
+## Usage
+
+### Installation
+
+```shell
+npm i @muenchen/muc-patternlab-vue
+```
+
+Required Peer Dependencies:
+
+```
+"vue": "^3.4.0"
+```
+
+### Use
+
+e.G. Using the MucBanner-Component:
+
+```vue
+<script setup>
+import { MucBanner } from "@muenchen/muc-patternlab-vue";
+</script>
+
+<template>
+  <muc-banner title="Hello Muc">
+    <div>How are you?</div>
+  </muc-banner>
+</template>
+```
+
+## Develop
 
 ```shell
 git clone https://github.com/it-at-m/muc-patternlab-vue.git
@@ -35,6 +58,18 @@ npm run dev
 ```
 
 ## Documentation
+
+### Release and Publish
+
+This project uses [semantic-release](https://github.com/semantic-release/semantic-release)!
+
+It follows [Angulars Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format). For example:
+
+| Commit message                                                                                                                                                                                   | Release type               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
+| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
+| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
+| `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
 
 ### Adding a new Component
 
