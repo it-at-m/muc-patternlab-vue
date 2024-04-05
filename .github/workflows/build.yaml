@@ -17,7 +17,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm ci        # install dependencies
       - run: npm run build # or any other step to build your package
-      - run: npm publish   # publish
+      - name: run semantic-release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # in der GitHub it-at-m Orga zentral hinterlegter Token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run semantic-release
 
