@@ -17,7 +17,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm ci        # install dependencies
       - run: npm run build # or any other step to build your package
-      - run: npm publish dist   # publish
+      - run: npm publish   # publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # in der GitHub it-at-m Orga zentral hinterlegter Token
 
