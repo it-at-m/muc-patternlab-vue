@@ -8,7 +8,6 @@
   "type": "module",
   "main": "./dist/mde5-patternlab-vue.umd.cjs",
   "types": "./dist/index.d.ts",
-  "module": "./dist/mde5-patternlab-vue.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/it-at-m/muc-patternlab-vue"
