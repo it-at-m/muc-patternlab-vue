@@ -1,8 +1,8 @@
-import * as components from './components';
+import * as components from '@/components';
 
-const componentsList = components?.default;
+const componentsList: any = components?.default;
 const MucComponents = {
-    install(Vue) {
+    install(Vue: any) {
         Object.keys(componentsList).forEach(name => {
             Vue.component(name, componentsList[name]);
         })
