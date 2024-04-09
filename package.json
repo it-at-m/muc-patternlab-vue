@@ -6,8 +6,8 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "module": "./dist/my-lib.es.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/muc-patternlab-vue.es.js",
+  "types": "./dist/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/it-at-m/muc-patternlab-vue"
@@ -19,7 +19,7 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/mde5-patternlab-vue.es.js"
+      "import": "./dist/muc-patternlab-vue.es.js"
     }
   },
   "files": [
