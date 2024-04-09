@@ -54,7 +54,7 @@ import { MucBanner } from "@muenchen/muc-patternlab-vue";
 git clone https://github.com/it-at-m/muc-patternlab-vue.git
 cd muc-patternlab-vue
 npm install
-npm run dev
+npm run docs:dev
 ```
 
 ## Documentation
