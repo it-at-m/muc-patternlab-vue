@@ -14,8 +14,9 @@ jobs:
           node-version: "20"
           cache: "npm"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci        # install dependencies
-      - run: npm run build # or any other step to build your package
+      - run: npm ci             # install dependencies
+      - run: npm run build      # build library
+      - run: npm run docs:build # build docs
       - name: upload library artifacts
         uses: actions/upload-artifact@v4
         with:
