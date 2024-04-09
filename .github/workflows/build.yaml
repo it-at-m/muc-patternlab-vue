@@ -49,6 +49,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: library_dist
+          path: ./dist
       - name: run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,6 +73,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: vitepress_dist
+          path: ./docs/.vitepress/dist
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         id: deployment
