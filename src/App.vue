@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import sprites from "@/assets/temporary/muc-icons.svg?raw";
+import sprites from "../public/assets/temporary/muc-icons.svg?raw";
 
-import MucButton from '@/components/Button/MucButton.vue';
-import MucBanner from '@/components/Banner/MucBanner.vue';
-import MucIntro from "@/components/Intro/MucIntro.vue";
+import MucButton from './components/Button/MucButton.vue';
+import MucBanner from './components/Banner/MucBanner.vue';
+import MucIntro from "./components/Intro/MucIntro.vue";
 </script>
 
 <template>
@@ -55,7 +55,7 @@ import MucIntro from "@/components/Intro/MucIntro.vue";
 </template>
 
 <style>
-@import "@/assets/temporary/muenchende-style.css";
+@import "../public/assets/temporary/muenchende-style.css";
 
 table {
   width: 100%;

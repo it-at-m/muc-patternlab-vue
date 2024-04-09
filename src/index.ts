@@ -1,12 +1,15 @@
-import * as components from '@/components';
+import { type App } from 'vue'
+import * as components from './components'
 
-const componentsList: any = components?.default;
-const MucComponents = {
-    install(Vue: any) {
-        Object.keys(componentsList).forEach(name => {
-            Vue.component(name, componentsList[name]);
-        })
+function install (app: App) {
+    for (const key in components) {
+        // @ts-expect-error
+        app.component(key, components[key])
     }
-};
+}
 
-export default MucComponents;
+import "../public/assets/temporary/muenchende-style.css";
+
+export default { install }
+
+export * from './components'
