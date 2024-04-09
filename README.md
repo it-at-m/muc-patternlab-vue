@@ -20,44 +20,18 @@ See the [open issues](#) for a full list of proposed features (and known issues)
 
 ## Usage
 
-### Installation
-
-```shell
-npm i @muenchen/muc-patternlab-vue
-```
-
-Required Peer Dependencies:
-
-```
-"vue": "^3.4.0"
-```
-
-### Use
-
-e.G. Using the MucBanner-Component:
-
-```vue
-<script setup>
-import { MucBanner } from "@muenchen/muc-patternlab-vue";
-</script>
-
-<template>
-  <muc-banner title="Hello Muc">
-    <div>How are you?</div>
-  </muc-banner>
-</template>
-```
+Please refer to the [documentation](docs/guide/index.md).
 
 ## Develop
+
+### Setup
 
 ```shell
 git clone https://github.com/it-at-m/muc-patternlab-vue.git
 cd muc-patternlab-vue
 npm install
-npm run dev
+npm run docs:dev
 ```
-
-## Documentation
 
 ### Release and Publish
 
@@ -76,8 +50,12 @@ It follows [Angulars Commit Message Conventions](https://github.com/angular/angu
 1. Create a new Folder under `./src/components`-Directory
 2. Create Vue-Component (with composition api) and index.ts-File which exports your component
 3. Add your new Component to `./src/components/index.ts`
+4. Create documentation for your component
+   1. Create at least one "Basic" demo at `./docs/components/demo/<your-component>`
+   2. Create a doc-File for your component at `./docs/components/<your-component>.md`
+   3. Add your component doc to the sidebar at `./docs/.vitepress/config.ts`
 
-### Using MDE Patternlab-Icons
+### Using MDE5 Patternlab-Icons
 
 Patternlab-Icons are provided by a svg-Sprite which is automatically injected in this repos App.vue-File for local testing. You can expect the users of this library to do the same thing.
 

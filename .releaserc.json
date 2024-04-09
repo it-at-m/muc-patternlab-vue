@@ -22,19 +22,15 @@
       {
         "assets": [
           {
-            "path": "dist/mde5-patternlab-vue.js",
+            "path": "dist/muc-patternlab-vue.es.js",
             "label": "JS distribution"
-          },
-          {
-            "path": "dist/mde5-patternlab-vue.umd.cjs",
-            "label": "UMD/CJS distribution"
           },
           {
             "path": "dist/assets/temporary/muenchende-style.css",
             "label": "CSS distribution"
           },
           {
-            "path": "dist/assets/temporary/muenchende-fontface.css",
+            "path": "dist/assets/temporary/muenchende-fontfaces.css",
             "label": "CSS fontface distribution"
           },
           {
