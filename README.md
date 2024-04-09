@@ -4,7 +4,7 @@
 
 This repository contains a ready-to-use Vue-Components-Library based on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
 
-In it's current state only some components exist. The library will continuely grow as the need for new components grows.
+In its current state only some components exist. The library will continually grow as the need for new components grows.
 
 We intend to let this project be a community project in which every developer who needs new components contributes the results of his work into this library.
 
@@ -16,11 +16,11 @@ In the near future we plan to
 - Create more components
 - Integrate MDE5 Patternlab npm-Package as soon as it's available
 
-See the [open issues](#) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/it-at-m/muc-patternlab-vue/issues) for a full list of proposed features (and known issues).
 
 ## Usage
 
-Please refer to the [documentation](docs/guide/index.md).
+Please refer to the [usage guide](https://it-at-m.github.io/muc-patternlab-vue/guide/).
 
 ## Develop
 
@@ -32,18 +32,6 @@ cd muc-patternlab-vue
 npm install
 npm run docs:dev
 ```
-
-### Release and Publish
-
-This project uses [semantic-release](https://github.com/semantic-release/semantic-release)!
-
-It follows [Angulars Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format). For example:
-
-| Commit message                                                                                                                                                                                   | Release type               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
-| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
-| `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
 
 ### Adding a new Component
 
@@ -83,6 +71,17 @@ Don't forget to give the project a star! Thanks again!
 
 More about this in the [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) file.
 
+### Release and Publish
+
+This project uses [semantic-release](https://github.com/semantic-release/semantic-release)!
+
+It follows [Angulars Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format). For example:
+
+| Commit message                                                                                                                                                                                   | Release type               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
+| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
+| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
+| `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
 
 ## License
 
