@@ -18,6 +18,7 @@ module.exports = {
         children: [
           { text: 'MucBanner', link: '/components/muc-banner' },
           { text: 'MucButton', link: '/components/muc-button' },
+          { text: 'MucCallout', link: '/components/muc-callout' },
           { text: 'MucIntro', link: '/components/muc-intro' },
         ],
       }
