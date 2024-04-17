@@ -1,30 +1,19 @@
 <template>
-  <div
-    class="m-callout"
-    :class="calloutClass"
-    :aria-label="typeAriaLabel"
-  >
+  <div class="m-callout" :class="calloutClass" :aria-label="typeAriaLabel">
     <div class="m-callout__inner">
       <div class="m-callout__icon">
-      <slot
-        name="icon"
-      >
-        <!-- fallback icon -->
-        <component :is="fallbackCalloutIcon" />
-      </slot>
+        <slot name="icon">
+          <!-- fallback icon -->
+          <component :is="fallbackCalloutIcon" />
+        </slot>
       </div>
       <div class="m-callout__body">
         <div class="m-callout__body__inner">
           <div class="m-callout__headline">
-            <slot
-              name="header"
-            />
+            <slot name="header" />
           </div>
           <div class="m-callout__content">
-            <slot
-              name="content"
-              class="m-callout__content"
-            />
+            <slot name="content" class="m-callout__content" />
           </div>
         </div>
       </div>
@@ -33,59 +22,58 @@
 </template>
 
 <script setup lang="ts">
-
 import { computed } from 'vue'
 import IconCheck from './icon-check.vue'
 import IconWarning from './icon-warning.vue'
 import IconInformation from './icon-information.vue'
 
-type calloutType = "info" | "warning" | "success" | "error";
+type calloutType = 'info' | 'warning' | 'success' | 'error'
 
 const props = withDefaults(
   defineProps<{
-    type?: calloutType;
+    type?: calloutType
   }>(),
   {
-    type: "info",
+    type: 'info'
   }
-);
+)
 
 const fallbackCalloutIcon = computed(() => {
   switch (props.type) {
-    case "error" || "warning":
-      return IconWarning;
-    case "success":
+    case 'error' || 'warning':
+      return IconWarning
+    case 'success':
       return IconCheck
     default:
-      return IconInformation;
+      return IconInformation
   }
-});
+})
 
 const calloutClass = computed(() => {
   switch (props.type) {
-    case "error":
-      return "m-callout--error";
-    case "warning":
-      return "m-callout--warning";
-    case "success":
-      return "m-callout--success";
+    case 'error':
+      return 'm-callout--error'
+    case 'warning':
+      return 'm-callout--warning'
+    case 'success':
+      return 'm-callout--success'
     default:
-      return "m-callout--default";
+      return 'm-callout--default'
   }
-});
+})
 
 const typeAriaLabel = computed(() => {
   switch (props.type) {
-    case "success":
-      return "Erfolgreich";
-    case "warning":
-      return "Warnung";
-    case "error":
-      return "Error";
+    case 'success':
+      return 'Erfolgreich'
+    case 'warning':
+      return 'Warnung'
+    case 'error':
+      return 'Error'
     default:
-      return "Information";
+      return 'Information'
   }
-});
+})
 </script>
 
 <style scoped>
@@ -116,5 +104,4 @@ const typeAriaLabel = computed(() => {
 div.m-callout {
   padding-bottom: 16px;
 }
-
 </style>

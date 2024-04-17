@@ -13,6 +13,4 @@ const props = defineProps({
   </button>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
