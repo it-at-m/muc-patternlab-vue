@@ -18,9 +18,10 @@ import Basic from './demo/MucButton/Basic.vue'
 
 ### Properties
 
-| Name | Type   | Default | Description    |
-| ---- | ------ | ------- | -------------- |
-| msg  | string | null    | Messge to show |
+| Name     | Type    | Default | Description                                                                                                                  |
+|----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------|
+| variant  | string  | primary | The variant prop gives you easy access to several different button styles. Available are `primary`, `secondary` and `ghost`. |
+| disabled | boolean | false   | Let`s you indicate that the button is not currently interactive or clickable.                                                |
 
 ### Events
 
