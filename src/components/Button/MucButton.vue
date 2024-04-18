@@ -21,7 +21,7 @@ const props = withDefaults(
   }>(),
   {
     variant: "primary",
-    disabled: false
+    disabled: false,
   }
 )
 
