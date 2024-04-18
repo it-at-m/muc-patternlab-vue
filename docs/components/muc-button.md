@@ -4,7 +4,7 @@ import Basic from './demo/MucButton/Basic.vue'
 
 # muc-button
 
-//todo describe button
+The `muc-button` component replaces the standard html button with a material design theme using the style from patternlab.
 
 ## Example Usage
 

@@ -11,9 +11,9 @@
 
 <style scoped>
 div * {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
-  align-items: start;
 }
 </style>
