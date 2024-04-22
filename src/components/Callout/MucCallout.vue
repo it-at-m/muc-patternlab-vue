@@ -38,6 +38,9 @@ const props = withDefaults(
   }
 )
 
+/*
+Computing the corresponding icon-component for the given comment-type
+ */
 const fallbackCalloutIcon = computed(() => {
   switch (props.type) {
     case 'error' || 'warning':
@@ -49,6 +52,9 @@ const fallbackCalloutIcon = computed(() => {
   }
 })
 
+/*
+Computing the corresponding css-class for the given comment-type
+*/
 const calloutClass = computed(() => {
   switch (props.type) {
     case 'error':
@@ -62,6 +68,9 @@ const calloutClass = computed(() => {
   }
 })
 
+/*
+Computing the corresponding aria-label for the given comment-type, currently in german
+*/
 const typeAriaLabel = computed(() => {
   switch (props.type) {
     case 'success':
@@ -82,8 +91,8 @@ const typeAriaLabel = computed(() => {
   background-color: #f1f6f3;
   border-color: #95b9a2;
 }
-/* class below may look unused but they are used dynamically! Do NOT remove them!! */
 
+/* class below may look unused but they are used dynamically! Do NOT remove them!! */
 .m-callout--success .m-callout__icon {
   background-color: #3a7f53;
   box-shadow: 0 0.3125rem 0.625rem rgba(0, 90, 159, 0.2);
