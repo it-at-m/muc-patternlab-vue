@@ -1,5 +1,5 @@
 <script setup>
-import Basic from './demo/MucIntro/Basic.vue'
+import Basic from './demo/MucIntro/BasicExample.vue'
 </script>
 
 # muc-intro
@@ -12,7 +12,7 @@ import Basic from './demo/MucIntro/Basic.vue'
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucIntro/Basic.vue
+<<< @/components/demo/MucIntro/BasicExample.vue
 
 ## Reference
 

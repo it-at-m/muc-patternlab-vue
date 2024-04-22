@@ -1,5 +1,5 @@
 <script setup>
-import Basic from './demo/MucButton/Basic.vue'
+import Basic from './demo/MucButton/BasicExample.vue'
 </script>
 
 # muc-button
@@ -12,7 +12,7 @@ import Basic from './demo/MucButton/Basic.vue'
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucButton/Basic.vue
+<<< @/components/demo/MucButton/BasicExample.vue
 
 ## Reference
 
