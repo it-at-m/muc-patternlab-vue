@@ -4,7 +4,9 @@
       <div class="m-callout__icon">
         <slot name="icon">
           <!-- fallback icon -->
-          <component :is="fallbackCalloutIcon" />
+          <svg aria-hidden="true" class="icon">
+            <use :xlink:href="`#icon-${fallbackCalloutIcon}`"></use>
+          </svg>
         </slot>
       </div>
       <div class="m-callout__body">
@@ -23,9 +25,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import IconCheck from './icon-check.vue'
-import IconWarning from './icon-warning.vue'
-import IconInformation from './icon-information.vue'
 
 type calloutType = 'info' | 'warning' | 'success' | 'error'
 
@@ -44,11 +43,11 @@ Computing the corresponding icon-component for the given comment-type
 const fallbackCalloutIcon = computed(() => {
   switch (props.type) {
     case 'error' || 'warning':
-      return IconWarning
+      return 'warning'
     case 'success':
-      return IconCheck
+      return 'check'
     default:
-      return IconInformation
+      return 'information'
   }
 })
 
@@ -108,9 +107,5 @@ const typeAriaLabel = computed(() => {
 .m-callout--error .m-callout__icon {
   background-color: #984447;
   box-shadow: 0 0.3125rem 0.625rem rgba(0, 90, 159, 0.2);
-}
-
-div.m-callout {
-  padding-bottom: 16px;
 }
 </style>
