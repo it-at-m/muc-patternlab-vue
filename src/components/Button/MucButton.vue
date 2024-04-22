@@ -2,9 +2,9 @@
 const props = defineProps({
   expanded: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 </script>
 
 <template>
@@ -13,6 +13,4 @@ const props = defineProps({
   </button>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

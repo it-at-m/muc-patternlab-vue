@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import {computed, type PropType} from "vue";
+import type { PropType } from "vue";
+
+import { computed } from "vue";
 
 type bannerType = "info" | "warning" | "emergency";
 
 const props = defineProps({
   type: {
     type: String as PropType<bannerType>,
-    default: "info"
-  }
-})
+    default: "info",
+  },
+});
 
 const typeClass = computed(() => {
   switch (props.type) {
@@ -54,17 +56,17 @@ const typeAriaLabel = computed(() => {
   <div>
     <div>
       <div
-          class="m-banner"
-          :class="typeClass"
-          :role="typeRole"
-          :aria-label="typeAriaLabel"
+        class="m-banner"
+        :class="typeClass"
+        :role="typeRole"
+        :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
           <svg class="icon">
-            <use href="#icon-information"/>
+            <use href="#icon-information" />
           </svg>
           <p>
-            <slot/>
+            <slot />
           </p>
         </div>
       </div>
