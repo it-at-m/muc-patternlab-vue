@@ -4,10 +4,13 @@
     <muc-button variant="secondary">Secondary</muc-button>
     <muc-button variant="ghost">Ghost</muc-button>
     <muc-button disabled>Disabled</muc-button>
+    <muc-button-arrow>Arrow Button</muc-button-arrow>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { MucButtonArrow } from '../../../../src/components/Button'
+</script>
 
 <style scoped>
 div * {
