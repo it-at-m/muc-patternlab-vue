@@ -1,10 +1,17 @@
 <template>
-  <div class="m-callout" :class="calloutClass" :aria-label="typeAriaLabel">
+  <div
+    class="m-callout"
+    :class="calloutClass"
+    :aria-label="typeAriaLabel"
+  >
     <div class="m-callout__inner">
       <div class="m-callout__icon">
         <slot name="icon">
           <!-- fallback icon -->
-          <svg aria-hidden="true" class="icon">
+          <svg
+            aria-hidden="true"
+            class="icon"
+          >
             <use :xlink:href="`#icon-${fallbackCalloutIcon}`"></use>
           </svg>
         </slot>
@@ -15,7 +22,10 @@
             <slot name="header" />
           </div>
           <div class="m-callout__content">
-            <slot name="content" class="m-callout__content" />
+            <slot
+              name="content"
+              class="m-callout__content"
+            />
           </div>
         </div>
       </div>
@@ -24,64 +34,64 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
-type calloutType = 'info' | 'warning' | 'success' | 'error'
+type calloutType = "info" | "warning" | "success" | "error";
 
 const props = withDefaults(
   defineProps<{
-    type?: calloutType
+    type?: calloutType;
   }>(),
   {
-    type: 'info'
+    type: "info",
   }
-)
+);
 
 /*
 Computing the corresponding icon-component for the given comment-type
  */
 const fallbackCalloutIcon = computed(() => {
   switch (props.type) {
-    case 'error' || 'warning':
-      return 'warning'
-    case 'success':
-      return 'check'
+    case "error" || "warning":
+      return "warning";
+    case "success":
+      return "check";
     default:
-      return 'information'
+      return "information";
   }
-})
+});
 
 /*
 Computing the corresponding css-class for the given comment-type
 */
 const calloutClass = computed(() => {
   switch (props.type) {
-    case 'error':
-      return 'm-callout--error'
-    case 'warning':
-      return 'm-callout--warning'
-    case 'success':
-      return 'm-callout--success'
+    case "error":
+      return "m-callout--error";
+    case "warning":
+      return "m-callout--warning";
+    case "success":
+      return "m-callout--success";
     default:
-      return 'm-callout--default'
+      return "m-callout--default";
   }
-})
+});
 
 /*
 Computing the corresponding aria-label for the given comment-type, currently in german
 */
 const typeAriaLabel = computed(() => {
   switch (props.type) {
-    case 'success':
-      return 'Erfolgreich'
-    case 'warning':
-      return 'Warnung'
-    case 'error':
-      return 'Error'
+    case "success":
+      return "Erfolgreich";
+    case "warning":
+      return "Warnung";
+    case "error":
+      return "Error";
     default:
-      return 'Information'
+      return "Information";
   }
-})
+});
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup>
-import Basic from './demo/MucCallout/Basic.vue'
+import Basic from './demo/MucCallout/BasicExample.vue'
 </script>
 
 # muc-callout
@@ -15,7 +15,7 @@ The muc-callout component is used to convey important information to the user th
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucCallout/Basic.vue
+<<< @/components/demo/MucCallout/BasicExample.vue
 
 ## Reference
 
