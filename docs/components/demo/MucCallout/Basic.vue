@@ -30,5 +30,6 @@ import MucCallout from '../../../../src/components/Callout/MucCallout.vue'
 div * {
   margin-top: 36px;
   margin-bottom: 16px;
+  padding-bottom: 16px;
 }
 </style>
