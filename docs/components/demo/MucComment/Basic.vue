@@ -1,0 +1,26 @@
+<template>
+  <div>
+    <muc-comment rating="3.5">
+      <template v-slot:initials>TT</template>
+      <template v-slot:author>Max Mustermann</template>
+      <template v-slot:date>01.01.1970</template>
+      <template v-slot:headline>Lorem ipsum</template>
+      <template v-slot:text>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut
+      </template>
+    </muc-comment>
+    <muc-comment-text
+      date="00.00.0000"
+      author="Max Busch"
+      headline="dsad"
+      :rating="3.5"
+      text="dasdasd"
+      slider
+      dot-divider
+    />
+  </div>
+</template>
+
+<style scoped></style>
+<script setup lang="ts"></script>
