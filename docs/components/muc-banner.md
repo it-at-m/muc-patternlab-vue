@@ -1,5 +1,5 @@
 <script setup>
-import Basic from './demo/MucBanner/Basic.vue'
+import Basic from './demo/MucBanner/BasicExample.vue'
 </script>
 
 # muc-banner
@@ -12,7 +12,7 @@ import Basic from './demo/MucBanner/Basic.vue'
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucBanner/Basic.vue
+<<< @/components/demo/MucBanner/BasicExample.vue
 
 ## Reference
 

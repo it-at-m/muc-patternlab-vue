@@ -1,6 +1,6 @@
-import MucButton from './Button/MucButton.vue'
-import MucBanner from './Banner/MucBanner.vue'
-import MucIntro from './Intro/MucIntro.vue'
-import { MucCallout } from './Callout'
+import { MucBanner } from "./Banner";
+import { MucButton } from "./Button";
+import { MucCallout } from "./Callout";
+import { MucIntro } from "./Intro";
 
-export { MucButton, MucBanner, MucIntro, MucCallout }
+export { MucButton, MucBanner, MucIntro, MucCallout };

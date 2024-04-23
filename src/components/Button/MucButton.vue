@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   expanded: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 </script>
 
 <template>

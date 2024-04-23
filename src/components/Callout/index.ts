@@ -1,3 +1,3 @@
-import MucCallout from './MucCallout.vue'
+import MucCallout from "./MucCallout.vue";
 
-export { MucCallout }
+export { MucCallout };
