@@ -1,4 +1,5 @@
 <script setup>
+import BasicExample from './demo/MucBanner/BasicExample.vue'
 </script>
 
 # muc-banner
