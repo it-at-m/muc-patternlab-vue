@@ -4,9 +4,13 @@ import BasicExample from './demo/MucBanner/BasicExample.vue'
 
 # muc-banner
 
-https://patternlab.muenchen.space/?p=viewall-elements-bannerhttps://patternlab.muenchen.space/?p=viewall-elements-banner
+A banner-component used for single-line informations. Available in multiple types.  
 
-A banner-component used for single-line informations. Available in multiple types.
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-bannerhttps://patternlab.muenchen.space/?p=viewall-elements-banner)
+
+<br>
 
 ## Example Usage
 

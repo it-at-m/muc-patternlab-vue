@@ -4,7 +4,15 @@ import Basic from './demo/MucIntro/BasicExample.vue'
 
 # muc-intro
 
-//todo describe intro
+A header-like component which can be used as first heading for a component that replaces a whole page on muenchen.de.
+
+Used e.g. in https://stadt.muenchen.de/buergerservice/anliegen.html.
+
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=components-intro-vertical-article)
+
+<br>
 
 ## Example Usage
 
