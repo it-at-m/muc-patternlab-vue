@@ -7,7 +7,11 @@
   >
     <span>
       <slot />
-      <svg v-if="icon" aria-hidden="true" class="m-button__icon">
+      <svg
+        v-if="icon"
+        aria-hidden="true"
+        class="m-button__icon"
+      >
         <use :xlink:href="'#icon-' + icon"></use>
       </svg>
     </span>
@@ -15,38 +19,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
-type buttonType = 'primary' | 'secondary' | 'ghost'
+type buttonType = "primary" | "secondary" | "ghost";
 
 const props = withDefaults(
   defineProps<{
-    variant?: buttonType
-    disabled?: boolean
-    icon?: string
+    variant?: buttonType;
+    disabled?: boolean;
+    icon?: string;
   }>(),
   {
-    variant: 'primary',
-    disabled: false
+    variant: "primary",
+    disabled: false,
   }
-)
+);
 
 const emit = defineEmits<{
-  (e: 'click'): void
-}>()
+  (e: "click"): void;
+}>();
 
 const buttonClass = computed(() => {
   switch (props.variant) {
-    case 'secondary':
-      return 'm-button--secondary'
-    case 'ghost':
-      return 'm-button--ghost'
+    case "secondary":
+      return "m-button--secondary";
+    case "ghost":
+      return "m-button--ghost";
     default:
-      return 'm-button--primary'
+      return "m-button--primary";
   }
-})
+});
 
 const handleClick = () => {
-  emit('click')
-}
+  emit("click");
+};
 </script>
