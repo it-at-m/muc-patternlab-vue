@@ -25,6 +25,7 @@ The `muc-button` component themes the standard html button using the style from 
 |----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------|
 | variant  | string  | primary | The variant prop gives you easy access to several different button styles. Available are `primary`, `secondary` and `ghost`. |
 | disabled | boolean | false   | Let`s you indicate that the button is not currently interactive or clickable.                                                |
+| icon     | string  |         | Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.                             |
 
 ### Events
 
@@ -34,6 +35,6 @@ The `muc-button` component themes the standard html button using the style from 
 
 ### Slots
 
-| Name | Parameters | Description |
-| ---- | ---------- | ----------- |
-|      |            |             |
+| Name | Parameters | Description                        |
+| ---- | ---------- |------------------------------------|
+|      |            | Display content inside the button. |
