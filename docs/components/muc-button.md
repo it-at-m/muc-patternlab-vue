@@ -5,9 +5,13 @@ import Basic from './demo/MucButton/Basic.vue'
 # muc-button
 
 
-https://patternlab.muenchen.space/?p=viewall-elements-buttons
-
 The `muc-button` component themes the standard html button using the style from patternlab.
+
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-buttons)
+
+<br>
 
 ## Example Usage
 
