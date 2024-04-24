@@ -1,5 +1,5 @@
 <script setup>
-import Basic from './demo/MucButton/Basic.vue'
+import Basic from './demo/MucButton/BasicExample.vue'
 </script>
 
 # muc-button
@@ -19,7 +19,7 @@ The `muc-button` component themes the standard html button using the style from 
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucButton/Basic.vue
+<<< @/components/demo/MucButton/BasicExample.vue
 
 ## Reference
 

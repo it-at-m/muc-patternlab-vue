@@ -1,35 +1,35 @@
 <script setup>
-import Basic from './demo/MucBanner/Basic.vue'
+import BasicExample from './demo/MucBanner/BasicExample.vue'
 </script>
 
 # muc-banner
 
-//todo describe banner
+A banner-component used for single-line informations. Available in multiple types.  
+
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-bannerhttps://patternlab.muenchen.space/?p=viewall-elements-banner)
+
+<br>
 
 ## Example Usage
 
 <DemoContainer>
-  <Basic/>
+  <BasicExample/>
 </DemoContainer>
 
-<<< @/components/demo/MucBanner/Basic.vue
+<<< @/components/demo/MucBanner/BasicExample.vue
 
 ## Reference
 
 ### Properties
 
-| Name | Type   | Default | Description    |
-| ---- | ------ | ------- | -------------- |
-| msg  | string | null    | Messge to show |
-
-### Events
-
-| Name | Parameters | Description |
-| ---- | ---------- | ----------- |
-|      |            |             |
+| Name | Type   | Default | Description                                                                            |
+|------|--------|---------|----------------------------------------------------------------------------------------|
+| type | string | `info`  | Changes the style of the banner. Available types are `info`, `warning` and `emergency` |
 
 ### Slots
 
-| Name | Parameters | Description |
-| ---- | ---------- | ----------- |
-|      |            |             |
+| Name    | Parameters | Description                 |
+|---------|------------|-----------------------------|
+| default | -          | Text-content of the banner. |
