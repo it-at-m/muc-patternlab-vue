@@ -4,7 +4,14 @@ import Basic from './demo/MucButton/BasicExample.vue'
 
 # muc-button
 
-//todo describe button
+
+The `muc-button` component themes the standard html button using the style from patternlab.
+
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-buttons)
+
+<br>
 
 ## Example Usage
 
@@ -18,9 +25,11 @@ import Basic from './demo/MucButton/BasicExample.vue'
 
 ### Properties
 
-| Name | Type   | Default | Description    |
-| ---- | ------ | ------- | -------------- |
-| msg  | string | null    | Messge to show |
+| Name     | Type    | Default | Description                                                                                                                  |
+|----------|---------|---------|------------------------------------------------------------------------------------------------------------------------------|
+| variant  | string  | primary | The variant prop gives you easy access to several different button styles. Available are `primary`, `secondary` and `ghost`. |
+| disabled | boolean | false   | Let`s you indicate that the button is not currently interactive or clickable.                                                |
+| icon     | string  |         | Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.                             |
 
 ### Events
 
@@ -30,6 +39,6 @@ import Basic from './demo/MucButton/BasicExample.vue'
 
 ### Slots
 
-| Name | Parameters | Description |
-| ---- | ---------- | ----------- |
-|      |            |             |
+| Name | Parameters | Description                        |
+| ---- | ---------- |------------------------------------|
+|      |            | Display content inside the button. |
