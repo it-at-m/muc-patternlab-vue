@@ -8,15 +8,14 @@
         <span class="m-comment__author">
           <slot name="author" />
         </span>
-        <span v-if="dotDivider"> &bull; </span>
-        <span v-else> am </span>
-        <span class="m-comment__date">
-          <slot name="date" />
+        <span v-if="showDate">
+          <span class="m-comment__author">&nbsp;<slot name="datePrefix" /></span>
+          <span class="m-comment__date">&nbsp;<slot name="date" /> </span>
         </span>
         <div
           class="m-star-rating"
           role="img"
-          :aria-label="`Rating: ${ratingNumber} out of ${MAX_STARS} stars`"
+          :aria-label="`Rating: ${rating} out of ${MAX_STARS} stars`"
         >
           <div
             v-for="n in evaluateRating.fullStars"
@@ -57,11 +56,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, readonly } from "vue"
-import { ratingType } from "./RatingType"
+import { computed, useSlots } from 'vue'
+import { MaxStars, RatingType } from './RatingType'
 
-const MAX_STARS = readonly<Number>(5)
-const LOCALES = readonly<String>("de-DE")
+const LOCALES = 'de-DE'
+
+const slots = useSlots()
 
 type ratingDisplayType = {
   fullStars: number
@@ -71,40 +71,35 @@ type ratingDisplayType = {
 
 const props = withDefaults(
   defineProps<{
-    rating: ratingType
+    rating: RatingType
     slider: boolean
-    dotDivider: boolean
   }>(),
   {
-    dotDivider: false,
-    slider: false,
+    slider: false
   }
 )
 
-const divider = computed(() => {
-  return props.dotDivider ? " &bull; " : " am "
+const showDate = computed(() => {
+  return !!slots['date']
 })
 
 const commentClass = computed(() => {
-  return props.slider ? "m-comment--slider" : "m-comment--listing"
+  return props.slider ? 'm-comment--slider' : 'm-comment--listing'
 })
 
-const ratingNumber = computed(() => {
-  return Number(props.rating)
-})
 const ratingWithDecimalComma = computed(() => {
-  return ratingNumber.value.toLocaleString(LOCALES.valueOf(), { minimumFractionDigits: 1 })
+  return props.rating.toLocaleString(LOCALES.valueOf(), { minimumFractionDigits: 1 })
 })
 
 const evaluateRating = computed(() => {
-  const fullStars = Math.floor(ratingNumber.value)
-  const isHalfStar = ratingNumber.value % 1 !== 0
-  const emptyStars = Math.floor(MAX_STARS.valueOf() - ratingNumber.value)
+  const fullStars = Math.floor(props.rating)
+  const isHalfStar = props.rating % 1 !== 0
+  const emptyStars = Math.floor(MaxStars - props.rating)
 
   return {
     fullStars,
     emptyStars,
-    isHalfStar,
+    isHalfStar
   } as ratingDisplayType
 })
 </script>
