@@ -57,9 +57,11 @@
 </template>
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
-import { MaxStars, RatingType } from './RatingType'
 
 const LOCALES = 'de-DE'
+const LOWER_THRESHOLD = 0.2
+const UPPER_THRESHOLD = 0.8
+const MAX_STARS = 5
 
 const slots = useSlots()
 
@@ -71,7 +73,7 @@ type ratingDisplayType = {
 
 const props = withDefaults(
   defineProps<{
-    rating: RatingType
+    rating: number
     slider: boolean
   }>(),
   {
@@ -92,9 +94,15 @@ const ratingWithDecimalComma = computed(() => {
 })
 
 const evaluateRating = computed(() => {
-  const fullStars = Math.floor(props.rating)
-  const isHalfStar = props.rating % 1 !== 0
-  const emptyStars = Math.floor(MaxStars - props.rating)
+  const decimalPart = +(props.rating % 1).toFixed(1) // ask Brendan Eich why "3.3 % 1 = 0.2999999999999998" and then come back
+
+  let fullStars = Math.floor(props.rating)
+  let emptyStars = Math.floor(MAX_STARS - props.rating)
+  let isHalfStar = false
+
+  if (decimalPart % 1 <= LOWER_THRESHOLD) emptyStars++
+  else if (decimalPart >= UPPER_THRESHOLD) fullStars++
+  else isHalfStar = true
 
   return {
     fullStars,
