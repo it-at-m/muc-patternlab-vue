@@ -1,3 +1,3 @@
-import MucButton from './MucButton.vue'
+import MucButton from "./MucButton.vue";
 
-export { MucButton }
+export { MucButton };

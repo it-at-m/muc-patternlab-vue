@@ -1,3 +1,3 @@
-import MucIntro from './MucIntro.vue'
+import MucIntro from "./MucIntro.vue";
 
-export { MucIntro }
+export { MucIntro };

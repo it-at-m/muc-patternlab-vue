@@ -1,12 +1,30 @@
 ![logo-footer-muenchen-de.svg](docs/images/logo-footer-muenchen-de.svg)
 
+<p>
+	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
+		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml
+"
+			 alt="Build Status">
+	</a>
+	<a href="https://gitmoji.dev">
+		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg"
+			 alt="Gitmoji">
+	</a>
+	<a href="https://github.com/semantic-release/semantic-release">
+		<img src="https://img.shields.io/badge/semantic--release-gitmoji-e10079?logo=semantic-release"
+			 alt="semantic-release: gitmoji">
+	</a>
+</p>
+
 # muc-patternlab-vue
 
-This repository contains a ready-to-use Vue-Components-Library based on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
+This repository contains a ready-to-use Vue-Components-Library based
+on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 
-We intend to let this project be a community project in which every developer who needs new components contributes the results of his work into this library.
+We intend to let this project be a community project in which every developer who needs new components contributes the
+results of his work into this library.
 
 ## Roadmap
 
@@ -16,7 +34,8 @@ In the near future we plan to
 - Create more components
 - Integrate MDE5 Patternlab npm-Package as soon as it's available
 
-See the [open issues](https://github.com/it-at-m/muc-patternlab-vue/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/it-at-m/muc-patternlab-vue/issues) for a full list of proposed features (and
+known issues).
 
 ## Usage
 
@@ -39,27 +58,32 @@ npm run docs:dev
 2. Create Vue-Component (with composition api) and index.ts-File which exports your component
 3. Add your new Component to `./src/components/index.ts`
 4. Create documentation for your component
-   1. Create at least one "Basic" demo at `./docs/components/demo/<your-component>`
-   2. Create a doc-File for your component at `./docs/components/<your-component>.md`
-   3. Add your component doc to the sidebar at `./docs/.vitepress/config.ts`
+    1. Create at least one "Basic" demo at `./docs/components/demo/<your-component>`
+    2. Create a doc-File for your component at `./docs/components/<your-component>.md`
+    3. Add your component doc to the sidebar at `./docs/.vitepress/config.ts`
 
 ### Using MDE5 Patternlab-Icons
 
-Patternlab-Icons are provided by a svg-Sprite which is automatically injected in this repos App.vue-File for local testing. You can expect the users of this library to do the same thing.
+Patternlab-Icons are provided by a svg-Sprite which is automatically injected in this repos App.vue-File for local
+testing. You can expect the users of this library to do the same thing.
 
-So to use an icon from Patternlab you can simply follow the official documentation: https://patternlab.muenchen.space/?p=viewall-guidelines-icons
+So to use an icon from Patternlab you can simply follow the official
+documentation: https://patternlab.muenchen.space/?p=viewall-guidelines-icons
 
 ```html
+
 <svg aria-hidden="true" class="icon">
-  <use xlink:href="#icon-{name}"></use>
+    <use xlink:href="#icon-{name}"></use>
 </svg>
 ```
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
+contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please open an issue with the tag "enhancement", fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please open an issue with the tag "enhancement", fork the repo and
+create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Open an issue with the tag "enhancement"
@@ -75,18 +99,17 @@ More about this in the [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) file.
 
 This project uses [semantic-release](https://github.com/semantic-release/semantic-release)!
 
-It follows [Angulars Commit Message Conventions](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format). For example:
+It follows [gitmoji commit conventions](https://gitmoji.dev/). For example:
 
-| Commit message                                                                                                                                                                                   | Release type               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| `fix(pencil): stop graphite breaking when too much pressure applied`                                                                                                                             | Patch Release              |
-| `feat(pencil): add 'graphiteWidth' option`                                                                                                                                                       | ~~Minor~~ Feature Release  |
-| `perf(pencil): remove graphiteWidth option`<br><br>`BREAKING CHANGE: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | ~~Major~~ Breaking Release |
+| Commit message                                                                                                                      | Release type  |
+|-------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| `:lipstick` / `:lock:` / `:ambulance:` / `:bug: stop graphite breaking when too much pressure applied`                              | Patch Release |
+| `:sparkles: add 'graphiteWidth' option`                                                                                             | Minor Release |
+| `:boom: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | Major Release |
 
 ## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) file for more information.
-
 
 ## Contact
 

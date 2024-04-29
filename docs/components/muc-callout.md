@@ -1,13 +1,16 @@
 <script setup>
-import Basic from './demo/MucCallout/Basic.vue'
+import Basic from './demo/MucCallout/BasicExample.vue'
 </script>
 
 # muc-callout
 
-
-https://patternlab.muenchen.space/?p=viewall-components-callout
-
 The muc-callout component is used to convey important information to the user through the use of contextual types, icons, and colors.
+
+<br>
+
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-components-callout)
+
+<br>
 
 ## Example Usage
 
@@ -15,7 +18,7 @@ The muc-callout component is used to convey important information to the user th
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucCallout/Basic.vue
+<<< @/components/demo/MucCallout/BasicExample.vue
 
 ## Reference
 
