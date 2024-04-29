@@ -12,7 +12,7 @@ The muc-commment component can be used to display a comment in e.g. a chat.
   <Basic/>
 </DemoContainer>
 
-<<< @/components/demo/MucComment/Basic.vue
+<<< @/components/demo/MucComment/BasicExample.vue
 
 ## Reference
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-comment)
