@@ -1,6 +1,6 @@
 <template>
   <div>
-    <muc-comment :rating="3.9">
+    <muc-comment :rating="5">
       <template v-slot:initials>TT</template>
       <template v-slot:author>Max Mustermann</template>
       <template v-slot:datePrefix>-</template>
