@@ -1,7 +1,7 @@
 <template>
   <muc-comment
     :rating="rating"
-    :variant="slider"
+    :variant="variant"
   >
     <template v-slot:initials>{{ computedInitials }}</template>
     <template v-slot:datePrefix>am</template>
@@ -21,6 +21,8 @@ import { computed } from "vue";
 
 import { MucComment } from "../index";
 
+type CommentType = "listing" | "slider";
+
 const props = withDefaults(
   defineProps<{
     datePrefix?: string;
@@ -30,11 +32,11 @@ const props = withDefaults(
     headline?: string;
     text: string;
     rating: number;
-    slider: boolean;
+    variant: CommentType;
   }>(),
   {
     datePrefix: "am",
-    slider: false,
+    variant: "listing",
   }
 );
 

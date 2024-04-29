@@ -7,8 +7,8 @@
       <template v-slot:date>01.01.1970</template>
       <template v-slot:headline>Lorem ipsum</template>
       <template v-slot:text>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-        invidunt ut
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut
       </template>
     </muc-comment>
     <muc-comment-text
@@ -17,7 +17,7 @@
       headline="Lorem ipsum"
       :rating="2.3"
       text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"
-      slider
+      variant
       dot-divider
     />
   </div>
