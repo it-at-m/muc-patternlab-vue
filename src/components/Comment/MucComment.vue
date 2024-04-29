@@ -65,19 +65,21 @@ const MAX_STARS = 5
 
 const slots = useSlots()
 
-type ratingDisplayType = {
+type RatingDisplayType = {
   fullStars: number
   emptyStars: number
   isHalfStar: boolean
 }
 
+type CommentType = 'listing' | 'slider'
+
 const props = withDefaults(
   defineProps<{
     rating: number
-    slider: boolean
+    variant?: CommentType
   }>(),
   {
-    slider: false
+    variant: 'listing'
   }
 )
 
@@ -86,29 +88,38 @@ const showDate = computed(() => {
 })
 
 const commentClass = computed(() => {
-  return props.slider ? 'm-comment--slider' : 'm-comment--listing'
+  return props.variant === 'slider' ? 'm-comment--slider' : 'm-comment--listing'
 })
 
+/*
+ * Converts the dot used on decimal numbers and converts it to a comma.
+ */
 const ratingWithDecimalComma = computed(() => {
   return props.rating.toLocaleString(LOCALES.valueOf(), { minimumFractionDigits: 1 })
 })
 
+/*
+Calculates the amount of full, empty and half-stars to be displayed.
+ */
 const evaluateRating = computed(() => {
   const decimalPart = +(props.rating % 1).toFixed(1) // ask Brendan Eich why "3.3 % 1 = 0.2999999999999998" and then come back
 
-  let fullStars = Math.floor(props.rating)
+  let fullStars = Math.min(Math.floor(props.rating), MAX_STARS)
   let emptyStars = Math.floor(MAX_STARS - props.rating)
   let isHalfStar = false
 
-  if (decimalPart % 1 <= LOWER_THRESHOLD) emptyStars++
-  else if (decimalPart >= UPPER_THRESHOLD) fullStars++
-  else isHalfStar = true
+  // evaluating half-stars and if the rating is e.g. 3.9 an extra full star needs to be displayed
+  if (props.rating !== 0.0 && props.rating !== MAX_STARS) {
+    if (decimalPart <= LOWER_THRESHOLD) emptyStars++
+    else if (decimalPart >= UPPER_THRESHOLD) fullStars++
+    else isHalfStar = true
+  }
 
   return {
     fullStars,
     emptyStars,
     isHalfStar
-  } as ratingDisplayType
+  } as RatingDisplayType
 })
 </script>
 

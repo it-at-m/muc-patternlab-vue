@@ -1,5 +1,5 @@
 <template>
-  <muc-comment :rating="rating" :slider="slider">
+  <muc-comment :rating="rating" :variant="slider">
     <template v-slot:initials>{{ computedInitials }}</template>
     <template v-slot:datePrefix>am</template>
     <template v-slot:author>{{ author }}</template>
