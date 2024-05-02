@@ -21,7 +21,7 @@ The muc-commment component can be used to display a comment in e.g. a chat.
 
 | Name    | Type        | Default | Description                                                               |
 |---------|-------------|---------|---------------------------------------------------------------------------|
-| rating  | number      |         | Number of stars to be displayed.                                          |
+| rating  | number (float)     |         | Number of stars to be displayed.                                          |
 | variant | CommentType | listing | Choose the variant of the comment. This can be either slider oder listing |
 
 ### Slots
