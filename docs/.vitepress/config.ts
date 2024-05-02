@@ -20,6 +20,7 @@ module.exports = {
           { text: 'MucButton', link: '/components/muc-button' },
           { text: 'MucCallout', link: '/components/muc-callout' },
           { text: 'MucIntro', link: '/components/muc-intro' },
+          { text: "MucComment", link: "/components/muc-comment" },
         ],
       }
     ],
