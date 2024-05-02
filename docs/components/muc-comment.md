@@ -4,7 +4,9 @@ import Basic from './demo/MucComment/BasicExample.vue'
 
 # muc-banner
 
-The muc-commment component can be used to display a comment in e.g. a chat.
+The muc-comment component can be used to display a comment in e.g. a chat.
+If you would like to display only text, we suggest using the more specific `muc-comment-text`. 
+For more general integration, we recommend the more general `muc-comment`.
 
 ## Example Usage
 
