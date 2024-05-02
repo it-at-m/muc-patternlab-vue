@@ -76,6 +76,8 @@
 <script setup lang="ts">
 import { computed, useSlots } from "vue";
 
+import CommentType from "./CommentType";
+
 const LOCALES = "de-DE";
 const LOWER_THRESHOLD = 0.2;
 const UPPER_THRESHOLD = 0.8;
@@ -88,8 +90,6 @@ type RatingDisplayType = {
   emptyStars: number;
   isHalfStar: boolean;
 };
-
-type CommentType = "listing" | "slider";
 
 const props = withDefaults(
   defineProps<{

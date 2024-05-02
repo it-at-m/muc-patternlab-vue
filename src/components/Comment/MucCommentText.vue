@@ -20,8 +20,7 @@
 import { computed } from "vue";
 
 import { MucComment } from "../index";
-
-type CommentType = "listing" | "slider";
+import CommentType from "./CommentType";
 
 const props = withDefaults(
   defineProps<{
