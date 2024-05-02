@@ -20,7 +20,7 @@
         <div
           class="m-star-rating"
           role="img"
-          :aria-label="`Rating: ${rating} out of ${MAX_STARS} stars`"
+          :aria-label="`Bewertung: ${rating} von ${MAX_STARS} Sternen`"
         >
           <div
             v-for="n in evaluateRating.fullStars"
