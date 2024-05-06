@@ -5,15 +5,17 @@ import { computed } from "vue";
 
 type bannerType = "info" | "warning" | "emergency";
 
-const props = defineProps({
-  /**
-   * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
-   */
-  type: {
-    type: String as PropType<bannerType>,
-    default: "info",
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+     */
+    type?: bannerType;
+  }>(),
+  {
+    type: "info",
+  }
+);
 
 defineSlots<{
   /**

@@ -56,7 +56,7 @@ const props = withDefaults(
 
 defineSlots<{
   /**
-   * Icon shown above the callout. Defaults to Icons matching the type.
+   * Icon shown above the callout. Defaults to icons matching the type.
    */
   icon(): any;
   /**
@@ -64,7 +64,7 @@ defineSlots<{
    */
   header(): any;
   /**
-   * Content beneath the Heading shown as text.
+   * Content beneath the heading shown as text.
    */
   content(): any;
 }>();

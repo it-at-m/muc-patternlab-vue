@@ -34,6 +34,7 @@ export const Default = {
 export const Slider = {
     args: {
         ...Default.args,
+        rating: 2.3,
         variant: "slider"
     },
 };

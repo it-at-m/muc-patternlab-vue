@@ -1,12 +1,10 @@
 <script setup lang="ts">
-defineProps({
+defineProps<{
   /**
    * Title of the Intro
    */
-  title: {
-    type: String,
-  },
-});
+  title: string;
+}>();
 
 defineSlots<{
   /**
