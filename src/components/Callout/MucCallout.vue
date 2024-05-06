@@ -22,10 +22,12 @@
             <slot name="header" />
           </div>
           <div class="m-callout__content">
-            <slot
-              name="content"
-              class="m-callout__content"
-            />
+            <p>
+              <slot
+                name="content"
+                class="m-callout__content"
+              />
+            </p>
           </div>
         </div>
       </div>
@@ -40,12 +42,32 @@ type calloutType = "info" | "warning" | "success" | "error";
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * Type of the callout, default is `info`.
+     *
+     * Available are `info`, `warning`, `success` and `error`.
+     */
     type?: calloutType;
   }>(),
   {
     type: "info",
   }
 );
+
+defineSlots<{
+  /**
+   * Icon shown above the callout. Defaults to icons matching the type.
+   */
+  icon(): any;
+  /**
+   * Heading of the callout.
+   */
+  header(): any;
+  /**
+   * Content beneath the heading shown as text.
+   */
+  content(): any;
+}>();
 
 /*
 Computing the corresponding icon-component for the given comment-type

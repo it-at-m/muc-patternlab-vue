@@ -1,9 +1,17 @@
 <script setup lang="ts">
-defineProps({
-  title: {
-    type: String,
-  },
-});
+defineProps<{
+  /**
+   * Title of the Intro
+   */
+  title: string;
+}>();
+
+defineSlots<{
+  /**
+   * Text-content of the Intro.
+   */
+  default(): any;
+}>();
 </script>
 
 <template>

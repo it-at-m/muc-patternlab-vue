@@ -1,3 +1,7 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Getting Started" />
+
 # Getting Started
 
 ## Installation
@@ -23,7 +27,7 @@ In your `vite.config.ts`, you shall configure to dedupe `vue`:
 ```ts
 export default defineConfig({
   resolve: {
-    dedupe: ['vue'],
+    dedupe: ["vue"],
   },
 });
 ```
@@ -31,22 +35,25 @@ export default defineConfig({
 In your Webcomponents root you should import the MDE5-CSS and SVG-Sprite for MDE5-Icons:
 
 ```html
-<script lang="ts" setup>
-    import sprites from "@muenchen/muc-patternlab-vue/dist/assets/temporary/muc-icons.svg?raw";
+<script
+  lang="ts"
+  setup
+>
+  import sprites from "@muenchen/muc-patternlab-vue/dist/assets/temporary/muc-icons.svg?raw";
 </script>
 
 <template>
-    <div>
-        <svg
-                style="display: none;"
-                v-html="sprites">
-        </svg>
-        <...>
-    </div>
+  <div>
+    <svg
+      style="display: none;"
+      v-html="sprites"
+    ></svg>
+    <...>
+  </div>
 </template>
 
 <style>
-@import "@/assets/muenchende-style.css";
+  @import "@muenchen/muc-patternlab-vue/dist/assets/temporary/muenchende-style.css";
 </style>
 ```
 
@@ -54,9 +61,9 @@ Import components from this library in your own component:
 
 e.G. Using the MucBanner-Component:
 
-```vue
+```html
 <script setup>
-import { MucBanner } from "@muenchen/muc-patternlab-vue";
+  import { MucBanner } from "@muenchen/muc-patternlab-vue";
 </script>
 
 <template>

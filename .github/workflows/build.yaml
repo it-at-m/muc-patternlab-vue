@@ -16,17 +16,17 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm ci             # install dependencies
       - run: npm run build      # build library
-      - run: npm run docs:build # build docs
+      - run: npm run build-storybook # build docs
       - name: upload library artifacts
         uses: actions/upload-artifact@v4
         with:
           name: library_dist
           path: ./dist
-      - name: upload vitepress artifacts
+      - name: upload storybook artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: vitepress_dist
-          path: ./docs/.vitepress/dist
+          name: storybook_dist
+          path: ./storybook-static
 
   deploy-npm:
     runs-on: ubuntu-latest
@@ -71,11 +71,11 @@ jobs:
       - name: Download build-results
         uses: actions/download-artifact@v4
         with:
-          name: vitepress_dist
-          path: ./docs/.vitepress/dist
+          name: storybook_dist
+          path: ./storybook-static
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         id: deployment
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/.vitepress/dist
+          publish_dir: ./storybook-static
