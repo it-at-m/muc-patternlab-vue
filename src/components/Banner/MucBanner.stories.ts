@@ -12,7 +12,7 @@ export default {
                 component:
 `A banner-component used for single-line informations. Available in multiple types.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-bannerhttps://patternlab.muenchen.space/?p=viewall-elements-banner)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-banner)
 `
             }
         }

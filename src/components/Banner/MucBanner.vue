@@ -27,9 +27,9 @@ const typeClass = computed(() => {
     case "info":
       return "m-banner--info";
     case "warning":
-      return "m-banner--emergency";
-    case "emergency":
       return "m-banner--warning";
+    case "emergency":
+      return "m-banner--emergency";
     default:
       return "m-banner--info";
   }
