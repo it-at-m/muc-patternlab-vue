@@ -24,8 +24,8 @@
           <div class="m-callout__content">
             <p>
               <slot
-                  name="content"
-                  class="m-callout__content"
+                name="content"
+                class="m-callout__content"
               />
             </p>
           </div>
