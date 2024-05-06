@@ -1,0 +1,19 @@
+# Folders
+.github
+.idea
+.vscode
+dist
+public
+storybook-static
+
+# Files
+package.json
+package-lock.json
+.gitignore
+.npmignore
+.prettierignore
+
+# Readme
+LICENSE
+CODE_OF_CONDUCT.md
+README.md
