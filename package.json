@@ -30,9 +30,6 @@
     "dist"
   ],
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
     "build": "rimraf dist && npm run type-check && npm run build-only",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -79,7 +76,6 @@
     "typescript": "~5.4.0",
     "vite": "^5.0.11",
     "vite-plugin-dts": "^3.0.0",
-    "vitepress": "^0.22.4",
     "vitest": "^1.2.2",
     "vue-tsc": "^2.0.0"
   }

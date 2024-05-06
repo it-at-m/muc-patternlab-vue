@@ -2,8 +2,7 @@
 
 <p>
 	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
-		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml
-"
+		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
 			 alt="Build Status">
 	</a>
 	<a href="https://gitmoji.dev">
@@ -30,7 +29,6 @@ results of his work into this library.
 
 In the near future we plan to
 
-- Integrate Storybook.js to showcase components
 - Create more components
 - Integrate MDE5 Patternlab npm-Package as soon as it's available
 
@@ -39,7 +37,7 @@ known issues).
 
 ## Usage
 
-Please refer to the [usage guide](https://it-at-m.github.io/muc-patternlab-vue/guide/).
+Please refer to the [usage guide](https://it-at-m.github.io/muc-patternlab-vue/?path=/docs/getting-started--docs/).
 
 ## Develop
 
@@ -49,7 +47,7 @@ Please refer to the [usage guide](https://it-at-m.github.io/muc-patternlab-vue/g
 git clone https://github.com/it-at-m/muc-patternlab-vue.git
 cd muc-patternlab-vue
 npm install
-npm run docs:dev
+npm run storybook
 ```
 
 ### Adding a new Component
@@ -57,10 +55,7 @@ npm run docs:dev
 1. Create a new Folder under `./src/components`-Directory
 2. Create Vue-Component (with composition api) and index.ts-File which exports your component
 3. Add your new Component to `./src/components/index.ts`
-4. Create documentation for your component
-    1. Create at least one "Basic" demo at `./docs/components/demo/<your-component>`
-    2. Create a doc-File for your component at `./docs/components/<your-component>.md`
-    3. Add your component doc to the sidebar at `./docs/.vitepress/config.ts`
+4. Create at least one story in storybook of your component by creating a `<MyComponent>.stories.ts`-File.
 
 ### Using MDE5 Patternlab-Icons
 

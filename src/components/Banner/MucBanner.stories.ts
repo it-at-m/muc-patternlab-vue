@@ -21,7 +21,7 @@ export default {
 
 export const Default = {
     args: {
-        default: "Hi, I'm a Info-Banner!",
+        default: "Hi, I'm an Info-Banner!",
         type: "info"
     },
 };
@@ -35,7 +35,7 @@ export const Warning = {
 
 export const Emergency = {
     args: {
-        default: "Hi, I'm a Emergency-Banner!",
+        default: "Hi, I'm an Emergency-Banner!",
         type: "emergency"
     },
 };

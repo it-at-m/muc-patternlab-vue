@@ -8,13 +8,17 @@ const path = require('path')
 const mucIconsSvg = fs.readFileSync(path.resolve(__dirname, '../public/assets/temporary/muc-icons.svg'), 'utf8')
 
 const config: StorybookConfig = {
-    stories: ['../src/components/**/*.stories.ts'],
+    stories: [
+        '../docs/*.mdx',
+        '../src/components/**/*.stories.ts'
+    ],
     staticDirs: ["../public"],
     addons: [
         "@storybook/addon-links",
         "@storybook/addon-essentials",
         "@storybook/addon-interactions",
         '@storybook/addon-a11y',
+        '@storybook/addon-docs',
     ],
     framework: {
         name: "@storybook/vue3-vite",
