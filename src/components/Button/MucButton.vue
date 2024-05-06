@@ -25,8 +25,19 @@ type buttonType = "primary" | "secondary" | "ghost";
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * The variant prop gives you easy access to several different button styles.
+     *
+     * Available are `primary`, `secondary` and `ghost`.
+     */
     variant?: buttonType;
+    /**
+     * Let`s you indicate that the button is not currently interactive or clickable.
+     */
     disabled?: boolean;
+    /**
+     * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
+     */
     icon?: string;
   }>(),
   {
@@ -35,7 +46,18 @@ const props = withDefaults(
   }
 );
 
+defineSlots<{
+  /**
+   * Display content inside the button.
+   */
+  default(): any;
+}>();
+
 const emit = defineEmits<{
+  /**
+   * Triggered when button is clicked.
+   * @param e Click-Event
+   */
   (e: "click"): void;
 }>();
 
