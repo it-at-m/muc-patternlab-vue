@@ -1,0 +1,19 @@
+/**
+ * We need this css to ensure the correct patternlab
+ * behaviour inside of a webcomponent.
+ */
+:root {
+    --color-brand-main-blue: #005A9F;
+    --color-neutrals-blue: #BDD4EA;
+    --color-neutrals-blue-xlight: #F2F6FA;
+    --color-neutrals-grey: #3A5368;
+    color: var(--color-neutrals-grey);
+    font-family: Open Sans, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    word-break: break-word;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
