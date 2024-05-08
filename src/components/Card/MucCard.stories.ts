@@ -31,25 +31,22 @@ export const Default = {
   },
 };
 
-export const WithHeaderPrefix = () => ({
-  components: { MucCard },
-  template: `
-      <MucCard
-          v-bind="$props"
-          title="Lorem Ipsum"
-          tagline="Dolor"
-      >
-        <template #headerPrefix>
-          <div
-              style="padding-right: 16px; font-size: 32px;"
-          >
+export const WithHeaderPrefix = {
+  args: {
+    title: "Lorim Ipsum",
+    tagline: "Dolor",
+    content:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et\n          dolore magna aliquyam erat, sed diam voluptua.",
+  },
+  parameters: {
+    slots: {
+      headerPrefix: {
+        description: "HeaderPrefix Slot used for displaying icon",
+        template: `
+          <div style="padding-right: 16px; font-size: 32px;">
             📆
-          </div>
-        </template>
-        <template #content>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua.
-        </template>
-      </MucCard>
-    `,
-});
+          </div>`,
+      },
+    },
+  },
+};
