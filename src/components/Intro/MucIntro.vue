@@ -37,7 +37,7 @@ defineSlots<{
               {{ title }}
             </h1>
 
-            <div v-if="divider" class="ticket-divider"></div>
+            <div v-if="divider" class="muc-divider"></div>
 
             <div class="m-intro-vertical__content">
               <p>
@@ -52,10 +52,7 @@ defineSlots<{
 </template>
 
 <style scoped>
-.ticket-divider {
-  align-self: stretch;
-  height: 0;
-  border: 1px var(--color-neutrals-blue) solid;
+.muc-divider {
   margin-top: 8px;
   margin-bottom: 16px;
 }
