@@ -23,13 +23,15 @@ defineSlots<{
 </script>
 
 <template>
-
   <div class="m-intro m-intro-vertical">
     <div class="m-intro-vertical__body">
       <div class="container">
         <div class="m-intro-vertical__grid">
           <div class="m-intro-vertical__grid-inner">
-            <span v-if="tagline" class="m-intro-vertical__tagline">
+            <span
+              v-if="tagline"
+              class="m-intro-vertical__tagline"
+            >
               {{ tagline }}
             </span>
 
@@ -37,7 +39,10 @@ defineSlots<{
               {{ title }}
             </h1>
 
-            <div v-if="divider" class="ticket-divider"></div>
+            <div
+              v-if="divider"
+              class="muc-divider"
+            ></div>
 
             <div class="m-intro-vertical__content">
               <p>
@@ -52,10 +57,7 @@ defineSlots<{
 </template>
 
 <style scoped>
-.ticket-divider {
-  align-self: stretch;
-  height: 0;
-  border: 1px var(--color-neutrals-blue) solid;
+.muc-divider {
   margin-top: 8px;
   margin-bottom: 16px;
 }
