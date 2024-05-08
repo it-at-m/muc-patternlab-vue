@@ -1,14 +1,16 @@
 <template>
   <div
-      class="card"
-      @click="emit('click', $event)"
+    class="card"
+    @click="emit('click', $event)"
   >
     <div class="card-content">
-
       <div class="card-header">
         <slot name="headerPrefix" />
         <div>
-          <div v-if="tagline" class="card-tagline">
+          <div
+            v-if="tagline"
+            class="card-tagline"
+          >
             {{ tagline }}
           </div>
           <div>
@@ -17,15 +19,14 @@
         </div>
       </div>
 
-      <div class="muc-divider"></div>
+      <div class="muc-divider" />
 
-      <slot name="content"/>
+      <slot name="content" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 const emit = defineEmits<{
   /**
    * Triggered when card is clicked.
@@ -35,8 +36,8 @@ const emit = defineEmits<{
 }>();
 
 defineProps<{
-  title: string,
-  tagline: string,
+  title: string;
+  tagline: string;
 }>();
 
 defineSlots<{
@@ -49,11 +50,9 @@ defineSlots<{
    */
   content(): any;
 }>();
-
 </script>
 
 <style scoped>
-
 .card {
   cursor: pointer;
   border: solid 1px var(--color-neutrals-blue);
@@ -75,8 +74,10 @@ defineSlots<{
 
 .card-tagline {
   font-size: 16px;
-  font-family: Open Sans, sans-serif;
-  color: #005A9F;
+  font-family:
+    Open Sans,
+    sans-serif;
+  color: #005a9f;
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word;

@@ -1,30 +1,30 @@
-import {fn} from "@storybook/test";
+import { fn } from "@storybook/test";
 
-import MucCardContainer from "./MucCardContainer.vue";
 import MucCard from "./MucCard.vue";
+import MucCardContainer from "./MucCardContainer.vue";
 
 export default {
-    components: {MucCardContainer},
-    component: MucCardContainer,
-    title: "MucCardContainer",
-    tags: ["autodocs"],
-    // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
-    args: {onClick: fn()},
-    parameters: {
-        docs: {
-            description: {
-                component: `A wrapping Layout to use with [MucCard](/docs/muccard--docs).
+  components: { MucCardContainer },
+  component: MucCardContainer,
+  title: "MucCardContainer",
+  tags: ["autodocs"],
+  // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
+  args: { onClick: fn() },
+  parameters: {
+    docs: {
+      description: {
+        component: `A wrapping Layout to use with [MucCard](/docs/muccard--docs).
 
 🔗 Patternlab-Docs (not yet available)
 `,
-            },
-        }
+      },
     },
+  },
 };
 
 export const Template = () => ({
-    components: {MucCardContainer, MucCard},
-    template: `
+  components: { MucCardContainer, MucCard },
+  template: `
       <MucCardContainer>
         <MucCard
             v-bind="$props"
