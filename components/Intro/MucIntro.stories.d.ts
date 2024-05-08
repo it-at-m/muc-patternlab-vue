@@ -5,9 +5,25 @@ declare const _default: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
                 required: true;
             };
+            tagline: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+                required: true;
+            };
+            divider: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+                required: true;
+            };
         }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
             title: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+                required: true;
+            };
+            tagline: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+                required: true;
+            };
+            divider: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                 required: true;
             };
         }>>, {}, true, {}, {}, {
@@ -22,6 +38,14 @@ declare const _default: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
                 required: true;
             };
+            tagline: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+                required: true;
+            };
+            divider: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+                required: true;
+            };
         }>>, {}, {}, {}, {}, {}>;
         __isFragment?: undefined;
         __isTeleport?: undefined;
@@ -29,6 +53,14 @@ declare const _default: {
     } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
         title: {
             type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+            required: true;
+        };
+        tagline: {
+            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
+            required: true;
+        };
+        divider: {
+            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
             required: true;
         };
     }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
@@ -50,6 +82,14 @@ declare const _default: {
 };
 export default _default;
 export declare const Default: {
+    args: {
+        tagline: string;
+        title: string;
+        divider: boolean;
+        default: string;
+    };
+};
+export declare const Minimal: {
     args: {
         title: string;
         default: string;
