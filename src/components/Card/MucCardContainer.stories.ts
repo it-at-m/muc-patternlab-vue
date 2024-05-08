@@ -22,22 +22,25 @@ export default {
   },
 };
 
-export const Template = () => ({
-  components: { MucCardContainer, MucCard },
-  template: `
-      <MucCardContainer>
-        <MucCard
+export const Template = {
+  parameters: {
+    slots: {
+      default: {
+        components: { MucCard },
+        template: `
+          <MucCard
             v-bind="$props"
             title="Lorem Ipsum"
             tagline="Dolor"
             v-for="index in 5"
             :key="index"
-        >
-          <template #content>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua.
-          </template>
-        </MucCard>
-      </MucCardContainer>
-    `,
-});
+          >
+            <template #content>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+              dolore magna aliquyam erat, sed diam voluptua.
+            </template>
+          </MucCard>`,
+      },
+    },
+  },
+};
