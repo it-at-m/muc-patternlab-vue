@@ -1,4 +1,5 @@
 import "../public/assets/temporary/muenchende-style.css";
+import "../public/assets/temporary/custom-style.css";
 import "../public/assets/temporary/muenchende-fontfaces.css";
 
 /** @type { import('@storybook/vue3').Preview } */
