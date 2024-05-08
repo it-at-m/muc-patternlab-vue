@@ -73,6 +73,7 @@
     "semantic-release": "^22.0.0",
     "semantic-release-gitmoji": "^1.6.5",
     "storybook": "^8.0.9",
+    "storybook-addon-vue-slots": "^0.9.30-next.2",
     "typescript": "~5.4.0",
     "vite": "^5.0.11",
     "vite-plugin-dts": "^3.0.0",
