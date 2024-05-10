@@ -1,6 +1,8 @@
-![logo-footer-muenchen-de.svg](docs/images/logo-footer-muenchen-de.svg)
+<p align="center">
+    <img height="140" src="docs/images/muc-patternlab.png" />
+</p>
 
-<p>
+<p align="center">
 	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
 		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
 			 alt="Build Status">
@@ -16,6 +18,7 @@
 </p>
 
 # muc-patternlab-vue
+
 
 This repository contains a ready-to-use Vue-Components-Library based
 on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
