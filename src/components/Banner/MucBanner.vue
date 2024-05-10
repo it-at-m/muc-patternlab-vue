@@ -1,23 +1,35 @@
 <script setup lang="ts">
-import {computed, type PropType} from "vue";
+import { computed } from "vue";
 
 type bannerType = "info" | "warning" | "emergency";
 
-const props = defineProps({
-  type: {
-    type: String as PropType<bannerType>,
-    default: "info"
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+     */
+    type?: bannerType;
+  }>(),
+  {
+    type: "info",
   }
-})
+);
+
+defineSlots<{
+  /**
+   * Text-content of the banner.
+   */
+  default(): any;
+}>();
 
 const typeClass = computed(() => {
   switch (props.type) {
     case "info":
       return "m-banner--info";
     case "warning":
-      return "m-banner--emergency";
-    case "emergency":
       return "m-banner--warning";
+    case "emergency":
+      return "m-banner--emergency";
     default:
       return "m-banner--info";
   }
@@ -54,17 +66,17 @@ const typeAriaLabel = computed(() => {
   <div>
     <div>
       <div
-          class="m-banner"
-          :class="typeClass"
-          :role="typeRole"
-          :aria-label="typeAriaLabel"
+        class="m-banner"
+        :class="typeClass"
+        :role="typeRole"
+        :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
           <svg class="icon">
-            <use href="#icon-information"/>
+            <use href="#icon-information" />
           </svg>
           <p>
-            <slot/>
+            <slot />
           </p>
         </div>
       </div>
