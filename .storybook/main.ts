@@ -12,7 +12,7 @@ const mucIconsSvg = fs.readFileSync(
 
 const config: StorybookConfig = {
   stories: ["../docs/*.mdx", "../src/components/**/*.stories.ts"],
-  staticDirs: ["../public"],
+  staticDirs: ["../public", "../docs/images"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
