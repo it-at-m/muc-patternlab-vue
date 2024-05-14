@@ -32,22 +32,21 @@ export default defineConfig({
 });
 ```
 
-In your Webcomponents root you should import the MDE5-CSS and SVG-Sprite for MDE5-Icons:
+In your Webcomponents root you should import the MDE5-CSS and SVG-Sprite for MDE5-Icons, as well as the optional custom-icons SVG-Sprite:
 
 ```html
 <script
   lang="ts"
   setup
 >
-  import sprites from "@muenchen/muc-patternlab-vue/dist/assets/temporary/muc-icons.svg?raw";
+  import mucIconsSprite from "@muenchen/muc-patternlab-vue/dist/assets/temporary/muc-icons.svg?raw";
+  import customIconsSprite from "@muenchen/muc-patternlab-vue/dist/assets/temporary/custom-icons.svg?raw";
 </script>
 
 <template>
   <div>
-    <svg
-      style="display: none;"
-      v-html="sprites"
-    ></svg>
+    <div v-html="mucIconsSprite"></div>
+    <div v-html="customIconsSprite"></div>
     <...>
   </div>
 </template>
