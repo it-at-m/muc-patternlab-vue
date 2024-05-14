@@ -34,7 +34,7 @@ const props = withDefaults(
     headline?: string;
     text: string;
     rating: number;
-    variant: CommentType;
+    variant?: CommentType;
   }>(),
   {
     datePrefix: "am",
@@ -42,17 +42,20 @@ const props = withDefaults(
   }
 );
 
+/**
+ * Initials will be computed if none are given.
+ * In the case of an empty author field, an empty string is returned for the initials.
+ */
 const computedInitials = computed(() => {
   return (
-    props.initials ??
-    props.author
-      .split(AUTHOR_NAME_SEPERATOR)
-      .map((word) => word.charAt(0))
-      .join("")
-      .match(/^.|.$/g)!
-      .join("") ??
-    ""
-  );
+    (
+      props.initials ??
+      props.author
+        .split(AUTHOR_NAME_SEPERATOR)
+        .map((word) => word.charAt(0))
+        .join("")
+    ).match(/^.|.$/g) ?? [""]
+  ).join("");
 });
 </script>
 
