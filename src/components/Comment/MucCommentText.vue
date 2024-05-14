@@ -22,7 +22,6 @@ import { computed } from "vue";
 import { MucComment } from "../index";
 import CommentType from "./CommentType";
 
-const MAX_INITIALS_LENGTH = 2;
 const AUTHOR_NAME_SEPERATOR = " ";
 
 const props = withDefaults(
