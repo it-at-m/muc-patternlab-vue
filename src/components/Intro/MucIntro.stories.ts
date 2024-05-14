@@ -11,7 +11,7 @@ export default {
 
 Used e.g. in https://stadt.muenchen.de/buergerservice/anliegen.html.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=components-intro-horizontal-event)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=components-intro-vertical-article)
 `,
       },
     },
