@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component: `The muc-comment component can be used to display a comment in e.g. a chat.
-This comment-component is designed to be as generic as possible.
+The \`muc-comment\`-component is designed to be as generic as possible.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-comment)
 `,
