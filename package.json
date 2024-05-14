@@ -21,10 +21,12 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/muc-patternlab-vue.es.js"
     },
-    "./dist/assets/temporary/muc-icons.svg": "./dist/assets/temporary/muc-icons.svg",
-    "./dist/assets/temporary/custom-icons.svg": "./dist/assets/temporary/custom-icons.svg",
+    "./dist/style.css": "./dist/style.css",
+    "./dist/assets/temporary/custom-style.css": "./dist/assets/temporary/custom-style.css",
+    "./dist/assets/temporary/muenchende-style.css": "./dist/assets/temporary/muenchende-style.css",
     "./dist/assets/temporary/muenchende-fontface.css": "./dist/assets/temporary/muenchende-fontface.css",
-    "./dist/assets/temporary/muenchende-style.css": "./dist/assets/temporary/muenchende-style.css"
+    "./dist/assets/temporary/muc-icons.svg": "./dist/assets/temporary/muc-icons.svg",
+    "./dist/assets/temporary/custom-icons.svg": "./dist/assets/temporary/custom-icons.svg"
   },
   "files": [
     "src",
