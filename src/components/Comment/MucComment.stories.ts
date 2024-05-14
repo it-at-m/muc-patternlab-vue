@@ -2,14 +2,13 @@ import MucComment from "./MucComment.vue";
 
 export default {
   component: MucComment,
-  title: "MucComment",
+  title: "Comment/MucComment",
   tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
         component: `The muc-comment component can be used to display a comment in e.g. a chat.
-If you would like to display only text, we suggest using the more specific \`muc-comment-text\`. 
-For more general integration, we recommend the more general \`muc-comment\`.
+This comment-component is designed to be as generic as possible.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-comment)
 `,
