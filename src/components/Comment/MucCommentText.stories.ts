@@ -17,3 +17,22 @@ Furthermore this component does limit the number of initial characters to two.
     },
   },
 };
+
+export const Default = {
+  args: {
+    rating: 4.2,
+    author: "Max Foo Bar Mustermann",
+    headline: "Initials shortend",
+    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum eirmod tempor invidunt ut",
+  },
+};
+
+export const Slider = {
+  args: {
+    ...Default.args,
+    rating: 2.3,
+    author: "",
+    headline: "Empty Author",
+    variant: "slider",
+  },
+};
