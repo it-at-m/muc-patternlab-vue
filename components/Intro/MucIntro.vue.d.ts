@@ -26,12 +26,12 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
     divider: boolean;
 }>>>, {}, {}>, Readonly<{
     /**
-     * Text-content of the Intro.
+     * Body of the Intro.
      */
     default(): any;
 }> & {
     /**
-     * Text-content of the Intro.
+     * Body of the Intro.
      */
     default(): any;
 }>;
