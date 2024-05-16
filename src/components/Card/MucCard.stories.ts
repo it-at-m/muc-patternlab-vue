@@ -4,7 +4,7 @@ import MucCard from "./MucCard.vue";
 
 export default {
   component: MucCard,
-  title: "MucCard",
+  title: "Card/MucCard",
   tags: ["autodocs"],
   // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
   args: { onClick: fn() },
