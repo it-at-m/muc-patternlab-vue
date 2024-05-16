@@ -2,8 +2,8 @@
   <button
     @click="handleClick"
     :disabled="disabled"
-    class="m-button m-button--animated-right"
-    :class="buttonClass"
+    class="m-button"
+    :class="buttonVariantClass + (iconAnimated ? ' m-button--animated-right' : '')"
   >
     <span>
       <slot />
@@ -39,6 +39,15 @@ const props = withDefaults(
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
     icon?: string;
+    /**
+     * Wether the Icon should be animated on hover (slide-right) or not.
+     *
+     * Default is `false`
+     */
+    iconAnimated: {
+      type: boolean,
+      default: false
+    };
   }>(),
   {
     variant: "primary",
@@ -61,7 +70,7 @@ const emit = defineEmits<{
   (e: "click"): void;
 }>();
 
-const buttonClass = computed(() => {
+const buttonVariantClass = computed(() => {
   switch (props.variant) {
     case "secondary":
       return "m-button--secondary";
