@@ -3,7 +3,7 @@
     @click="handleClick"
     :disabled="disabled"
     class="m-button"
-    :class="buttonVariantClass + (iconAnimated ? ' m-button--animated-right' : '')"
+    :class="buttonVariantClass + ' ' + iconAnimatedClass"
   >
     <span>
       <slot />
@@ -76,6 +76,14 @@ const buttonVariantClass = computed(() => {
       return "m-button--ghost";
     default:
       return "m-button--primary";
+  }
+});
+
+const iconAnimatedClass = computed(() => {
+  if(props.iconAnimated) {
+    return 'm-button--animated-right';
+  } else {
+    return '';
   }
 });
 
