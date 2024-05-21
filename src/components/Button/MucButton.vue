@@ -44,14 +44,12 @@ const props = withDefaults(
      *
      * Default is `false`
      */
-    iconAnimated: {
-      type: boolean,
-      default: false
-    };
+    iconAnimated?: boolean;
   }>(),
   {
     variant: "primary",
     disabled: false,
+    iconAnimated: false
   }
 );
 
