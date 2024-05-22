@@ -18,9 +18,9 @@ export default {
 
 export const Default = {
   args: {
-    hint: "Dies ist ein ",
-    label: "Dies ist ein Label",
-    placeholder: "Bitte hier schreiben",
+    hint: "This is a hint",
+    label: "I am a label",
+    placeholder: "Please type here",
   },
 };
 
@@ -28,13 +28,16 @@ export const Password = {
   args: {
     ...Default.args,
     type: "password",
+    modelValue: "password",
+    hint: "The input text is 'password'",
   },
 };
 
 export const Error = {
   args: {
     ...Default.args,
-    errorMsg: "Huch, hier ist ein Fehler aufgetreten",
+    errorMsg: "Oops, an error occurred",
+    hint: "An error message triggers the error state",
   },
 };
 

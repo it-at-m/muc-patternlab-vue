@@ -34,26 +34,28 @@
       </div>
       <input
         id="search-input"
+        list="datalist-input"
         class="m-input autocomplete-input"
         :type="type"
         v-model="modelValue"
         aria-describedby="text-input-hint"
         :placeholder="placeholder"
+        data-combobox='["Schülersammelliste für eine schulische Reise", "Vorläufiger Reisepass", "Verkaufsstelle Familienpass", "Staatliche Behörden", "Reisepass beantragen"]'
         required
-        :data-combobox="
-          () => [
-            'Schülersammelliste für eine schulische Reise',
-            'Vorläufiger Reisepass',
-            'Verkaufsstelle Familienpass',
-            'Staatliche Behörden',
-            'Reisepass beantragen',
-          ]
-        "
       />
       <ul
+        id="search-input"
         v-if="isSearch"
         class="autocomplete-result-list autocomplete-result-list--location"
-      />
+      >
+        <li
+          class="autocomplete-result"
+          v-for="option in datalist"
+          :key="option"
+        >
+          {{ option }}
+        </li>
+      </ul>
       <slot name="suffix" />
     </div>
     <p
@@ -79,21 +81,14 @@ const props = withDefaults(
     mandatory?: boolean;
     label?: string;
     hint?: string;
+    datalist?: string[];
   }>(),
   {
     mandatory: false,
     type: "text",
+    datalist: () => ["choco", "vanilla", "choconut"],
   }
 );
-
-const emit = defineEmits<{
-  /**
-   * Triggered when button is clicked.
-   * @param e Input-Event
-   * @param value value of text-box
-   */
-  (e: "input", value: string): void;
-}>();
 
 const slots = defineSlots<{
   /**
