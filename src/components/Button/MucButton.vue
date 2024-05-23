@@ -3,7 +3,7 @@
     @click="handleClick"
     :disabled="disabled"
     class="m-button"
-    :class="buttonVariantClass + ' ' + iconAnimatedClass"
+    :class="[buttonVariantClass, iconAnimatedClass]"
   >
     <span>
       <slot />
