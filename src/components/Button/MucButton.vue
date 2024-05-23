@@ -49,7 +49,7 @@ const props = withDefaults(
   {
     variant: "primary",
     disabled: false,
-    iconAnimated: false
+    iconAnimated: false,
   }
 );
 
@@ -80,10 +80,10 @@ const buttonVariantClass = computed(() => {
 });
 
 const iconAnimatedClass = computed(() => {
-  if(props.iconAnimated) {
-    return 'm-button--animated-right';
+  if (props.iconAnimated) {
+    return "m-button--animated-right";
   } else {
-    return '';
+    return "";
   }
 });
 
