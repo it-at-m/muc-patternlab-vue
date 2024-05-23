@@ -80,11 +80,7 @@ const buttonVariantClass = computed(() => {
 });
 
 const iconAnimatedClass = computed(() => {
-  if (props.iconAnimated) {
-    return "m-button--animated-right";
-  } else {
-    return "";
-  }
+  return props.iconAnimated ? "m-button--animated-right" : "";
 });
 
 const handleClick = () => {
