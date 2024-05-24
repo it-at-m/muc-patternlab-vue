@@ -1,0 +1,24 @@
+import { Meta, IconGallery, IconItem } from '@storybook/blocks';
+
+<Meta title="Iconography" />
+
+# Iconography
+
+This library already contains MDE5-Patternlabs iconset. The documentation to it can be found [here](https://patternlab.muenchen.space/?p=viewall-guidelines-icons).
+
+Additionally, it adds some specialty icons from [Pictogrammers](https://pictogrammers.com/library/mdi) which can be accessed by embedding the SVG-Sprite `custom-icons.svg` as described in [the getting started guide](/docs/getting-started--docs#setup).
+
+<IconGallery>
+    <IconItem name="pencil">
+        <svg fill="currentColor"><use href="#icon-pencil" /></svg>
+    </IconItem>
+    <IconItem name="dots-vertical">
+        <svg fill="currentColor"><use href="#icon-dots-vertical" /></svg>
+    </IconItem>
+    <IconItem name="circle-off-outline">
+        <svg fill="currentColor"><use href="#icon-circle-off-outline" /></svg>
+    </IconItem>
+    <IconItem name="account">
+        <svg fill="currentColor"><use href="#icon-account" /></svg>
+    </IconItem>
+</IconGallery>
