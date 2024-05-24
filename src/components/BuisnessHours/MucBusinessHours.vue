@@ -6,18 +6,17 @@
     <button
       v-if="toggleable"
       @click="toggleCollapsable"
-      class="m-business-hours-toggle__trigger is-open collapsed"
+      class="m-business-hours-toggle__trigger is-open"
+      :class="collapsedClass"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#unique-example-id"
-      aria-expanded="false"
-      aria-controls="unique-example-id"
+      :aria-expanded="!collapsed"
     >
       <svg
         aria-hidden="true"
         class="icon icon--before"
       >
-        <use xlink:href="#icon-time"></use>
+        <use :xlink:href="'#icon-' + icon"></use>
       </svg>
       <div v-if="todaysBusinessHours">
         <span> {{ todaysBusinessHours.weekDay }} geöffnet </span>
@@ -41,7 +40,7 @@
     </button>
     <div
       class="m-business-hours-toggle__content"
-      :class="collapsedClass"
+      :class="collapseClass"
     >
       <ul class="ml-0">
         <li
@@ -62,9 +61,12 @@
           </span>
         </li>
       </ul>
-      <p class="hint">
+      <div
+        v-if="slots['hint']"
+        class="hint"
+      >
         <slot name="hint" />
-      </p>
+      </div>
     </div>
   </div>
 </template>
@@ -76,46 +78,89 @@ import { BusinessHourType } from "./BusinessHourType";
 
 const LOCALES = "de-DE";
 
-// Buisness
 const props = withDefaults(
   defineProps<{
+    /**
+     * This array includes all the opening hours for all days of the week.
+     */
     businessHours: BusinessHourType[];
+
+    /**
+     * Lets you choose between the toggleable and fixed state of the component.
+     * In the fixed state, no toggle button will be shown.
+     */
     toggleable?: boolean;
+
+    /**
+     * Choose an icon for the toggle button. The default if none is given is the time icon.
+     */
+    icon?: string;
   }>(),
   {
+    icon: "time",
     toggleable: false,
   }
 );
 
 let collapsed = ref(props.toggleable);
 
-defineSlots<{
+const slots = defineSlots<{
+  /**
+   * Display a hint beneath all the opening hours.
+   */
   hint(): any;
 }>();
 
+/**
+ * Toggles the collapsed state of the business hours section.
+ */
 const toggleCollapsable = () => {
   collapsed.value = !collapsed.value;
 };
 
-const collapsedClass = computed(() => {
-  return collapsed.value ? "collapse" : "";
-});
+/**
+ * Computes the CSS class for the collapse state.
+ *
+ * @returns {string} The CSS class for the collapse state.
+ */
+const collapseClass = computed(() => (collapsed.value ? "collapse" : ""));
 
+/**
+ * Computes the CSS class for the collapsed state.
+ *
+ * @returns {string} The CSS class for the collapsed state.
+ */
+const collapsedClass = computed(() => (collapsed.value ? "collapsed" : ""));
+
+/**
+ * Computes the short name of today's day.
+ *
+ * @returns {string} The short name of today's day (e.g., "Mo", "Di").
+ */
 const todaysDayShortName = computed(() => {
   const today = new Date();
   return today.toLocaleDateString(LOCALES, { weekday: "short" });
 });
 
+/**
+ * Highlights the business day based on whether it has opening hours and if it is today's day.
+ *
+ * @param {BusinessHourType} businessHour - The business hour object to check.
+ * @returns {string} The CSS class indicating if the business is open or closed.
+ */
 const highlightBusinessDay = (businessHour: BusinessHourType) => {
   if (businessHour.openingHours.length === 0) return "is-closed";
   if (businessHour.weekDay === todaysDayShortName.value) return "is-open";
 };
 
-const todaysBusinessHours = computed(() => {
-  return props.businessHours.find((curr) => {
-    return curr.weekDay === todaysDayShortName.value;
-  });
-});
+/**
+ * Computes today's business hours from the provided business hours.
+ *
+ * @returns {BusinessHourType | undefined} The business hours for today, if available.
+ */
+const todaysBusinessHours = computed(() =>
+  props.businessHours.find((curr) => curr.weekDay === todaysDayShortName.value)
+);
 </script>
 
 <style scoped></style>
