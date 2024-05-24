@@ -8,7 +8,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `TODO
+        component: `
+The businessHours component is used to display the business hours for each day of the week. 
+The current day is highlighted as well as the days that are closed. 
+In the toggleable variant, the current day and the opening hours are also displayed on the toggle button.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-components-business-hours)
 `,
@@ -94,5 +97,12 @@ export const Default = {
   args: {
     businessHours: businessHours,
     toggleable: true,
+  },
+};
+
+export const Fixed = {
+  args: {
+    ...Default.args,
+    toggleable: false,
   },
 };
