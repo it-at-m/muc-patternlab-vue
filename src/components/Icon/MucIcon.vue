@@ -10,7 +10,14 @@
 
 <script setup lang="ts">
 defineProps<{
+  /**
+   * String of the icon to be displayed.
+   */
   icon: string;
+
+  /**
+   * Optional color string for the icon.
+   */
   color?: string;
 }>();
 </script>
