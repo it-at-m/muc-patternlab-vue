@@ -18,9 +18,15 @@ export default {
 
 export const Default = {
   args: {
-    hint: "This is a hint",
-    label: "I am a label",
     placeholder: "Please type here",
+  },
+};
+
+export const HintAndLabel = {
+  args: {
+    ...Default.args,
+    hint: "This is a hint",
+    label: "This is a label",
   },
 };
 
@@ -78,5 +84,24 @@ export const Search = {
   args: {
     ...Default.args,
     type: "search",
+    datalist: ["chocolate", "coconut", "vanilla", "mint"],
+  },
+};
+
+export const Color = {
+  args: {
+    type: "color",
+  },
+};
+
+export const Date = {
+  args: {
+    type: "date",
+  },
+};
+
+export const Datetime_Local = {
+  args: {
+    type: "datetime-local",
   },
 };
