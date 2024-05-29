@@ -33,25 +33,22 @@
         </span>
       </div>
       <input
-        id="search-input"
-        list="datalist-input"
         class="m-input autocomplete-input"
         :type="type"
         v-model="modelValue"
-        aria-describedby="text-input-hint"
+        :aria-describedby="type + '-input'"
         :placeholder="placeholder"
-        data-combobox='["Schülersammelliste für eine schulische Reise", "Vorläufiger Reisepass", "Verkaufsstelle Familienpass", "Staatliche Behörden", "Reisepass beantragen"]'
-        required
+        :required="required"
       />
       <ul
-        id="search-input"
-        v-if="isSearch"
+        v-if="isSearch && currentAvalOptions.length !== 0"
         class="autocomplete-result-list autocomplete-result-list--location"
       >
         <li
           class="autocomplete-result"
-          v-for="option in datalist"
+          v-for="option in currentAvalOptions"
           :key="option"
+          @click="handleOptionSelection(option)"
         >
           {{ option }}
         </li>
@@ -72,15 +69,15 @@ import { computed } from "vue";
 type inputType =
   | "text"
   | "password"
-  | "search"
   | "color"
+  | "search"
   | "date"
   | "datetime-local";
 
 /**
  * Input value from the form component.
  */
-const modelValue = defineModel();
+const modelValue = defineModel<string>({ default: "" });
 
 const props = withDefaults(
   defineProps<{
@@ -115,14 +112,14 @@ const props = withDefaults(
     type?: inputType;
 
     /**
-     * Options for the form component.
+     * Options for the form component. Type must set to 'search'.
      */
     datalist?: string[];
   }>(),
   {
     required: false,
     type: "text",
-    datalist: () => ["choco", "vanilla", "choconut"],
+    dataList: [],
   }
 );
 
@@ -137,12 +134,37 @@ const slots = defineSlots<{
   suffix(): any;
 }>();
 
-const isErrorClass = computed(() => {
-  return !props.errorMsg ? "" : "has-error";
+/**
+ * Computes a CSS class based on the presence of an error message.
+ * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
+ */
+const isErrorClass = computed(() => (!props.errorMsg ? "" : "has-error"));
+
+/**
+ * Computes whether the current type is "search".
+ * @returns {boolean} Returns true if the type is "search", otherwise false.
+ */
+const isSearch = computed(() => props.type === "search");
+
+/**
+ * Computes the list of available options based on the current search value.
+ * Filters the options from the datalist based on whether they start with the search value.
+ * @returns {string[]} Returns an array of matching options.
+ */
+const currentAvalOptions = computed(() => {
+  if (modelValue.value === "") return [];
+
+  const searchValue = modelValue.value.toLowerCase();
+  return props.datalist!.filter((option) =>
+    option.toLowerCase().startsWith(searchValue)
+  );
 });
 
-const isSearch = computed(() => {
-  return props.type === "search";
-});
+/**
+ * Handles the selection of an option.
+ * Sets the model value to the selected option.
+ * @param {string} option - The selected option.
+ */
+const handleOptionSelection = (option: string) => (modelValue.value = option);
 </script>
 <style scoped></style>
