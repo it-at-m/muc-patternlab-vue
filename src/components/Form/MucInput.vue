@@ -9,7 +9,7 @@
     >
       {{ label }}
       <span
-        v-if="mandatory"
+        v-if="required"
         aria-hidden="true"
         class="mandatory"
       >
@@ -69,22 +69,58 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const modelValue = defineModel();
+type inputType =
+  | "text"
+  | "password"
+  | "search"
+  | "color"
+  | "date"
+  | "datetime-local";
 
-type inputType = "text" | "password" | "search";
+/**
+ * Input value from the form component.
+ */
+const modelValue = defineModel();
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * Displays error message and highlights the input form with a red border.
+     */
     errorMsg?: string;
+
+    /**
+     * Placeholder for empty input form.
+     */
     placeholder?: string;
-    type?: inputType;
-    mandatory?: boolean;
+
+    /**
+     * Sets this input form as required
+     */
+    required?: boolean;
+
+    /**
+     * Displays a label above the form component.
+     */
     label?: string;
+
+    /**
+     * Displays a hint beneath the form component.
+     */
     hint?: string;
+
+    /**
+     * Sets the type of this form component. This can be text, password, color, date or datetime-local.
+     */
+    type?: inputType;
+
+    /**
+     * Options for the form component.
+     */
     datalist?: string[];
   }>(),
   {
-    mandatory: false,
+    required: false,
     type: "text",
     datalist: () => ["choco", "vanilla", "choconut"],
   }
