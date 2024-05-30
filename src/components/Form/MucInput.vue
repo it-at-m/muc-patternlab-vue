@@ -53,7 +53,19 @@
           {{ option }}
         </li>
       </ul>
-      <slot name="suffix" />
+      <button
+        v-if="suffixIcon"
+        class="m-input__suffix"
+        @click="handleSuffixClick"
+      >
+        <svg
+          aria-hidden="true"
+          class="icon"
+        >
+          <use :xlink:href="'#icon-' + suffixIcon"></use>
+        </svg>
+        <span class="visually-hidden">Suchen</span>
+      </button>
     </div>
     <p
       class="m-hint"
@@ -115,6 +127,11 @@ const props = withDefaults(
      * Options for the form component. Type must set to 'search'.
      */
     datalist?: string[];
+
+    /**
+     * Icon to be displayed as a suffix at the end of the input.
+     */
+    suffixIcon?: string;
   }>(),
   {
     required: false,
@@ -128,12 +145,15 @@ const slots = defineSlots<{
    * Slot in front of the user input with divider.
    */
   prefix(): any;
-  /**
-   * Slot behind the user input.
-   */
-  suffix(): any;
 }>();
 
+const emits = defineEmits<{
+  /**
+   * Triggered when suffix-button is clicked.
+   * @param e Click-Event
+   */
+  (e: "suffixClick"): void;
+}>();
 /**
  * Computes a CSS class based on the presence of an error message.
  * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
@@ -166,5 +186,7 @@ const currentAvalOptions = computed(() => {
  * @param {string} option - The selected option.
  */
 const handleOptionSelection = (option: string) => (modelValue.value = option);
+
+const handleSuffixClick = () => emits("suffixClick");
 </script>
 <style scoped></style>

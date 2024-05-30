@@ -59,25 +59,11 @@ export const Prefix = {
   },
 };
 
-// TODO: template funktioniert hier irgendwie noch nicht.
-export const Suffix = {
-  components: { MucInput },
-  template: `
-      <MucInput
-          hint="Some Hint"
-          label="This is a label"
-          placeholder="Write something"
-      >
-        <template #suffix>
-          <button class="m-input__suffix">
-            <svg aria-hidden="true" class="icon">
-              <use xlink:href="#icon-search"></use>
-            </svg>
-            <span class="visually-hidden">Suchen</span>
-          </button>
-        </template>
-      </MucInput>
-    `,
+export const SuffixIcon = {
+  args: {
+    ...Default.args,
+    suffixIcon: "search",
+  },
 };
 
 export const Search = {
