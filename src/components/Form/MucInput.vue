@@ -175,8 +175,10 @@ const currentAvalOptions = computed(() => {
   if (modelValue.value === "") return [];
 
   const searchValue = modelValue.value.toLowerCase();
-  return props.datalist!.filter((option) =>
-    option.toLowerCase().startsWith(searchValue)
+  return props.datalist!.filter(
+    (option) =>
+      option.toLowerCase().startsWith(searchValue) &&
+      option.toLowerCase() !== searchValue
   );
 });
 
