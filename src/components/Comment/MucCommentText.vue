@@ -22,6 +22,8 @@ import { computed } from "vue";
 import { MucComment } from "../index";
 import CommentType from "./CommentType";
 
+const AUTHOR_NAME_SEPERATOR = " ";
+
 const props = withDefaults(
   defineProps<{
     datePrefix?: string;
@@ -31,7 +33,7 @@ const props = withDefaults(
     headline?: string;
     text: string;
     rating: number;
-    variant: CommentType;
+    variant?: CommentType;
   }>(),
   {
     datePrefix: "am",
@@ -39,14 +41,20 @@ const props = withDefaults(
   }
 );
 
+/**
+ * Initials will be computed if none are given.
+ * In the case of an empty author field, an empty string is returned for the initials.
+ */
 const computedInitials = computed(() => {
   return (
-    props.initials ??
-    props.author
-      .split(" ")
-      .map((word) => word.charAt(0))
-      .join("")
-  );
+    (
+      props.initials ??
+      props.author
+        .split(AUTHOR_NAME_SEPERATOR)
+        .map((word) => word.charAt(0))
+        .join("")
+    ).match(/^.|.$/g) ?? [""]
+  ).join("");
 });
 </script>
 
