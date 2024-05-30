@@ -52,11 +52,6 @@ export const Prefix = {
     ...Default.args,
     prefix: "Prefix",
   },
-  slots: {
-    prefix: {
-      template: `<p>Prefix</p>`,
-    },
-  },
 };
 
 export const SuffixIcon = {
