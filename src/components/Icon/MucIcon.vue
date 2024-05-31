@@ -16,7 +16,7 @@ defineProps<{
   icon: string;
 
   /**
-   * Optional color string for the icon.
+   * Optional css-color for the icon.
    */
   color?: string;
 }>();
