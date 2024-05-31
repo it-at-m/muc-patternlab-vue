@@ -4,7 +4,7 @@
     class="m-button__icon"
     :style="{ color: color }"
   >
-    <use :xlink:href="'#icon-' + icon" />
+    <use :href="'#icon-' + icon" />
   </svg>
 </template>
 
