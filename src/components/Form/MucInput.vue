@@ -104,7 +104,7 @@ const props = withDefaults(
     placeholder?: string;
 
     /**
-     * Sets this input form as required
+     * Sets this input form as required. Default is wrong.
      */
     required?: boolean;
 
