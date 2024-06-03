@@ -42,6 +42,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+/**
+ * Input value from the form component.
+ */
 const modelValue = defineModel<string>({ default: "" });
 
 const props = withDefaults(
