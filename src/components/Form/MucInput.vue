@@ -14,8 +14,8 @@
         class="mandatory"
       >
         *
+        <span class="visually-hidden">(erforderlich)</span>
       </span>
-      <span class="visually-hidden">(erforderlich)</span>
     </label>
     <p
       id="text-input-error"
