@@ -33,7 +33,7 @@
     "build": "rimraf dist && npm run type-check && npm run build-only",
     "test:unit": "vitest",
     "build-only": "vite build",
-    "lint": "prettier . --check && eslint . && vue-tsc -p tsconfig.json --noEmit --skipLibCheck --composite false",
+    "lint": "prettier . --check && eslint . && vue-tsc -p tsconfig.json --emitDeclarationOnly --skipLibCheck --composite false",
     "fix": "prettier . --write && eslint . --fix",
     "semantic-release": "semantic-release",
     "storybook": "storybook dev -p 6006",
