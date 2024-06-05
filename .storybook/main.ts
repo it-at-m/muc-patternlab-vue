@@ -9,10 +9,14 @@ const mucIconsSvg = fs.readFileSync(
   path.resolve(__dirname, "../public/assets/temporary/muc-icons.svg"),
   "utf8"
 );
+const customIconsSvg = fs.readFileSync(
+  path.resolve(__dirname, "../public/assets/temporary/custom-icons.svg"),
+  "utf8"
+);
 
 const config: StorybookConfig = {
   stories: ["../docs/*.mdx", "../src/components/**/*.stories.ts"],
-  staticDirs: ["../public"],
+  staticDirs: ["../public", "../docs/images"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -27,6 +31,7 @@ const config: StorybookConfig = {
   previewBody: (body) => `
     ${body}
     ${mucIconsSvg}
+    ${customIconsSvg}
  `,
   docs: {
     autodocs: "tag",

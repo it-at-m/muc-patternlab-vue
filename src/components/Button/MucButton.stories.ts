@@ -53,3 +53,11 @@ export const Icon = {
     icon: "arrow-right",
   },
 };
+
+export const IconAnimated = {
+  args: {
+    default: "With Icon",
+    icon: "arrow-right",
+    iconAnimated: true,
+  },
+};
