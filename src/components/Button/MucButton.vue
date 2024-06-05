@@ -79,7 +79,9 @@ const buttonVariantClass = computed(() => {
   }
 });
 
-const iconAnimatedClass = computed(() => props.iconAnimated ? 'm-button--animated-right' : '');
+const iconAnimatedClass = computed(() =>
+  props.iconAnimated ? "m-button--animated-right" : ""
+);
 
 const handleClick = () => {
   emit("click");
