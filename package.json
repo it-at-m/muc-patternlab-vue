@@ -30,7 +30,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && npm run type-check && npm run build-only",
+    "build": "rimraf dist && npm run build-only",
     "test:unit": "vitest",
     "build-only": "vite build",
     "lint": "prettier . --check && eslint . && vue-tsc -p tsconfig.json --emitDeclarationOnly --skipLibCheck --composite false",
