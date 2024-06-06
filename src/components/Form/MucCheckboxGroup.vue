@@ -78,5 +78,3 @@ const buttonIcon = computed(() => (collapsed.value ? "down" : "up"));
  */
 const toggleCollapse = () => (collapsed.value = !collapsed.value);
 </script>
-
-<style scoped></style>

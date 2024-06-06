@@ -78,6 +78,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+/**
+ * Type includes all possible input types possible.
+ */
 type inputType =
   | "text"
   | "password"
