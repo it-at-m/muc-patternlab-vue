@@ -12,7 +12,6 @@
           v-if="$slots.collapsableCheckboxes"
           class="m-checkboxes__collapse__container"
           :class="isCollapsed"
-          id="collapsed-checkboxes"
         >
           <slot name="collapsableCheckboxes" />
         </div>
@@ -40,22 +39,43 @@ import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
 
+/**
+ * Internal state for the collapsed section
+ */
 const collapsed = ref(true);
 
 defineProps<{
+  /**
+   * Display a heading above the slots.
+   */
   heading?: string;
 }>();
 
 defineSlots<{
+  /**
+   * Slot directly beneath the heading which will be displayed at all times.
+   */
   checkboxes(): any;
 
+  /**
+   * Slot beneath the regular checkbox slot which will be collapsed at first.
+   */
   collapsableCheckboxes(): any;
 }>();
 
+/**
+ * Switches the collapse class for the collapsable container.
+ */
 const isCollapsed = computed(() => (collapsed.value ? "collapse" : ""));
 
+/**
+ * Switches the icon in the button to collapse / expand the container.
+ */
 const buttonIcon = computed(() => (collapsed.value ? "down" : "up"));
 
+/**
+ * Toggles the internal state for the collapsed container.
+ */
 const toggleCollapse = () => (collapsed.value = !collapsed.value);
 </script>
 
