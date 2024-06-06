@@ -2,7 +2,7 @@ import MucCheckboxGroup from "./MucCheckboxGroup.vue";
 
 export default {
   component: MucCheckboxGroup,
-  title: "Input/MucCheckboxGroup",
+  title: "Forms/MucCheckboxGroup",
   tags: ["autodocs"],
   parameters: {
     docs: {

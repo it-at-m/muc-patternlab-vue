@@ -2,7 +2,7 @@ import MucTextArea from "./MucTextArea.vue";
 
 export default {
   component: MucTextArea,
-  title: "Input/MucTextArea",
+  title: "Forms/MucTextArea",
   tags: ["autodocs"],
   parameters: {
     docs: {

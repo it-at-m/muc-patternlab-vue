@@ -2,7 +2,7 @@ import MucCheckbox from "./MucCheckbox.vue";
 
 export default {
   component: MucCheckbox,
-  title: "Input/MucCheckBox",
+  title: "Forms/MucCheckBox",
   tags: ["autodocs"],
   parameters: {
     docs: {
