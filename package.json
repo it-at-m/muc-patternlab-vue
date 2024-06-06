@@ -33,12 +33,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && npm run type-check && npm run build-only",
+    "build": "rimraf dist && npm run build-only",
     "test:unit": "vitest",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write ./",
+    "lint": "prettier . --check && eslint . --ignore-path .gitignore && vue-tsc -p tsconfig.json --emitDeclarationOnly --skipLibCheck --composite false",
+    "fix": "prettier . --write && eslint . --fix --ignore-path .gitignore",
     "semantic-release": "semantic-release",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
