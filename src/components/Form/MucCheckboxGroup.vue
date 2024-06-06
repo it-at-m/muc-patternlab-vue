@@ -6,12 +6,10 @@
           {{ heading }}
         </h3>
       </legend>
-      <div
-        v-if="isCollapsable"
-        class="m-checkboxes m-checkboxes--collapse"
-      >
+      <div class="m-checkboxes m-checkboxes--collapse">
         <slot name="checkboxes" />
         <div
+          v-if="$slots.collapsableCheckboxes"
           class="m-checkboxes__collapse__container"
           :class="isCollapsed"
           id="collapsed-checkboxes"
@@ -19,6 +17,7 @@
           <slot name="collapsableCheckboxes" />
         </div>
         <muc-button
+          v-if="$slots.collapsableCheckboxes"
           variant="ghost"
           @click="toggleCollapse"
           :aria-expanded="!collapsed"
@@ -43,15 +42,9 @@ import { MucButton } from "../Button";
 
 const collapsed = ref(true);
 
-withDefaults(
-  defineProps<{
-    heading: string;
-    isCollapsable: boolean;
-  }>(),
-  {
-    isCollapsable: false,
-  }
-);
+defineProps<{
+  heading?: string;
+}>();
 
 defineSlots<{
   checkboxes(): any;

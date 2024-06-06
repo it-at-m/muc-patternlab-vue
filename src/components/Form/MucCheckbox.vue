@@ -19,7 +19,10 @@
 </template>
 
 <script setup lang="ts">
-const checkBoxValue = defineModel({ default: false });
+/**
+ * Input value from the checkbox component.
+ */
+const checkBoxValue = defineModel<boolean>("modelValue", { default: false });
 
 defineProps<{
   label: string;
