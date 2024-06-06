@@ -87,7 +87,7 @@ type inputType =
   | "datetime-local";
 
 /**
- * Input value from the form component.
+ * Input value from the input component.
  */
 const modelValue = defineModel<string>({ default: "" });
 

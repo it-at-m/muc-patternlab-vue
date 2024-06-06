@@ -2,7 +2,7 @@ import MucInput from "./MucInput.vue";
 
 export default {
   component: MucInput,
-  title: "Input/MucInput",
+  title: "Forms/MucInput",
   tags: ["autodocs"],
   parameters: {
     docs: {

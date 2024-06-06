@@ -7,9 +7,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-text-area component is an input component for larger texts.
+        component: `The muc-checkbox component provides the ability to choose between two distinct values.
+It is very similar to a switch and can be used in complex forms.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-textarea)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-forms)
 `,
       },
     },
