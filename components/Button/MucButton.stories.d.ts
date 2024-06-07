@@ -12,6 +12,10 @@ declare const _default: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                 default: boolean;
             };
+            iconAnimated: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+                default: boolean;
+            };
         }>> & {
             onClick?: (() => any) | undefined;
         }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
@@ -28,11 +32,16 @@ declare const _default: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                 default: boolean;
             };
+            iconAnimated: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+                default: boolean;
+            };
         }>> & {
             onClick?: (() => any) | undefined;
         }, {
             variant: "primary" | "secondary" | "ghost";
             disabled: boolean;
+            iconAnimated: boolean;
         }, true, {}, {}, {
             P: {};
             B: {};
@@ -52,11 +61,16 @@ declare const _default: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                 default: boolean;
             };
+            iconAnimated: {
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+                default: boolean;
+            };
         }>> & {
             onClick?: (() => any) | undefined;
         }, {}, {}, {}, {}, {
             variant: "primary" | "secondary" | "ghost";
             disabled: boolean;
+            iconAnimated: boolean;
         }>;
         __isFragment?: undefined;
         __isTeleport?: undefined;
@@ -73,6 +87,10 @@ declare const _default: {
             type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
             default: boolean;
         };
+        iconAnimated: {
+            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
+            default: boolean;
+        };
     }>> & {
         onClick?: (() => any) | undefined;
     }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
@@ -80,6 +98,7 @@ declare const _default: {
     }, string, {
         variant: "primary" | "secondary" | "ghost";
         disabled: boolean;
+        iconAnimated: boolean;
     }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): any;
@@ -128,5 +147,12 @@ export declare const Icon: {
     args: {
         default: string;
         icon: string;
+    };
+};
+export declare const IconAnimated: {
+    args: {
+        default: string;
+        icon: string;
+        iconAnimated: boolean;
     };
 };

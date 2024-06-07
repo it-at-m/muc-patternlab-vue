@@ -14,9 +14,16 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
     icon?: string | undefined;
+    /**
+     * Wether the Icon should be animated on hover (slide-right) or not.
+     *
+     * Default is `false`
+     */
+    iconAnimated?: boolean | undefined;
 }>, {
     variant: string;
     disabled: boolean;
+    iconAnimated: boolean;
 }>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
     click: () => void;
 }, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
@@ -34,14 +41,22 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
     icon?: string | undefined;
+    /**
+     * Wether the Icon should be animated on hover (slide-right) or not.
+     *
+     * Default is `false`
+     */
+    iconAnimated?: boolean | undefined;
 }>, {
     variant: string;
     disabled: boolean;
+    iconAnimated: boolean;
 }>>> & {
     onClick?: (() => any) | undefined;
 }, {
     variant: buttonType;
     disabled: boolean;
+    iconAnimated: boolean;
 }, {}>, Readonly<{
     /**
      * Display content inside the button.
