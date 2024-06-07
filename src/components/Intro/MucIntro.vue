@@ -23,15 +23,16 @@ defineSlots<{
 </script>
 
 <template>
-  <div class="m-intro m-intro-static-image" style="background-color: var(--color-neutrals-blue-xlight);">
-    <div
-        class="container"
-    >
+  <div
+    class="m-intro m-intro-static-image"
+    style="background-color: var(--color-neutrals-blue-xlight)"
+  >
+    <div class="container">
       <div style="width: 66.6%">
         <div>
           <p
-              v-if="tagline"
-              class="m-intro-vertical__tagline"
+            v-if="tagline"
+            class="m-intro-vertical__tagline"
           >
             {{ tagline }}
           </p>
@@ -41,12 +42,12 @@ defineSlots<{
         </div>
 
         <div
-            v-if="divider"
-            class="muc-divider"
+          v-if="divider"
+          class="muc-divider"
         ></div>
 
         <div class="m-intro-vertical__content">
-          <p style="padding-bottom: 32px;">
+          <p style="padding-bottom: 32px">
             <slot></slot>
           </p>
         </div>

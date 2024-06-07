@@ -6,7 +6,7 @@ import MucCardContainer from "./MucCardContainer.vue";
 export default {
   components: { MucCardContainer },
   component: MucCardContainer,
-  title: "MucCardContainer",
+  title: "Card/MucCardContainer",
   tags: ["autodocs"],
   // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
   args: { onClick: fn() },
