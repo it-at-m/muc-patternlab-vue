@@ -53,9 +53,9 @@ declare const _default: {
             icon: string;
             toggleable: boolean;
         }>;
-        __isFragment?: undefined;
-        __isTeleport?: undefined;
-        __isSuspense?: undefined;
+        __isFragment?: never;
+        __isTeleport?: never;
+        __isSuspense?: never;
     } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
         icon: {
             type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;

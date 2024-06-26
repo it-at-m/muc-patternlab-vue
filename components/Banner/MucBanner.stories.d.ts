@@ -27,9 +27,9 @@ declare const _default: {
         }>>, {}, {}, {}, {}, {
             type: "info" | "warning" | "emergency";
         }>;
-        __isFragment?: undefined;
-        __isTeleport?: undefined;
-        __isSuspense?: undefined;
+        __isFragment?: never;
+        __isTeleport?: never;
+        __isSuspense?: never;
     } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
         type: {
             type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "warning" | "emergency">;

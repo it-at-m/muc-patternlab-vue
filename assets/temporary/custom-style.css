@@ -2,7 +2,7 @@
  * We need this css to ensure the correct patternlab
  * behaviour inside of a webcomponent.
  */
-:host {
+:host, :root {
     --color-brand-main-blue: #005A9F;
     --color-neutrals-blue: #BDD4EA;
     --color-neutrals-blue-xlight: #F2F6FA;

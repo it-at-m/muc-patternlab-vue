@@ -1,4 +1,15 @@
-declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_TypePropsToRuntimeProps<{
+declare function __VLS_template(): Readonly<{
+    /**
+     * Body of the Intro.
+     */
+    default(): any;
+}> & {
+    /**
+     * Body of the Intro.
+     */
+    default(): any;
+};
+declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_TypePropsToRuntimeProps<{
     /**
      * Title of the Intro
      */
@@ -24,17 +35,8 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Toggle to show a divider between title and body
      */
     divider: boolean;
-}>>>, {}, {}>, Readonly<{
-    /**
-     * Body of the Intro.
-     */
-    default(): any;
-}> & {
-    /**
-     * Body of the Intro.
-     */
-    default(): any;
-}>;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

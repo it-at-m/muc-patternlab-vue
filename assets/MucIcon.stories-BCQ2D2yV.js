@@ -1,4 +1,4 @@
-import{f as p}from"./index-Cq_GZlP2.js";import{_ as i}from"./MucIcon-ClXSNDg9.js";import"./index-Bqoxw6Vv.js";import"./vue.esm-bundler-1xdlfLiW.js";const h={component:i,title:"MucIcon",tags:["autodocs"],args:{onClick:p()},parameters:{docs:{description:{component:`The \`muc-icon\` component is a wrapper commponent for all icons in the patternlab.
+import{f as p}from"./index-BNzM6CSE.js";import{_ as i}from"./MucIcon-ClXSNDg9.js";import"./index-DuM-I7-B.js";import"./vue.esm-bundler-1xdlfLiW.js";const h={component:i,title:"MucIcon",tags:["autodocs"],args:{onClick:p()},parameters:{docs:{description:{component:`The \`muc-icon\` component is a wrapper commponent for all icons in the patternlab.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-guidelines-icons)
 [🖼 Iconography](https://it-at-m.github.io/muc-patternlab-vue/?path=/docs/iconography--docs)

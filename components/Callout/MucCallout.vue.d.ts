@@ -1,25 +1,5 @@
 type calloutType = "info" | "warning" | "success" | "error";
-declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    /**
-     * Type of the callout, default is `info`.
-     *
-     * Available are `info`, `warning`, `success` and `error`.
-     */
-    type?: calloutType | undefined;
-}>, {
-    type: string;
-}>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    /**
-     * Type of the callout, default is `info`.
-     *
-     * Available are `info`, `warning`, `success` and `error`.
-     */
-    type?: calloutType | undefined;
-}>, {
-    type: string;
-}>>>, {
-    type: calloutType;
-}, {}>, Readonly<{
+declare function __VLS_template(): Readonly<{
     /**
      * Icon shown above the callout. Defaults to icons matching the type.
      */
@@ -45,7 +25,29 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Content beneath the heading shown as text.
      */
     content(): any;
-}>;
+};
+declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+    /**
+     * Type of the callout, default is `info`.
+     *
+     * Available are `info`, `warning`, `success` and `error`.
+     */
+    type?: calloutType;
+}>, {
+    type: string;
+}>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+    /**
+     * Type of the callout, default is `info`.
+     *
+     * Available are `info`, `warning`, `success` and `error`.
+     */
+    type?: calloutType;
+}>, {
+    type: string;
+}>>>, {
+    type: calloutType;
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

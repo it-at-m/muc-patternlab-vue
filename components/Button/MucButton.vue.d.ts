@@ -1,25 +1,36 @@
 type buttonType = "primary" | "secondary" | "ghost";
-declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+declare function __VLS_template(): Readonly<{
+    /**
+     * Display content inside the button.
+     */
+    default(): any;
+}> & {
+    /**
+     * Display content inside the button.
+     */
+    default(): any;
+};
+declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     /**
      * The variant prop gives you easy access to several different button styles.
      *
      * Available are `primary`, `secondary` and `ghost`.
      */
-    variant?: buttonType | undefined;
+    variant?: buttonType;
     /**
      * Let`s you indicate that the button is not currently interactive or clickable.
      */
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     /**
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
-    icon?: string | undefined;
+    icon?: string;
     /**
      * Wether the Icon should be animated on hover (slide-right) or not.
      *
      * Default is `false`
      */
-    iconAnimated?: boolean | undefined;
+    iconAnimated?: boolean;
 }>, {
     variant: string;
     disabled: boolean;
@@ -32,21 +43,21 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      *
      * Available are `primary`, `secondary` and `ghost`.
      */
-    variant?: buttonType | undefined;
+    variant?: buttonType;
     /**
      * Let`s you indicate that the button is not currently interactive or clickable.
      */
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     /**
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
-    icon?: string | undefined;
+    icon?: string;
     /**
      * Wether the Icon should be animated on hover (slide-right) or not.
      *
      * Default is `false`
      */
-    iconAnimated?: boolean | undefined;
+    iconAnimated?: boolean;
 }>, {
     variant: string;
     disabled: boolean;
@@ -57,17 +68,8 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
     variant: buttonType;
     disabled: boolean;
     iconAnimated: boolean;
-}, {}>, Readonly<{
-    /**
-     * Display content inside the button.
-     */
-    default(): any;
-}> & {
-    /**
-     * Display content inside the button.
-     */
-    default(): any;
-}>;
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

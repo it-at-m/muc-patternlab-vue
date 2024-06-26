@@ -1,6 +1,17 @@
 import { BusinessHourType } from './BusinessHourType';
 
-declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+declare function __VLS_template(): Readonly<{
+    /**
+     * Display a hint beneath all the opening hours.
+     */
+    hint(): any;
+}> & {
+    /**
+     * Display a hint beneath all the opening hours.
+     */
+    hint(): any;
+};
+declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     /**
      * This array includes all the opening hours for all days of the week.
      */
@@ -9,11 +20,11 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Lets you choose between the toggleable and fixed state of the component.
      * In the fixed state, no toggle button will be shown.
      */
-    toggleable?: boolean | undefined;
+    toggleable?: boolean;
     /**
      * Choose an icon for the toggle button. The default if none is given is the time icon.
      */
-    icon?: string | undefined;
+    icon?: string;
 }>, {
     icon: string;
     toggleable: boolean;
@@ -26,28 +37,19 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Lets you choose between the toggleable and fixed state of the component.
      * In the fixed state, no toggle button will be shown.
      */
-    toggleable?: boolean | undefined;
+    toggleable?: boolean;
     /**
      * Choose an icon for the toggle button. The default if none is given is the time icon.
      */
-    icon?: string | undefined;
+    icon?: string;
 }>, {
     icon: string;
     toggleable: boolean;
 }>>>, {
     icon: string;
     toggleable: boolean;
-}, {}>, Readonly<{
-    /**
-     * Display a hint beneath all the opening hours.
-     */
-    hint(): any;
-}> & {
-    /**
-     * Display a hint beneath all the opening hours.
-     */
-    hint(): any;
-}>;
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

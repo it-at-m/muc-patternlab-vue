@@ -1,4 +1,4 @@
-import{f as r}from"./index-Cq_GZlP2.js";import{M as i}from"./MucCard-BCQzsZNm.js";import{M as t}from"./MucCardContainer-D2yEFWXF.js";import"./index-Bqoxw6Vv.js";import"./vue.esm-bundler-1xdlfLiW.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const l={components:{MucCardContainer:t},component:t,title:"Card/MucCardContainer",tags:["autodocs"],args:{onClick:r()},parameters:{docs:{description:{component:`A wrapping Layout to use with [MucCard](/docs/muccard--docs).
+import{f as r}from"./index-BNzM6CSE.js";import{M as i}from"./MucCard-BCQzsZNm.js";import{M as t}from"./MucCardContainer-D2yEFWXF.js";import"./index-DuM-I7-B.js";import"./vue.esm-bundler-1xdlfLiW.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const l={components:{MucCardContainer:t},component:t,title:"Card/MucCardContainer",tags:["autodocs"],args:{onClick:r()},parameters:{docs:{description:{component:`A wrapping Layout to use with [MucCard](/docs/muccard--docs).
 
 🔗 Patternlab-Docs (not yet available)
 `}}}},e=()=>({components:{MucCardContainer:t,MucCard:i},template:`

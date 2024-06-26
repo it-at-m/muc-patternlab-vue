@@ -1,26 +1,26 @@
 import { default as CommentType } from './CommentType';
 
 declare const _default: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    datePrefix?: string | undefined;
-    initials?: string | undefined;
+    datePrefix?: string;
+    initials?: string;
     author: string;
-    date?: string | undefined;
-    headline?: string | undefined;
+    date?: string;
+    headline?: string;
     text: string;
     rating: number;
-    variant?: CommentType | undefined;
+    variant?: CommentType;
 }>, {
     datePrefix: string;
     variant: string;
 }>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    datePrefix?: string | undefined;
-    initials?: string | undefined;
+    datePrefix?: string;
+    initials?: string;
     author: string;
-    date?: string | undefined;
-    headline?: string | undefined;
+    date?: string;
+    headline?: string;
     text: string;
     rating: number;
-    variant?: CommentType | undefined;
+    variant?: CommentType;
 }>, {
     datePrefix: string;
     variant: string;

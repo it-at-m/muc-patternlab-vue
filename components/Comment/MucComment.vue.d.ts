@@ -1,34 +1,6 @@
 import { default as CommentType } from './CommentType';
 
-declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    /**
-     * Number of stars to be displayed.
-     */
-    rating: number;
-    /**
-     * Choose the variant of the comment. Default is `listing`.
-     *
-     * This can be either `slider` oder `listing`.
-     */
-    variant?: CommentType | undefined;
-}>, {
-    variant: string;
-}>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    /**
-     * Number of stars to be displayed.
-     */
-    rating: number;
-    /**
-     * Choose the variant of the comment. Default is `listing`.
-     *
-     * This can be either `slider` oder `listing`.
-     */
-    variant?: CommentType | undefined;
-}>, {
-    variant: string;
-}>>>, {
-    variant: CommentType;
-}, {}>, Readonly<{
+declare function __VLS_template(): Readonly<{
     /**
      * Slot for the commenter's initials or avatar.
      */
@@ -78,7 +50,37 @@ declare const _default: __VLS_WithTemplateSlots<import('../../../vue/dist/vue.es
      * Slot for the main text content of the comment.
      */
     text(): any;
-}>;
+};
+declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+    /**
+     * Number of stars to be displayed.
+     */
+    rating: number;
+    /**
+     * Choose the variant of the comment. Default is `listing`.
+     *
+     * This can be either `slider` oder `listing`.
+     */
+    variant?: CommentType;
+}>, {
+    variant: string;
+}>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+    /**
+     * Number of stars to be displayed.
+     */
+    rating: number;
+    /**
+     * Choose the variant of the comment. Default is `listing`.
+     *
+     * This can be either `slider` oder `listing`.
+     */
+    variant?: CommentType;
+}>, {
+    variant: string;
+}>>>, {
+    variant: CommentType;
+}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

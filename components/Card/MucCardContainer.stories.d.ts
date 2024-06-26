@@ -9,9 +9,9 @@ declare const _default: {
                 M: {};
                 Defaults: {};
             }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, {}>;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
         } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): any;
@@ -29,9 +29,9 @@ declare const _default: {
             M: {};
             Defaults: {};
         }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, {}>;
-        __isFragment?: undefined;
-        __isTeleport?: undefined;
-        __isSuspense?: undefined;
+        __isFragment?: never;
+        __isTeleport?: never;
+        __isSuspense?: never;
     } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): any;
@@ -64,9 +64,9 @@ export declare const Template: () => {
                 M: {};
                 Defaults: {};
             }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, {}>;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
         } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{}>>, {}, {}, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): any;
@@ -118,9 +118,9 @@ export declare const Template: () => {
             }>> & {
                 onClick?: ((click: Event) => any) | undefined;
             }, {}, {}, {}, {}, {}>;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
         } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
             title: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
