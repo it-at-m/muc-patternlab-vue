@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import {computed} from "vue";
+import { computed } from "vue";
 
 type bannerType = "info" | "success" | "warning" | "emergency";
 
 const props = withDefaults(
-    defineProps<{
-      /**
-       * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
-       */
-      type?: bannerType;
-    }>(),
-    {
-      type: "info",
-    }
+  defineProps<{
+    /**
+     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+     */
+    type?: bannerType;
+  }>(),
+  {
+    type: "info",
+  }
 );
 
 defineSlots<{
@@ -67,7 +67,6 @@ const typeAriaLabel = computed(() => {
   }
 });
 
-
 const typeIcon = computed(() => {
   switch (props.type) {
     case "success":
@@ -85,16 +84,16 @@ const typeIcon = computed(() => {
   <div>
     <div>
       <div
-          class="m-banner"
-          :class="typeClass"
-          :role="typeRole"
-          :aria-label="typeAriaLabel"
+        class="m-banner"
+        :class="typeClass"
+        :role="typeRole"
+        :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
           <svg class="icon">
-            <use :href="typeIcon"/>
+            <use :href="typeIcon" />
           </svg>
-          <slot/>
+          <slot />
         </div>
       </div>
     </div>
@@ -103,11 +102,11 @@ const typeIcon = computed(() => {
 
 <style scoped>
 .m-banner--success {
-  background-color: #F1F6F3;
-  border-bottom: 1px solid #3A7F53;
+  background-color: #f1f6f3;
+  border-bottom: 1px solid #3a7f53;
 }
 
 .m-banner--success .icon {
-  color: #3A7F53;
+  color: #3a7f53;
 }
 </style>
