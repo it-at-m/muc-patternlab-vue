@@ -73,7 +73,7 @@ const typeIcon = computed(() => {
       return "#icon-check";
     case "warning":
     case "emergency":
-      return "#icon-warning"
+      return "#icon-warning";
     case "info":
     default:
       return "#icon-information";
