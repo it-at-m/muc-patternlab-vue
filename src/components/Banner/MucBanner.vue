@@ -71,9 +71,10 @@ const typeIcon = computed(() => {
   switch (props.type) {
     case "success":
       return "#icon-check";
-    case "info":
     case "warning":
     case "emergency":
+      return "#icon-warning"
+    case "info":
     default:
       return "#icon-information";
   }
