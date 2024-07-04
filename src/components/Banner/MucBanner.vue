@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import {computed} from "vue";
 
-type bannerType = "info" | "warning" | "emergency";
+type bannerType = "info" | "success" | "warning" | "emergency";
 
 const props = withDefaults(
-  defineProps<{
-    /**
-     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
-     */
-    type?: bannerType;
-  }>(),
-  {
-    type: "info",
-  }
+    defineProps<{
+      /**
+       * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+       */
+      type?: bannerType;
+    }>(),
+    {
+      type: "info",
+    }
 );
 
 defineSlots<{
@@ -26,6 +26,8 @@ const typeClass = computed(() => {
   switch (props.type) {
     case "info":
       return "m-banner--info";
+    case "success":
+      return "m-banner--success";
     case "warning":
       return "m-banner--warning";
     case "emergency":
@@ -38,6 +40,8 @@ const typeClass = computed(() => {
 const typeRole = computed(() => {
   switch (props.type) {
     case "info":
+      return "dialog";
+    case "success":
       return "dialog";
     case "warning":
       return "alert";
@@ -52,6 +56,8 @@ const typeAriaLabel = computed(() => {
   switch (props.type) {
     case "info":
       return "Information";
+    case "success":
+      return "Erfolg";
     case "warning":
       return "Warnung";
     case "emergency":
@@ -60,26 +66,48 @@ const typeAriaLabel = computed(() => {
       return "Information";
   }
 });
+
+
+const typeIcon = computed(() => {
+  switch (props.type) {
+    case "success":
+      return "#icon-check";
+    case "info":
+    case "warning":
+    case "emergency":
+    default:
+      return "#icon-information";
+  }
+});
 </script>
 
 <template>
   <div>
     <div>
       <div
-        class="m-banner"
-        :class="typeClass"
-        :role="typeRole"
-        :aria-label="typeAriaLabel"
+          class="m-banner"
+          :class="typeClass"
+          :role="typeRole"
+          :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
           <svg class="icon">
-            <use href="#icon-information" />
+            <use :href="typeIcon"/>
           </svg>
-          <p>
-            <slot />
-          </p>
+          <slot/>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.m-banner--success {
+  background-color: #F1F6F3;
+  border-bottom: 1px solid #3A7F53;
+}
+
+.m-banner--success .icon {
+  color: #3A7F53;
+}
+</style>

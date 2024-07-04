@@ -25,6 +25,13 @@ export const Default = {
   },
 };
 
+export const Success = {
+  args: {
+    default: "Hi, I'm a Success-Banner!",
+    type: "success",
+  },
+};
+
 export const Warning = {
   args: {
     default: "Hi, I'm a Warning-Banner!",
