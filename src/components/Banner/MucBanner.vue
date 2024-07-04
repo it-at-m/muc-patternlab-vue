@@ -106,8 +106,4 @@ const typeIcon = computed(() => {
   background-color: #f1f6f3;
   border-bottom: 1px solid #3a7f53;
 }
-
-.m-banner--success .icon {
-  color: #3a7f53;
-}
 </style>
