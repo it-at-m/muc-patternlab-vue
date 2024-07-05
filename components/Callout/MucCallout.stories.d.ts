@@ -2,16 +2,16 @@ declare const _default: {
     component: {
         new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
             type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "warning" | "success" | "error">;
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
                 default: string;
             };
         }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
             type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "warning" | "success" | "error">;
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
                 default: string;
             };
         }>>, {
-            type: "info" | "warning" | "success" | "error";
+            type: "info" | "success" | "warning" | "error";
         }, true, {}, {}, {
             P: {};
             B: {};
@@ -21,22 +21,22 @@ declare const _default: {
             Defaults: {};
         }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
             type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "warning" | "success" | "error">;
+                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
                 default: string;
             };
         }>>, {}, {}, {}, {}, {
-            type: "info" | "warning" | "success" | "error";
+            type: "info" | "success" | "warning" | "error";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
         type: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "warning" | "success" | "error">;
+            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
             default: string;
         };
     }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {
-        type: "info" | "warning" | "success" | "error";
+        type: "info" | "success" | "warning" | "error";
     }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             icon(): any;

@@ -1,4 +1,4 @@
-type bannerType = "info" | "warning" | "emergency";
+type bannerType = "info" | "success" | "warning" | "emergency";
 declare function __VLS_template(): Readonly<{
     /**
      * Text-content of the banner.
