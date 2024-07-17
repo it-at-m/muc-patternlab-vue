@@ -1,11 +1,15 @@
 <template>
-  <div class="m-radios__item">
+  <div
+    class="m-radios__item"
+    @click="clicked"
+  >
     <input
       class="m-radios__input"
       id="radio-button-example-0"
       name="radio-button-example"
       type="radio"
-      v-model="modelValue"
+      :checked="isChecked"
+      :disabled="parentData?.disabled.value"
     />
     <label
       class="m-label m-radios__label"
@@ -20,11 +24,21 @@
 </template>
 
 <script setup lang="ts">
-const modelValue = defineModel();
+import { computed, inject } from "vue";
 
-defineProps<{
+import { RadioButtonGroupKey } from "./RadioButtonTypes";
+
+const props = defineProps<{
   value: string;
   label?: string;
   hint?: string;
 }>();
+
+const parentData = inject(RadioButtonGroupKey);
+
+const clicked = () => parentData?.set(props.value);
+
+const isChecked = computed(() => parentData?.modelValue.value === props.value);
+
+const isInRadioButtonGroup = computed(() => !!parentData?.disabled ?? false);
 </script>

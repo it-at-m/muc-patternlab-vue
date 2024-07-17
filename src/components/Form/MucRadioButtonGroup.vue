@@ -14,8 +14,34 @@
 </template>
 
 <script setup lang="ts">
-const selctedButton = defineModel<string>("modelValue");
-defineProps<{
-  heading?: string;
+import { provide, readonly, toRef } from "vue";
+
+import { RadioButtonGroupKey, RadioButtonValueTypes } from "./RadioButtonTypes";
+
+const selectedButton = defineModel<string | number>("modelValue", {
+  default: "",
+});
+
+const props = withDefaults(
+  defineProps<{
+    heading?: string;
+    disabled?: boolean;
+  }>(),
+  {
+    disabled: false,
+  }
+);
+
+const emit = defineEmits<{
+  change: [value: RadioButtonValueTypes];
 }>();
+
+provide(RadioButtonGroupKey, {
+  set: (value: RadioButtonValueTypes) => {
+    emit("change", value);
+    selectedButton.value = value;
+  },
+  modelValue: readonly(selectedButton),
+  disabled: readonly(toRef(props.disabled)),
+});
 </script>
