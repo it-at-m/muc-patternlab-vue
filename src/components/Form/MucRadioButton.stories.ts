@@ -8,7 +8,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `TODO
+        component: `
+Offers simple functionality of a radio-button.
+You need to use the radio-button within the radio-button-group - combined you can provide grouping functionality to allow users to select from a predefined set of options.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-forms)
 `,
@@ -17,13 +19,13 @@ export default {
   },
 };
 
-export const NotCollapsable = () => ({
+export const Default = () => ({
   components: { MucRadioButton, MucRadioButtonGroup },
   template: `
       <MucRadioButtonGroup heading="Checkbox group" model-value="">
          <template v-slot:default>
-           <MucRadioButton value="first" label="first"/>
-           <MucRadioButton v-for="index in 4" :key="index" :label="'not-collapsed-' + index" :value="'val-' + index"/>
+           <MucRadioButton value="first" label="first" hint="This is a hint for this radiobutton"/>
+           <MucRadioButton v-for="index in 3" :key="index" :label="'not-collapsed-' + index" :value="'val-' + index"/>
          </template>
       </MucRadioButtonGroup>
   `,

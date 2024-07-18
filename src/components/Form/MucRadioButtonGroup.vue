@@ -7,20 +7,18 @@
         </h3>
       </legend>
       <div class="m-radios">
-        <slot />
+        <slot name="default" />
       </div>
     </fieldset>
   </div>
 </template>
 
 <script setup lang="ts">
-import { provide, readonly, ref, toRef } from "vue";
+import { provide, readonly, toRef } from "vue";
 
 import { RadioButtonGroupKey, RadioButtonValueTypes } from "./RadioButtonTypes";
 
-const selectedButton = defineModel<string | number>("modelValue", {
-  default: "",
-});
+const selectedButton = defineModel<RadioButtonValueTypes>("modelValue");
 
 const props = withDefaults(
   defineProps<{
@@ -41,7 +39,7 @@ provide(RadioButtonGroupKey, {
     emit("change", value);
     selectedButton.value = value;
   },
-  modelValue: readonly(selectedButton),
+  modelValue: selectedButton,
   disabled: readonly(toRef(props.disabled)),
 });
 </script>
