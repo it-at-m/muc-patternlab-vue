@@ -18,11 +18,21 @@ import { provide, readonly, toRef } from "vue";
 
 import { RadioButtonGroupKey, RadioButtonValueTypes } from "./RadioButtonTypes";
 
+/**
+ * exposed two-way binding of the currently selected radiobuttons-value
+ */
 const selectedButton = defineModel<RadioButtonValueTypes>("modelValue");
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * Optional heading above all radiobuttons as a group heading
+     */
     heading?: string;
+
+    /**
+     * Optionally disable all child radiobuttons - defaults to 'false'
+     */
     disabled?: boolean;
   }>(),
   {
@@ -31,9 +41,16 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
+  /**
+   * Triggered when a different radiobutton is selected.
+   * @param value RadioButtonValueTypes the value of the newly selected radiobutton
+   */
   change: [value: RadioButtonValueTypes];
 }>();
 
+/**
+ * Providing necessary data to all child radiobuttons.
+ */
 provide(RadioButtonGroupKey, {
   set: (value: RadioButtonValueTypes) => {
     emit("change", value);
