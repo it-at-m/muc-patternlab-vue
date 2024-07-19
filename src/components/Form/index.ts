@@ -4,6 +4,7 @@ import MucForm from "./MucInput.vue";
 import MucInput from "./MucInput.vue";
 import MucRadioButton from "./MucRadioButton.vue";
 import MucRadioButtonGroup from "./MucRadioButtonGroup.vue";
+import MucSingleSelect from "./MucSingleSelect.vue";
 import MucTextArea from "./MucTextArea.vue";
 
 export {
@@ -14,4 +15,5 @@ export {
   MucInput,
   MucRadioButton,
   MucTextArea,
+  MucSingleSelect,
 };
