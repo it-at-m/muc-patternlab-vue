@@ -3,7 +3,10 @@
     <label class="m-label">
       {{ label }}
     </label>
-    <div class="m-input-wrapper m-input-wrapper--select">
+    <div
+      class="m-input-wrapper"
+      :class="selectType"
+    >
       <input
         type="text"
         class="m-input m-combobox m-combobox--single"
@@ -26,15 +29,15 @@
       <ul
         class="listbox"
         :class="displayOptions"
-        @mouseleave="activeIndex = -1"
+        @mouseleave="activeItem = ''"
       >
         <li
           v-for="(option, index) in props.items"
           :key="index"
           class="option"
-          @mouseenter="activeIndex = index"
-          :class="isActiveClass(index)"
-          @click="clicked(index, option)"
+          @mouseenter="activeItem = option"
+          :class="isActiveClass(option)"
+          @click="clicked(option)"
         >
           {{ option }}
         </li>
@@ -65,36 +68,37 @@ const showItems = ref<boolean>(false);
 /**
  * Index of currently actively hovered item or selected item
  */
-const activeIndex = ref<number>();
+const activeItem = ref<string>();
 
-/**
- * Index of currently selected item
- */
-const selectedIndex = ref<number>();
+const props = withDefaults(
+  defineProps<{
+    /**
+     * List of items to be available
+     */
+    items: string[];
 
-const props = defineProps<{
-  /**
-   * List of items to be available
-   */
-  items: string[];
+    /**
+     * Optional label shown above the input
+     */
+    label?: string;
 
-  /**
-   * Optional label shown above the input
-   */
-  label?: string;
-
-  /**
-   * Optional hint shown below the input
-   */
-  hint?: string;
-}>();
+    /**
+     * Optional hint shown below the input
+     */
+    hint?: string;
+    multiple?: boolean;
+  }>(),
+  {
+    multiple: false,
+  }
+);
 
 /**
  * Toggles the list of items and sets the previously selected item as active
  */
 const toggleItemList = () => {
   showItems.value = !showItems.value;
-  activeIndex.value = selectedIndex.value;
+  activeItem.value = selectedItem.value;
 };
 
 /**
@@ -102,8 +106,7 @@ const toggleItemList = () => {
  * @param index clicked index
  * @param option clicked item value
  */
-const clicked = (index: number, option: string) => {
-  selectedIndex.value = index;
+const clicked = (option: string) => {
   selectedItem.value = selectedItem.value === option ? "" : option;
   showItems.value = false;
 };
@@ -112,14 +115,20 @@ const clicked = (index: number, option: string) => {
  * Apply active class to hovered item
  * @param index of item
  */
-const isActiveClass = (index: number) =>
-  index === activeIndex.value ? "active" : "";
+const isActiveClass = (index: string) =>
+  index === activeItem.value ? "active" : "";
 
 /**
  * Display the list of item by changing the css-display property
  */
 const displayOptions = computed(() =>
   showItems.value ? "display-listbox" : ""
+);
+
+const selectType = computed(() =>
+  props.multiple
+    ? "m-input-wrapper--multiselect multiselect"
+    : "m-input-wrapper--select"
 );
 </script>
 
