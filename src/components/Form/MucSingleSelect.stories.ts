@@ -7,7 +7,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `TODO
+        component: `
+Select an option from a given list. The design is simmilar to the text input.
+Only one option can be choosen.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-forms)
 `,
