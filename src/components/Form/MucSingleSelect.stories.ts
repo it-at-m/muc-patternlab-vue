@@ -17,5 +17,10 @@ export default {
 };
 
 export const Default = {
-  args: {},
+  args: {
+    modelValue: "",
+    items: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    label: "This is a label",
+    hint: "This is a hint",
+  },
 };
