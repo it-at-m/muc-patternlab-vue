@@ -26,3 +26,10 @@ export const Default = {
     hint: "This is a hint",
   },
 };
+
+export const MultiSelect = {
+  args: {
+    ...Default.args,
+    multiselect: true,
+  },
+};
