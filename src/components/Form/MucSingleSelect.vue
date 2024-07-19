@@ -8,12 +8,12 @@
         type="text"
         class="m-input m-combobox m-combobox--single"
         :value="selectedItem"
-        @click="toggleOptions"
+        @click="toggleItemList"
         readonly
       />
       <span
         class="m-input__trigger"
-        @click="toggleOptions"
+        @click="toggleItemList"
       >
         <svg
           aria-hidden="true"
@@ -29,11 +29,11 @@
         @mouseleave="activeIndex = -1"
       >
         <li
-          v-for="(option, index) in testOptions"
+          v-for="(option, index) in props.items"
           :key="index"
           class="option"
           @mouseenter="activeIndex = index"
-          :class="[isSelectedClass(index), isActiveClass(index)]"
+          :class="isActiveClass(index)"
           @click="clicked(index, option)"
         >
           {{ option }}
@@ -52,49 +52,75 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
+/**
+ * Selected item exposed as modelvalue
+ */
 const selectedItem = defineModel<string>("modelValue");
 
+/**
+ * If list of items is shown
+ */
 const showItems = ref<boolean>(false);
 
+/**
+ * Index of currently actively hovered item or selected item
+ */
 const activeIndex = ref<number>();
 
+/**
+ * Index of currently selected item
+ */
 const selectedIndex = ref<number>();
 
 const props = defineProps<{
+  /**
+   * List of items to be available
+   */
   items: string[];
+
+  /**
+   * Optional label shown above the input
+   */
   label?: string;
+
+  /**
+   * Optional hint shown below the input
+   */
   hint?: string;
 }>();
 
-const toggleOptions = () => {
+/**
+ * Toggles the list of items and sets the previously selected item as active
+ */
+const toggleItemList = () => {
   showItems.value = !showItems.value;
   activeIndex.value = selectedIndex.value;
 };
 
+/**
+ * Actions upon clicking an item
+ * @param index clicked index
+ * @param option clicked item value
+ */
 const clicked = (index: number, option: string) => {
   selectedIndex.value = index;
   selectedItem.value = selectedItem.value === option ? "" : option;
   showItems.value = false;
 };
 
+/**
+ * Apply active class to hovered item
+ * @param index of item
+ */
 const isActiveClass = (index: number) =>
   index === activeIndex.value ? "active" : "";
 
-const isSelectedClass = (index: number) =>
-  index === selectedIndex.value ? "selected" : "";
-
+/**
+ * Display the list of item by changing the css-display property
+ */
 const displayOptions = computed(() =>
   showItems.value ? "display-listbox" : ""
 );
-
-const testOptions = [
-  "Option 1",
-  "Option 2",
-  "Option 3",
-  "Option 4",
-  "Option 5",
-  "Option 6",
-];
 </script>
 
 <style scoped>
