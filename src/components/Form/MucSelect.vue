@@ -10,7 +10,7 @@
       <input
         type="text"
         class="m-input m-combobox m-combobox--single"
-        :value="selectedItem"
+        :value="outputTransformed"
         @click="toggleItemList"
         readonly
       />
@@ -36,7 +36,7 @@
           :key="index"
           class="option"
           @mouseenter="activeItem = option"
-          :class="isActiveClass(option)"
+          :class="[isActiveClass(option), isSelectedClass(option)]"
           @click="clicked(option)"
         >
           {{ option }}
@@ -58,12 +58,17 @@ import { computed, ref } from "vue";
 /**
  * Selected item exposed as modelvalue
  */
-const selectedItem = defineModel<string>("modelValue");
+const selectedItem = ref<string[]>([]);
 
 /**
  * If list of items is shown
  */
 const showItems = ref<boolean>(false);
+
+/**
+ * Last interacted item - selected or deselected
+ */
+const lastClickedItem = ref<string>();
 
 /**
  * Index of currently actively hovered item or selected item
@@ -93,12 +98,16 @@ const props = withDefaults(
   }
 );
 
+const emit = defineEmits<{
+  "update:modelValue": [value: string | string[]];
+}>();
+
 /**
  * Toggles the list of items and sets the previously selected item as active
  */
 const toggleItemList = () => {
   showItems.value = !showItems.value;
-  activeItem.value = selectedItem.value;
+  activeItem.value = lastClickedItem.value;
 };
 
 /**
@@ -107,16 +116,45 @@ const toggleItemList = () => {
  * @param option clicked item value
  */
 const clicked = (option: string) => {
-  selectedItem.value = selectedItem.value === option ? "" : option;
-  showItems.value = false;
+  lastClickedItem.value = option;
+  props.multiple ? updateMVMultiple(option) : updateMVSingle(option);
+  emitTransformed();
+  if (!props.multiple) showItems.value = false;
 };
+
+const updateMVSingle = (value: string) => {
+  selectedItem.value = selectedItem.value[0] === value ? [""] : [value];
+};
+
+const updateMVMultiple = (value: string) => {
+  const indexOfValue = selectedItem.value.indexOf(value);
+
+  if (indexOfValue !== -1) {
+    selectedItem.value.splice(indexOfValue, 1);
+  } else {
+    selectedItem.value.push(value);
+  }
+};
+
+const outputTransformed = computed(() =>
+  selectedItem.value.join(props.multiple ? ", " : " ")
+);
+
+const emitTransformed = () =>
+  emit(
+    "update:modelValue",
+    props.multiple ? selectedItem.value : selectedItem.value[0]
+  );
 
 /**
  * Apply active class to hovered item
- * @param index of item
+ * @param value of item
  */
-const isActiveClass = (index: string) =>
-  index === activeItem.value ? "active" : "";
+const isActiveClass = (value: string) =>
+  value === activeItem.value ? "active" : "";
+
+const isSelectedClass = (value: string) =>
+  selectedItem.value.includes(value) ? "selected" : "";
 
 /**
  * Display the list of item by changing the css-display property

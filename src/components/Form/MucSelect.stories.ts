@@ -1,8 +1,8 @@
-import MucSingleSelect from "./MucSingleSelect.vue";
+import MucSelect from "./MucSelect.vue";
 
 export default {
-  component: MucSingleSelect,
-  title: "Forms/MucSingleSelect",
+  component: MucSelect,
+  title: "Forms/MucSelect",
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -20,7 +20,7 @@ Only one option can be choosen.
 
 export const Default = {
   args: {
-    modelValue: "",
+    modelValue: "Option 1",
     items: ["Option 1", "Option 2", "Option 3", "Option 4"],
     label: "This is a label",
     hint: "This is a hint",
@@ -30,6 +30,7 @@ export const Default = {
 export const MultiSelect = {
   args: {
     ...Default.args,
-    multiselect: true,
+    label: "Select multiple options",
+    multiple: true,
   },
 };
