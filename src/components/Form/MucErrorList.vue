@@ -10,7 +10,7 @@
     <div class="m-error-list__body">
       <ul class="m-list m-error-list__list">
         <li
-          v-for="(error, index) in errors"
+          v-for="(error, index) in listOfErrors"
           :key="index"
         >
           <a>{{ error }} </a>
@@ -21,8 +21,14 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from "vue";
+
+const props = defineProps<{
   title?: string;
-  errors: string[];
+  errors: string | string[];
 }>();
+
+const listOfErrors = computed(() =>
+  typeof props.errors === "string" ? [props.errors] : props.errors
+);
 </script>
