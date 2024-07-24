@@ -14,26 +14,19 @@
         <span class="visually-hidden">(erforderlich)</span>
       </span>
     </label>
-    <p
-      id="textarea-input-error"
-      class="m-error-message"
-    >
+    <p class="m-error-message">
       {{ errorMsg }}
     </p>
     <div class="m-input-wrapper">
       <textarea
         class="m-textarea"
         :rows="rows"
-        id="textarea"
         aria-describedby="textarea input"
         :placeholder="placeholder"
         v-model="modelValue"
       />
     </div>
-    <p
-      class="m-hint"
-      id="textarea-input-hint"
-    >
+    <p class="m-hint">
       {{ hint }}
     </p>
   </div>
@@ -84,12 +77,6 @@ const props = withDefaults(
     required: false,
   }
 );
-
-/**
- * Computes whether the current type is "search".
- * @returns {boolean} Returns true if the type is "search", otherwise false.
- */
-const isErrorClass = computed(() => (!props.errorMsg ? "" : "has-error"));
 </script>
 
 <style scoped></style>

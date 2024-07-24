@@ -157,6 +157,7 @@ const emits = defineEmits<{
    */
   (e: "suffixClick"): void;
 }>();
+
 /**
  * Computes a CSS class based on the presence of an error message.
  * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.

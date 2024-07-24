@@ -29,7 +29,7 @@
       <ul
         class="listbox"
         :class="displayOptions"
-        @mouseleave="activeItem = ''"
+        @mouseleave="emptyActiveItem"
       >
         <li
           v-for="(option, index) in props.items"
@@ -165,8 +165,17 @@ const outputTransformed = computed(() => {
 const isActiveClass = (value: string) =>
   value === activeItem.value ? "active" : "";
 
+/**
+ * Apply selected class to selected items
+ * @param value of item
+ */
 const isSelectedClass = (value: string) =>
   selectedValues.value.includes(value) ? "selected" : "";
+
+/**
+ * Resets the currently activeItem
+ */
+const emptyActiveItem = () => (activeItem.value = "");
 
 /**
  * Display the list of item by changing the css-display property
