@@ -7,11 +7,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `
-Select an option from a given list. The design is simmilar to the text input.
+        component: `Select an option from a given list. The design is simmilar to the text input.
 Only one option can be choosen.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-forms)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-combobox)
 `,
       },
     },

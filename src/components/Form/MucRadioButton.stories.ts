@@ -12,7 +12,7 @@ export default {
 Offers simple functionality of a radio-button.
 You need to use the radio-button within the radio-button-group - combined you can provide grouping functionality to allow users to select from a predefined set of options.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-forms)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-radios)
 `,
       },
     },
