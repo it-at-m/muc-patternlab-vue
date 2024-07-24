@@ -7,8 +7,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-checkbox component provides the ability to choose between two distinct values.
-It is very similar to a switch and can be used in complex forms.
+        component: `The MucCheckBox component is a UI element that allows users to make a binary choice, such as "yes" or "no". 
+        It is typically used in forms and settings where multiple options can be selected independently.
+        
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-checkboxes)
 `,

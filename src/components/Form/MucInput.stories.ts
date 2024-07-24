@@ -7,7 +7,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-input component is a text-based input field. It supports various styling options like prefixes /suffixes, buttons and can also be displayed as a textarea.
+        component: `The MucInput component is a text-based input field.
+        Various types are allowed e.g. datepicker or password.
+         It supports various styling options like prefixes /suffixes, buttons and can also be displayed as a textarea.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-input-text)
 `,

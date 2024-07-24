@@ -7,8 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Select an option from a given list. The design is simmilar to the text input.
-Only one option can be choosen.
+        component: `Choose from an option from a given list - multiple can also be allowed. The design is similar to the text input with autocompletion.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-combobox)
 `,

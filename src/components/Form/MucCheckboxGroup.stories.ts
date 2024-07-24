@@ -9,8 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-checkbox-group component is a wrapper for a list of checkboxes.
-It comes in a collapsable and non-collapsable variant.
+        component: `The MucCheckboxGroup component is a wrapper designed to group multiple MucCheckBox components together, allowing users to select multiple options from a set.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-checkboxes-collapse)`,
       },

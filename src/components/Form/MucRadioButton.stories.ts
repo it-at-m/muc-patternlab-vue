@@ -24,8 +24,8 @@ export const Default = () => ({
   template: `
       <MucRadioButtonGroup heading="Checkbox group" model-value="">
          <template v-slot:default>
-           <MucRadioButton value="first" label="first" hint="This is a hint for this radiobutton"/>
-           <MucRadioButton v-for="index in 3" :key="index" :label="'not-collapsed-' + index" :value="'val-' + index"/>
+           <MucRadioButton value="first" label="first option" hint="This is a hint for this radiobutton"/>
+           <MucRadioButton v-for="index in 3" :key="index" :label="'other option-' + index" :value="'val-' + index"/>
          </template>
       </MucRadioButtonGroup>
   `,

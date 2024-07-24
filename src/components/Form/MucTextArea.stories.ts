@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-text-area component is an input component for larger texts.
+        component: `The muc-text-area component allows bigger text based inputs then the regular input. The size is adjustable.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-textarea)
 `,
