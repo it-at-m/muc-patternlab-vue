@@ -77,6 +77,7 @@ const activeItem = ref<string>();
 
 const props = withDefaults(
   defineProps<{
+    modelValue: string | string[];
     /**
      * List of items to be available
      */
@@ -112,39 +113,51 @@ const toggleItemList = () => {
 
 /**
  * Actions upon clicking an item
- * @param index clicked index
  * @param option clicked item value
  */
 const clicked = (option: string) => {
   lastClickedItem.value = option;
-  props.multiple ? updateMVMultiple(option) : updateMVSingle(option);
-  emitTransformed();
+
+  // check if multiple
+  // if incorrect type - convert
+  // make modification
+  // emit
+
+  props.multiple
+    ? updateMVMultiple(props.modelValue, option)
+    : updateMVSingle(props.modelValue, option);
+
   if (!props.multiple) showItems.value = false;
 };
 
-const updateMVSingle = (value: string) => {
-  selectedItem.value = selectedItem.value[0] === value ? [""] : [value];
+const updateMVSingle = (selectedValues: string | string[], value: string) => {
+  if (typeof selectedValues === "object")
+    selectedValues = selectedValues.join(" ");
+
+  selectedValues = selectedValues === value ? "" : value;
+
+  emit("update:modelValue", selectedValues);
 };
 
-const updateMVMultiple = (value: string) => {
-  const indexOfValue = selectedItem.value.indexOf(value);
+const updateMVMultiple = (selectedValues: string | string[], value: string) => {
+  if (typeof selectedValues === "string") selectedValues = [selectedValues];
 
-  if (indexOfValue !== -1) {
-    selectedItem.value.splice(indexOfValue, 1);
-  } else {
-    selectedItem.value.push(value);
-  }
+  selectedValues.includes(value)
+    ? selectedValues.filter((val: string) => val === value)
+    : [...props.modelValue, value];
+
+  emit("update:modelValue", selectedValues);
 };
 
-const outputTransformed = computed(() =>
-  selectedItem.value.join(props.multiple ? ", " : " ")
-);
+const outputTransformed = computed(() => {
+  if (typeof props.modelValue === "string") return props.modelValue;
+  else return props.modelValue.join(props.multiple ? ", " : " ");
+});
 
-const emitTransformed = () =>
-  emit(
-    "update:modelValue",
-    props.multiple ? selectedItem.value : selectedItem.value[0]
-  );
+const emitTransformed = (newModelValue: string[]) =>
+  emit("update:modelValue", props.multiple ? newModelValue : newModelValue[0]);
+
+const computedModelValue = () => {};
 
 /**
  * Apply active class to hovered item
@@ -154,7 +167,7 @@ const isActiveClass = (value: string) =>
   value === activeItem.value ? "active" : "";
 
 const isSelectedClass = (value: string) =>
-  selectedItem.value.includes(value) ? "selected" : "";
+  props.modelValue.includes(value) ? "selected" : "";
 
 /**
  * Display the list of item by changing the css-display property
