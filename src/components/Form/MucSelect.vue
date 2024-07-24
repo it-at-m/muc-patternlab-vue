@@ -56,9 +56,11 @@
 import { computed, ref } from "vue";
 
 /**
- * Selected item exposed as modelvalue
+ * Exposed selected value / values
  */
-const selectedItem = ref<string[]>([]);
+const selectedValues = defineModel<string | string[]>("modelValue", {
+  default: [],
+});
 
 /**
  * If list of items is shown
@@ -77,7 +79,6 @@ const activeItem = ref<string>();
 
 const props = withDefaults(
   defineProps<{
-    modelValue: string | string[];
     /**
      * List of items to be available
      */
@@ -92,16 +93,16 @@ const props = withDefaults(
      * Optional hint shown below the input
      */
     hint?: string;
+
+    /**
+     * Allow multiple selectable items
+     */
     multiple?: boolean;
   }>(),
   {
     multiple: false,
   }
 );
-
-const emit = defineEmits<{
-  "update:modelValue": [value: string | string[]];
-}>();
 
 /**
  * Toggles the list of items and sets the previously selected item as active
@@ -113,51 +114,49 @@ const toggleItemList = () => {
 
 /**
  * Actions upon clicking an item
- * @param option clicked item value
+ * @param clickedValue clicked item value
  */
-const clicked = (option: string) => {
-  lastClickedItem.value = option;
-
-  // check if multiple
-  // if incorrect type - convert
-  // make modification
-  // emit
+const clicked = (clickedValue: string) => {
+  lastClickedItem.value = clickedValue;
 
   props.multiple
-    ? updateMVMultiple(props.modelValue, option)
-    : updateMVSingle(props.modelValue, option);
+    ? updateMVMultiple(clickedValue)
+    : updateMVSingle(clickedValue);
 
   if (!props.multiple) showItems.value = false;
 };
 
-const updateMVSingle = (selectedValues: string | string[], value: string) => {
-  if (typeof selectedValues === "object")
-    selectedValues = selectedValues.join(" ");
+/**
+ * Update the modelValue with the given. Performs conversion to string if necessary.
+ * @param newValue the new value
+ */
+const updateMVSingle = (newValue: string) => {
+  if (typeof selectedValues.value === "object")
+    selectedValues.value = selectedValues.value.join(" ");
 
-  selectedValues = selectedValues === value ? "" : value;
-
-  emit("update:modelValue", selectedValues);
+  selectedValues.value = selectedValues.value === newValue ? "" : newValue;
 };
 
-const updateMVMultiple = (selectedValues: string | string[], value: string) => {
-  if (typeof selectedValues === "string") selectedValues = [selectedValues];
+/**
+ * Update the modelValue with the given. Performs conversion to array if necessary.
+ * @param newValue the new value
+ */
+const updateMVMultiple = (newValue: string) => {
+  if (typeof selectedValues.value === "string")
+    selectedValues.value = [selectedValues.value];
 
-  selectedValues.includes(value)
-    ? selectedValues.filter((val: string) => val === value)
-    : [...props.modelValue, value];
-
-  emit("update:modelValue", selectedValues);
+  selectedValues.value = selectedValues.value.includes(newValue)
+    ? selectedValues.value.filter((val: string) => val !== newValue)
+    : [...selectedValues.value, newValue];
 };
 
+/**
+ * Converts the displayed text depending on the selection mode
+ */
 const outputTransformed = computed(() => {
-  if (typeof props.modelValue === "string") return props.modelValue;
-  else return props.modelValue.join(props.multiple ? ", " : " ");
+  if (typeof selectedValues.value === "string") return selectedValues.value;
+  return selectedValues.value.join(props.multiple ? ", " : " ");
 });
-
-const emitTransformed = (newModelValue: string[]) =>
-  emit("update:modelValue", props.multiple ? newModelValue : newModelValue[0]);
-
-const computedModelValue = () => {};
 
 /**
  * Apply active class to hovered item
@@ -167,7 +166,7 @@ const isActiveClass = (value: string) =>
   value === activeItem.value ? "active" : "";
 
 const isSelectedClass = (value: string) =>
-  props.modelValue.includes(value) ? "selected" : "";
+  selectedValues.value.includes(value) ? "selected" : "";
 
 /**
  * Display the list of item by changing the css-display property
@@ -176,6 +175,9 @@ const displayOptions = computed(() =>
   showItems.value ? "display-listbox" : ""
 );
 
+/**
+ * Switches between the selection modes according to multiple. Checkboxes are shown on the multiple select
+ */
 const selectType = computed(() =>
   props.multiple
     ? "m-input-wrapper--multiselect multiselect"
