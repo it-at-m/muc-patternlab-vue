@@ -44,11 +44,11 @@ defineSlots<{
         <div
           v-if="divider"
           class="muc-divider"
-        ></div>
+        />
 
         <div class="m-intro-vertical__content">
           <p style="padding-bottom: 32px">
-            <slot></slot>
+            <slot />
           </p>
         </div>
       </div>

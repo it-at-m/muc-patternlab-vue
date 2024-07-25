@@ -12,12 +12,10 @@
       data-bs-toggle="collapse"
       :aria-expanded="!collapsed"
     >
-      <svg
-        aria-hidden="true"
-        class="icon icon--before"
-      >
-        <use :xlink:href="'#icon-' + icon"></use>
-      </svg>
+      <muc-icon
+        :icon="icon"
+        additional-classes="icon--before"
+      />
       <div v-if="todaysBusinessHours">
         <span> {{ todaysBusinessHours.weekDay }} geöffnet </span>
         <span
@@ -30,13 +28,10 @@
           </span>
         </span>
       </div>
-
-      <svg
-        aria-hidden="true"
-        class="icon icon--after"
-      >
-        <use xlink:href="#icon-chevron-down"></use>
-      </svg>
+      <muc-icon
+        icon="chevron-down"
+        additional-classes="icon--after"
+      />
     </button>
     <div
       class="m-business-hours-toggle__content"
@@ -74,6 +69,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
+import { MucIcon } from "../Icon";
 import { BusinessHourType } from "./BusinessHourType";
 
 const LOCALES = "de-DE";

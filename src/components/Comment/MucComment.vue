@@ -12,9 +12,9 @@
           <slot name="author" />
         </span>
         <span v-if="showDate">
-          <span class="m-comment__author"
-            >&nbsp;<slot name="datePrefix"
-          /></span>
+          <span class="m-comment__author">
+            <slot name="datePrefix" />
+          </span>
           <span class="m-comment__date">&nbsp;<slot name="date" /> </span>
         </span>
         <div
@@ -27,35 +27,20 @@
             :key="n"
             class="m-star-rating__item m-star-rating__item--full"
           >
-            <svg
-              aria-hidden="true"
-              class="icon"
-            >
-              <use xlink:href="#icon-solid-star"></use>
-            </svg>
+            <muc-icon icon="solid-star" />
           </div>
           <div
             v-if="evaluateRating.isHalfStar"
             class="m-star-rating__item m-star-rating__item--half"
           >
-            <svg
-              aria-hidden="true"
-              class="icon"
-            >
-              <use xlink:href="#icon-half-star"></use>
-            </svg>
+            <muc-icon icon="half-star" />
           </div>
           <div
             v-for="n in evaluateRating.emptyStars"
             :key="n"
             class="m-star-rating__item"
           >
-            <svg
-              aria-hidden="true"
-              class="icon"
-            >
-              <use xlink:href="#icon-solid-star"></use>
-            </svg>
+            <muc-icon icon="solid-star" />
           </div>
           <div class="m-star-rating__numeric">
             {{ ratingWithDecimalComma }}
@@ -76,6 +61,7 @@
 <script setup lang="ts">
 import { computed, useSlots } from "vue";
 
+import { MucIcon } from "../Icon";
 import CommentType from "./CommentType";
 
 const LOCALES = "de-DE";
