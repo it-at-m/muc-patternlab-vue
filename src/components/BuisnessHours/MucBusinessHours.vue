@@ -30,7 +30,7 @@
       </div>
       <muc-icon
         icon="chevron-down"
-        additional-classes="icon--after"
+        icon-classes="icon--after"
       />
     </button>
     <div

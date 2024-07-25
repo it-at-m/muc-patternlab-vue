@@ -1,7 +1,7 @@
 <template>
   <svg
     aria-hidden="true"
-    :class="[additionalClasses, iconClass]"
+    :class="iconClass"
     :style="{ color: color }"
   >
     <use :href="'#icon-' + icon" />
@@ -9,34 +9,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+withDefaults(
+  defineProps<{
+    /**
+     * String of the icon to be displayed.
+     */
+    icon: string;
 
-type AdditionalClass = "icon--before" | "icon--after";
+    /**
+     * Optional css-color for the icon.
+     */
+    color?: string;
 
-const props = defineProps<{
-  /**
-   * String of the icon to be displayed.
-   */
-  icon: string;
-
-  /**
-   * Optional css-color for the icon.
-   */
-  color?: string;
-
-  /**
-   * Optional override for css-class on the svg
-   */
-  iconClassOverride?: string;
-
-  /**
-   * Additional css-classes adjacent to the icon class
-   */
-  additionalClasses?: AdditionalClass;
-}>();
-
-/**
- * Computed icon-class for svg-icon, default to "icon"
- */
-const iconClass = computed(() => props.iconClassOverride ?? " icon");
+    iconClass?: string | string[];
+  }>(),
+  {
+    iconClass: "icon",
+  }
+);
 </script>
