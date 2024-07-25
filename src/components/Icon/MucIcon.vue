@@ -1,7 +1,7 @@
 <template>
   <svg
     aria-hidden="true"
-    class="m-button__icon"
+    :class="iconClass"
     :style="{ color: color }"
   >
     <use :href="'#icon-' + icon" />
@@ -9,7 +9,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from "vue";
+
+const props = defineProps<{
   /**
    * String of the icon to be displayed.
    */
@@ -19,5 +21,12 @@ defineProps<{
    * Optional css-color for the icon.
    */
   color?: string;
+
+  /**
+   * Optional override for css-class on the svg
+   */
+  iconClassOverride?: string;
 }>();
+
+const iconClass = computed(() => props.iconClassOverride ?? "icon");
 </script>
