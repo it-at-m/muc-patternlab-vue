@@ -13,7 +13,7 @@
         </span>
         <span v-if="showDate">
           <span class="m-comment__author">
-            <slot name="datePrefix" />
+            &nbsp;<slot name="datePrefix" />
           </span>
           <span class="m-comment__date">&nbsp;<slot name="date" /> </span>
         </span>
