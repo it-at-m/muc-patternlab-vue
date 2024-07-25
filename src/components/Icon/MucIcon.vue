@@ -28,5 +28,8 @@ const props = defineProps<{
   iconClassOverride?: string;
 }>();
 
+/**
+ * Computed icon-class for svg-icon, default to "icon"
+ */
 const iconClass = computed(() => props.iconClassOverride ?? "icon");
 </script>
