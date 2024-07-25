@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-type additionalClass = "con--before" | "m-button__icon";
+type AdditionalClass = "icon--before" | "icon--after";
 
 const props = defineProps<{
   /**
@@ -29,7 +29,10 @@ const props = defineProps<{
    */
   iconClassOverride?: string;
 
-  additionalClasses?: string;
+  /**
+   * Additional css-classes adjacent to the icon class
+   */
+  additionalClasses?: AdditionalClass;
 }>();
 
 /**
