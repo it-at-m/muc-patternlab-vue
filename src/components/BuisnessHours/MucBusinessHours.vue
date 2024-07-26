@@ -14,7 +14,7 @@
     >
       <muc-icon
         :icon="icon"
-        additional-classes="icon--before"
+        class="icon icon--before"
       />
       <div v-if="todaysBusinessHours">
         <span> {{ todaysBusinessHours.weekDay }} geöffnet </span>
@@ -30,7 +30,7 @@
       </div>
       <muc-icon
         icon="chevron-down"
-        icon-classes="icon--after"
+        class="icon icon--after"
       />
     </button>
     <div

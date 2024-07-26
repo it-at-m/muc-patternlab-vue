@@ -10,7 +10,7 @@
       <muc-icon
         v-if="icon"
         :icon="icon"
-        icon-class="m-button__icon"
+        class="m-button__icon"
       />
     </span>
   </button>

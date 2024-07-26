@@ -9,22 +9,21 @@
 </template>
 
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    /**
-     * String of the icon to be displayed.
-     */
-    icon: string;
+import { computed, useAttrs } from "vue";
 
-    /**
-     * Optional css-color for the icon.
-     */
-    color?: string;
+const attr = useAttrs();
 
-    iconClass?: string | string[];
-  }>(),
-  {
-    iconClass: "icon",
-  }
-);
+defineProps<{
+  /**
+   * String of the icon to be displayed.
+   */
+  icon: string;
+
+  /**
+   * Optional css-color for the icon.
+   */
+  color?: string;
+}>();
+
+const iconClass = computed(() => attr.class ?? "icon");
 </script>
