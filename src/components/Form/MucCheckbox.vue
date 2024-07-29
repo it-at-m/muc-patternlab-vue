@@ -7,13 +7,11 @@
       class="m-checkboxes__input"
       name="checkbox"
       type="checkbox"
-      value="checkbox-value-0"
+      :checked="checkBoxValue"
+      @click.stop="clickedCheckbox"
     />
-    <label
-      class="m-label m-checkboxes__label"
-      for="checkbox-example-"
-    >
-      {{ label }}
+    <label class="m-label m-checkboxes__label">
+      {{ label }} {{ checkBoxValue }}
     </label>
   </div>
 </template>
