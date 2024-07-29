@@ -7,10 +7,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The muc-checkbox component provides the ability to choose between two distinct values.
-It is very similar to a switch and can be used in complex forms.
+        component: `Simple display of one or more errors as a list.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-checkboxes)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-error-list)
 `,
       },
     },
