@@ -7,19 +7,19 @@
   >
     <span>
       <slot />
-      <svg
+      <muc-icon
         v-if="icon"
-        aria-hidden="true"
+        :icon="icon"
         class="m-button__icon"
-      >
-        <use :xlink:href="'#icon-' + icon"></use>
-      </svg>
+      />
     </span>
   </button>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
+
+import { MucIcon } from "../Icon";
 
 type buttonType = "primary" | "secondary" | "ghost";
 

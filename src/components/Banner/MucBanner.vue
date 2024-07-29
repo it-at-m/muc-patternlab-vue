@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-type bannerType = "info" | "warning" | "emergency";
+import { MucIcon } from "../Icon";
+
+type bannerType = "info" | "success" | "warning" | "emergency";
 
 const props = withDefaults(
   defineProps<{
@@ -26,6 +28,8 @@ const typeClass = computed(() => {
   switch (props.type) {
     case "info":
       return "m-banner--info";
+    case "success":
+      return "m-banner--success";
     case "warning":
       return "m-banner--warning";
     case "emergency":
@@ -38,6 +42,8 @@ const typeClass = computed(() => {
 const typeRole = computed(() => {
   switch (props.type) {
     case "info":
+      return "dialog";
+    case "success":
       return "dialog";
     case "warning":
       return "alert";
@@ -52,12 +58,27 @@ const typeAriaLabel = computed(() => {
   switch (props.type) {
     case "info":
       return "Information";
+    case "success":
+      return "Erfolg";
     case "warning":
       return "Warnung";
     case "emergency":
       return "Emergency";
     default:
       return "Information";
+  }
+});
+
+const typeIcon = computed(() => {
+  switch (props.type) {
+    case "success":
+      return "check";
+    case "warning":
+    case "emergency":
+      return "warning";
+    case "info":
+    default:
+      return "information";
   }
 });
 </script>
@@ -72,14 +93,17 @@ const typeAriaLabel = computed(() => {
         :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
-          <svg class="icon">
-            <use href="#icon-information" />
-          </svg>
-          <p>
-            <slot />
-          </p>
+          <muc-icon :icon="typeIcon" />
+          <slot />
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.m-banner--success {
+  background-color: #f1f6f3;
+  border-bottom: 1px solid #3a7f53;
+}
+</style>

@@ -69,10 +69,7 @@ So to use an icon from Patternlab you can simply follow the official
 documentation: https://patternlab.muenchen.space/?p=viewall-guidelines-icons
 
 ```html
-
-<svg aria-hidden="true" class="icon">
-    <use xlink:href="#icon-{name}"></use>
-</svg>
+<muc-icon :icon="name"/>
 ```
 
 ## Contributing

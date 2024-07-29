@@ -4,6 +4,7 @@ import { MucCallout } from "./Callout";
 import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucForm } from "./Form";
+import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 
 export {
@@ -16,4 +17,5 @@ export {
   MucComment,
   MucCommentText,
   MucForm,
+  MucIcon,
 };
