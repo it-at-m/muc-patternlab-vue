@@ -11,7 +11,7 @@
       @click.stop="clickedCheckbox"
     />
     <label class="m-label m-checkboxes__label">
-      {{ label }} {{ checkBoxValue }}
+      {{ label }}
     </label>
   </div>
 </template>
