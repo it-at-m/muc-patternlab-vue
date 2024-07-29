@@ -26,7 +26,7 @@ const businessHours = [
     openingHours: [
       {
         from: "08:00",
-        to: "12:00",
+        to: "13:00",
       },
       {
         from: "14:00",

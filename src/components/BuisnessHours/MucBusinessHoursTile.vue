@@ -22,9 +22,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { BusinessHourType } from "./BusinessHourType";
+import { BusinessHourType, isOpen } from "./BusinessHourType";
+import { useBuisnessHoursDateTime } from "./useBuisnessHoursDateTime";
 
-const LOCALES = "de-DE";
+const { currentDay, currentTime } = useBuisnessHoursDateTime();
 
 const props = withDefaults(
   defineProps<{
@@ -37,24 +38,10 @@ const props = withDefaults(
 );
 
 const hasOpenClass = computed(() =>
-  props.closed
+  isOpen(props.businessHours, currentDay.value, currentTime.value)
     ? "m-business-hours-tile--has-closed"
     : "m-business-hours-tile--is-open"
 );
-
-/**
- * Computes the short name of today's day.
- *
- * @returns {string} The short name of today's day (e.g., "Mo", "Di").
- */
-const todaysDayShortName = computed(() => {
-  const today = new Date();
-  return today.toLocaleDateString(LOCALES, { weekday: "short" });
-});
-
-const isOpen = computed(() => {
-  return false;
-});
 </script>
 
 <style scoped></style>

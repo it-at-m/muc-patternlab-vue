@@ -74,9 +74,12 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-import { BusinessHourType } from "./BusinessHourType";
+import { BusinessHourType, isOpen } from "./BusinessHourType";
+import { useBuisnessHoursDateTime } from "./useBuisnessHoursDateTime";
 
 const LOCALES = "de-DE";
+
+const { currentDay, currentTime } = useBuisnessHoursDateTime();
 
 const props = withDefaults(
   defineProps<{
@@ -150,7 +153,9 @@ const todaysDayShortName = computed(() => {
  */
 const highlightBusinessDay = (businessHour: BusinessHourType) => {
   if (businessHour.openingHours.length === 0) return "is-closed";
-  if (businessHour.weekDay === todaysDayShortName.value) return "is-open";
+  if (isOpen(businessHour, currentDay.value, currentTime.value)) {
+    return "is-open";
+  }
 };
 
 /**

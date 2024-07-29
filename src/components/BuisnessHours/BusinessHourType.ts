@@ -1,28 +1,44 @@
 /**
  * Shorthand notation of all seven days in german.
- *
- * @typedef {"Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa" | "So"} WeekDays
  */
-type WeekDays = "Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa" | "So";
+type WeekDay = "Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa" | "So";
 
 /**
- * @typedef {Object} OpeningHour
- * @property {string} from - The start time of the opening period (in 'HH:mm' format).
- * @property {string} to - The end time of the opening period (in 'HH:mm' format).
+ * Opening hours defined as a range from to in the format of e.g. `HH:MM`
  */
-type OpeningHour = {
+type OpeningHours = {
   from: string;
   to: string;
 };
 
 /**
- * @typedef {Object} BusinessHourType
- * @property {WeekDays} weekDay - The day of the week for which the opening hours apply.
- * @property {OpeningHour[]} openingHours - A list of opening hours for the specified day of the week.
+ * Opening hours for a weekday
  */
 type BusinessHourType = {
-  weekDay: WeekDays;
-  openingHours: OpeningHour[];
+  weekDay: WeekDay;
+  openingHours: OpeningHours[];
 };
 
-export type { BusinessHourType, OpeningHour, WeekDays };
+export type { BusinessHourType, OpeningHours, WeekDay };
+
+const isOpen = (
+  businessHours: BusinessHourType,
+  currDay: string | undefined,
+  currTime: string | undefined
+) => {
+  const index =
+    businessHours.weekDay === currDay &&
+    currDay !== undefined &&
+    currTime !== undefined &&
+    businessHours.openingHours.findIndex(
+      (openingHours) =>
+        openingHours.from <= currTime && openingHours.to >= currTime
+    ) !== -1;
+
+  console.log("%s - %s", businessHours.weekDay, index);
+  return index;
+};
+
+const isTimeValid = (time: string) => /^\d{2}:\d{2}$/.test(time);
+
+export { isOpen, isTimeValid };
