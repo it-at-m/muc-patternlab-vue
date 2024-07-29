@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { MucIcon } from "../Icon";
+
 type bannerType = "info" | "success" | "warning" | "emergency";
 
 const props = withDefaults(
@@ -70,13 +72,13 @@ const typeAriaLabel = computed(() => {
 const typeIcon = computed(() => {
   switch (props.type) {
     case "success":
-      return "#icon-check";
+      return "check";
     case "warning":
     case "emergency":
-      return "#icon-warning";
+      return "warning";
     case "info":
     default:
-      return "#icon-information";
+      return "information";
   }
 });
 </script>
@@ -91,9 +93,7 @@ const typeIcon = computed(() => {
         :aria-label="typeAriaLabel"
       >
         <div class="container-fluid">
-          <svg class="icon">
-            <use :href="typeIcon" />
-          </svg>
+          <muc-icon :icon="typeIcon" />
           <slot />
         </div>
       </div>

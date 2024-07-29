@@ -8,12 +8,7 @@
       <div class="m-callout__icon">
         <slot name="icon">
           <!-- fallback icon -->
-          <svg
-            aria-hidden="true"
-            class="icon"
-          >
-            <use :xlink:href="`#icon-${fallbackCalloutIcon}`"></use>
-          </svg>
+          <muc-icon :icon="fallbackCalloutIcon" />
         </slot>
       </div>
       <div class="m-callout__body">
@@ -37,6 +32,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+
+import { MucIcon } from "../Icon";
 
 type calloutType = "info" | "warning" | "success" | "error";
 

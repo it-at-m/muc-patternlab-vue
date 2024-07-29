@@ -1,7 +1,7 @@
 <template>
   <svg
     aria-hidden="true"
-    class="m-button__icon"
+    :class="iconClass"
     :style="{ color: color }"
   >
     <use :href="'#icon-' + icon" />
@@ -9,6 +9,10 @@
 </template>
 
 <script setup lang="ts">
+import { computed, useAttrs } from "vue";
+
+const attr = useAttrs();
+
 defineProps<{
   /**
    * String of the icon to be displayed.
@@ -20,4 +24,6 @@ defineProps<{
    */
   color?: string;
 }>();
+
+const iconClass = computed(() => attr.class ?? "icon");
 </script>
