@@ -1,4 +1,4 @@
-import{_ as a}from"./MucCheckbox-BY8QZ3tU.js";import"./vue.esm-bundler-DIzIJAKo.js";const r={component:a,title:"Forms/MucCheckBox",tags:["autodocs"],parameters:{docs:{description:{component:`The MucCheckBox component is a UI element that allows users to make a binary choice, such as "yes" or "no". 
+import{_ as a}from"./MucCheckbox-41oU92ia.js";import"./vue.esm-bundler-DIzIJAKo.js";const r={component:a,title:"Forms/MucCheckBox",tags:["autodocs"],parameters:{docs:{description:{component:`The MucCheckBox component is a UI element that allows users to make a binary choice, such as "yes" or "no". 
         It is typically used in forms and settings where multiple options can be selected independently.
         
 
