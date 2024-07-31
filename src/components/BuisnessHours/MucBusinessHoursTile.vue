@@ -39,8 +39,8 @@ const props = withDefaults(
 
 const hasOpenClass = computed(() =>
   isOpen(props.businessHours, currentDay.value, currentTime.value)
-    ? "m-business-hours-tile--has-closed"
-    : "m-business-hours-tile--is-open"
+    ? "m-business-hours-tile--is-open"
+    : "m-business-hours-tile--has-closed"
 );
 </script>
 
