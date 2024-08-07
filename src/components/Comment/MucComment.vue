@@ -138,7 +138,9 @@ const commentClass = computed(() => {
 /**
  * Computes rating with min and max limits
  */
-const computedRating = computed(() => Math.min(Math.max(props.rating, 0), MAX_STARS))
+const computedRating = computed(() =>
+  Math.min(Math.max(props.rating, 0), MAX_STARS)
+);
 
 /*
  * Converts the dot used on decimal numbers and converts it to a comma.
