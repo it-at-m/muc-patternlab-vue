@@ -126,17 +126,27 @@ const showDate = computed(() => {
   return !!slots["date"];
 });
 
+/**
+ * Computes class for given variant
+ */
 const commentClass = computed(() => {
   return props.variant === "slider"
     ? "m-comment--slider"
     : "m-comment--listing";
 });
 
+/**
+ * Computes rating with min and max limits
+ */
+const computedRating = computed(() =>
+  Math.min(Math.max(props.rating, 0), MAX_STARS)
+);
+
 /*
  * Converts the dot used on decimal numbers and converts it to a comma.
  */
 const ratingWithDecimalComma = computed(() => {
-  return props.rating.toLocaleString(LOCALES.valueOf(), {
+  return computedRating.value.toLocaleString(LOCALES.valueOf(), {
     minimumFractionDigits: 1,
   });
 });
@@ -145,14 +155,14 @@ const ratingWithDecimalComma = computed(() => {
 Calculates the amount of full, empty and half-stars to be displayed.
  */
 const evaluateRating = computed(() => {
-  const decimalPart = +(props.rating % 1).toFixed(1); // ask Brendan Eich why "3.3 % 1 = 0.2999999999999998" and then come back
+  const decimalPart = +(computedRating.value % 1).toFixed(1); // ask Brendan Eich why "3.3 % 1 = 0.2999999999999998" and then come back
 
-  let fullStars = Math.min(Math.floor(props.rating), MAX_STARS);
-  let emptyStars = Math.floor(MAX_STARS - props.rating);
+  let fullStars = Math.min(Math.floor(computedRating.value), MAX_STARS);
+  let emptyStars = Math.floor(MAX_STARS - computedRating.value);
   let isHalfStar = false;
 
   // evaluating half-stars and if the rating is e.g. 3.9 an extra full star needs to be displayed
-  if (props.rating !== 0.0 && props.rating !== MAX_STARS) {
+  if (computedRating.value !== 0.0 && computedRating.value !== MAX_STARS) {
     if (decimalPart <= LOWER_THRESHOLD) emptyStars++;
     else if (decimalPart >= UPPER_THRESHOLD) fullStars++;
     else isHalfStar = true;
