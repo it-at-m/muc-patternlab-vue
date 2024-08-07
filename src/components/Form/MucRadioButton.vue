@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { computed, inject } from "vue";
 
-import { RadioButtonGroupKey } from "./RadioButtonTypes";
+import { RadioButtonGroupKey } from "./MucRadioButtonTypes";
 
 const props = withDefaults(
   defineProps<{
