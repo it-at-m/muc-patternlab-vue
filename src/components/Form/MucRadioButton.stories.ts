@@ -3,7 +3,7 @@ import MucRadioButtonGroup from "./MucRadioButtonGroup.vue";
 
 export default {
   component: MucRadioButton,
-  title: "Forms/RadioButton",
+  title: "Forms/MucRadioButton",
   tags: ["autodocs"],
   parameters: {
     docs: {
