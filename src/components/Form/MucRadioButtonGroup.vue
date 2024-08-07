@@ -16,7 +16,10 @@
 <script setup lang="ts">
 import { provide, readonly, toRef } from "vue";
 
-import { RadioButtonGroupKey, RadioButtonValueTypes } from "./MucRadioButtonTypes";
+import {
+  RadioButtonGroupKey,
+  RadioButtonValueTypes,
+} from "./MucRadioButtonTypes";
 
 /**
  * exposed two-way binding of the currently selected radiobuttons-value
