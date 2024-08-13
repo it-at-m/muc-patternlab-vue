@@ -1,4 +1,4 @@
-import { RadioButtonValueTypes } from './RadioButtonTypes';
+import { RadioButtonValueTypes } from './MucRadioButtonTypes';
 
 declare function __VLS_template(): {
     default?(_: {}): any;

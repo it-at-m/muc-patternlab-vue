@@ -80,7 +80,7 @@ export declare const Default: () => {
         }, {}>;
         MucRadioButtonGroup: {
             new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./RadioButtonTypes').RadioButtonValueTypes>;
+                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./MucRadioButtonTypes').RadioButtonValueTypes>;
                 disabled: {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                     default: boolean;
@@ -89,11 +89,11 @@ export declare const Default: () => {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
                 };
             }>> & {
-                onChange?: ((value: import('./RadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+                onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
             }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-                change: (value: import('./RadioButtonTypes').RadioButtonValueTypes) => void;
+                change: (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => void;
             }, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./RadioButtonTypes').RadioButtonValueTypes>;
+                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./MucRadioButtonTypes').RadioButtonValueTypes>;
                 disabled: {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                     default: boolean;
@@ -102,7 +102,7 @@ export declare const Default: () => {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
                 };
             }>> & {
-                onChange?: ((value: import('./RadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+                onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
             }, {
                 disabled: boolean;
             }, true, {}, {}, {
@@ -113,7 +113,7 @@ export declare const Default: () => {
                 M: {};
                 Defaults: {};
             }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./RadioButtonTypes').RadioButtonValueTypes>;
+                modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./MucRadioButtonTypes').RadioButtonValueTypes>;
                 disabled: {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                     default: boolean;
@@ -122,7 +122,7 @@ export declare const Default: () => {
                     type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
                 };
             }>> & {
-                onChange?: ((value: import('./RadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+                onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
             }, {}, {}, {}, {}, {
                 disabled: boolean;
             }>;
@@ -130,7 +130,7 @@ export declare const Default: () => {
             __isTeleport?: never;
             __isSuspense?: never;
         } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./RadioButtonTypes').RadioButtonValueTypes>;
+            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<import('./MucRadioButtonTypes').RadioButtonValueTypes>;
             disabled: {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
                 default: boolean;
@@ -139,9 +139,9 @@ export declare const Default: () => {
                 type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
             };
         }>> & {
-            onChange?: ((value: import('./RadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+            onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
         }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            change: (value: import('./RadioButtonTypes').RadioButtonValueTypes) => void;
+            change: (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => void;
         }, string, {
             disabled: boolean;
         }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
