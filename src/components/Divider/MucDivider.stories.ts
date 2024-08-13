@@ -8,10 +8,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-icon\` component is a wrapper commponent for all icons in the patternlab.
+        component: `The \`muc-divider\` is a trivial divider.
 
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-guidelines-icons)
-[🖼 Iconography](https://it-at-m.github.io/muc-patternlab-vue/?path=/docs/iconography--docs)
+[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-components-all)
 `,
       },
     },
