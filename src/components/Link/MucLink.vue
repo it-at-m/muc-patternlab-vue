@@ -23,10 +23,29 @@ import { MucIcon } from "../Icon";
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * Text shown as the link
+     */
     label: string;
+
+    /**
+     * href to link to
+     */
     href?: string;
+
+    /**
+     * Optional icon displayed behind the text
+     */
     icon?: string;
+
+    /**
+     * Target on the link
+     */
     target?: string;
+
+    /**
+     * Removes the underline from the label text
+     */
     noUnderline?: boolean;
   }>(),
   {
@@ -36,6 +55,17 @@ const props = withDefaults(
   }
 );
 
+defineSlots<{
+  /**
+   * Icon slots overrides chosen prop icon.
+   * The icon can be displayed infront or behind the label with these classes: icon--after | icon--before
+   */
+  icon(): void;
+}>();
+
+/**
+ * Computed class to remove the underline if chosen.
+ */
 const reversedUnderlineClass = computed(() =>
   props.noUnderline ? "m-link--reversed-underline" : ""
 );
