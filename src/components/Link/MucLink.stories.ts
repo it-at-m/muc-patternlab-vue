@@ -30,6 +30,7 @@ export const LinkWithIcon = {
   args: {
     icon: "youtube",
     label: "youtube",
+    href: "https://www.youtube.com",
     noUnderline: true,
   },
 };
