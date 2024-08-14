@@ -16,6 +16,7 @@ import {
 } from "./Form";
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
+import { MucLink } from "./Link";
 
 export {
   MucButton,
@@ -36,4 +37,5 @@ export {
   MucErrorList,
   MucIcon,
   MucDivider,
+  MucLink,
 };
