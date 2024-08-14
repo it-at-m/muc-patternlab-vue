@@ -1,5 +1,5 @@
 <template>
-  <div class="divider-border" />
+  <hr class="divider-border" />
 </template>
 
 <style scoped>
