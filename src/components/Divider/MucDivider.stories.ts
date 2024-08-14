@@ -4,7 +4,6 @@ export default {
   component: MucDivider,
   title: "MucDivider",
   tags: ["autodocs"],
-  // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
   parameters: {
     docs: {
       description: {
