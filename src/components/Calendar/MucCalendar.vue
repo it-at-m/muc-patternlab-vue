@@ -1,34 +1,112 @@
 <template>
   <div>
-    <muc-button @click="computeDisplayedDays"></muc-button>
-    <header>Header</header>
-    <button @click="nextMonth"></button>
-    <table>
-      <thead>
-        <tr>
-          <th>Mo</th>
-          <th>Di</th>
-          <th>Mi</th>
-          <th>Do</th>
-          <th>Fr</th>
-          <th>Sa</th>
-          <th>So</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(week, index) in computeDisplayedDays()"
+    <div
+      id="outer"
+      style="
+        border: 1px solid var(--color-neutrals-blue);
+        width: 400px;
+        justify-content: center;
+      "
+    >
+      <div
+        id="caption"
+        style="
+          border-bottom: 1px solid var(--color-neutrals-blue);
+          background-color: var(--color-neutrals-blue-xlight);
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+        "
+      >
+        <muc-button
+          @click="computeDisplayedDays"
+          variant="ghost"
+          icon="chevron-left"
+        />
+        <header style="justify-content: center; display: flex">Month</header>
+        <muc-button
+          @click="nextMonth"
+          variant="ghost"
+          icon="chevron-right"
+        />
+      </div>
+      <div
+        id="table"
+        class="container"
+      >
+        <div
+          class="item"
+          v-for="(weekDay, index) in weekDays"
           :key="index"
         >
-          <td
-            v-for="(day, dIndex) in week"
-            :key="dIndex"
+          {{ weekDay }}
+        </div>
+        <div
+          class="item"
+          v-for="index in 35"
+          :key="index"
+          @click=""
+        >
+          {{ index }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="calendar-container-header">
+        <muc-button
+          @click="computeDisplayedDays"
+          variant="ghost"
+          icon="chevron-left"
+        />
+        <header style="justify-content: center; display: flex">Month</header>
+        <muc-button
+          @click="nextMonth"
+          variant="ghost"
+          icon="chevron-right"
+        />
+      </div>
+
+      <div>
+        <div id="calendar-column">
+          <div id="calendar-row">Monat</div>
+        </div>
+      </div>
+      <table>
+        <caption>
+          Monat
+        </caption>
+        <colgroup>
+          <col
+            span="7"
+            style="justify-content: center; display: flex"
+          />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Mo</th>
+            <th>Di</th>
+            <th>Mi</th>
+            <th>Do</th>
+            <th>Fr</th>
+            <th>Sa</th>
+            <th>So</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(week, index) in computeDisplayedDays()"
+            :key="index"
           >
-            {{ day.day }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td
+              v-for="(day, dIndex) in week"
+              :key="dIndex"
+            >
+              {{ day.day }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -39,6 +117,8 @@ import { MucButton } from "../Button";
 import { Week } from "./MucCalendarType";
 
 const DAYS_IN_WEEK = 7;
+
+const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 type CalendarTypes = "single" | "multiple" | "range";
 
@@ -125,4 +205,32 @@ const calendarData = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  padding: 10px;
+  gap: 20px 20px;
+}
+.item {
+  justify-self: center;
+}
+
+#calendar-container-outer {
+  border: 1px solid var(--color-neutrals-blue);
+  display: inline-block;
+}
+#calendar-container-header {
+  border-bottom: 1px solid var(--color-neutrals-blue);
+  background-color: var(--color-neutrals-blue-xlight);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+#calendar-table-header {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  align-items: center;
+}
+</style>
