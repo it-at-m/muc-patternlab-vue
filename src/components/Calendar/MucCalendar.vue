@@ -11,6 +11,7 @@
       <div
         id="caption"
         style="
+          padding: 5px;
           border-bottom: 1px solid var(--color-neutrals-blue);
           background-color: var(--color-neutrals-blue-xlight);
           display: grid;
@@ -19,11 +20,13 @@
         "
       >
         <muc-button
-          @click="computeDisplayedDays"
+          @click="prevMonth"
           variant="ghost"
           icon="chevron-left"
         />
-        <header style="justify-content: center; display: flex">Month</header>
+        <header style="justify-content: center; display: flex">
+          <h3>{{ computedCaption }}</h3>
+        </header>
         <muc-button
           @click="nextMonth"
           variant="ghost"
@@ -40,7 +43,7 @@
           v-for="(weekDay, index) in weekDays"
           :key="index"
         >
-          {{ weekDay }}
+          <strong>{{ weekDay }}</strong>
         </div>
       </div>
       <div
@@ -48,16 +51,45 @@
         class="container"
       >
         <div
+          v-for="prevDay in computedCalendar.firstDayOfMonth - 1"
+          @click="clickedDay(-computedCalendar.firstDayOfMonth + prevDay + 1)"
           class="item"
-          v-for="index in 35"
-          :key="index"
-          @click="clickedDay"
-          :class="isSelected(index)"
+          style="color: var(--color-neutrals-blue"
+          :class="isSelected(-computedCalendar.firstDayOfMonth + prevDay + 1)"
+          :key="-computedCalendar.firstDayOfMonth + prevDay + 1"
         >
-          {{ index }}
+          {{
+            computedCalendar.lastDayOfPrevMonth -
+            computedCalendar.firstDayOfMonth +
+            prevDay +
+            1
+          }}
+        </div>
+        <div
+          v-for="day in computedCalendar.daysOfMonth"
+          @click="clickedDay(day)"
+          class="item"
+          :class="isSelected(day)"
+          :key="day"
+        >
+          {{ day }}
+        </div>
+        <div
+          v-for="nextDay in NUM_OF_DISPLAYED_DAYS -
+          computedCalendar.firstDayOfMonth -
+          computedCalendar.daysOfMonth +
+          1"
+          @click="clickedDay(nextDay + computedCalendar.daysOfMonth)"
+          class="item"
+          style="color: var(--color-neutrals-blue"
+          :class="isSelected(nextDay + computedCalendar.daysOfMonth)"
+          :key="nextDay + computedCalendar.daysOfMonth"
+        >
+          {{ nextDay }}
         </div>
       </div>
     </div>
+    {{ selectedDate }}
   </div>
 </template>
 
@@ -65,100 +97,81 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
-import { MucDivider } from "../Divider";
 import { Week } from "./MucCalendarType";
 
 const DAYS_IN_WEEK = 7;
+
+const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 
 const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 type CalendarTypes = "single" | "multiple" | "range";
 
-const currDate = ref<Date>(new Date());
+/**
+ * Determines the current shown month and year
+ */
+const viewDate = ref<Date>(new Date());
 
-const displayedDaysRef = ref<Week[]>([]);
+/**
+ * Currently selected date by the user
+ */
+const selectedDate = defineModel<Date>("modelValue");
 
-const prevMonth = () => currDate.value.setMonth(currDate.value.getMonth() - 1);
-
-// No modulo needed here!
-const nextMonth = () => currDate.value.setMonth(currDate.value.getMonth() + 1);
-
-const clickedDay = () => console.log("Clicked on a day");
-
-const isSelected = (index: number) => (index == 15 ? "selected" : "");
-
-const computeDisplayedDays = () => {
-  const year = currDate.value.getFullYear();
-  const month = currDate.value.getMonth();
-  const day = currDate.value.getDay();
-
-  const firstDay = new Date(year, month, 1).getDay();
-  // No modulo needed here! Day zero is the last day of the month beforehand
-  const lastDay = new Date(year, month + 1, 0).getDate();
-  const lastDay2 = new Date(year, month + 1, 0).getDay();
-
-  const numOfWeeks = Math.ceil((firstDay + lastDay) / DAYS_IN_WEEK);
-
-  const numOfDisplayedDays = numOfWeeks * DAYS_IN_WEEK;
-
-  const displayedDays: Week[] = [];
-
-  for (let i = 0; i < numOfWeeks; i++) {
-    displayedDays[i] = [];
-  }
-
-  // fill days of prev months
-  const prevMonthLastDay = new Date(year, month, 0).getDate();
-  console.table({
-    prevMonthLastDay,
-    firstDay,
-    lastDay,
+const computedCaption = computed(() => {
+  console.log("hello");
+  return viewDate.value.toLocaleDateString("de-De", {
+    month: "long",
+    year: "numeric",
   });
+});
 
-  for (let i = 0; i < firstDay; i++) {
-    displayedDays[0][i] = {
-      day: prevMonthLastDay - firstDay + i + 2,
-      month: month - 1,
-    };
-  }
-
-  // fill days of current months
-  for (let i = firstDay; i <= lastDay; i++) {
-    let week = Math.floor((i - 1) / DAYS_IN_WEEK);
-    displayedDays[week][(i - 1) % DAYS_IN_WEEK] = {
-      day: i - firstDay + 1,
-      month: month,
-    };
-  }
-
-  //fill days of next months
-  /**for (let i = 1; ;i++) {
-    displayedDays[numOfWeeks -1][(i - 1) % DAYS_IN_WEEK] =
-  }**/
-
-  return displayedDays;
-};
-
-const calendarData = computed(() => {
-  const year = currDate.value.getFullYear();
-  const month = currDate.value.getMonth();
-  const day = currDate.value.getDay();
-
-  const firstDay = new Date(year, month, 1).getDay();
-  // No modulo needed here! Day zero is the last day of the month beforehand
-  const lastDay = new Date(year, month + 1, 0).getDay();
-
-  const numOfWeeks = Math.ceil((firstDay + lastDay) / DAYS_IN_WEEK);
+const computedCalendar = computed(() => {
+  const daysOfMonth = new Date(
+    viewDate.value.getFullYear(),
+    viewDate.value.getMonth() + 1,
+    0
+  ).getDate();
+  const firstDayOfMonth = new Date(
+    viewDate.value.getFullYear(),
+    viewDate.value.getMonth(),
+    1
+  ).getDay();
+  const lastDayOfPrevMonth = new Date(
+    viewDate.value.getFullYear(),
+    viewDate.value.getMonth(),
+    0
+  ).getDate();
 
   return {
-    year,
-    month,
-    day,
-    numOfWeeks,
-    firstDay,
-    lastDay,
+    daysOfMonth,
+    firstDayOfMonth,
+    lastDayOfPrevMonth,
   };
 });
+
+const prevMonth = () => {
+  viewDate.value = new Date(
+    viewDate.value.setMonth(viewDate.value.getMonth() - 1)
+  );
+};
+
+// No modulo needed here!
+const nextMonth = () => {
+  viewDate.value = new Date(
+    viewDate.value.setMonth(viewDate.value.getMonth() + 1)
+  );
+};
+
+const convertIndexToDate = (index: number) =>
+  new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), index);
+
+const clickedDay = (index: number) => {
+  selectedDate.value = convertIndexToDate(index);
+  console.log(`Clicked ${selectedDate.value}`);
+};
+
+const isSelected = (index: number) =>
+  convertIndexToDate(index) == selectedDate.value ? "selected" : "";
 </script>
 
 <style scoped>
@@ -166,7 +179,7 @@ const calendarData = computed(() => {
   display: grid;
   grid-template-columns: repeat(7, minmax(auto, 1fr));
   justify-self: center;
-  gap: 5px 5px;
+  gap: 2px 2px;
   padding: 5px;
 }
 .header-item {
@@ -180,13 +193,17 @@ const calendarData = computed(() => {
   width: 100%;
   height: 100%;
   border: 1px solid white;
-  padding: 5px;
+  padding: 8px;
   transition: border-color 0.3s ease-in;
 }
 .item:hover {
   border: 1px solid var(--color-neutrals-blue);
   transition: border-color 0.1s ease-out;
   cursor: pointer;
+}
+
+.other-month {
+  color: blue;
 }
 
 .selected {
