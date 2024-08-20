@@ -31,81 +31,32 @@
         />
       </div>
       <div
-        id="table"
+        id="table-header"
         class="container"
+        style="border-bottom: 1px solid var(--color-neutrals-blue)"
       >
         <div
-          class="item"
+          class="header-item"
           v-for="(weekDay, index) in weekDays"
           :key="index"
         >
           {{ weekDay }}
         </div>
+      </div>
+      <div
+        id="table"
+        class="container"
+      >
         <div
           class="item"
           v-for="index in 35"
           :key="index"
-          @click=""
+          @click="clickedDay"
+          :class="isSelected(index)"
         >
           {{ index }}
         </div>
       </div>
-    </div>
-    <div>
-      <div id="calendar-container-header">
-        <muc-button
-          @click="computeDisplayedDays"
-          variant="ghost"
-          icon="chevron-left"
-        />
-        <header style="justify-content: center; display: flex">Month</header>
-        <muc-button
-          @click="nextMonth"
-          variant="ghost"
-          icon="chevron-right"
-        />
-      </div>
-
-      <div>
-        <div id="calendar-column">
-          <div id="calendar-row">Monat</div>
-        </div>
-      </div>
-      <table>
-        <caption>
-          Monat
-        </caption>
-        <colgroup>
-          <col
-            span="7"
-            style="justify-content: center; display: flex"
-          />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Mo</th>
-            <th>Di</th>
-            <th>Mi</th>
-            <th>Do</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>So</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(week, index) in computeDisplayedDays()"
-            :key="index"
-          >
-            <td
-              v-for="(day, dIndex) in week"
-              :key="dIndex"
-            >
-              {{ day.day }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </template>
@@ -114,6 +65,7 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
+import { MucDivider } from "../Divider";
 import { Week } from "./MucCalendarType";
 
 const DAYS_IN_WEEK = 7;
@@ -130,6 +82,10 @@ const prevMonth = () => currDate.value.setMonth(currDate.value.getMonth() - 1);
 
 // No modulo needed here!
 const nextMonth = () => currDate.value.setMonth(currDate.value.getMonth() + 1);
+
+const clickedDay = () => console.log("Clicked on a day");
+
+const isSelected = (index: number) => (index == 15 ? "selected" : "");
 
 const computeDisplayedDays = () => {
   const year = currDate.value.getFullYear();
@@ -208,15 +164,37 @@ const calendarData = computed(() => {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: repeat(7, auto);
-  padding: 10px;
-  gap: 20px 20px;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+  justify-self: center;
+  gap: 5px 5px;
+  padding: 5px;
+}
+.header-item {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
 }
 .item {
-  justify-self: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  padding: 5px;
+  transition: border-color 0.3s ease-in;
+}
+.item:hover {
+  border: 1px solid var(--color-neutrals-blue);
+  transition: border-color 0.1s ease-out;
+  cursor: pointer;
 }
 
-#calendar-container-outer {
+.selected {
+  background: var(--color-brand-main-blue);
+  color: white;
+}
+
+.header #calendar-container-outer {
   border: 1px solid var(--color-neutrals-blue);
   display: inline-block;
 }
