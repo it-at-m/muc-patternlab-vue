@@ -2,7 +2,7 @@ import MucCalendar from "./MucCalendar.vue";
 
 export default {
   component: MucCalendar,
-  title: "MucCalendar",
+  title: "unofficial/MucCalendar",
   tags: ["autodocs"],
   // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
   parameters: {
