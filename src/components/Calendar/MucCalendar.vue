@@ -50,43 +50,47 @@
         id="table"
         class="container"
       >
-        <div
-          v-for="prevDay in computedCalendar.firstDayOfMonth - 1"
-          @click="clickedDay(-computedCalendar.firstDayOfMonth + prevDay + 1)"
+        <muc-day-tile
+          v-for="day in computedCalendar.firstDayOfMonth - 1"
+          @click="clickedDay(-computedCalendar.firstDayOfMonth + day + 1)"
           class="item"
-          style="color: var(--color-neutrals-blue"
-          :class="isSelected(-computedCalendar.firstDayOfMonth + prevDay + 1)"
-          :key="-computedCalendar.firstDayOfMonth + prevDay + 1"
-        >
-          {{
+          style="color: var(--color-neutrals-blue)"
+          :date="
             computedCalendar.lastDayOfPrevMonth -
             computedCalendar.firstDayOfMonth +
-            prevDay +
+            day +
             1
-          }}
-        </div>
-        <div
+          "
+          :index="-computedCalendar.firstDayOfMonth + day + 1"
+          :selected-date="selectedDate"
+          :view-date="viewDate"
+          :key="-computedCalendar.firstDayOfMonth + day + 1"
+        />
+        <muc-day-tile
           v-for="day in computedCalendar.daysOfMonth"
           @click="clickedDay(day)"
           class="item"
-          :class="isSelected(day)"
+          :class="{ true: 'selected' }"
+          :index="day"
+          :date="day"
+          :selected-date="selectedDate"
+          :view-date="viewDate"
           :key="day"
-        >
-          {{ day }}
-        </div>
-        <div
-          v-for="nextDay in NUM_OF_DISPLAYED_DAYS -
+        />
+        <muc-day-tile
+          v-for="day in NUM_OF_DISPLAYED_DAYS -
           computedCalendar.firstDayOfMonth -
           computedCalendar.daysOfMonth +
           1"
-          @click="clickedDay(nextDay + computedCalendar.daysOfMonth)"
+          @click="clickedDay(day + computedCalendar.daysOfMonth)"
           class="item"
-          style="color: var(--color-neutrals-blue"
-          :class="isSelected(nextDay + computedCalendar.daysOfMonth)"
-          :key="nextDay + computedCalendar.daysOfMonth"
-        >
-          {{ nextDay }}
-        </div>
+          :date="day"
+          :index="day + computedCalendar.daysOfMonth"
+          :selected-date="selectedDate"
+          :view-date="viewDate"
+          style="color: var(--color-neutrals-blue)"
+          :key="day + computedCalendar.daysOfMonth"
+        />
       </div>
     </div>
     {{ selectedDate }}
@@ -97,7 +101,8 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
-import { Week } from "./MucCalendarType";
+import { convertIndexToDate } from "./MucCalendarType";
+import MucDayTile from "./MucDayTile.vue";
 
 const DAYS_IN_WEEK = 7;
 
@@ -110,12 +115,14 @@ type CalendarTypes = "single" | "multiple" | "range";
 /**
  * Determines the current shown month and year
  */
-const viewDate = ref<Date>(new Date());
+const viewDate = ref<Date>(
+  new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+);
 
 /**
  * Currently selected date by the user
  */
-const selectedDate = defineModel<Date>("modelValue");
+const selectedDate = defineModel<Date>("modelValue", { default: new Date() });
 
 const computedCaption = computed(() => {
   console.log("hello");
@@ -131,11 +138,12 @@ const computedCalendar = computed(() => {
     viewDate.value.getMonth() + 1,
     0
   ).getDate();
-  const firstDayOfMonth = new Date(
+  let firstDayOfMonth = new Date(
     viewDate.value.getFullYear(),
     viewDate.value.getMonth(),
     1
   ).getDay();
+  firstDayOfMonth = firstDayOfMonth == 0 ? 7 : firstDayOfMonth;
   const lastDayOfPrevMonth = new Date(
     viewDate.value.getFullYear(),
     viewDate.value.getMonth(),
@@ -162,16 +170,16 @@ const nextMonth = () => {
   );
 };
 
-const convertIndexToDate = (index: number) =>
-  new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), index);
-
 const clickedDay = (index: number) => {
-  selectedDate.value = convertIndexToDate(index);
+  selectedDate.value = convertIndexToDate(viewDate.value, index);
   console.log(`Clicked ${selectedDate.value}`);
 };
 
-const isSelected = (index: number) =>
-  convertIndexToDate(index) == selectedDate.value ? "selected" : "";
+const isSelected = (index: number) => {
+  return convertIndexToDate(viewDate.value, index) === selectedDate.value
+    ? "selected"
+    : "";
+};
 </script>
 
 <style scoped>
@@ -206,11 +214,6 @@ const isSelected = (index: number) =>
   color: blue;
 }
 
-.selected {
-  background: var(--color-brand-main-blue);
-  color: white;
-}
-
 .header #calendar-container-outer {
   border: 1px solid var(--color-neutrals-blue);
   display: inline-block;
@@ -221,6 +224,11 @@ const isSelected = (index: number) =>
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
+}
+
+.selected {
+  background: var(--color-brand-main-blue);
+  color: white;
 }
 
 #calendar-table-header {
