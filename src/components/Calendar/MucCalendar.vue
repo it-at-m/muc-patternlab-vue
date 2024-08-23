@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      id="outer"
       style="
         border: 1px solid var(--color-neutrals-blue);
-        width: 400px;
+        min-width: 300px;
+        max-width: 1200px;
         justify-content: center;
       "
     >
@@ -50,50 +50,24 @@
         id="table"
         class="container"
       >
-        <muc-day-tile
-          v-for="day in computedCalendar.firstDayOfMonth - 1"
-          @click="clickedDay(-computedCalendar.firstDayOfMonth + day + 1)"
-          class="item"
-          style="color: var(--color-neutrals-blue)"
-          :date="
-            computedCalendar.lastDayOfPrevMonth -
-            computedCalendar.firstDayOfMonth +
-            day +
-            1
-          "
-          :index="-computedCalendar.firstDayOfMonth + day + 1"
-          :selected-date="selectedDate"
-          :view-date="viewDate"
-          :key="-computedCalendar.firstDayOfMonth + day + 1"
+        <div
+          v-for="blank in numOfDisplayedSpacers"
+          :key="blank"
         />
         <muc-day-tile
-          v-for="day in computedCalendar.daysOfMonth"
-          @click="clickedDay(day)"
+          v-for="date in NUM_OF_DISPLAYED_DAYS"
           class="item"
-          :class="{ true: 'selected' }"
-          :index="day"
-          :date="day"
-          :selected-date="selectedDate"
+          :date="addDaysToDate(computedStartDate, date)"
           :view-date="viewDate"
-          :key="day"
-        />
-        <muc-day-tile
-          v-for="day in NUM_OF_DISPLAYED_DAYS -
-          computedCalendar.firstDayOfMonth -
-          computedCalendar.daysOfMonth +
-          1"
-          @click="clickedDay(day + computedCalendar.daysOfMonth)"
-          class="item"
-          :date="day"
-          :index="day + computedCalendar.daysOfMonth"
           :selected-date="selectedDate"
-          :view-date="viewDate"
-          style="color: var(--color-neutrals-blue)"
-          :key="day + computedCalendar.daysOfMonth"
+          :only-curr-month="onlyCurrentMonth"
+          @click="clickedDate"
+          :key="date"
         />
       </div>
     </div>
-    {{ selectedDate }}
+    <div>selectedDate: {{ computedStartDate.getDay() }}</div>
+    <div>viewDate: {{ viewDate }}</div>
   </div>
 </template>
 
@@ -101,7 +75,6 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
-import { convertIndexToDate } from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
 
 const DAYS_IN_WEEK = 7;
@@ -111,6 +84,17 @@ const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 type CalendarTypes = "single" | "multiple" | "range";
+
+const props = withDefaults(
+  defineProps<{
+    onlyCurrentMonth?: boolean;
+    variant?: CalendarTypes;
+  }>(),
+  {
+    onlyCurrentMonth: false,
+    variant: "single",
+  }
+);
 
 /**
  * Determines the current shown month and year
@@ -125,12 +109,23 @@ const viewDate = ref<Date>(
 const selectedDate = defineModel<Date>("modelValue", { default: new Date() });
 
 const computedCaption = computed(() => {
-  console.log("hello");
   return viewDate.value.toLocaleDateString("de-De", {
     month: "long",
     year: "numeric",
   });
 });
+
+const firstDateOfMonth = computed(
+  () => new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), 1)
+);
+
+const computedStartDate = computed(() =>
+  addDaysToDate(firstDateOfMonth.value, -firstDateOfMonth.value.getDay() || -7)
+);
+
+const numOfDisplayedSpacers = computed(() =>
+  props.onlyCurrentMonth ? firstDateOfMonth.value.getDay() - 1 : 0
+);
 
 const computedCalendar = computed(() => {
   const daysOfMonth = new Date(
@@ -138,12 +133,12 @@ const computedCalendar = computed(() => {
     viewDate.value.getMonth() + 1,
     0
   ).getDate();
-  let firstDayOfMonth = new Date(
-    viewDate.value.getFullYear(),
-    viewDate.value.getMonth(),
-    1
-  ).getDay();
-  firstDayOfMonth = firstDayOfMonth == 0 ? 7 : firstDayOfMonth;
+  const firstDayOfMonth =
+    new Date(
+      viewDate.value.getFullYear(),
+      viewDate.value.getMonth(),
+      1
+    ).getDay() || 7;
   const lastDayOfPrevMonth = new Date(
     viewDate.value.getFullYear(),
     viewDate.value.getMonth(),
@@ -170,16 +165,10 @@ const nextMonth = () => {
   );
 };
 
-const clickedDay = (index: number) => {
-  selectedDate.value = convertIndexToDate(viewDate.value, index);
-  console.log(`Clicked ${selectedDate.value}`);
-};
+const clickedDate = (date: Date) => (selectedDate.value = date);
 
-const isSelected = (index: number) => {
-  return convertIndexToDate(viewDate.value, index) === selectedDate.value
-    ? "selected"
-    : "";
-};
+const addDaysToDate = (date: Date, days: number) =>
+  new Date(new Date(date).setDate(date.getDate() + days));
 </script>
 
 <style scoped>
@@ -196,6 +185,7 @@ const isSelected = (index: number) => {
   height: 100%;
   padding: 5px;
 }
+
 .item {
   text-align: center;
   width: 100%;
