@@ -3,8 +3,8 @@
     <div
       style="
         border: 1px solid var(--color-neutrals-blue);
-        min-width: 300px;
-        max-width: 1200px;
+        min-width: 330px;
+        max-width: 900px;
         justify-content: center;
       "
     >
@@ -75,6 +75,11 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
+import {
+  isEqualDates,
+  MucCalendarSelected,
+  MucDateRange,
+} from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
 
 const DAYS_IN_WEEK = 7;
@@ -84,17 +89,6 @@ const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 type CalendarTypes = "single" | "multiple" | "range";
-
-const props = withDefaults(
-  defineProps<{
-    onlyCurrentMonth?: boolean;
-    variant?: CalendarTypes;
-  }>(),
-  {
-    onlyCurrentMonth: false,
-    variant: "single",
-  }
-);
 
 /**
  * Determines the current shown month and year
@@ -106,7 +100,20 @@ const viewDate = ref<Date>(
 /**
  * Currently selected date by the user
  */
-const selectedDate = defineModel<Date>("modelValue", { default: new Date() });
+const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
+  default: new Date(),
+});
+
+const props = withDefaults(
+  defineProps<{
+    onlyCurrentMonth?: boolean;
+    variant?: CalendarTypes;
+  }>(),
+  {
+    onlyCurrentMonth: false,
+    variant: "single",
+  }
+);
 
 const computedCaption = computed(() => {
   return viewDate.value.toLocaleDateString("de-De", {
@@ -124,33 +131,8 @@ const computedStartDate = computed(() =>
 );
 
 const numOfDisplayedSpacers = computed(() =>
-  props.onlyCurrentMonth ? firstDateOfMonth.value.getDay() - 1 : 0
+  props.onlyCurrentMonth ? (firstDateOfMonth.value.getDay() || 7) - 1 : 0
 );
-
-const computedCalendar = computed(() => {
-  const daysOfMonth = new Date(
-    viewDate.value.getFullYear(),
-    viewDate.value.getMonth() + 1,
-    0
-  ).getDate();
-  const firstDayOfMonth =
-    new Date(
-      viewDate.value.getFullYear(),
-      viewDate.value.getMonth(),
-      1
-    ).getDay() || 7;
-  const lastDayOfPrevMonth = new Date(
-    viewDate.value.getFullYear(),
-    viewDate.value.getMonth(),
-    0
-  ).getDate();
-
-  return {
-    daysOfMonth,
-    firstDayOfMonth,
-    lastDayOfPrevMonth,
-  };
-});
 
 const prevMonth = () => {
   viewDate.value = new Date(
@@ -165,7 +147,61 @@ const nextMonth = () => {
   );
 };
 
-const clickedDate = (date: Date) => (selectedDate.value = date);
+/**
+ * If a different type as single was previously chosen - the datatype will be converted to a single date.
+ * The newly selected date will be compared to the current selected date and either deleted or set.
+ * @param newValue is the newly selected date.
+ */
+const updateMVSingle = (newValue: Date) => {
+  if (!(selectedDate.value instanceof Date || selectedDate.value === null))
+    selectedDate.value = Object.values(selectedDate.value)[0];
+
+  selectedDate.value =
+    selectedDate.value === null || !isEqualDates(selectedDate.value, newValue)
+      ? newValue
+      : null;
+};
+
+const updateMVMultiple = (newValue: Date) => {
+  if (selectedDate.value === null) selectedDate.value = [];
+  else if (selectedDate.value instanceof Date)
+    selectedDate.value = [selectedDate.value];
+  else if ("from" in selectedDate.value && "to" in selectedDate.value)
+    // TODO - find better method of differentiating the type
+    selectedDate.value = [
+      selectedDate.value.from,
+      selectedDate.value.to,
+    ].filter((date) => date !== null);
+
+  selectedDate.value.includes(newValue)
+    ? selectedDate.value.filter((val: Date) => val !== newValue)
+    : [...selectedDate.value, newValue];
+};
+
+const updateMVRange = (newValue: Date) => {
+  if (selectedDate.value === null || selectedDate.value.constructor === Array)
+    selectedDate.value = { from: null, to: null };
+  else if (selectedDate.value instanceof Date)
+    selectedDate.value = { from: selectedDate.value, to: null };
+
+  selectedDate.value = selectedDate.value.from!
+    ? { from: selectedDate.value.from!, to: newValue }
+    : { from: newValue, to: null };
+};
+
+const clickedDate = (date: Date) => {
+  switch (props.variant) {
+    case "single":
+      updateMVSingle(date);
+      break;
+    case "multiple":
+      updateMVMultiple(date);
+      break;
+    case "range":
+      updateMVRange(date);
+      break;
+  }
+};
 
 const addDaysToDate = (date: Date, days: number) =>
   new Date(new Date(date).setDate(date.getDate() + days));
