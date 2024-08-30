@@ -10,9 +10,8 @@
       <input
         type="text"
         class="m-input m-combobox m-combobox--single"
-        :value="outputTransformed"
+        v-model="searchValue"
         @click="toggleItemList"
-        readonly
       />
       <span
         class="m-input__trigger"
@@ -32,7 +31,7 @@
         @mouseleave="emptyActiveItem"
       >
         <li
-          v-for="(option, index) in props.items"
+          v-for="(option, index) in displayedItems"
           :key="index"
           class="option"
           @mouseenter="activeItem = option"
@@ -53,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import {computed, ref, watch} from "vue";
 
 /**
  * Exposed selected value / values
@@ -157,6 +156,33 @@ const outputTransformed = computed(() => {
   if (typeof selectedValues.value === "string") return selectedValues.value;
   return selectedValues.value.join(props.multiple ? ", " : " ");
 });
+
+watch(outputTransformed, newOutput => {
+  searchValue.value = newOutput;
+});
+
+/**
+ * Current search value
+ */
+const searchValue = ref<string>(outputTransformed.value);
+
+/**
+ * Determines whether all or only the searched elements are displayed
+ */
+const displayedItems = computed(() =>
+    searchValue.value == outputTransformed.value
+        ? props.items
+        : updateDisplayedItems(searchValue.value)
+);
+
+/**
+ * Filters the list of elements after entering the search string
+ * @param search the search string
+ * @return list of searched items
+ */
+const updateDisplayedItems = (search: string) => {
+  return props.items.filter(item => item.includes(search));
+};
 
 /**
  * Apply active class to hovered item
