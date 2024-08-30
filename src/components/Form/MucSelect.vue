@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import {computed, ref, watch} from "vue";
+import { computed, ref, watch } from "vue";
 
 /**
  * Exposed selected value / values
@@ -157,7 +157,7 @@ const outputTransformed = computed(() => {
   return selectedValues.value.join(props.multiple ? ", " : " ");
 });
 
-watch(outputTransformed, newOutput => {
+watch(outputTransformed, (newOutput) => {
   searchValue.value = newOutput;
 });
 
@@ -170,9 +170,9 @@ const searchValue = ref<string>(outputTransformed.value);
  * Determines whether all or only the searched elements are displayed
  */
 const displayedItems = computed(() =>
-    searchValue.value == outputTransformed.value
-        ? props.items
-        : updateDisplayedItems(searchValue.value)
+  searchValue.value == outputTransformed.value
+    ? props.items
+    : updateDisplayedItems(searchValue.value)
 );
 
 /**
@@ -181,7 +181,7 @@ const displayedItems = computed(() =>
  * @return list of searched items
  */
 const updateDisplayedItems = (search: string) => {
-  return props.items.filter(item => item.includes(search));
+  return props.items.filter((item) => item.includes(search));
 };
 
 /**
