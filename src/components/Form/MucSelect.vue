@@ -1,5 +1,5 @@
 <template>
-  <div class="m-form-group">
+  <div class="m-form-group" ref="selectComponentRef">
     <label class="m-label">
       {{ label }}
     </label>
@@ -11,7 +11,7 @@
         type="text"
         class="m-input m-combobox m-combobox--single"
         v-model="searchValue"
-        @click="toggleItemList"
+        @click="openItemList"
       />
       <span
         class="m-input__trigger"
@@ -53,6 +53,12 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import useOnClickOutside from "../../composables/useOnClickOutside";
+
+/**
+ * Ref ot the component
+ */
+const selectComponentRef = ref();
 
 /**
  * Exposed selected value / values
@@ -110,6 +116,21 @@ const toggleItemList = () => {
   showItems.value = !showItems.value;
   activeItem.value = lastClickedItem.value;
 };
+
+/**
+ * Opens the list of items and sets the previously selected item as active
+ */
+const openItemList = () => {
+  showItems.value = true;
+  activeItem.value = lastClickedItem.value;
+};
+
+/**
+ * Closes the list after clicking outside the component
+ */
+useOnClickOutside ( selectComponentRef, () => {
+  showItems.value = false;
+})
 
 /**
  * Actions upon clicking an item
