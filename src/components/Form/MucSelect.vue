@@ -1,5 +1,8 @@
 <template>
-  <div class="m-form-group" ref="selectComponentRef">
+  <div
+    class="m-form-group"
+    ref="selectComponentRef"
+  >
     <label class="m-label">
       {{ label }}
     </label>
@@ -53,6 +56,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+
 import useOnClickOutside from "../../composables/useOnClickOutside";
 
 /**
@@ -128,9 +132,9 @@ const openItemList = () => {
 /**
  * Closes the list after clicking outside the component
  */
-useOnClickOutside ( selectComponentRef, () => {
+useOnClickOutside(selectComponentRef, () => {
   showItems.value = false;
-})
+});
 
 /**
  * Actions upon clicking an item
