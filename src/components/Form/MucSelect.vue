@@ -43,6 +43,12 @@
         >
           {{ option }}
         </li>
+        <li
+          v-if="noItemsFound"
+          class="option"
+        >
+          {{ noItemFoundMessage }}
+        </li>
       </ul>
     </div>
     <p
@@ -82,6 +88,11 @@ const showItems = ref<boolean>(false);
 const lastClickedItem = ref<string>();
 
 /**
+ * If no items found after filtering
+ */
+const noItemsFound = ref<boolean>(false);
+
+/**
  * Index of currently actively hovered item or selected item
  */
 const activeItem = ref<string>();
@@ -107,9 +118,15 @@ const props = withDefaults(
      * Allow multiple selectable items
      */
     multiple?: boolean;
+
+    /**
+     * Optional message shown no item is found after filtering
+     */
+    noItemFoundMessage?: string;
   }>(),
   {
     multiple: false,
+    noItemFoundMessage: "No items found.",
   }
 );
 
@@ -127,6 +144,7 @@ const toggleItemList = () => {
 const openItemList = () => {
   showItems.value = true;
   activeItem.value = lastClickedItem.value;
+  searchValue.value = "";
 };
 
 /**
@@ -134,6 +152,7 @@ const openItemList = () => {
  */
 useOnClickOutside(selectComponentRef, () => {
   showItems.value = false;
+  searchValue.value = outputTransformed.value;
 });
 
 /**
@@ -206,7 +225,12 @@ const displayedItems = computed(() =>
  * @return list of searched items
  */
 const updateDisplayedItems = (search: string) => {
-  return props.items.filter((item) => item.includes(search));
+  noItemsFound.value = false;
+  const filteredItems = props.items.filter((item) => item.includes(search));
+  if (filteredItems.length === 0) {
+    noItemsFound.value = true;
+  }
+  return filteredItems;
 };
 
 /**
@@ -239,7 +263,7 @@ const displayOptions = computed(() =>
  * Switches between the selection modes according to multiple. Checkboxes are shown on the multiple select
  */
 const selectType = computed(() =>
-  props.multiple
+  props.multiple && !noItemsFound.value
     ? "m-input-wrapper--multiselect multiselect"
     : "m-input-wrapper--select"
 );
