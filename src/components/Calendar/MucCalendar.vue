@@ -61,6 +61,7 @@
           :view-date="viewDate"
           :selected-date="selectedDate"
           :only-curr-month="onlyCurrentMonth"
+          :variant="variant"
           @click="clickedDate"
           :key="date"
         />
@@ -76,9 +77,9 @@ import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
 import {
+  CalendarTypes,
   isEqualDates,
   MucCalendarSelected,
-  MucDateRange,
 } from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
 
@@ -87,8 +88,6 @@ const DAYS_IN_WEEK = 7;
 const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 
 const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-
-type CalendarTypes = "single" | "multiple" | "range";
 
 /**
  * Determines the current shown month and year
