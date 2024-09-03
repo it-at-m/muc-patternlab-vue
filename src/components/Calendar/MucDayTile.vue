@@ -14,13 +14,18 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { compareDates } from "./MucCalendarType";
+import {
+  CalendarTypes,
+  isEqualDates,
+  MucCalendarSelected,
+} from "./MucCalendarType";
 
 const props = withDefaults(
   defineProps<{
     date: Date;
     viewDate: Date;
-    selectedDate: Date;
+    selectedDate: MucCalendarSelected;
+    variant: CalendarTypes;
     onlyCurrMonth?: boolean;
   }>(),
   {
@@ -32,7 +37,15 @@ const emit = defineEmits<{
   click: [date: Date];
 }>();
 
-const isSelected = computed(() => compareDates(props.selectedDate, props.date));
+const isSelected = computed(() => {
+  if (props.selectedDate === null) return false;
+  switch (props.variant) {
+    case "single":
+      return isEqualDates(props.selectedDate, props.date);
+    case "multiple":
+      return;
+  }
+});
 
 const isCurrMonth = computed(
   () => props.date.getMonth() === props.viewDate.getMonth()
