@@ -1,5 +1,8 @@
 <template>
-  <div class="m-form-group">
+  <div
+    class="m-form-group"
+    ref="selectComponentRef"
+  >
     <label class="m-label">
       {{ label }}
     </label>
@@ -10,9 +13,8 @@
       <input
         type="text"
         class="m-input m-combobox m-combobox--single"
-        :value="outputTransformed"
-        @click="toggleItemList"
-        readonly
+        v-model="searchValue"
+        @click="openItemList"
       />
       <span
         class="m-input__trigger"
@@ -32,7 +34,7 @@
         @mouseleave="emptyActiveItem"
       >
         <li
-          v-for="(option, index) in props.items"
+          v-for="(option, index) in displayedItems"
           :key="index"
           class="option"
           @mouseenter="activeItem = option"
@@ -40,6 +42,12 @@
           @click="clicked(option)"
         >
           {{ option }}
+        </li>
+        <li
+          v-if="noItemsFound"
+          class="option"
+        >
+          {{ noItemFoundMessage }}
         </li>
       </ul>
     </div>
@@ -53,7 +61,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
+
+import useOnClickOutside from "../../composables/useOnClickOutside";
+
+/**
+ * Ref ot the component
+ */
+const selectComponentRef = ref();
 
 /**
  * Exposed selected value / values
@@ -71,6 +86,11 @@ const showItems = ref<boolean>(false);
  * Last interacted item - selected or deselected
  */
 const lastClickedItem = ref<string>();
+
+/**
+ * If no items found after filtering
+ */
+const noItemsFound = ref<boolean>(false);
 
 /**
  * Index of currently actively hovered item or selected item
@@ -98,9 +118,15 @@ const props = withDefaults(
      * Allow multiple selectable items
      */
     multiple?: boolean;
+
+    /**
+     * Optional message shown no item is found after filtering
+     */
+    noItemFoundMessage?: string;
   }>(),
   {
     multiple: false,
+    noItemFoundMessage: "No items found.",
   }
 );
 
@@ -111,6 +137,23 @@ const toggleItemList = () => {
   showItems.value = !showItems.value;
   activeItem.value = lastClickedItem.value;
 };
+
+/**
+ * Opens the list of items and sets the previously selected item as active
+ */
+const openItemList = () => {
+  showItems.value = true;
+  activeItem.value = lastClickedItem.value;
+  searchValue.value = "";
+};
+
+/**
+ * Closes the list after clicking outside the component
+ */
+useOnClickOutside(selectComponentRef, () => {
+  showItems.value = false;
+  searchValue.value = outputTransformed.value;
+});
 
 /**
  * Actions upon clicking an item
@@ -158,6 +201,38 @@ const outputTransformed = computed(() => {
   return selectedValues.value.join(props.multiple ? ", " : " ");
 });
 
+watch(outputTransformed, (newOutput) => {
+  searchValue.value = newOutput;
+});
+
+/**
+ * Current search value
+ */
+const searchValue = ref<string>(outputTransformed.value);
+
+/**
+ * Determines whether all or only the searched elements are displayed
+ */
+const displayedItems = computed(() =>
+  searchValue.value == outputTransformed.value
+    ? props.items
+    : updateDisplayedItems(searchValue.value)
+);
+
+/**
+ * Filters the list of elements after entering the search string
+ * @param search the search string
+ * @return list of searched items
+ */
+const updateDisplayedItems = (search: string) => {
+  noItemsFound.value = false;
+  const filteredItems = props.items.filter((item) => item.includes(search));
+  if (filteredItems.length === 0) {
+    noItemsFound.value = true;
+  }
+  return filteredItems;
+};
+
 /**
  * Apply active class to hovered item
  * @param value of item
@@ -188,7 +263,7 @@ const displayOptions = computed(() =>
  * Switches between the selection modes according to multiple. Checkboxes are shown on the multiple select
  */
 const selectType = computed(() =>
-  props.multiple
+  props.multiple && !noItemsFound.value
     ? "m-input-wrapper--multiselect multiselect"
     : "m-input-wrapper--select"
 );
