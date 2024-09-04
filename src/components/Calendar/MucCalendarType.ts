@@ -6,7 +6,10 @@ type MucDayTile = {
 
 type CalendarTypes = "single" | "multiple" | "range";
 
-type MucDateRange = { from: null | Date; to: null | Date };
+interface MucDateRange {
+  from: null | Date;
+  to: null | Date;
+}
 
 type MucCalendarSelected = null | Date | Date[] | MucDateRange;
 
@@ -17,4 +20,11 @@ const isEqualDates = (date1: Date, date2: Date) =>
   date1.getMonth() === date2.getMonth() &&
   date1.getFullYear() === date2.getFullYear();
 
-export { isEqualDates };
+const isDateAfterOther = (date1: Date, date2: Date) => date1 > date2;
+
+const isMucDateRange = (obj: MucCalendarSelected): obj is MucDateRange =>
+  obj !== null &&
+  (obj as MucDateRange).from !== undefined &&
+  (obj as MucDateRange).to !== undefined;
+
+export { isEqualDates, isMucDateRange, isDateAfterOther };
