@@ -67,8 +67,6 @@
         />
       </div>
     </div>
-    <div>selectedDate: {{ computedStartDate.getDay() }}</div>
-    <div>viewDate: {{ viewDate }}</div>
   </div>
 </template>
 
@@ -78,7 +76,9 @@ import { computed, ref } from "vue";
 import { MucButton } from "../Button";
 import {
   CalendarTypes,
+  isDateAfterOther,
   isEqualDates,
+  isMucDateRange,
   MucCalendarSelected,
 } from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
@@ -152,42 +152,67 @@ const nextMonth = () => {
  * @param newValue is the newly selected date.
  */
 const updateMVSingle = (newValue: Date) => {
-  if (!(selectedDate.value instanceof Date || selectedDate.value === null))
+  console.log(isMucDateRange(selectedDate.value));
+  if (Array.isArray(selectedDate.value) || isMucDateRange(selectedDate.value)) {
     selectedDate.value = Object.values(selectedDate.value)[0];
+  }
 
   selectedDate.value =
-    selectedDate.value === null || !isEqualDates(selectedDate.value, newValue)
+    selectedDate.value === null ||
+    !isEqualDates(selectedDate.value as Date, newValue)
       ? newValue
       : null;
 };
 
+/**
+ * If a different type as single was previously chosen - the datatype will be converted to a list of dates.
+ * The newly selected date will be compared to the current selected dates and either deleted from or appended to the list.
+ * @param newValue is the newly selected date.
+ */
 const updateMVMultiple = (newValue: Date) => {
-  if (selectedDate.value === null) selectedDate.value = [];
-  else if (selectedDate.value instanceof Date)
+  if (selectedDate.value === null) {
+    selectedDate.value = [];
+    console.log("mventered - null");
+  } else if (selectedDate.value instanceof Date) {
     selectedDate.value = [selectedDate.value];
-  else if ("from" in selectedDate.value && "to" in selectedDate.value)
-    // TODO - find better method of differentiating the type
+    console.log("mventered - date");
+  } else if (isMucDateRange(selectedDate.value)) {
     selectedDate.value = [
       selectedDate.value.from,
       selectedDate.value.to,
     ].filter((date) => date !== null);
+    console.log("mventered - range");
+  }
 
-  selectedDate.value.includes(newValue)
+  selectedDate.value = selectedDate.value.includes(newValue)
     ? selectedDate.value.filter((val: Date) => val !== newValue)
     : [...selectedDate.value, newValue];
 };
 
+/**
+ * If a different type as single was previously chosen - the datatype will be converted to a date range.
+ * The newly selected date will set as from or to depending on if to is already set.
+ * @param newValue is the newly selected date.
+ */
 const updateMVRange = (newValue: Date) => {
-  if (selectedDate.value === null || selectedDate.value.constructor === Array)
+  if (selectedDate.value === null || Array.isArray(selectedDate.value))
     selectedDate.value = { from: null, to: null };
   else if (selectedDate.value instanceof Date)
     selectedDate.value = { from: selectedDate.value, to: null };
 
-  selectedDate.value = selectedDate.value.from!
-    ? { from: selectedDate.value.from!, to: newValue }
-    : { from: newValue, to: null };
+  selectedDate.value = selectedDate.value.to
+    ? { from: newValue, to: null }
+    : selectedDate.value.from !== null &&
+        isDateAfterOther(selectedDate.value.from, newValue)
+      ? { from: newValue, to: selectedDate.value.from }
+      : { from: selectedDate.value.from, to: newValue };
 };
 
+/**
+ * Handles a date click event based on the selected variant.
+ * Depending on whether the variant is "single", "multiple", or "range", it calls the appropriate function to update the selected date(s).
+ * @param date - The date that was clicked.
+ */
 const clickedDate = (date: Date) => {
   switch (props.variant) {
     case "single":
@@ -202,6 +227,12 @@ const clickedDate = (date: Date) => {
   }
 };
 
+/**
+ * Adds a given number of days to a given date and returns the new date.
+ * This function does not modify the original date object.
+ * @param date - The original date.
+ * @param days - The number of days to add to the date.
+ */
 const addDaysToDate = (date: Date, days: number) =>
   new Date(new Date(date).setDate(date.getDate() + days));
 </script>
