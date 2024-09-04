@@ -41,7 +41,10 @@
           :class="[isActiveClass(option), isSelectedClass(option)]"
           @click="clicked(option)"
         >
-          {{ option }}
+          <MucSelectItem
+              :item="option"
+              :variable-with-text="itemText"
+          />
         </li>
         <li
           v-if="noItemsFound"
@@ -64,6 +67,11 @@
 import { computed, ref, watch } from "vue";
 
 import useOnClickOutside from "../../composables/useOnClickOutside";
+import MucSelectItem from "./MucSelectItem.vue";
+
+export interface ItemAsObject {
+  [key: string]: any;
+}
 
 /**
  * Ref ot the component
@@ -73,7 +81,7 @@ const selectComponentRef = ref();
 /**
  * Exposed selected value / values
  */
-const selectedValues = defineModel<string | string[]>("modelValue", {
+const selectedValues = defineModel<string | string[] | ItemAsObject | ItemAsObject[]>("modelValue", {
   default: [],
 });
 
@@ -85,7 +93,7 @@ const showItems = ref<boolean>(false);
 /**
  * Last interacted item - selected or deselected
  */
-const lastClickedItem = ref<string>();
+const lastClickedItem = ref<string | ItemAsObject>();
 
 /**
  * If no items found after filtering
@@ -95,14 +103,14 @@ const noItemsFound = ref<boolean>(false);
 /**
  * Index of currently actively hovered item or selected item
  */
-const activeItem = ref<string>();
+const activeItem = ref<string | ItemAsObject>();
 
 const props = withDefaults(
   defineProps<{
     /**
      * List of items to be available
      */
-    items: string[];
+    items: string[] | ItemAsObject[];
 
     /**
      * Optional label shown above the input
@@ -123,10 +131,16 @@ const props = withDefaults(
      * Optional message shown no item is found after filtering
      */
     noItemFoundMessage?: string;
+
+    /**
+     * Name of the variable that contains the value to be displayed in the list when a list of objects is used
+     */
+    itemText?: string;
   }>(),
   {
     multiple: false,
     noItemFoundMessage: "No items found.",
+    itemText: "",
   }
 );
 
@@ -159,7 +173,7 @@ useOnClickOutside(selectComponentRef, () => {
  * Actions upon clicking an item
  * @param clickedValue clicked item value
  */
-const clicked = (clickedValue: string) => {
+const clicked = (clickedValue: string | ItemAsObject) => {
   lastClickedItem.value = clickedValue;
 
   props.multiple
@@ -173,8 +187,8 @@ const clicked = (clickedValue: string) => {
  * Update the modelValue with the given. Performs conversion to string if necessary.
  * @param newValue the new value
  */
-const updateMVSingle = (newValue: string) => {
-  if (typeof selectedValues.value === "object")
+const updateMVSingle = (newValue: string | ItemAsObject) => {
+  if (Array.isArray(selectedValues.value))
     selectedValues.value = selectedValues.value.join(" ");
 
   selectedValues.value = selectedValues.value === newValue ? "" : newValue;
@@ -184,21 +198,29 @@ const updateMVSingle = (newValue: string) => {
  * Update the modelValue with the given. Performs conversion to array if necessary.
  * @param newValue the new value
  */
-const updateMVMultiple = (newValue: string) => {
-  if (typeof selectedValues.value === "string")
+const updateMVMultiple = (newValue: string | ItemAsObject) => {
+  if (!Array.isArray(selectedValues.value))
     selectedValues.value = [selectedValues.value];
 
-  selectedValues.value = selectedValues.value.includes(newValue)
-    ? selectedValues.value.filter((val: string) => val !== newValue)
-    : [...selectedValues.value, newValue];
+  if (Array.isArray(selectedValues.value))
+    selectedValues.value = selectedValues.value.includes(newValue)
+        ? selectedValues.value.filter((val: string) => val !== newValue)
+        : [...selectedValues.value, newValue];
 };
 
 /**
  * Converts the displayed text depending on the selection mode
  */
 const outputTransformed = computed(() => {
-  if (typeof selectedValues.value === "string") return selectedValues.value;
-  return selectedValues.value.join(props.multiple ? ", " : " ");
+  if (typeof selectedValues.value === "string") {
+    return selectedValues.value;
+  } else if (!Array.isArray(selectedValues.value)) {
+    return selectedValues.value[props.itemText].toString();
+  } else if (selectedValues.value.every(item => typeof item === "string")) {
+    return selectedValues.value.join(props.multiple ? ", " : " ");
+  } else {
+    return selectedValues.value.map(item => item[props.itemText].toString()).join(props.multiple ? ", " : " ");
+  }
 });
 
 watch(outputTransformed, (newOutput) => {
@@ -226,7 +248,9 @@ const displayedItems = computed(() =>
  */
 const updateDisplayedItems = (search: string) => {
   noItemsFound.value = false;
-  const filteredItems = props.items.filter((item) => item.includes(search));
+  const filteredItems = props.items.every(item => typeof item === "string")
+      ? props.items.filter((item) => item.toLowerCase().includes(search.toLocaleLowerCase()))
+      : props.items.filter((item) => item[props.itemText].toString().toLowerCase().includes(search.toLocaleLowerCase())) ;
   if (filteredItems.length === 0) {
     noItemsFound.value = true;
   }
@@ -237,15 +261,17 @@ const updateDisplayedItems = (search: string) => {
  * Apply active class to hovered item
  * @param value of item
  */
-const isActiveClass = (value: string) =>
+const isActiveClass = (value: string | ItemAsObject) =>
   value === activeItem.value ? "active" : "";
 
 /**
  * Apply selected class to selected items
  * @param value of item
  */
-const isSelectedClass = (value: string) =>
-  selectedValues.value.includes(value) ? "selected" : "";
+const isSelectedClass = (value: string | ItemAsObject) => {
+  if (Array.isArray(selectedValues.value)) return selectedValues.value.includes(value) ? "selected" : "";
+  return selectedValues.value === value ? "selected" : "";
+}
 
 /**
  * Resets the currently activeItem
