@@ -5,6 +5,7 @@
     :class="{
       'off-month': !isCurrMonth,
       selected: isSelected,
+      'selected-range': isInRange,
     }"
   >
     {{ date.getDate() }}
@@ -16,8 +17,11 @@ import { computed } from "vue";
 
 import {
   CalendarTypes,
+  isDateAfterOther,
   isEqualDates,
+  isMucDateRange,
   MucCalendarSelected,
+  MucDateRange,
 } from "./MucCalendarType";
 
 const props = withDefaults(
@@ -37,14 +41,40 @@ const emit = defineEmits<{
   click: [date: Date];
 }>();
 
+// eslint-disable-next-line vue/return-in-computed-property
 const isSelected = computed(() => {
-  if (props.selectedDate === null) return false;
-  switch (props.variant) {
-    case "single":
-      return isEqualDates(props.selectedDate, props.date);
-    case "multiple":
-      return;
+  if (props.selectedDate === null) {
+    return false;
   }
+
+  if (props.selectedDate instanceof Date) {
+    return isEqualDates(props.selectedDate, props.date);
+  }
+  if (Array.isArray(props.selectedDate)) {
+    return props.selectedDate.some((selected) =>
+      isEqualDates(selected, props.date)
+    );
+  }
+  if (isMucDateRange(props.selectedDate)) {
+    const { from, to } = props.selectedDate;
+    return (
+      (from && isEqualDates(from, props.date)) ||
+      (to && isEqualDates(to, props.date))
+    );
+  }
+});
+
+const isInRange = computed(() => {
+  if (props.variant === "range" && isMucDateRange(props.selectedDate)) {
+    return (
+      props.selectedDate.from !== null &&
+      props.selectedDate.to !== null &&
+      isDateAfterOther(props.date, props.selectedDate.from) &&
+      isDateAfterOther(props.selectedDate.to, props.date)
+    );
+  }
+
+  return false;
 });
 
 const isCurrMonth = computed(
@@ -60,6 +90,9 @@ const clicked = () => emit("click", props.date);
   color: white;
 }
 
+.selected-range {
+  background: var(--color-neutrals-blue-xlight);
+}
 .off-month {
   color: var(--color-neutrals-blue);
 }
