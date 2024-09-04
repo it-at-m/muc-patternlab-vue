@@ -18,6 +18,20 @@ export default {
   },
 };
 
-export const Weather = {
-  args: {},
+export const Single = {
+  args: {
+    variant: "single",
+  },
+};
+
+export const Multiple = {
+  args: {
+    variant: "multiple",
+  },
+};
+
+export const Range = {
+  args: {
+    variant: "range",
+  },
 };
