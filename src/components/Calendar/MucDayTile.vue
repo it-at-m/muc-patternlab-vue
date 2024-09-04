@@ -21,7 +21,6 @@ import {
   isEqualDates,
   isMucDateRange,
   MucCalendarSelected,
-  MucDateRange,
 } from "./MucCalendarType";
 
 const props = withDefaults(
