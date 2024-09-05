@@ -28,7 +28,7 @@ defineSlots<{
     style="background-color: var(--color-neutrals-blue-xlight)"
   >
     <div class="container">
-      <div style="width: 66.6%">
+      <div class="muc-intro-content">
         <div>
           <p
             v-if="tagline"
@@ -60,5 +60,11 @@ defineSlots<{
 .muc-divider {
   margin-top: 8px;
   margin-bottom: 16px;
+}
+
+@media screen and (width >992px) {
+  .muc-intro-content {
+    width: 66.6%;
+  }
 }
 </style>
