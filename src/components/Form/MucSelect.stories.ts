@@ -32,3 +32,39 @@ export const MultiSelect = {
     multiple: true,
   },
 };
+
+export const ObjectSelect = {
+  args: {
+    modelValue: {
+      id: "1",
+      name: "Object 1",
+      quantity: 1,
+    },
+    items: [
+      {
+        id: "1",
+        name: "Object 1",
+        quantity: 1,
+      },
+      {
+        id: "2",
+        name: "Object 2",
+        quantity: 2,
+      },
+      {
+        id: "3",
+        name: "Object 3",
+        quantity: 3,
+      },
+      {
+        id: "4",
+        name: "Object 4",
+        quantity: 4,
+      },
+    ],
+    label: "Select multiple objects",
+    hint: "This is a hint",
+    itemText: "name",
+    multiple: true,
+  },
+};
