@@ -1,8 +1,4 @@
-type MucDayTile = {
-  displayDay: number;
-  index: number;
-  viewDate: Date;
-};
+import { InjectionKey, Ref } from "vue";
 
 type CalendarTypes = "single" | "multiple" | "range";
 
@@ -13,7 +9,22 @@ interface MucDateRange {
 
 type MucCalendarSelected = null | Date | Date[] | MucDateRange;
 
-export type { MucDayTile, MucDateRange, MucCalendarSelected, CalendarTypes };
+type MucCalendarInjection = {
+  viewDate: Readonly<Ref<Date>>;
+  selectedDate: Readonly<Ref<MucCalendarSelected>>;
+  variant: Readonly<Ref<CalendarTypes>>;
+  showAdjacentMonths: Readonly<Ref<boolean>>;
+};
+
+export type {
+  MucDateRange,
+  MucCalendarSelected,
+  CalendarTypes,
+  MucCalendarInjection,
+};
+
+const MucCalendarKey: InjectionKey<MucCalendarInjection> =
+  Symbol("mucCalendar");
 
 const isEqualDates = (date1: Date, date2: Date) =>
   date1.getDate() === date2.getDate() &&
@@ -27,4 +38,4 @@ const isMucDateRange = (obj: MucCalendarSelected): obj is MucDateRange =>
   (obj as MucDateRange).from !== undefined &&
   (obj as MucDateRange).to !== undefined;
 
-export { isEqualDates, isMucDateRange, isDateAfterOther };
+export { isEqualDates, isMucDateRange, isDateAfterOther, MucCalendarKey };

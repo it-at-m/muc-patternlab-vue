@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, provide, readonly, ref, toRef } from "vue";
 
 import { MucButton } from "../Button";
 import {
@@ -55,6 +55,7 @@ import {
   isDateAfterOther,
   isEqualDates,
   isMucDateRange,
+  MucCalendarKey,
   MucCalendarSelected,
 } from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
@@ -216,6 +217,13 @@ const clickedDate = (date: Date) => {
  */
 const addDaysToDate = (date: Date, days: number) =>
   new Date(new Date(date).setDate(date.getDate() + days));
+
+provide(MucCalendarKey, {
+  viewDate,
+  selectedDate,
+  variant: readonly(toRef(props.variant)),
+  showAdjacentMonths: readonly(toRef(props.showAdjacentMonths)),
+});
 </script>
 
 <style scoped>
