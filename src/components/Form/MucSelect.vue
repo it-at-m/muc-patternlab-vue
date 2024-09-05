@@ -42,8 +42,8 @@
           @click="clicked(option)"
         >
           <MucSelectItem
-              :item="option"
-              :variable-with-text="itemText"
+            :item="option"
+            :variable-with-text="itemText"
           />
         </li>
         <li
@@ -81,7 +81,9 @@ const selectComponentRef = ref();
 /**
  * Exposed selected value / values
  */
-const selectedValues = defineModel<string | string[] | ItemAsObject | ItemAsObject[]>("modelValue", {
+const selectedValues = defineModel<
+  string | string[] | ItemAsObject | ItemAsObject[]
+>("modelValue", {
   default: [],
 });
 
@@ -191,7 +193,10 @@ const updateMVSingle = (newValue: string | ItemAsObject) => {
   if (Array.isArray(selectedValues.value))
     selectedValues.value = selectedValues.value.join(" ");
 
-  selectedValues.value = selectedValues.value === newValue ? "" : newValue;
+  selectedValues.value =
+    JSON.stringify(selectedValues.value) === JSON.stringify(newValue)
+      ? ""
+      : newValue;
 };
 
 /**
@@ -203,9 +208,13 @@ const updateMVMultiple = (newValue: string | ItemAsObject) => {
     selectedValues.value = [selectedValues.value];
 
   if (Array.isArray(selectedValues.value))
-    selectedValues.value = selectedValues.value.includes(newValue)
-        ? selectedValues.value.filter((val: string) => val !== newValue)
-        : [...selectedValues.value, newValue];
+    selectedValues.value = selectedValues.value
+      .map((item) => JSON.stringify(item))
+      .includes(JSON.stringify(newValue))
+      ? selectedValues.value.filter(
+          (val) => JSON.stringify(val) !== JSON.stringify(newValue)
+        )
+      : [...selectedValues.value, newValue];
 };
 
 /**
@@ -216,10 +225,12 @@ const outputTransformed = computed(() => {
     return selectedValues.value;
   } else if (!Array.isArray(selectedValues.value)) {
     return selectedValues.value[props.itemText].toString();
-  } else if (selectedValues.value.every(item => typeof item === "string")) {
+  } else if (selectedValues.value.every((item) => typeof item === "string")) {
     return selectedValues.value.join(props.multiple ? ", " : " ");
   } else {
-    return selectedValues.value.map(item => item[props.itemText].toString()).join(props.multiple ? ", " : " ");
+    return selectedValues.value
+      .map((item) => item[props.itemText].toString())
+      .join(props.multiple ? ", " : " ");
   }
 });
 
@@ -248,9 +259,16 @@ const displayedItems = computed(() =>
  */
 const updateDisplayedItems = (search: string) => {
   noItemsFound.value = false;
-  const filteredItems = props.items.every(item => typeof item === "string")
-      ? props.items.filter((item) => item.toLowerCase().includes(search.toLocaleLowerCase()))
-      : props.items.filter((item) => item[props.itemText].toString().toLowerCase().includes(search.toLocaleLowerCase())) ;
+  const filteredItems = props.items.every((item) => typeof item === "string")
+    ? props.items.filter((item) =>
+        item.toLowerCase().includes(search.toLocaleLowerCase())
+      )
+    : props.items.filter((item) =>
+        item[props.itemText]
+          .toString()
+          .toLowerCase()
+          .includes(search.toLocaleLowerCase())
+      );
   if (filteredItems.length === 0) {
     noItemsFound.value = true;
   }
@@ -269,9 +287,16 @@ const isActiveClass = (value: string | ItemAsObject) =>
  * @param value of item
  */
 const isSelectedClass = (value: string | ItemAsObject) => {
-  if (Array.isArray(selectedValues.value)) return selectedValues.value.includes(value) ? "selected" : "";
-  return selectedValues.value === value ? "selected" : "";
-}
+  if (Array.isArray(selectedValues.value))
+    return selectedValues.value
+      .map((item) => JSON.stringify(item))
+      .includes(JSON.stringify(value))
+      ? "selected"
+      : "";
+  return JSON.stringify(selectedValues.value) === JSON.stringify(value)
+    ? "selected"
+    : "";
+};
 
 /**
  * Resets the currently activeItem
