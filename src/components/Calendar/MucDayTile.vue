@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isCurrMonth || !onlyCurrMonth"
+    v-if="isCurrMonth || showAdjacentMonths"
     @click="clicked"
     :class="{
       'off-month': !isCurrMonth,
@@ -29,10 +29,10 @@ const props = withDefaults(
     viewDate: Date;
     selectedDate: MucCalendarSelected;
     variant: CalendarTypes;
-    onlyCurrMonth?: boolean;
+    showAdjacentMonths?: boolean;
   }>(),
   {
-    onlyCurrMonth: false,
+    showAdjacentMonths: false,
   }
 );
 

@@ -1,30 +1,13 @@
 <template>
   <div>
-    <div
-      style="
-        border: 1px solid var(--color-neutrals-blue);
-        min-width: 330px;
-        max-width: 900px;
-        justify-content: center;
-      "
-    >
-      <div
-        id="caption"
-        style="
-          padding: 5px;
-          border-bottom: 1px solid var(--color-neutrals-blue);
-          background-color: var(--color-neutrals-blue-xlight);
-          display: grid;
-          grid-template-columns: auto 1fr auto;
-          align-items: center;
-        "
-      >
+    <div class="container-wrapper">
+      <div class="caption">
         <muc-button
           @click="prevMonth"
           variant="ghost"
           icon="chevron-left"
         />
-        <header style="justify-content: center; display: flex">
+        <header class="header">
           <h3>{{ computedCaption }}</h3>
         </header>
         <muc-button
@@ -33,11 +16,7 @@
           icon="chevron-right"
         />
       </div>
-      <div
-        id="table-header"
-        class="container"
-        style="border-bottom: 1px solid var(--color-neutrals-blue)"
-      >
+      <div class="container table-header">
         <div
           class="header-item"
           v-for="(weekDay, index) in weekDays"
@@ -46,10 +25,7 @@
           <strong>{{ weekDay }}</strong>
         </div>
       </div>
-      <div
-        id="table"
-        class="container"
-      >
+      <div class="container">
         <div
           v-for="blank in numOfDisplayedSpacers"
           :key="blank"
@@ -60,7 +36,7 @@
           :date="addDaysToDate(computedStartDate, date)"
           :view-date="viewDate"
           :selected-date="selectedDate"
-          :only-curr-month="onlyCurrentMonth"
+          :show-adjacent-months="showAdjacentMonths"
           :variant="variant"
           @click="clickedDate"
           :key="date"
@@ -89,30 +65,34 @@ const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 
 const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
+const props = withDefaults(
+  defineProps<{
+    viewMonth?: Date;
+    showAdjacentMonths?: boolean;
+    variant?: CalendarTypes;
+    disabled?: boolean;
+  }>(),
+  {
+    showAdjacentMonths: false,
+    variant: "single",
+    disabled: false,
+  }
+);
+
 /**
  * Determines the current shown month and year
  */
 const viewDate = ref<Date>(
-  new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  props.viewMonth ||
+    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
 /**
  * Currently selected date by the user
  */
 const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
-  default: new Date(),
+  default: null,
 });
-
-const props = withDefaults(
-  defineProps<{
-    onlyCurrentMonth?: boolean;
-    variant?: CalendarTypes;
-  }>(),
-  {
-    onlyCurrentMonth: false,
-    variant: "single",
-  }
-);
 
 const computedCaption = computed(() => {
   return viewDate.value.toLocaleDateString("de-De", {
@@ -130,7 +110,7 @@ const computedStartDate = computed(() =>
 );
 
 const numOfDisplayedSpacers = computed(() =>
-  props.onlyCurrentMonth ? (firstDateOfMonth.value.getDay() || 7) - 1 : 0
+  props.showAdjacentMonths ? 0 : (firstDateOfMonth.value.getDay() || 7) - 1
 );
 
 const prevMonth = () => {
@@ -200,12 +180,12 @@ const updateMVRange = (newValue: Date) => {
   else if (selectedDate.value instanceof Date)
     selectedDate.value = { from: selectedDate.value, to: null };
 
-  selectedDate.value = selectedDate.value.to
-    ? { from: newValue, to: null }
-    : selectedDate.value.from !== null &&
-        isDateAfterOther(selectedDate.value.from, newValue)
-      ? { from: newValue, to: selectedDate.value.from }
-      : { from: selectedDate.value.from, to: newValue };
+  selectedDate.value =
+    !selectedDate.value.from || selectedDate.value.to
+      ? { from: newValue, to: null }
+      : isDateAfterOther(selectedDate.value.from, newValue)
+        ? { from: newValue, to: selectedDate.value.from }
+        : { from: selectedDate.value.from, to: newValue };
 };
 
 /**
@@ -214,6 +194,7 @@ const updateMVRange = (newValue: Date) => {
  * @param date - The date that was clicked.
  */
 const clickedDate = (date: Date) => {
+  if (props.disabled) return;
   switch (props.variant) {
     case "single":
       updateMVSingle(date);
@@ -266,15 +247,15 @@ const addDaysToDate = (date: Date, days: number) =>
   cursor: pointer;
 }
 
-.other-month {
-  color: blue;
+.container-wrapper {
+  border: 1px solid var(--color-neutrals-blue);
+  min-width: 330px;
+  max-width: 900px;
+  justify-content: center;
 }
 
-.header #calendar-container-outer {
-  border: 1px solid var(--color-neutrals-blue);
-  display: inline-block;
-}
-#calendar-container-header {
+.caption {
+  padding: 5px;
   border-bottom: 1px solid var(--color-neutrals-blue);
   background-color: var(--color-neutrals-blue-xlight);
   display: grid;
@@ -282,14 +263,12 @@ const addDaysToDate = (date: Date, days: number) =>
   align-items: center;
 }
 
-.selected {
-  background: var(--color-brand-main-blue);
-  color: white;
+.header {
+  justify-content: center;
+  display: flex;
 }
 
-#calendar-table-header {
-  display: grid;
-  grid-template-columns: repeat(7, auto);
-  align-items: center;
+.table-header {
+  border-bottom: 1px solid var(--color-neutrals-blue);
 }
 </style>
