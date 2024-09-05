@@ -8,11 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-icon\` component is a wrapper commponent for all icons in the patternlab.
-
-[🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-guidelines-icons)
-[🖼 Iconography](https://it-at-m.github.io/muc-patternlab-vue/?path=/docs/iconography--docs)
-`,
+        component: `The \`muc-calendar\` component is a non patternlab-standard calendar component. It can be used to display calendar months or as fancy date selection. Multiple variants in the date selection are offered.`,
       },
     },
   },
@@ -21,17 +17,28 @@ export default {
 export const Single = {
   args: {
     variant: "single",
+    showAdjacentMonths: true,
   },
 };
 
-export const Multiple = {
+export const MultipleWithSelectedViewMonth = {
   args: {
     variant: "multiple",
+    viewMonth: new Date(2023, 0, 1),
   },
 };
 
 export const Range = {
   args: {
     variant: "range",
+    disabled: true,
+    showAdjacentMonths: true,
+  },
+};
+export const DisabledWithPreSelectedDate = {
+  args: {
+    disabled: true,
+    showAdjacentMonths: true,
+    modelValue: new Date(),
   },
 };
