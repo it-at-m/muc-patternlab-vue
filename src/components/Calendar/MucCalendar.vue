@@ -7,7 +7,10 @@
           variant="ghost"
           icon="chevron-left"
         />
-        <header class="header">
+        <header
+          class="header"
+          @click="clickedCaption"
+        >
           <h3>{{ computedCaption }}</h3>
         </header>
         <muc-button
@@ -16,6 +19,7 @@
           icon="chevron-right"
         />
       </div>
+      <dialog :open="showMonthYearSelection"><muc-calendar-caption /></dialog>
       <div class="container table-header">
         <div
           class="header-item"
@@ -50,6 +54,7 @@
 import { computed, provide, readonly, ref, toRef } from "vue";
 
 import { MucButton } from "../Button";
+import MucCalendarCaption from "./MucCalendarCaption.vue";
 import {
   CalendarTypes,
   isDateAfterOther,
@@ -94,6 +99,8 @@ const viewDate = ref<Date>(
 const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
   default: null,
 });
+
+const showMonthYearSelection = ref<boolean>(false);
 
 const computedCaption = computed(() => {
   return viewDate.value.toLocaleDateString("de-De", {
@@ -209,6 +216,11 @@ const clickedDate = (date: Date) => {
   }
 };
 
+const clickedCaption = () => {
+  console.log("clicked caption");
+  showMonthYearSelection.value = !showMonthYearSelection.value;
+};
+
 /**
  * Adds a given number of days to a given date and returns the new date.
  * This function does not modify the original date object.
@@ -274,6 +286,7 @@ provide(MucCalendarKey, {
 .header {
   justify-content: center;
   display: flex;
+  cursor: pointer;
 }
 
 .table-header {
