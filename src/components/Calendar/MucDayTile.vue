@@ -13,22 +13,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, inject } from "vue";
 
 import {
-  CalendarTypes,
   isDateAfterOther,
   isEqualDates,
   isMucDateRange,
-  MucCalendarSelected,
+  MucCalendarKey,
 } from "./MucCalendarType";
 
 const props = withDefaults(
   defineProps<{
     date: Date;
-    viewDate: Date;
-    selectedDate: MucCalendarSelected;
-    variant: CalendarTypes;
     showAdjacentMonths?: boolean;
   }>(),
   {
@@ -36,26 +32,28 @@ const props = withDefaults(
   }
 );
 
+const mucCalData = inject(MucCalendarKey);
+
 const emit = defineEmits<{
   click: [date: Date];
 }>();
 
 // eslint-disable-next-line vue/return-in-computed-property
 const isSelected = computed(() => {
-  if (props.selectedDate === null) {
+  if (mucCalData?.selectedDate.value === null) {
     return false;
   }
 
-  if (props.selectedDate instanceof Date) {
-    return isEqualDates(props.selectedDate, props.date);
+  if (mucCalData?.selectedDate.value instanceof Date) {
+    return isEqualDates(mucCalData?.selectedDate.value, props.date);
   }
-  if (Array.isArray(props.selectedDate)) {
-    return props.selectedDate.some((selected) =>
+  if (Array.isArray(mucCalData?.selectedDate.value)) {
+    return mucCalData?.selectedDate.value.some((selected) =>
       isEqualDates(selected, props.date)
     );
   }
-  if (isMucDateRange(props.selectedDate)) {
-    const { from, to } = props.selectedDate;
+  if (isMucDateRange(mucCalData!.selectedDate.value)) {
+    const { from, to } = mucCalData!.selectedDate.value;
     return (
       (from && isEqualDates(from, props.date)) ||
       (to && isEqualDates(to, props.date))
@@ -64,12 +62,15 @@ const isSelected = computed(() => {
 });
 
 const isInRange = computed(() => {
-  if (props.variant === "range" && isMucDateRange(props.selectedDate)) {
+  if (
+    mucCalData?.variant.value === "range" &&
+    isMucDateRange(mucCalData!.selectedDate.value)
+  ) {
     return (
-      props.selectedDate.from !== null &&
-      props.selectedDate.to !== null &&
-      isDateAfterOther(props.date, props.selectedDate.from) &&
-      isDateAfterOther(props.selectedDate.to, props.date)
+      mucCalData?.selectedDate.value.from !== null &&
+      mucCalData?.selectedDate.value.to !== null &&
+      isDateAfterOther(props.date, mucCalData!.selectedDate.value.from) &&
+      isDateAfterOther(mucCalData!.selectedDate.value.to, props.date)
     );
   }
 
@@ -77,7 +78,7 @@ const isInRange = computed(() => {
 });
 
 const isCurrMonth = computed(
-  () => props.date.getMonth() === props.viewDate.getMonth()
+  () => props.date.getMonth() === mucCalData?.viewDate.value.getMonth()
 );
 
 const clicked = () => emit("click", props.date);
