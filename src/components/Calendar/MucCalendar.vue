@@ -280,33 +280,71 @@ provide(MucCalendarKey, {
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(auto, 1fr));
-  justify-self: center;
-  gap: 2px 2px;
-  padding: 5px;
-}
-.header-item {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  padding: 5px;
+/*animation - backwards is not working here because of interchanging of the animations*/
+
+@keyframes appear-broad {
+  0% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.item {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  padding: 8px;
-  transition: border-color 0.3s ease-in;
+@keyframes disappear-broad {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+
+    transform: scale(0.7);
+  }
 }
-.item:hover {
-  border: 1px solid var(--color-neutrals-blue);
-  transition: border-color 0.1s ease-out;
-  cursor: pointer;
+
+@keyframes appear-detail {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
+
+@keyframes disappear-detail {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+
+    transform: scale(1.7);
+  }
+}
+
+.view-detail-enter-active {
+  animation: appear-detail 0.3s ease-in;
+}
+
+.view-detail-leave-active {
+  animation: disappear-detail 0.2s ease-in;
+}
+
+.view-broad-enter-active {
+  animation: appear-broad 0.3s ease-in;
+}
+
+.view-broad-leave-active {
+  animation: disappear-broad 0.2s ease-in;
+}
+
+/*animation*/
 
 .container-wrapper {
   border: 1px solid var(--color-neutrals-blue);
