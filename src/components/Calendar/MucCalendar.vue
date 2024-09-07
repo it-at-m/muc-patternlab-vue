@@ -3,58 +3,67 @@
     <div class="container-wrapper">
       <div class="caption">
         <muc-button
-          @click="prevMonth"
+          @click="clickedPrev"
           variant="ghost"
           icon="chevron-left"
         />
-        <header
+        <muc-button
           class="header"
-          @click="clickedCaption"
+          variant="ghost"
+          @click="broaderView"
         >
           <h3>{{ computedCaption }}</h3>
-        </header>
+        </muc-button>
         <muc-button
-          @click="nextMonth"
+          @click="clickedNext"
           variant="ghost"
           icon="chevron-right"
         />
       </div>
-      <dialog :open="showMonthYearSelection"><muc-calendar-caption /></dialog>
-      <div class="container table-header">
-        <div
-          class="header-item"
-          v-for="(weekDay, index) in weekDays"
-          :key="index"
-        >
-          <strong>{{ weekDay }}</strong>
-        </div>
-      </div>
-      <div class="container">
-        <div
-          v-for="blank in numOfDisplayedSpacers"
-          :key="blank"
-        />
-        <muc-day-tile
-          v-for="date in NUM_OF_DISPLAYED_DAYS"
-          class="item"
-          :date="addDaysToDate(computedStartDate, date)"
-          :view-date="viewDate"
-          :selected-date="selectedDate"
-          :show-adjacent-months="showAdjacentMonths"
-          :variant="variant"
-          @click="clickedDate"
-          :key="date"
-        />
+      <dialog :open="showMonthYearSelection">
+        <muc-calendar-caption />
+      </dialog>
+      <div style="height: 313px; position: relative">
+        <Transition :name="viewTransition">
+          <muc-calendar-year
+            style="position: absolute; width: 100%; height: 100%"
+            v-if="view === 'year'"
+            :view-date="viewDate"
+            @clicked="clickedMonth"
+          />
+        </Transition>
+        <Transition :name="viewTransition">
+          <muc-calendar-month
+            style="position: absolute; width: 100%; height: 100%"
+            v-if="view === 'month'"
+            :view-date="viewDate"
+            @clicked="clickedMonth"
+          />
+        </Transition>
+        <Transition :name="viewTransition">
+          <muc-calendar-date
+            style="position: absolute; width: 100%; height: 100%"
+            v-if="view === 'day'"
+            :variant="variant"
+            :disabled="disabled"
+            :show-adjacent-months="showAdjacentMonths"
+            :selected-date="selectedDate"
+            :view-date="viewDate"
+            @clicked="clickedDate"
+          />
+        </Transition>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, provide, readonly, ref, toRef } from "vue";
+import { computed, provide, readonly, ref, toRef, watch } from "vue";
 
 import { MucButton } from "../Button";
 import MucCalendarCaption from "./MucCalendarCaption.vue";
+import MucCalendarDate from "./MucCalendarDate.vue";
+import MucCalendarMonth from "./MucCalendarMonth.vue";
 import {
   CalendarTypes,
   isDateAfterOther,
@@ -63,13 +72,9 @@ import {
   MucCalendarKey,
   MucCalendarSelected,
 } from "./MucCalendarType";
-import MucDayTile from "./MucDayTile.vue";
+import MucCalendarYear from "./MucCalendarYear.vue";
 
-const DAYS_IN_WEEK = 7;
-
-const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
-
-const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+type ViewType = "day" | "month" | "year";
 
 const props = withDefaults(
   defineProps<{
@@ -93,6 +98,10 @@ const viewDate = ref<Date>(
     new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
+const view = ref<ViewType>("day");
+
+const viewTransition = ref<"view-broad" | "view-detail">();
+
 /**
  * Currently selected date by the user
  */
@@ -103,35 +112,63 @@ const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
 const showMonthYearSelection = ref<boolean>(false);
 
 const computedCaption = computed(() => {
-  return viewDate.value.toLocaleDateString("de-De", {
-    month: "long",
-    year: "numeric",
-  });
+  switch (view.value) {
+    case "day":
+      return viewDate.value.toLocaleDateString("de-De", {
+        month: "long",
+        year: "numeric",
+      });
+    case "month":
+      return viewDate.value.toLocaleDateString("de-De", {
+        year: "numeric",
+      });
+    case "year": {
+      const firstYear =
+        viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10);
+      return `${firstYear} - ${firstYear + 11}`;
+    }
+    default:
+      return "";
+  }
 });
 
-const firstDateOfMonth = computed(
-  () => new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), 1)
-);
-
-const computedStartDate = computed(() =>
-  addDaysToDate(firstDateOfMonth.value, -firstDateOfMonth.value.getDay() || -7)
-);
-
-const numOfDisplayedSpacers = computed(() =>
-  props.showAdjacentMonths ? 0 : (firstDateOfMonth.value.getDay() || 7) - 1
-);
-
-const prevMonth = () => {
-  viewDate.value = new Date(
-    viewDate.value.setMonth(viewDate.value.getMonth() - 1)
-  );
+const clickedPrev = () => {
+  switch (view.value) {
+    case "day":
+      viewDate.value = new Date(
+        viewDate.value.setMonth(viewDate.value.getMonth() - 1)
+      );
+      break;
+    case "month":
+      viewDate.value = new Date(
+        viewDate.value.setFullYear(viewDate.value.getFullYear() - 1)
+      );
+      break;
+    case "year":
+      viewDate.value = new Date(
+        viewDate.value.setFullYear(viewDate.value.getFullYear() - 12)
+      );
+  }
 };
 
 // No modulo needed here!
-const nextMonth = () => {
-  viewDate.value = new Date(
-    viewDate.value.setMonth(viewDate.value.getMonth() + 1)
-  );
+const clickedNext = () => {
+  switch (view.value) {
+    case "day":
+      viewDate.value = new Date(
+        viewDate.value.setMonth(viewDate.value.getMonth() + 1)
+      );
+      break;
+    case "month":
+      viewDate.value = new Date(
+        viewDate.value.setFullYear(viewDate.value.getFullYear() + 1)
+      );
+      break;
+    case "year":
+      viewDate.value = new Date(
+        viewDate.value.setFullYear(viewDate.value.getFullYear() + 12)
+      );
+  }
 };
 
 /**
@@ -216,19 +253,23 @@ const clickedDate = (date: Date) => {
   }
 };
 
-const clickedCaption = () => {
-  console.log("clicked caption");
-  showMonthYearSelection.value = !showMonthYearSelection.value;
+// TODO rename method
+const clickedMonth = (date: Date) => {
+  viewTransition.value = "view-detail";
+  viewDate.value = new Date(date.getFullYear(), date.getMonth());
+  detailedView();
+};
+// TODO caption better with header or muc-button?
+const broaderView = () => {
+  viewTransition.value = "view-broad";
+  if (view.value === "day") view.value = "month";
+  else if (view.value === "month") view.value = "year";
 };
 
-/**
- * Adds a given number of days to a given date and returns the new date.
- * This function does not modify the original date object.
- * @param date - The original date.
- * @param days - The number of days to add to the date.
- */
-const addDaysToDate = (date: Date, days: number) =>
-  new Date(new Date(date).setDate(date.getDate() + days));
+const detailedView = () => {
+  if (view.value === "year") view.value = "month";
+  else if (view.value === "month") view.value = "day";
+};
 
 provide(MucCalendarKey, {
   viewDate,
@@ -287,9 +328,5 @@ provide(MucCalendarKey, {
   justify-content: center;
   display: flex;
   cursor: pointer;
-}
-
-.table-header {
-  border-bottom: 1px solid var(--color-neutrals-blue);
 }
 </style>
