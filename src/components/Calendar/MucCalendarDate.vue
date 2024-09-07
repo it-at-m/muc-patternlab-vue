@@ -1,0 +1,125 @@
+<template>
+  <div>
+    <div class="container table-header">
+      <div
+        class="header-item"
+        v-for="(weekDay, index) in weekDays"
+        :key="index"
+      >
+        <strong>{{ weekDay }}</strong>
+      </div>
+    </div>
+    <div class="container">
+      <div
+        v-for="blank in numOfDisplayedSpacers"
+        :key="blank"
+      />
+      <muc-day-tile
+        v-for="date in NUM_OF_DISPLAYED_DAYS"
+        class="item"
+        :date="addDaysToDate(computedStartDate, date)"
+        :view-date="viewDate"
+        :selected-date="selectedDate"
+        :show-adjacent-months="showAdjacentMonths"
+        :variant="variant"
+        @click="clickedDate"
+        :key="date"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+
+import { CalendarTypes, MucCalendarSelected } from "./MucCalendarType";
+import MucDayTile from "./MucDayTile.vue";
+
+const DAYS_IN_WEEK = 7;
+
+const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
+const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+
+const viewDate = defineModel<Date>("viewDate", { default: new Date() });
+
+const selectedDate = defineModel<MucCalendarSelected>("selectedDate", {
+  default: null,
+});
+
+const props = defineProps<{
+  variant: CalendarTypes;
+  disabled: boolean;
+  showAdjacentMonths: boolean;
+}>();
+
+const emit = defineEmits<{
+  clicked: [date: Date];
+}>();
+
+const firstDateOfMonth = computed(
+  () => new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), 1)
+);
+
+const numOfDisplayedSpacers = computed(() =>
+  props.showAdjacentMonths ? 0 : (firstDateOfMonth.value.getDay() || 7) - 1
+);
+
+const computedStartDate = computed(() =>
+  addDaysToDate(firstDateOfMonth.value, -firstDateOfMonth.value.getDay() || -7)
+);
+
+/**
+ * Handles a date click event based on the selected variant.
+ * Depending on whether the variant is "single", "multiple", or "range", it calls the appropriate function to update the selected date(s).
+ * @param date - The date that was clicked.
+ */
+const clickedDate = (date: Date) => {
+  emit("clicked", date);
+};
+
+/**
+ * Adds a given number of days to a given date and returns the new date.
+ * This function does not modify the original date object.
+ * @param date - The original date.
+ * @param days - The number of days to add to the date.
+ */
+const addDaysToDate = (date: Date, days: number) =>
+  new Date(new Date(date).setDate(date.getDate() + days));
+</script>
+
+<style scoped>
+.table-header {
+  border-bottom: 1px solid var(--color-neutrals-blue);
+}
+
+.header-item {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+.item {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  padding: 8px;
+  transition: border-color 0.3s ease-in;
+}
+.item:hover {
+  border: 1px solid var(--color-neutrals-blue);
+  transition: border-color 0.1s ease-out;
+  cursor: pointer;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+  justify-self: center;
+  gap: 2px 2px;
+  padding: 5px;
+}
+
+.table-header {
+  border-bottom: 1px solid var(--color-neutrals-blue);
+}
+</style>
