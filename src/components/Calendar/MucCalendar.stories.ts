@@ -31,7 +31,6 @@ export const MultipleWithSelectedViewMonth = {
 export const Range = {
   args: {
     variant: "range",
-    disabled: true,
     showAdjacentMonths: true,
   },
 };
