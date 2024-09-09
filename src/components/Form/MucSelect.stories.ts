@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `Choose from an option from a given list - multiple can also be allowed. The design is similar to the text input with autocompletion.
+        component: `Choose from an option from a given list of objects or strings - multiple can also be allowed. The design is similar to the text input with autocompletion.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-combobox)
 `,
@@ -17,23 +17,6 @@ export default {
 };
 
 export const Default = {
-  args: {
-    modelValue: "Option 1",
-    items: ["Option 1", "Option 2", "Option 3", "Option 4"],
-    label: "This is a label",
-    hint: "This is a hint",
-  },
-};
-
-export const MultiSelect = {
-  args: {
-    ...Default.args,
-    label: "Select multiple options",
-    multiple: true,
-  },
-};
-
-export const ObjectSelect = {
   args: {
     modelValue: {
       id: "1",
@@ -62,9 +45,25 @@ export const ObjectSelect = {
         quantity: 4,
       },
     ],
-    label: "Select multiple objects",
+    label: "This is a label",
     hint: "This is a hint",
     itemText: "name",
+  },
+};
+
+export const MultiSelect = {
+  args: {
+    ...Default.args,
+    label: "Select multiple objects",
     multiple: true,
+  },
+};
+
+export const StringSelect = {
+  args: {
+    modelValue: "String 1",
+    items: ["String 1", "String 2", "String 3", "String 4"],
+    label: "Select strings",
+    hint: "This is a hint",
   },
 };
