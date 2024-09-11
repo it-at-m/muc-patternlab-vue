@@ -47,7 +47,7 @@ export const Default = {
     ],
     label: "This is a label",
     hint: "This is a hint",
-    itemText: "name",
+    itemTitle: "name",
   },
 };
 
