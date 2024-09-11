@@ -20,29 +20,35 @@
           icon="chevron-right"
         />
       </div>
-      <dialog :open="showMonthYearSelection">
-        <muc-calendar-caption />
-      </dialog>
-      <div style="height: 313px; position: relative">
-        <Transition :name="viewTransition">
+      <div style="min-height: 313px">
+        <Transition
+          :name="viewTransition"
+          class="full-size"
+        >
           <muc-calendar-year
-            style="position: absolute; width: 100%; height: 100%"
+            class="full-size"
             v-if="view === 'year'"
             :view-date="viewDate"
             @clicked="clickedMonth"
           />
         </Transition>
-        <Transition :name="viewTransition">
+        <Transition
+          :name="viewTransition"
+          class="full-size"
+        >
           <muc-calendar-month
-            style="position: absolute; width: 100%; height: 100%"
+            class="full-size"
             v-if="view === 'month'"
             :view-date="viewDate"
             @clicked="clickedMonth"
           />
         </Transition>
-        <Transition :name="viewTransition">
+        <Transition
+          :name="viewTransition"
+          class="full-size"
+        >
           <muc-calendar-date
-            style="position: absolute; width: 100%; height: 100%"
+            class="full-size"
             v-if="view === 'day'"
             :variant="variant"
             :disabled="disabled"
@@ -58,10 +64,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, readonly, ref, toRef, watch } from "vue";
+import { computed, provide, readonly, ref, toRef } from "vue";
 
 import { MucButton } from "../Button";
-import MucCalendarCaption from "./MucCalendarCaption.vue";
 import MucCalendarDate from "./MucCalendarDate.vue";
 import MucCalendarMonth from "./MucCalendarMonth.vue";
 import {
@@ -108,8 +113,6 @@ const viewTransition = ref<"view-broad" | "view-detail">();
 const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
   default: null,
 });
-
-const showMonthYearSelection = ref<boolean>(false);
 
 const computedCaption = computed(() => {
   switch (view.value) {
@@ -329,22 +332,30 @@ provide(MucCalendarKey, {
 }
 
 .view-detail-enter-active {
+  position: absolute;
   animation: appear-detail 0.3s ease-in;
 }
 
 .view-detail-leave-active {
+  position: absolute;
   animation: disappear-detail 0.2s ease-in;
 }
 
 .view-broad-enter-active {
+  position: absolute;
   animation: appear-broad 0.3s ease-in;
 }
 
 .view-broad-leave-active {
+  position: absolute;
   animation: disappear-broad 0.2s ease-in;
 }
 
 /*animation*/
+
+.full-size {
+  width: 100%;
+}
 
 .container-wrapper {
   border: 1px solid var(--color-neutrals-blue);

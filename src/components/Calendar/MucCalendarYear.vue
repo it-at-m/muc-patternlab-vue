@@ -1,10 +1,11 @@
 <template>
-  <div class="container">
+  <div class="muc-calendar-container">
     <div
       v-for="date in computedYears"
-      class="item"
+      class="muc-calendar-item"
       :class="{
-        current: new Date().getFullYear() === date.getFullYear(),
+        'muc-calendar-current-item':
+          new Date().getFullYear() === date.getFullYear(),
       }"
       @click="clickedYear(date)"
     >
@@ -47,29 +48,8 @@ const clickedYear = (date: Date) => emit("clicked", date);
 </script>
 
 <style scoped>
-.item {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  border: 1px solid white;
-  transition: border-color 0.3s ease-in;
-}
-.item:hover {
-  border: 1px solid var(--color-neutrals-blue);
-  transition: border-color 0.1s ease-out;
-  cursor: pointer;
-}
-.container {
-  display: grid;
-  height: 302px;
-  grid-template-columns: repeat(4, minmax(auto, 1fr));
-  justify-self: center;
-  gap: 2px 2px;
-  padding: 5px;
-}
-
-.current {
-  background: var(--color-neutrals-blue);
+.muc-calendar-item {
+  padding: 37px;
 }
 
 .off-year {

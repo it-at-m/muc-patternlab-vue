@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container table-header">
+    <div class="muc-calendar-container table-header">
       <div
         class="header-item"
         v-for="(weekDay, index) in weekDays"
@@ -9,14 +9,14 @@
         <strong>{{ weekDay }}</strong>
       </div>
     </div>
-    <div class="container">
+    <div class="muc-calendar-container">
       <div
         v-for="blank in numOfDisplayedSpacers"
         :key="blank"
       />
       <muc-day-tile
         v-for="date in NUM_OF_DISPLAYED_DAYS"
-        class="item"
+        class="muc-calendar-item"
         :date="addDaysToDate(computedStartDate, date)"
         :view-date="viewDate"
         :selected-date="selectedDate"
@@ -88,6 +88,10 @@ const addDaysToDate = (date: Date, days: number) =>
 </script>
 
 <style scoped>
+.muc-calendar-container {
+  --container-grid-count: 7;
+}
+
 .table-header {
   border-bottom: 1px solid var(--color-neutrals-blue);
 }
@@ -96,26 +100,6 @@ const addDaysToDate = (date: Date, days: number) =>
   text-align: center;
   width: 100%;
   height: 100%;
-  padding: 5px;
-}
-.item {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  padding: 8px;
-  transition: border-color 0.3s ease-in;
-}
-.item:hover {
-  border: 1px solid var(--color-neutrals-blue);
-  transition: border-color 0.1s ease-out;
-  cursor: pointer;
-}
-.container {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(auto, 1fr));
-  justify-self: center;
-  gap: 2px 2px;
   padding: 5px;
 }
 
