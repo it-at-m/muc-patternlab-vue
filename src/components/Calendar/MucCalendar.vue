@@ -29,7 +29,7 @@
             class="full-size"
             v-if="view === 'year'"
             :view-date="viewDate"
-            @clicked="clickedMonth"
+            @clicked="clickedBroadSelection"
           />
         </Transition>
         <Transition
@@ -40,7 +40,7 @@
             class="full-size"
             v-if="view === 'month'"
             :view-date="viewDate"
-            @clicked="clickedMonth"
+            @clicked="clickedBroadSelection"
           />
         </Transition>
         <Transition
@@ -76,16 +76,30 @@ import {
   isMucDateRange,
   MucCalendarKey,
   MucCalendarSelected,
+  ViewType,
 } from "./MucCalendarType";
 import MucCalendarYear from "./MucCalendarYear.vue";
 
-type ViewType = "day" | "month" | "year";
-
 const props = withDefaults(
   defineProps<{
+    /**
+     * Initial date to be displayed on the selection screen
+     */
     viewMonth?: Date;
+
+    /**
+     * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
+     */
     showAdjacentMonths?: boolean;
+
+    /**
+     * Select the selection type for the user - single, multiple or range. Defaults to single
+     */
     variant?: CalendarTypes;
+
+    /**
+     * Disable the selection of dates by the user. Defaults to false
+     */
     disabled?: boolean;
   }>(),
   {
@@ -103,17 +117,26 @@ const viewDate = ref<Date>(
     new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
+/**
+ * Current shown view - days, months or years
+ */
 const view = ref<ViewType>("day");
 
+/**
+ * Current shown animation - zooming in or out
+ */
 const viewTransition = ref<"view-broad" | "view-detail">();
 
 /**
- * Currently selected date by the user
+ * Currently selected date / dates by the user. Defaults to null (nothing selected)
  */
 const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
   default: null,
 });
 
+/**
+ * Caption above the user selection view - changes depending on the current view.
+ */
 const computedCaption = computed(() => {
   switch (view.value) {
     case "day":
@@ -135,6 +158,9 @@ const computedCaption = computed(() => {
   }
 });
 
+/**
+ * Iterates to the previous month, year or selection of years depending on the current view.
+ */
 const clickedPrev = () => {
   switch (view.value) {
     case "day":
@@ -154,7 +180,9 @@ const clickedPrev = () => {
   }
 };
 
-// No modulo needed here!
+/**
+ * Iterates to the next month, year or selection of years depending on the current view.
+ */
 const clickedNext = () => {
   switch (view.value) {
     case "day":
@@ -200,16 +228,13 @@ const updateMVSingle = (newValue: Date) => {
 const updateMVMultiple = (newValue: Date) => {
   if (selectedDate.value === null) {
     selectedDate.value = [];
-    console.log("mventered - null");
   } else if (selectedDate.value instanceof Date) {
     selectedDate.value = [selectedDate.value];
-    console.log("mventered - date");
   } else if (isMucDateRange(selectedDate.value)) {
     selectedDate.value = [
       selectedDate.value.from,
       selectedDate.value.to,
     ].filter((date) => date !== null);
-    console.log("mventered - range");
   }
 
   selectedDate.value = selectedDate.value.includes(newValue)
@@ -256,24 +281,37 @@ const clickedDate = (date: Date) => {
   }
 };
 
-// TODO rename method
-const clickedMonth = (date: Date) => {
+/**
+ * Clicked on a broader selection (month or year) to be set for the more detailed view.
+ * Changes view afterward.
+ * @param date date within in the clicked month or year
+ */
+const clickedBroadSelection = (date: Date) => {
   viewTransition.value = "view-detail";
   viewDate.value = new Date(date.getFullYear(), date.getMonth());
   detailedView();
 };
-// TODO caption better with header or muc-button?
+
+/**
+ * Changes view to a broader view-type (month or year)
+ */
 const broaderView = () => {
   viewTransition.value = "view-broad";
   if (view.value === "day") view.value = "month";
   else if (view.value === "month") view.value = "year";
 };
 
+/**
+ * Changes view to a detailed view-type (day or month)
+ */
 const detailedView = () => {
   if (view.value === "year") view.value = "month";
   else if (view.value === "month") view.value = "day";
 };
 
+/**
+ * Providing data for the day selection view - reduces amount of props
+ */
 provide(MucCalendarKey, {
   viewDate,
   selectedDate,
