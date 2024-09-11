@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
+  <div class="muc-calendar-container">
     <div
       v-for="date in computedMonths"
       :class="{
-        current:
+        'muc-calendar-current-item':
           new Date().getMonth() === date.getMonth() &&
           new Date().getFullYear() === date.getFullYear(),
       }"
-      class="item"
+      class="muc-calendar-item"
       @click="clickedMonth(date)"
     >
       {{ monthDisplayment(date) }}
@@ -45,28 +45,7 @@ const clickedMonth = (date: Date) => emit("clicked", date);
 </script>
 
 <style scoped>
-.item {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  border: 1px solid white;
-  transition: border-color 0.3s ease-in;
-}
-.item:hover {
-  border: 1px solid var(--color-neutrals-blue);
-  transition: border-color 0.1s ease-out;
-  cursor: pointer;
-}
-.container {
-  display: grid;
-  height: 302px;
-  grid-template-columns: repeat(4, minmax(auto, 1fr));
-  justify-self: center;
-  gap: 2px 2px;
-  padding: 5px;
-}
-
-.current {
-  background: var(--color-neutrals-blue);
+.muc-calendar-item {
+  padding: 37px;
 }
 </style>
