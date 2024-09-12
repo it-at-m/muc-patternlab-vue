@@ -24,7 +24,14 @@ import {
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * Date of for this tile to be displayed
+     */
     date: Date;
+
+    /**
+     * Determines if this date should be shown or not, depending on the month - defaults to false
+     */
     showAdjacentMonths?: boolean;
   }>(),
   {
@@ -32,26 +39,40 @@ const props = withDefaults(
   }
 );
 
+/**
+ * Injection of data needed for styling calculations
+ */
 const mucCalData = inject(MucCalendarKey);
 
 const emit = defineEmits<{
+  /**
+   * Event emited after selecting a day
+   */
   click: [date: Date];
 }>();
 
+/**
+ * Determines if the day-tile is selected or not depending on the current variant
+ */
 // eslint-disable-next-line vue/return-in-computed-property
 const isSelected = computed(() => {
   if (mucCalData?.selectedDate.value === null) {
     return false;
   }
 
+  // variant single
   if (mucCalData?.selectedDate.value instanceof Date) {
     return isEqualDates(mucCalData?.selectedDate.value, props.date);
   }
+
+  //variant multiple
   if (Array.isArray(mucCalData?.selectedDate.value)) {
     return mucCalData?.selectedDate.value.some((selected) =>
       isEqualDates(selected, props.date)
     );
   }
+
+  //variant range
   if (isMucDateRange(mucCalData!.selectedDate.value)) {
     const { from, to } = mucCalData!.selectedDate.value;
     return (
@@ -61,6 +82,9 @@ const isSelected = computed(() => {
   }
 });
 
+/**
+ * Determines if this day-tile is inside the range of selected dates on type variant
+ */
 const isInRange = computed(() => {
   if (
     mucCalData?.variant.value === "range" &&
@@ -77,10 +101,16 @@ const isInRange = computed(() => {
   return false;
 });
 
+/**
+ * Is this day-tile in the current month or in the adjacent months
+ */
 const isCurrMonth = computed(
   () => props.date.getMonth() === mucCalData?.viewDate.value.getMonth()
 );
 
+/**
+ * Action upon selecting a day - triggers emit
+ */
 const clicked = () => emit("click", props.date);
 </script>
 
