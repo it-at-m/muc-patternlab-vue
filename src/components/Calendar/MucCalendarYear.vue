@@ -33,7 +33,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   /**
-   * Event emited after selecting a year
+   * Event emitted after selecting a year
    */
   clicked: [date: Date];
 }>();

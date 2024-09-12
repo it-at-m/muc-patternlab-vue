@@ -46,6 +46,9 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
+  /**
+   * Event emitted after selecting a day
+   */
   clicked: [date: Date];
 }>();
 
