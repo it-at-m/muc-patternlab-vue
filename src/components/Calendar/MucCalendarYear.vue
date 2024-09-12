@@ -17,22 +17,33 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { LOCALES, NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
+
+/**
+ * Chosen notation for date.toLocaleDateString() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#year
+ */
 const YEAR_NOTATION = "numeric";
 
-// TODO make external configuration for all components
-const LOCALES = "de-DE";
-
 const props = defineProps<{
+  /**
+   * current viewDate for the selection
+   */
   viewDate: Date;
 }>();
 
 const emit = defineEmits<{
+  /**
+   * Event emited after selecting a year
+   */
   clicked: [date: Date];
 }>();
 
+/**
+ * Computed years to be displayed in the selection
+ */
 const computedYears = computed(() =>
   Array.from(
-    { length: 12 },
+    { length: NUM_OF_BROAD_SELECTIONS },
     (_, i) =>
       new Date(
         props.viewDate.getFullYear() - (props.viewDate.getFullYear() % 10) + i,

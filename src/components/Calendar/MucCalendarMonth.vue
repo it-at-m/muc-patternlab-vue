@@ -18,15 +18,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { LOCALES, NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
+
 /**
  * Chosen notation for date.toLocaleDateString() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month
  */
 const MONTH_NOTATION = "short";
-
-/**
- * Locales for date output
- */
-const LOCALES = "de-DE";
 
 const props = defineProps<{
   /**
@@ -47,7 +44,7 @@ const emit = defineEmits<{
  */
 const computedMonths = computed(() =>
   Array.from(
-    { length: 12 },
+    { length: NUM_OF_BROAD_SELECTIONS },
     (_, i) => new Date(props.viewDate.getFullYear(), i)
   )
 );

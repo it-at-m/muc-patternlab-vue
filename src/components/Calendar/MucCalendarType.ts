@@ -42,6 +42,16 @@ export type {
 };
 
 /**
+ * Locales for date output
+ */
+const LOCALES = "de-DE";
+
+/**
+ * Number of possible selection in the broader views (months or years)
+ */
+const NUM_OF_BROAD_SELECTIONS = 12;
+
+/**
  * Key for injecting MucCalendar data into components.
  * @type {InjectionKey<MucCalendarInjection>}
  */
@@ -77,4 +87,11 @@ const isMucDateRange = (obj: MucCalendarSelected): obj is MucDateRange =>
   (obj as MucDateRange).from !== undefined &&
   (obj as MucDateRange).to !== undefined;
 
-export { isEqualDates, isMucDateRange, isDateAfterOther, MucCalendarKey };
+export {
+  isEqualDates,
+  isMucDateRange,
+  isDateAfterOther,
+  MucCalendarKey,
+  LOCALES,
+  NUM_OF_BROAD_SELECTIONS,
+};
