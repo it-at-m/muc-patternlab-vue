@@ -41,3 +41,11 @@ export const DisabledWithPreSelectedDate = {
     modelValue: new Date(),
   },
 };
+
+export const DisabledPreSelectedViewMonth = {
+  args: {
+    disabled: true,
+    showAdjacentMonths: true,
+    viewMonth: new Date(1970, 0, 1),
+  },
+};
