@@ -39,9 +39,24 @@ const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
 const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 const props = defineProps<{
+  /**
+   * Current year and month in the view
+   */
   viewDate: Date;
+
+  /**
+   * Type of possible day selection - single, multiple or range
+   */
   variant: CalendarTypes;
+
+  /**
+   * Determines if selection of day should be disabled
+   */
   disabled: boolean;
+
+  /**
+   * Determines if days of adjacent months (before and after) should be shown or not
+   */
   showAdjacentMonths: boolean;
 }>();
 
@@ -52,14 +67,23 @@ const emit = defineEmits<{
   clicked: [date: Date];
 }>();
 
+/**
+ * Computes the day (Mo, Tu, We,...) of the first day in current view month
+ */
 const firstDateOfMonth = computed(
   () => new Date(props.viewDate.getFullYear(), props.viewDate.getMonth(), 1)
 );
 
+/**
+ * Calculates the amount of spacers needed if no days of the pre-month should be shown
+ */
 const numOfDisplayedSpacers = computed(() =>
   props.showAdjacentMonths ? 0 : (firstDateOfMonth.value.getDay() || 7) - 1
 );
 
+/**
+ * Computes the starting date (of the prev month) the current view should start on (e.g. 26. of August)
+ */
 const computedStartDate = computed(() =>
   addDaysToDate(firstDateOfMonth.value, -firstDateOfMonth.value.getDay() || -7)
 );
