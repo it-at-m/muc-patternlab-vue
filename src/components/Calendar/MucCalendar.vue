@@ -36,7 +36,7 @@
           />
         </Transition>
         <Transition :name="viewTransition">
-          <muc-calendar-date
+          <muc-calendar-day
             v-if="view === 'day'"
             :variant="variant"
             :disabled="disabled"
@@ -55,7 +55,7 @@
 import { computed, provide, readonly, ref, toRef } from "vue";
 
 import { MucButton } from "../Button";
-import MucCalendarDate from "./MucCalendarDate.vue";
+import MucCalendarDay from "./MucCalendarDay.vue";
 import MucCalendarMonth from "./MucCalendarMonth.vue";
 import {
   CalendarTypes,
