@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="muc-calendar-view-full-size">
     <div class="muc-calendar-container table-header">
       <div
         class="header-item"

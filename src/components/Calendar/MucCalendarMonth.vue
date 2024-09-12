@@ -1,5 +1,5 @@
 <template>
-  <div class="muc-calendar-container">
+  <div class="muc-calendar-container muc-calendar-view-full-size">
     <div
       v-for="date in computedMonths"
       :class="{
@@ -10,7 +10,7 @@
       class="muc-calendar-item"
       @click="clickedMonth(date)"
     >
-      {{ monthDisplayment(date) }}
+      <p>{{ monthDisplayment(date) }}</p>
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@ import { computed } from "vue";
  */
 const MONTH_NOTATION = "short";
 
-// TODO make external configuration for all components
 /**
  * Locales for date output
  */
@@ -67,8 +66,4 @@ const monthDisplayment = (date: Date) =>
 const clickedMonth = (date: Date) => emit("clicked", date);
 </script>
 
-<style scoped>
-.muc-calendar-item {
-  padding: 37px;
-}
-</style>
+<style scoped></style>
