@@ -52,9 +52,17 @@ const computedYears = computed(() =>
   )
 );
 
+/**
+ * String displayment for a given year
+ * @param date to be displayed
+ */
 const yearDisplayment = (date: Date) =>
   date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION });
 
+/**
+ * Action upon selecting a year - triggers emit
+ * @param date selected year
+ */
 const clickedYear = (date: Date) => emit("clicked", date);
 </script>
 
