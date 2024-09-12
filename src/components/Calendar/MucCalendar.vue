@@ -20,35 +20,23 @@
           icon="chevron-right"
         />
       </div>
-      <div style="min-height: 313px">
-        <Transition
-          :name="viewTransition"
-          class="full-size"
-        >
+      <div class="container-view-size">
+        <Transition :name="viewTransition">
           <muc-calendar-year
-            class="full-size"
             v-if="view === 'year'"
             :view-date="viewDate"
             @clicked="clickedBroadSelection"
           />
         </Transition>
-        <Transition
-          :name="viewTransition"
-          class="full-size"
-        >
+        <Transition :name="viewTransition">
           <muc-calendar-month
-            class="full-size"
             v-if="view === 'month'"
             :view-date="viewDate"
             @clicked="clickedBroadSelection"
           />
         </Transition>
-        <Transition
-          :name="viewTransition"
-          class="full-size"
-        >
+        <Transition :name="viewTransition">
           <muc-calendar-date
-            class="full-size"
             v-if="view === 'day'"
             :variant="variant"
             :disabled="disabled"
@@ -415,5 +403,50 @@ provide(MucCalendarKey, {
   justify-content: center;
   display: flex;
   cursor: pointer;
+}
+
+.container-view-size {
+  --cal-container-view-height: 313px;
+  min-height: var(--cal-container-view-height);
+  height: var(--cal-container-view-height);
+}
+</style>
+
+<style>
+.muc-calendar-container {
+  --container-gap-size: 3px;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(
+    var(--container-grid-count, 4),
+    minmax(auto, 1fr)
+  );
+  gap: var(--container-gap-size) var(--container-gap-size);
+  padding: var(--container-gap-size);
+}
+
+.muc-calendar-item {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  transition: border-color 0.3s ease-in;
+}
+
+.muc-calendar-item:hover {
+  border: 1px solid var(--color-neutrals-blue);
+  transition: border-color 0.1s ease-out;
+  cursor: pointer;
+}
+
+.muc-calendar-view-full-size {
+  width: 100%;
+  height: 100%;
+}
+
+.muc-calendar-current-item {
+  background: var(--color-neutrals-blue);
 }
 </style>

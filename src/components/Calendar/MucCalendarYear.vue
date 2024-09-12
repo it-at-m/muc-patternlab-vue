@@ -1,5 +1,5 @@
 <template>
-  <div class="muc-calendar-container">
+  <div class="muc-calendar-container muc-calendar-view-full-size">
     <div
       v-for="date in computedYears"
       class="muc-calendar-item"
@@ -48,10 +48,6 @@ const clickedYear = (date: Date) => emit("clicked", date);
 </script>
 
 <style scoped>
-.muc-calendar-item {
-  padding: 37px;
-}
-
 .off-year {
   color: var(--color-neutrals-blue);
 }
