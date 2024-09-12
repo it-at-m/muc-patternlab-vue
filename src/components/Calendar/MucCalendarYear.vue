@@ -1,7 +1,8 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
     <div
-      v-for="date in computedYears"
+      v-for="(date, index) in computedYears"
+      :key="index"
       class="muc-calendar-item"
       :class="{
         'muc-calendar-current-item':
