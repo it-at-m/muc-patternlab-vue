@@ -3,7 +3,7 @@
     <div class="muc-calendar-container table-header">
       <div
         class="header-item"
-        v-for="(weekDay, index) in weekDays"
+        v-for="(weekDay, index) in WEEKDAYS"
         :key="index"
       >
         <strong>{{ weekDay }}</strong>
@@ -18,10 +18,7 @@
         v-for="date in NUM_OF_DISPLAYED_DAYS"
         class="muc-calendar-item"
         :date="addDaysToDate(computedStartDate, date)"
-        :view-date="viewDate"
-        :selected-date="selectedDate"
         :show-adjacent-months="showAdjacentMonths"
-        :variant="variant"
         @click="clickedDate"
         :key="date"
       />
@@ -32,21 +29,17 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { CalendarTypes, MucCalendarSelected } from "./MucCalendarType";
+import { CalendarTypes } from "./MucCalendarType";
 import MucDayTile from "./MucDayTile.vue";
 
 const DAYS_IN_WEEK = 7;
 
 const NUM_OF_DISPLAYED_DAYS = 6 * DAYS_IN_WEEK;
-const weekDays = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
-const viewDate = defineModel<Date>("viewDate", { default: new Date() });
-
-const selectedDate = defineModel<MucCalendarSelected>("selectedDate", {
-  default: null,
-});
+const WEEKDAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
 const props = defineProps<{
+  viewDate: Date;
   variant: CalendarTypes;
   disabled: boolean;
   showAdjacentMonths: boolean;
@@ -57,7 +50,7 @@ const emit = defineEmits<{
 }>();
 
 const firstDateOfMonth = computed(
-  () => new Date(viewDate.value.getFullYear(), viewDate.value.getMonth(), 1)
+  () => new Date(props.viewDate.getFullYear(), props.viewDate.getMonth(), 1)
 );
 
 const numOfDisplayedSpacers = computed(() =>
