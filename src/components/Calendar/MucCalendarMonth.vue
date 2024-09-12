@@ -1,7 +1,8 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
     <div
-      v-for="date in computedMonths"
+      v-for="(date, index) in computedMonths"
+      :key="index"
       :class="{
         'muc-calendar-current-item':
           new Date().getMonth() === date.getMonth() &&
