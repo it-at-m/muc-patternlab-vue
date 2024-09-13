@@ -7,6 +7,7 @@ import { MucDivider } from "./Divider";
 import {
   MucCheckbox,
   MucCheckboxGroup,
+  MucCounter,
   MucErrorList,
   MucInput,
   MucRadioButton,
@@ -38,4 +39,5 @@ export {
   MucIcon,
   MucDivider,
   MucLink,
+  MucCounter,
 };
