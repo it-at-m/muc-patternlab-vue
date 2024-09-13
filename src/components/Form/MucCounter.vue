@@ -54,7 +54,7 @@ const modelValue = defineModel<number>({ default: 0 });
 const props = withDefaults(
   defineProps<{
     /**
-     * Label shown behind the counter
+     * Label shown after the counter
      */
     label: string;
 
