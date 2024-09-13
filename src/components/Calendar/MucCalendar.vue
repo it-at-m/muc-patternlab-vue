@@ -22,8 +22,8 @@
       </div>
       <div class="container-view-size">
         <Transition
-            class="transition"
-            :name="viewTransition"
+          class="transition"
+          :name="viewTransition"
         >
           <muc-calendar-year
             v-if="view === 'year'"
@@ -32,8 +32,8 @@
           />
         </Transition>
         <Transition
-            class="transition"
-            :name="viewTransition"
+          class="transition"
+          :name="viewTransition"
         >
           <muc-calendar-month
             v-if="view === 'month'"
@@ -42,8 +42,8 @@
           />
         </Transition>
         <Transition
-            class="transition"
-            :name="viewTransition"
+          class="transition"
+          :name="viewTransition"
         >
           <muc-calendar-day
             v-if="view === 'day'"
@@ -368,19 +368,23 @@ provide(MucCalendarKey, {
 }
 
 .view-detail-enter-active {
-  animation: appear-detail var(--calendar-animation-duration) var(--calendar-animation-timing);
+  animation: appear-detail var(--calendar-animation-duration)
+    var(--calendar-animation-timing);
 }
 
 .view-detail-leave-active {
-  animation: disappear-detail var(--calendar-animation-duration) var(--calendar-animation-timing);
+  animation: disappear-detail var(--calendar-animation-duration)
+    var(--calendar-animation-timing);
 }
 
 .view-broad-enter-active {
-  animation: appear-broad var(--calendar-animation-duration) var(--calendar-animation-timing);
+  animation: appear-broad var(--calendar-animation-duration)
+    var(--calendar-animation-timing);
 }
 
 .view-broad-leave-active {
-  animation: disappear-broad var(--calendar-animation-duration) var(--calendar-animation-timing);
+  animation: disappear-broad var(--calendar-animation-duration)
+    var(--calendar-animation-timing);
 }
 
 /*animation*/
