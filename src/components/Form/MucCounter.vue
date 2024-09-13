@@ -10,7 +10,7 @@
     <p>
       <strong
         class="centered-text"
-        style="color: #005a9f"
+        style="color: var(--color-brand-main-blue)"
       >
         {{ modelValue }}
       </strong>
