@@ -21,21 +21,30 @@
         />
       </div>
       <div class="container-view-size">
-        <Transition :name="viewTransition">
+        <Transition
+            class="transition"
+            :name="viewTransition"
+        >
           <muc-calendar-year
             v-if="view === 'year'"
             :view-date="viewDate"
-            @clicked="clickedBroadSelection"
+            @clicked="clickedBroaderSelection"
           />
         </Transition>
-        <Transition :name="viewTransition">
+        <Transition
+            class="transition"
+            :name="viewTransition"
+        >
           <muc-calendar-month
             v-if="view === 'month'"
             :view-date="viewDate"
-            @clicked="clickedBroadSelection"
+            @clicked="clickedBroaderSelection"
           />
         </Transition>
-        <Transition :name="viewTransition">
+        <Transition
+            class="transition"
+            :name="viewTransition"
+        >
           <muc-calendar-day
             v-if="view === 'day'"
             :variant="variant"
@@ -274,7 +283,7 @@ const clickedDate = (date: Date) => {
  * Changes view afterward.
  * @param date date within in the clicked month or year
  */
-const clickedBroadSelection = (date: Date) => {
+const clickedBroaderSelection = (date: Date) => {
   viewTransition.value = "view-detail";
   viewDate.value = new Date(date.getFullYear(), date.getMonth());
   detailedView();
@@ -310,15 +319,14 @@ provide(MucCalendarKey, {
 
 <style scoped>
 /*animation - backwards is not working here because of interchanging of the animations*/
-
 @keyframes appear-broad {
   0% {
-    transform: scale(1.7);
+    transform: scale(calc(1 + var(--calendar-animation-scaling)));
     opacity: 0;
   }
   100% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -328,20 +336,19 @@ provide(MucCalendarKey, {
     opacity: 1;
   }
   100% {
+    transform: scale(calc(1 - var(--calendar-animation-scaling)));
     opacity: 0;
-
-    transform: scale(0.7);
   }
 }
 
 @keyframes appear-detail {
   0% {
-    transform: scale(0.7);
+    transform: scale(calc(1 - var(--calendar-animation-scaling)));
     opacity: 0;
   }
   100% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -351,39 +358,38 @@ provide(MucCalendarKey, {
     opacity: 1;
   }
   100% {
+    transform: scale(calc(1 + var(--calendar-animation-scaling)));
     opacity: 0;
-
-    transform: scale(1.7);
   }
 }
 
-.view-detail-enter-active {
+.transition {
   position: absolute;
-  animation: appear-detail 0.3s ease-in;
+}
+
+.view-detail-enter-active {
+  animation: appear-detail var(--calendar-animation-duration) var(--calendar-animation-timing);
 }
 
 .view-detail-leave-active {
-  position: absolute;
-  animation: disappear-detail 0.2s ease-in;
+  animation: disappear-detail var(--calendar-animation-duration) var(--calendar-animation-timing);
 }
 
 .view-broad-enter-active {
-  position: absolute;
-  animation: appear-broad 0.3s ease-in;
+  animation: appear-broad var(--calendar-animation-duration) var(--calendar-animation-timing);
 }
 
 .view-broad-leave-active {
-  position: absolute;
-  animation: disappear-broad 0.2s ease-in;
+  animation: disappear-broad var(--calendar-animation-duration) var(--calendar-animation-timing);
 }
 
 /*animation*/
 
-.full-size {
-  width: 100%;
-}
-
 .container-wrapper {
+  --calendar-animation-scaling: 0.1;
+  --calendar-animation-duration: 0.4s;
+  --calendar-animation-timing: ease-in-out;
+
   border: 1px solid var(--color-neutrals-blue);
   min-width: 330px;
   max-width: 900px;
@@ -409,6 +415,8 @@ provide(MucCalendarKey, {
   --cal-container-view-height: 313px;
   min-height: var(--cal-container-view-height);
   height: var(--cal-container-view-height);
+  overflow: hidden;
+  position: relative;
 }
 </style>
 
