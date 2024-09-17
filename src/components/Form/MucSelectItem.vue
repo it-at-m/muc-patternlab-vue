@@ -10,7 +10,7 @@ import { computed } from "vue";
 import { ItemAsObject } from "./MucSelectTypes";
 
 const props = defineProps<{
-  item: string | ItemAsObject;
+  item: MucSelectItemTypes;
   itemLabel: string;
 }>();
 
