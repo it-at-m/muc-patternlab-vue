@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ItemAsObject } from "./MucSelectTypes";
+import { MucSelectItemTypes } from "./MucSelectTypes";
 
 const props = defineProps<{
   item: MucSelectItemTypes;
