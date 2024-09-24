@@ -77,5 +77,5 @@ const isDisabled = computed(() => props.disabled || parentData?.disabled.value);
 /**
  * Determines if  this radiobutton is used inside a radiobutton-group
  */
-const isInRadioButtonGroup = computed(() => !!parentData?.disabled ?? false);
+const isInRadioButtonGroup = computed(() => parentData?.disabled ?? false);
 </script>
