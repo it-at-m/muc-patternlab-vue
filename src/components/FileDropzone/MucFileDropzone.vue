@@ -212,7 +212,7 @@ const _areFilesValid = (files: File[]) => {
   width: 100%;
   height: 100%;
   position: relative;
-  border: 3px dashed #337bb2;
+  border: 2px dashed #337bb2;
   display: flex;
   flex-direction: column;
   justify-content: center;
