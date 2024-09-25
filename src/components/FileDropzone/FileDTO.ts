@@ -1,7 +1,7 @@
 export class FileDTO {
-    mimeType?: string;
+  mimeType?: string;
 
-    filename?: string;
+  filename?: string;
 
-    data?: string;
+  data?: string;
 }

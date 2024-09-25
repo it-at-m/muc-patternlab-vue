@@ -4,6 +4,7 @@ import { MucCallout } from "./Callout";
 import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucDivider } from "./Divider";
+import { FileDTO, MucFileDropzone } from "./FileDropzone";
 import {
   MucCheckbox,
   MucCheckboxGroup,
@@ -17,7 +18,6 @@ import {
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
-import { MucFileDropzone, FileDTO } from "./FileDropzone";
 
 export {
   MucButton,
