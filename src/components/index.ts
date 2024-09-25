@@ -17,6 +17,7 @@ import {
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
+import { MucFileDropzone, FileDTO } from "./FileDropzone";
 
 export {
   MucButton,
@@ -38,4 +39,6 @@ export {
   MucIcon,
   MucDivider,
   MucLink,
+  MucFileDropzone,
+  FileDTO,
 };
