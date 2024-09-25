@@ -139,7 +139,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  files: Array<FileDTO>;
+  (e: "files", files: FileDTO[]): void;
 }>();
 
 const validFileSize = ref(true);
@@ -194,9 +194,10 @@ const _emitFiles = (files: File[]) => {
       reader.readAsDataURL(file);
     });
   });
-
+  const fileArray = new Array<FileDTO>();
   Promise.all(fileDataPromises).then((files) => {
-    emit("files", files);
+    files.forEach((file) => fileArray.push(file));
+    emit("files", fileArray);
   });
 };
 
