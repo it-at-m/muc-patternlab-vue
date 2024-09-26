@@ -130,26 +130,27 @@ import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
 import { FileDTO } from "./FileDTO";
 
-interface Props {
-  /**
-   * Maximum file size in MByte
-   */
-  maxFileSize?: number;
-  /**
-   * Text on the upload button
-   */
-  buttonText?: string;
-  /**
-   * Flag to disable the upload field
-   */
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  maxFileSize: 10,
-  buttonText: "Dokument hochladen",
-  disabled: false,
-});
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Maximum file size in MByte
+     */
+    maxFileSize?: number;
+    /**
+     * Text on the upload button
+     */
+    buttonText?: string;
+    /**
+     * Flag to disable the upload field
+     */
+    disabled?: boolean;
+  }>(),
+  {
+    maxFileSize: 10,
+    buttonText: "Dokument hochladen",
+    disabled: false,
+  }
+);
 
 const emit = defineEmits([
   /**
