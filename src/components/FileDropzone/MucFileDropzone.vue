@@ -1,7 +1,10 @@
 <template>
   <div
     class="drop-zone"
-    :class="{ 'is-dragover': isDragOver }"
+    :class="{
+      'is-dragover': isDragOver,
+      'is-not-disabled': !disabled,
+    }"
     @dragover.prevent="onDragOver"
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop"
@@ -105,6 +108,7 @@
       @click="selectFiles"
       variant="secondary"
       icon="upload"
+      :disabled="disabled"
     >
       {{ buttonText }}
     </MucButton>
@@ -115,7 +119,7 @@
     class="m-error-message"
   >
     <MucIcon icon="warning" />
-    Die Datei hat mehr als {{ maxFileSize }} MB und kann nicht angefügt werden.
+    Eine Datei hat mehr als {{ maxFileSize }} MB und kann nicht angefügt werden.
   </span>
 </template>
 
@@ -127,8 +131,17 @@ import { MucIcon } from "../Icon";
 import { FileDTO } from "./FileDTO";
 
 interface Props {
+  /**
+   * Maximum file size in MByte
+   */
   maxFileSize?: number;
+  /**
+   * Text on the upload button
+   */
   buttonText?: string;
+  /**
+   * Flag to disable the upload field
+   */
   disabled?: boolean;
 }
 
@@ -138,19 +151,29 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
 });
 
-const emit = defineEmits<{
-  (e: "files", files: FileDTO[]): void;
-}>();
+const emit = defineEmits([
+  /**
+   * Dropped files as {@link FileDTO} array
+   */
+  "files",
+]);
 
+/** Flag signals if file size is valid */
 const validFileSize = ref(true);
 
+/** Flag signals if files where dragged over the drop zone */
 const isDragOver = ref(false);
 
+/** Hidden HTML input field that opens the file explorer */
 const fileInput = document.createElement("input");
 
+/**
+ * Configuration of the HTML input field.
+ */
 onMounted(() => {
   fileInput.type = "file";
   fileInput.multiple = true;
+  /* catch 'onchange' event and trigger emit to the surrounding element */
   fileInput.onchange = (event) => {
     const target = event.target as HTMLInputElement;
     if (target?.files && target.files.length > 0) {
@@ -160,10 +183,26 @@ onMounted(() => {
   };
 });
 
+/**
+ * Opens the file explorer by firing a click event to the hidden file input field if the property {@link Props#disabled} is false.
+ */
+const selectFiles = () => {
+  if (props.disabled) return;
+  fileInput.click();
+};
+
+/** Sets flag {@link isDragOver} true. */
 const onDragOver = () => (isDragOver.value = true);
+
+/** Sets flag {@link isDragOver} false. */
 const onDragLeave = () => (isDragOver.value = false);
 
+/**
+ * Catches a DragEvent in the drop zone and emits dropped files to the surrounding element if the property {@link Props#disabled} is false.
+ * @param {DragEvent} event dropped files
+ */
 const onDrop = (event: DragEvent) => {
+  if (props.disabled) return;
   isDragOver.value = false;
   const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
   if (dataTransfer?.files?.length > 0) {
@@ -172,8 +211,12 @@ const onDrop = (event: DragEvent) => {
   }
 };
 
-const selectFiles = () => fileInput.click();
-
+/**
+ * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
+ * Reads the file contents and converts it to  Base64-encoded data preceded by a Data-URL declaration.
+ * Emits the converted files to upload to the surrounding element.
+ * @param {File[]} files array of dropped or chosen files to upload
+ */
 const _emitFiles = (files: File[]) => {
   if (!_areFilesValid(files)) {
     validFileSize.value = false;
@@ -194,13 +237,15 @@ const _emitFiles = (files: File[]) => {
       reader.readAsDataURL(file);
     });
   });
-  const fileArray = new Array<FileDTO>();
   Promise.all(fileDataPromises).then((files) => {
-    files.forEach((file) => fileArray.push(file));
-    emit("files", fileArray);
+    emit("files", files);
   });
 };
 
+/**
+ * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
+ * @param {File[]} files array files
+ */
 const _areFilesValid = (files: File[]) => {
   return !files.some((file) => file.size > props.maxFileSize * 1024 * 1024);
 };
@@ -220,10 +265,13 @@ const _areFilesValid = (files: File[]) => {
   gap: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  cursor: pointer;
 }
 
-.drop-zone.is-dragover {
-  background-color: #f2f6fa;
+.drop-zone.is-dragover.is-not-disabled {
+  background-color: #f1f1f1;
+}
+
+.drop-zone.is-not-disabled {
+  cursor: pointer;
 }
 </style>
