@@ -71,7 +71,8 @@ Computing the corresponding icon-component for the given comment-type
  */
 const fallbackCalloutIcon = computed(() => {
   switch (props.type) {
-    case "error" || "warning":
+    case "error":
+    case "warning":
       return "warning";
     case "success":
       return "check";

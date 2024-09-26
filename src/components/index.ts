@@ -8,6 +8,7 @@ import { FileDTO, MucFileDropzone } from "./FileDropzone";
 import {
   MucCheckbox,
   MucCheckboxGroup,
+  MucCounter,
   MucErrorList,
   MucInput,
   MucRadioButton,
@@ -41,4 +42,5 @@ export {
   MucLink,
   MucFileDropzone,
   FileDTO,
+  MucCounter,
 };
