@@ -121,10 +121,17 @@
     <MucIcon icon="warning" />
     Eine Datei hat mehr als {{ maxFileSize }} MB und kann nicht angefügt werden.
   </span>
+  <span
+    v-if="!validFilesAmount"
+    class="m-error-message"
+  >
+    <MucIcon icon="warning" />
+    Es kann nur eine Datei hochgeladen werden.
+  </span>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
@@ -144,11 +151,16 @@ const props = withDefaults(
      * Flag to disable the upload field
      */
     disabled?: boolean;
+    /**
+     * Flag to switch between multiple and single file upload.
+     */
+    multiple?: boolean;
   }>(),
   {
     maxFileSize: 10,
     buttonText: "Dokument hochladen",
     disabled: false,
+    multiple: true,
   }
 );
 
@@ -162,6 +174,9 @@ const emit = defineEmits([
 /** Flag signals if file size is valid */
 const validFileSize = ref(true);
 
+/** Flag signals if files amount is valid */
+const validFilesAmount = ref(true);
+
 /** Flag signals if files where dragged over the drop zone */
 const isDragOver = ref(false);
 
@@ -173,7 +188,7 @@ const fileInput = document.createElement("input");
  */
 onMounted(() => {
   fileInput.type = "file";
-  fileInput.multiple = true;
+  fileInput.multiple = props.multiple;
   /* catch 'onchange' event and trigger emit to the surrounding element */
   fileInput.onchange = (event) => {
     const target = event.target as HTMLInputElement;
@@ -182,6 +197,10 @@ onMounted(() => {
       _emitFiles(filesArray);
     }
   };
+});
+
+onUpdated(() => {
+  fileInput.multiple = props.multiple;
 });
 
 /**
@@ -193,17 +212,33 @@ const selectFiles = () => {
 };
 
 /** Sets flag {@link isDragOver} true. */
-const onDragOver = () => (isDragOver.value = true);
+const onDragOver = (event: DragEvent) => {
+  console.log("here1");
+  console.log(fileInput?.multiple);
+  if (! fileInput?.multiple) {
+    console.log(event);
+    const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
+    if (dataTransfer?.items?.length > 1) {
+      console.log(dataTransfer?.files?.length);
+      validFilesAmount.value = false;
+      return;
+    }
+  }
+  isDragOver.value = true;
+};
 
 /** Sets flag {@link isDragOver} false. */
-const onDragLeave = () => (isDragOver.value = false);
+const onDragLeave = () => {
+  isDragOver.value = false;
+  validFilesAmount.value = true;
+};
 
 /**
  * Catches a DragEvent in the drop zone and emits dropped files to the surrounding element if the property {@link Props#disabled} is false.
  * @param {DragEvent} event dropped files
  */
 const onDrop = (event: DragEvent) => {
-  if (props.disabled) return;
+  if (!validFilesAmount.value || props.disabled) return;
   isDragOver.value = false;
   const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
   if (dataTransfer?.files?.length > 0) {
@@ -240,6 +275,7 @@ const _emitFiles = (files: File[]) => {
   });
   Promise.all(fileDataPromises).then((files) => {
     emit("files", files);
+    console.log(files);
   });
 };
 
