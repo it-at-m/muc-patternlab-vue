@@ -126,7 +126,7 @@
     class="m-error-message"
   >
     <MucIcon icon="warning" />
-    Es kann nur eine Datei hochgeladen werden.
+    {{ invalidAmountWarning }}
   </span>
 </template>
 
@@ -152,15 +152,20 @@ const props = withDefaults(
      */
     disabled?: boolean;
     /**
-     * Flag to switch between multiple and single file upload.
+     * Flag to switch between multiple and single file upload
      */
     multiple?: boolean;
+    /**
+     * Warning for invalid amount of files
+     */
+    invalidAmountWarning?: string;
   }>(),
   {
     maxFileSize: 10,
     buttonText: "Dokument hochladen",
     disabled: false,
     multiple: true,
+    invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
   }
 );
 
@@ -213,13 +218,10 @@ const selectFiles = () => {
 
 /** Sets flag {@link isDragOver} true. */
 const onDragOver = (event: DragEvent) => {
-  console.log("here1");
-  console.log(fileInput?.multiple);
+  if (props.disabled) return;
   if (!fileInput?.multiple) {
-    console.log(event);
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.items?.length > 1) {
-      console.log(dataTransfer?.files?.length);
       validFilesAmount.value = false;
       return;
     }
@@ -238,7 +240,15 @@ const onDragLeave = () => {
  * @param {DragEvent} event dropped files
  */
 const onDrop = (event: DragEvent) => {
-  if (!validFilesAmount.value || props.disabled) return;
+  if (props.disabled) return;
+  if (!validFilesAmount.value) {
+    /*
+    user drops files with invalid amount
+    -> warning disappears
+     */
+    validFilesAmount.value = true;
+    return;
+  }
   isDragOver.value = false;
   const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
   if (dataTransfer?.files?.length > 0) {
