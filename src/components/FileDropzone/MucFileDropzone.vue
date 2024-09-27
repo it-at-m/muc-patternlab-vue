@@ -19,15 +19,8 @@
     >
       {{ buttonText }}
     </MucButton>
-    <small>Maximale Dateigröße: {{ maxFileSize }} MB</small>
+    <small>{{ additionalInformation }}</small>
   </div>
-  <span
-    v-if="!validFileSize"
-    class="m-error-message"
-  >
-    <MucIcon icon="warning" />
-    Eine Datei hat mehr als {{ maxFileSize }} MB und kann nicht angefügt werden.
-  </span>
   <span
     v-if="!validFilesAmount"
     class="m-error-message"
@@ -48,13 +41,13 @@ import IconFileUpload from "./IconFileUpload.vue";
 const props = withDefaults(
   defineProps<{
     /**
-     * Maximum file size in MByte
-     */
-    maxFileSize?: number;
-    /**
      * Text on the upload button
      */
     buttonText?: string;
+    /**
+     * Additional Information, e. g. max file size
+     */
+    additionalInformation?: string;
     /**
      * Flag to disable the upload field
      */
@@ -69,8 +62,8 @@ const props = withDefaults(
     invalidAmountWarning?: string;
   }>(),
   {
-    maxFileSize: 10,
     buttonText: "Dokument hochladen",
+    additionalInformation: "Maximale Dateigröße: 10 MB",
     disabled: false,
     multiple: true,
     invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
@@ -83,9 +76,6 @@ const emit = defineEmits([
    */
   "files",
 ]);
-
-/** Flag signals if file size is valid */
-const validFileSize = ref(true);
 
 /** Flag signals if files amount is valid */
 const validFilesAmount = ref(true);
@@ -112,12 +102,15 @@ onMounted(() => {
   };
 });
 
+/**
+ * Pass property {multiple} to the input tag.
+ */
 onUpdated(() => {
   fileInput.multiple = props.multiple;
 });
 
 /**
- * Opens the file explorer by firing a click event to the hidden file input field if the property {@link Props#disabled} is false.
+ * Opens the file explorer by firing a click event to the hidden file input field if the property {disabled} is false.
  */
 const selectFiles = () => {
   if (props.disabled) return;
@@ -166,18 +159,11 @@ const onDrop = (event: DragEvent) => {
 };
 
 /**
- * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
  * Reads the file contents and converts it to  Base64-encoded data preceded by a Data-URL declaration.
  * Emits the converted files to upload to the surrounding element.
  * @param {File[]} files array of dropped or chosen files to upload
  */
 const _emitFiles = (files: File[]) => {
-  if (!_areFilesValid(files)) {
-    validFileSize.value = false;
-    return;
-  }
-  validFileSize.value = true;
-
   const fileDataPromises = files.map((file) => {
     return new Promise<FileDTO>((resolve) => {
       const reader = new FileReader();
@@ -195,14 +181,6 @@ const _emitFiles = (files: File[]) => {
     emit("files", files);
     console.log(files);
   });
-};
-
-/**
- * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
- * @param {File[]} files array files
- */
-const _areFilesValid = (files: File[]) => {
-  return !files.some((file) => file.size > props.maxFileSize * 1024 * 1024);
 };
 </script>
 
