@@ -215,7 +215,7 @@ const selectFiles = () => {
 const onDragOver = (event: DragEvent) => {
   console.log("here1");
   console.log(fileInput?.multiple);
-  if (! fileInput?.multiple) {
+  if (!fileInput?.multiple) {
     console.log(event);
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.items?.length > 1) {
