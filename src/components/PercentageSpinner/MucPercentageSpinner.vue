@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ComputedRef } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -92,7 +92,7 @@ const props = withDefaults(
  * Ensures that the progress indication is within the reasonable range between 0 and 100 percent.
  * An empty property 'percentage' results in an empty string.
  */
-const validPercentage: string = computed(() => {
+const validPercentage: ComputedRef<string> = computed(() => {
   if (props.percentage) {
     if (props.percentage < 0) return 0 + "%";
     if (props.percentage > 100) return 100 + "%";
