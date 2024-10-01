@@ -18,6 +18,7 @@ import {
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
+import { MucPercentageSpinner } from "./PercentageSpinner";
 
 export {
   MucButton,
@@ -40,4 +41,5 @@ export {
   MucDivider,
   MucLink,
   MucCounter,
+  MucPercentageSpinner,
 };
