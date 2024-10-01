@@ -60,7 +60,7 @@
       font-size="24"
       font-weight="bold"
     >
-      {{ validPercentage }}%
+      {{ validPercentage }}
     </text>
   </svg>
 </template>
@@ -79,21 +79,25 @@ const props = withDefaults(
      * Number that represents the progress.
      * Numbers lower than 0 result in '0%'.
      * Numbers greater than 100 result in '100%'.
+     * An empty value results in an empty string.
      */
-    percentage: number;
+    percentage?: number;
   }>(),
   {
     size: "300",
-    percentage: 0,
   }
 );
 
 /**
  * Ensures that the progress indication is within the reasonable range between 0 and 100 percent.
+ * An empty property 'percentage' results in an empty string.
  */
-const validPercentage = computed(() => {
-  if (props.percentage < 0) return 0;
-  if (props.percentage > 100) return 100;
-  return props.percentage;
+const validPercentage: string = computed(() => {
+  if (props.percentage) {
+    if (props.percentage < 0) return 0 + "%";
+    if (props.percentage > 100) return 100 + "%";
+    return Math.round(props.percentage) + "%";
+  }
+  return "";
 });
 </script>

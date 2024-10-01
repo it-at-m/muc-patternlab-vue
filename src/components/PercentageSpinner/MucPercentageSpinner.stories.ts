@@ -14,4 +14,15 @@ export default {
   },
 };
 
-export const Default = {};
+export const Relative = {
+  args: {
+    size: "40%",
+    percentage: 42,
+  },
+};
+
+export const Default = {
+  args: {
+    size: "300",
+  },
+};
