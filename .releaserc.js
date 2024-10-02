@@ -51,10 +51,7 @@ module.exports = {
         },
       },
     ],
-    [
-      "@semantic-release/npm",
-      { "pkgRoot": "./dist" }
-    ],
+    ["@semantic-release/npm", { pkgRoot: "./dist" }],
     [
       "@semantic-release/github",
       {
