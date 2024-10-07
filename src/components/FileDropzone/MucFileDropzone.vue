@@ -51,53 +51,54 @@ import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
 import IconFileUpload from "./IconFileUpload.vue";
 
-const props = withDefaults(
-    defineProps<{
-      /**
-       * Text on the upload button
-       */
-      buttonText: string;
-      /**
-       * Additional Information, e. g. max file size
-       */
-      additionalInformation?: string;
-      /**
-       * Flag to disable the upload field
-       */
-      disabled?: boolean;
-      /**
-       * Flag to switch between multiple and single file upload
-       */
-      multiple?: boolean;
-      /**
-       * Warning for invalid amount of files
-       */
-      invalidAmountWarning?: string;
-      /**
-       * Maximum file size in MByte
-       */
-      maxFileSize?: number;
-      /**
-       * Warning for invalid file size
-       */
-      maxFileSizeWarning?: string;
-      /**
-       * Maximum file size sum in MByte
-       */
-      maxTotalFileSize?: number;
-      /**
-       * Warning for invalid file size sum
-       */
-      maxTotalFileSizeWarning?: string;
-    }>(),
-    {
-      buttonText: "Upload file",
-      disabled: false,
-      multiple: true,
-      maxFileSize: 0,
-      maxTotalFileSize: 0,
-    }
-);
+const {
+  buttonText = "Upload file",
+  additionalInformation,
+  disabled = false,
+  multiple = true,
+  invalidAmountWarning,
+  maxFileSize = 0,
+  maxFileSizeWarning,
+  maxTotalFileSize = 0,
+  maxTotalFileSizeWarning,
+} = defineProps<{
+  /**
+   * Text on the upload button
+   */
+  buttonText: string;
+  /**
+   * Additional Information, e.g. max file size
+   */
+  additionalInformation?: string;
+  /**
+   * Flag to disable the upload field
+   */
+  disabled?: boolean;
+  /**
+   * Flag to switch between multiple and single file upload
+   */
+  multiple?: boolean;
+  /**
+   * Warning for invalid amount of files
+   */
+  invalidAmountWarning?: string;
+  /**
+   * Maximum file size in MByte
+   */
+  maxFileSize?: number;
+  /**
+   * Warning for invalid file size
+   */
+  maxFileSizeWarning?: string;
+  /**
+   * Maximum file size sum in MByte
+   */
+  maxTotalFileSize?: number;
+  /**
+   * Warning for invalid file size sum
+   */
+  maxTotalFileSizeWarning?: string;
+}>();
 
 const emit = defineEmits([
   /**
@@ -125,7 +126,7 @@ const fileInput = document.createElement("input");
  */
 onMounted(() => {
   fileInput.type = "file";
-  fileInput.multiple = props.multiple;
+  fileInput.multiple = multiple;
   /* catch 'onchange' event and trigger emit to the surrounding element */
   fileInput.onchange = (event) => {
     const target = event.target as HTMLInputElement;
@@ -140,20 +141,20 @@ onMounted(() => {
  * Pass property {multiple} to the input tag.
  */
 onUpdated(() => {
-  fileInput.multiple = props.multiple;
+  fileInput.multiple = multiple;
 });
 
 /**
  * Opens the file explorer by firing a click event to the hidden file input field if the property {disabled} is false.
  */
 const selectFiles = () => {
-  if (props.disabled) return;
+  if (disabled) return;
   fileInput.click();
 };
 
 /** Sets flag {@link isDragOver} true. */
 const onDragOver = (event: DragEvent) => {
-  if (props.disabled) return;
+  if (disabled) return;
   if (!fileInput?.multiple) {
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.items?.length > 1) {
@@ -175,7 +176,7 @@ const onDragLeave = () => {
  * @param {DragEvent} event dropped files
  */
 const onDrop = (event: DragEvent) => {
-  if (props.disabled) return;
+  if (disabled) return;
   if (!validFilesAmount.value) {
     /*
     user drops files with invalid amount
@@ -212,8 +213,8 @@ const _emitFiles = (files: File[]) => {
  * @param {File[]} files array files
  */
 const _areFilesValid = (files: File[]) => {
-  if (props.maxFileSize)
-    return !files.some((file) => file.size > props.maxFileSize * 1024 * 1024);
+  if (maxFileSize)
+    return !files.some((file) => file.size > maxFileSize * 1024 * 1024);
   return true;
 };
 
@@ -222,10 +223,10 @@ const _areFilesValid = (files: File[]) => {
  * @param {File[]} files array files
  */
 const _isTotalFilesSumValid = (files: File[]) => {
-  if (props.maxTotalFileSize)
+  if (maxTotalFileSize)
     return (
       files.reduce((acc, file) => acc + (file.size || 0), 0) <=
-      props.maxTotalFileSize * 1024 * 1024
+      maxTotalFileSize * 1024 * 1024
     );
   return true;
 };

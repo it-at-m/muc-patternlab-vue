@@ -19,9 +19,11 @@ export const Example = {
     additionalInformation: "Maximale Dateigröße: 2 MB",
     invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
     maxFileSize: 2,
-    maxFileSizeWarning: "Eine Datei hat mehr als 2 MB und kann nicht angefügt werden.",
-    maxTotalFileSize: 100,
-    maxTotalFileSizeWarning: "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden."
+    maxFileSizeWarning:
+      "Eine Datei hat mehr als 2 MB und kann nicht angefügt werden.",
+    maxTotalFileSize: 10,
+    maxTotalFileSizeWarning:
+      "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
   },
 };
 export const Default = {};
