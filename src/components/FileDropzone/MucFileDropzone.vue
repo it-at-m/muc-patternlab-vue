@@ -12,7 +12,6 @@
   >
     <IconFileUpload />
     <MucButton
-      @click="selectFiles"
       variant="secondary"
       icon="upload"
       :disabled="disabled"
