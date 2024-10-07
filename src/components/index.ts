@@ -4,7 +4,7 @@ import { MucCallout } from "./Callout";
 import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucDivider } from "./Divider";
-import { FileDTO, MucFileDropzone } from "./FileDropzone";
+import { MucFileDropzone } from "./FileDropzone";
 import {
   MucCheckbox,
   MucCheckboxGroup,
@@ -42,7 +42,6 @@ export {
   MucDivider,
   MucLink,
   MucFileDropzone,
-  FileDTO,
   MucCounter,
   MucPercentageSpinner,
 };
