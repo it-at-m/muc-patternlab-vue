@@ -22,6 +22,20 @@
     <small>{{ additionalInformation }}</small>
   </div>
   <span
+    v-if="!validFileSizes && maxFileSizeWarning"
+    class="m-error-message"
+  >
+    <MucIcon icon="warning" />
+    {{ maxFileSizeWarning }}
+  </span>
+  <span
+    v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
+    class="m-error-message"
+  >
+    <MucIcon icon="warning" />
+    {{ maxTotalFileSizeWarning }}
+  </span>
+  <span
     v-if="!validFilesAmount"
     class="m-error-message"
   >
@@ -35,47 +49,67 @@ import { onMounted, onUpdated, ref } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
-import { FileDTO } from "./FileDTO";
 import IconFileUpload from "./IconFileUpload.vue";
 
 const props = withDefaults(
-  defineProps<{
-    /**
-     * Text on the upload button
-     */
-    buttonText?: string;
-    /**
-     * Additional Information, e. g. max file size
-     */
-    additionalInformation?: string;
-    /**
-     * Flag to disable the upload field
-     */
-    disabled?: boolean;
-    /**
-     * Flag to switch between multiple and single file upload
-     */
-    multiple?: boolean;
-    /**
-     * Warning for invalid amount of files
-     */
-    invalidAmountWarning?: string;
-  }>(),
-  {
-    buttonText: "Dokument hochladen",
-    additionalInformation: "Maximale Dateigröße: 10 MB",
-    disabled: false,
-    multiple: true,
-    invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
-  }
+    defineProps<{
+      /**
+       * Text on the upload button
+       */
+      buttonText: string;
+      /**
+       * Additional Information, e. g. max file size
+       */
+      additionalInformation?: string;
+      /**
+       * Flag to disable the upload field
+       */
+      disabled?: boolean;
+      /**
+       * Flag to switch between multiple and single file upload
+       */
+      multiple?: boolean;
+      /**
+       * Warning for invalid amount of files
+       */
+      invalidAmountWarning?: string;
+      /**
+       * Maximum file size in MByte
+       */
+      maxFileSize?: number;
+      /**
+       * Warning for invalid file size
+       */
+      maxFileSizeWarning?: string;
+      /**
+       * Maximum file size sum in MByte
+       */
+      maxTotalFileSize?: number;
+      /**
+       * Warning for invalid file size sum
+       */
+      maxTotalFileSizeWarning?: string;
+    }>(),
+    {
+      buttonText: "Upload file",
+      disabled: false,
+      multiple: true,
+      maxFileSize: 0,
+      maxTotalFileSize: 0,
+    }
 );
 
 const emit = defineEmits([
   /**
-   * Dropped files as {@link FileDTO} array
+   * Dropped files as {@link File[]} array
    */
   "files",
 ]);
+
+/** Flag signals if file size is valid */
+const validFileSizes = ref(true);
+
+const validTotalFileSizes = ref(true);
 
 /** Flag signals if files amount is valid */
 const validFilesAmount = ref(true);
@@ -159,28 +193,41 @@ const onDrop = (event: DragEvent) => {
 };
 
 /**
- * Reads the file contents and converts it to  Base64-encoded data preceded by a Data-URL declaration.
- * Emits the converted files to upload to the surrounding element.
+ * Emits the files to upload to the surrounding element.
  * @param {File[]} files array of dropped or chosen files to upload
  */
 const _emitFiles = (files: File[]) => {
-  const fileDataPromises = files.map((file) => {
-    return new Promise<FileDTO>((resolve) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const fileDTO = new FileDTO();
-        fileDTO.filename = file.name;
-        fileDTO.mimeType = file.type;
-        fileDTO.data = reader.result as string;
-        resolve(fileDTO);
-      };
-      reader.readAsDataURL(file);
-    });
-  });
-  Promise.all(fileDataPromises).then((files) => {
-    emit("files", files);
-    console.log(files);
-  });
+  validFileSizes.value = _areFilesValid(files);
+  validTotalFileSizes.value = _isTotalFilesSumValid(files);
+
+  if (!validFileSizes.value || !validTotalFileSizes.value) {
+    return;
+  }
+
+  emit("files", files);
+};
+
+/**
+ * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
+ * @param {File[]} files array files
+ */
+const _areFilesValid = (files: File[]) => {
+  if (props.maxFileSize)
+    return !files.some((file) => file.size > props.maxFileSize * 1024 * 1024);
+  return true;
+};
+
+/**
+ * Checks if the sum of all files is inside the allowed range that is given by {@link Props#maxTotalFileSize}.
+ * @param {File[]} files array files
+ */
+const _isTotalFilesSumValid = (files: File[]) => {
+  if (props.maxTotalFileSize)
+    return (
+      files.reduce((acc, file) => acc + (file.size || 0), 0) <=
+      props.maxTotalFileSize * 1024 * 1024
+    );
+  return true;
 };
 </script>
 
