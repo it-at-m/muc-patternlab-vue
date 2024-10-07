@@ -51,11 +51,14 @@ module.exports = {
         },
       },
     ],
-    "@semantic-release/npm",
+    ["@semantic-release/npm", { pkgRoot: "./dist" }],
     [
       "@semantic-release/github",
       {
         assets: [
+          "package.json",
+          "README.md",
+          "dist/**/*.{ts}",
           {
             path: "dist/muc-patternlab-vue.es.js",
             label: "JS distribution",
