@@ -68,35 +68,30 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from "vue";
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Size of the spinner relative or absolute.
-     * Typical units for styling size are allowed.
-     */
-    size: string;
-    /**
-     * Number that represents the progress.
-     * Numbers lower than 0 result in '0%'.
-     * Numbers greater than 100 result in '100%'.
-     * An empty value results in an empty string.
-     */
-    percentage?: number;
-  }>(),
-  {
-    size: "300",
-  }
-);
+const { size = "300", percentage } = defineProps<{
+  /**
+   * Size of the spinner relative or absolute.
+   * Typical units for styling size are allowed.
+   */
+  size: string;
+  /**
+   * Number that represents the progress.
+   * Numbers lower than 0 result in '0%'.
+   * Numbers greater than 100 result in '100%'.
+   * An empty value results in an empty string.
+   */
+  percentage?: number;
+}>();
 
 /**
  * Ensures that the progress indication is within the reasonable range between 0 and 100 percent.
  * An empty property 'percentage' results in an empty string.
  */
 const validPercentage: ComputedRef<string> = computed(() => {
-  if (props.percentage) {
-    if (props.percentage < 0) return 0 + "%";
-    if (props.percentage > 100) return 100 + "%";
-    return Math.round(props.percentage) + "%";
+  if (percentage || percentage === 0) {
+    if (percentage < 0) return 0 + "%";
+    if (percentage > 100) return 100 + "%";
+    return Math.round(percentage) + "%";
   }
   return "";
 });
