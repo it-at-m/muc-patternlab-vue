@@ -4,14 +4,18 @@
       v-on:click="clickedMinus"
       variant="secondary"
       :disabled="disableMinus"
+      :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
     >
       <template #default><muc-icon icon="minus" /></template>
     </MucButton>
-    <p>
+    <p tabindex="0">
       <strong
         class="centered-text"
         style="color: var(--color-brand-main-blue)"
       >
+        <span class="visually-hidden">
+          Aktuell ausgewählte Anzahl für {{ label }} ist</span
+        >
         {{ modelValue }}
       </strong>
     </p>
@@ -19,12 +23,14 @@
       v-on:click="clickedPlus"
       variant="secondary"
       :disabled="disablePlus"
+      :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
     >
       <template #default><muc-icon icon="plus" /></template>
     </MucButton>
     <p v-if="link">
       <label class="centered-text">
         <muc-link
+          tabindex="0"
           :label="label"
           :href="link"
         ></muc-link>
