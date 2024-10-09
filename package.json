@@ -19,7 +19,7 @@
   },
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
+      "types": "./index.d.ts",
       "import": "./muc-patternlab-vue.es.js"
     },
     "./style.css": "./style.css",
