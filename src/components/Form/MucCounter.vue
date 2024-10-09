@@ -51,37 +51,36 @@ import { MucLink } from "../Link";
  */
 const modelValue = defineModel<number>({ default: 0 });
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Label shown after the counter
-     */
-    label: string;
+const {
+  min,
+  max,
+  disabled = false,
+} = defineProps<{
+  /**
+   * Label shown after the counter
+   */
+  label: string;
 
-    /**
-     * Optional minimum of counter
-     */
-    min?: number;
+  /**
+   * Optional minimum of counter
+   */
+  min?: number;
 
-    /**
-     * Optional maximum of counter
-     */
-    max?: number;
+  /**
+   * Optional maximum of counter
+   */
+  max?: number;
 
-    /**
-     * Optional link for label
-     */
-    link?: string;
+  /**
+   * Optional link for label
+   */
+  link?: string;
 
-    /**
-     * Optionally disable this specific counter
-     */
-    disabled?: boolean;
-  }>(),
-  {
-    disabled: false,
-  }
-);
+  /**
+   * Optionally disables the counter buttons
+   */
+  disabled?: boolean;
+}>();
 
 /**
  * Function increases the value of modelValue by 1
@@ -96,7 +95,7 @@ const clickedMinus = () => modelValue.value--;
  * Computed property if this plus button should be disabled
  */
 const disablePlus = computed(
-  () => (!!props.max && !(modelValue.value < props.max)) || props.disabled
+  () => (!!max && !(modelValue.value < max)) || disabled
 );
 
 /**
@@ -105,8 +104,8 @@ const disablePlus = computed(
 const disableMinus = computed(
   () =>
     modelValue.value == 0 ||
-    (!!props.min && !(modelValue.value > props.min)) ||
-    props.disabled
+    (!!min && !(modelValue.value > min)) ||
+    disabled
 );
 </script>
 
