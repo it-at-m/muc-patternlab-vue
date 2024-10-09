@@ -159,8 +159,8 @@ const evaluateRating = computed(() => {
   let emptyStars = Math.floor(MAX_STARS - computedRating.value);
   let isHalfStar = false;
 
-  // evaluating half-stars and if the rating is e.g. 3.9 an extra full star needs to be displayed
-  if (computedRating.value !== 0.0 && computedRating.value !== MAX_STARS) {
+  // evaluating half-stars and if the rating is e.g. 3.8 an extra full star needs to be displayed
+  if (decimalPart !== 0.0) {
     if (decimalPart <= LOWER_THRESHOLD) emptyStars++;
     else if (decimalPart >= UPPER_THRESHOLD) fullStars++;
     else isHalfStar = true;
