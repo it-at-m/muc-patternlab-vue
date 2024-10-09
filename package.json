@@ -19,15 +19,15 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/muc-patternlab-vue.es.js"
+      "types": "./index.d.ts",
+      "import": "./muc-patternlab-vue.es.js"
     },
-    "./dist/style.css": "./dist/style.css",
-    "./dist/assets/temporary/custom-style.css": "./dist/assets/temporary/custom-style.css",
-    "./dist/assets/temporary/muenchende-style.css": "./dist/assets/temporary/muenchende-style.css",
-    "./dist/assets/temporary/muenchende-fontfaces.css": "./dist/assets/temporary/muenchende-fontfaces.css",
-    "./dist/assets/temporary/muc-icons.svg": "./dist/assets/temporary/muc-icons.svg",
-    "./dist/assets/temporary/custom-icons.svg": "./dist/assets/temporary/custom-icons.svg"
+    "./style.css": "./style.css",
+    "./assets/temporary/custom-style.css": "./assets/temporary/custom-style.css",
+    "./assets/temporary/muenchende-style.css": "./assets/temporary/muenchende-style.css",
+    "./assets/temporary/muenchende-fontfaces.css": "./assets/temporary/muenchende-fontfaces.css",
+    "./assets/temporary/muc-icons.svg": "./assets/temporary/muc-icons.svg",
+    "./assets/temporary/custom-icons.svg": "./assets/temporary/custom-icons.svg"
   },
   "scripts": {
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
@@ -46,7 +46,7 @@
     "@muenchen/prettier-codeformat": "^1.0.1",
     "@rushstack/eslint-patch": "^1.3.3",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.0.0",
+    "@semantic-release/github": "^11.0.0",
     "@storybook/addon-a11y": "^8.0.9",
     "@storybook/addon-essentials": "^8.0.9",
     "@storybook/addon-interactions": "^8.0.9",
@@ -69,7 +69,7 @@
     "npm-run-all2": "^6.1.1",
     "prettier": "^3.0.3",
     "rimraf": "^6.0.0",
-    "semantic-release": "^23.1.1",
+    "semantic-release": "^24.0.0",
     "semantic-release-gitmoji": "^1.6.5",
     "storybook": "^8.0.9",
     "typescript": "~5.6.0",
