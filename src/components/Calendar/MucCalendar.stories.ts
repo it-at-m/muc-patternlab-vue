@@ -45,6 +45,7 @@ export const DisabledWithPreSelectedDate = {
 export const DisabledAnimation = {
   args: {
     noAnimation: true,
+    allowedDates: () => false,
   },
 };
 

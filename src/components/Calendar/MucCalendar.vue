@@ -70,6 +70,7 @@ import { MucButton } from "../Button";
 import MucCalendarDay from "./MucCalendarDay.vue";
 import MucCalendarMonth from "./MucCalendarMonth.vue";
 import {
+  AllowedDateFunction,
   CalendarTypes,
   isDateAfterOther,
   isEqualDates,
@@ -86,6 +87,7 @@ const {
   variant = "single",
   disabled = false,
   noAnimation = false,
+  allowedDates = () => true,
 } = defineProps<{
   /**
    * Initial date to be displayed on the selection screen
@@ -111,6 +113,11 @@ const {
    * Disables the animation
    */
   noAnimation?: boolean;
+
+  /**
+   * Function to determine if a date should be disabled or not
+   */
+  allowedDates?: AllowedDateFunction;
 }>();
 
 /**
@@ -320,6 +327,7 @@ provide(MucCalendarKey, {
   selectedDate,
   variant: readonly(toRef(variant)),
   showAdjacentMonths: readonly(toRef(showAdjacentMonths)),
+  allowedDates: allowedDates,
 });
 </script>
 

@@ -10,6 +10,8 @@ type CalendarTypes = "single" | "multiple" | "range";
  */
 type ViewType = "day" | "month" | "year";
 
+type AllowedDateFunction = (date: Date) => boolean;
+
 /**
  * Selection type for range type
  */
@@ -31,9 +33,11 @@ type MucCalendarInjection = {
   selectedDate: Readonly<Ref<MucCalendarSelected>>;
   variant: Readonly<Ref<CalendarTypes>>;
   showAdjacentMonths: Readonly<Ref<boolean>>;
+  allowedDates: AllowedDateFunction;
 };
 
 export type {
+  AllowedDateFunction,
   MucDateRange,
   MucCalendarSelected,
   CalendarTypes,
