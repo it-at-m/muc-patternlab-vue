@@ -19,15 +19,15 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/muc-patternlab-vue.es.js"
+      "types": "./types/index.d.ts",
+      "import": "./muc-patternlab-vue.es.js"
     },
-    "./dist/style.css": "./dist/style.css",
-    "./dist/assets/temporary/custom-style.css": "./dist/assets/temporary/custom-style.css",
-    "./dist/assets/temporary/muenchende-style.css": "./dist/assets/temporary/muenchende-style.css",
-    "./dist/assets/temporary/muenchende-fontfaces.css": "./dist/assets/temporary/muenchende-fontfaces.css",
-    "./dist/assets/temporary/muc-icons.svg": "./dist/assets/temporary/muc-icons.svg",
-    "./dist/assets/temporary/custom-icons.svg": "./dist/assets/temporary/custom-icons.svg"
+    "./style.css": "./style.css",
+    "./assets/temporary/custom-style.css": "./assets/temporary/custom-style.css",
+    "./assets/temporary/muenchende-style.css": "./assets/temporary/muenchende-style.css",
+    "./assets/temporary/muenchende-fontfaces.css": "./assets/temporary/muenchende-fontfaces.css",
+    "./assets/temporary/muc-icons.svg": "./assets/temporary/muc-icons.svg",
+    "./assets/temporary/custom-icons.svg": "./assets/temporary/custom-icons.svg"
   },
   "scripts": {
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
