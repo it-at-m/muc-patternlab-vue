@@ -71,5 +71,3 @@ const { rows = 3, required = false } =
     required?: boolean;
   }>();
 </script>
-
-<style scoped></style>
