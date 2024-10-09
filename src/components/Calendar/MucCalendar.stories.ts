@@ -42,6 +42,12 @@ export const DisabledWithPreSelectedDate = {
   },
 };
 
+export const DisabledAnimation = {
+  args: {
+    noAnimation: true,
+  },
+};
+
 export const DisabledPreSelectedViewMonth = {
   args: {
     disabled: true,
