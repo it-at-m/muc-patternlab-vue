@@ -77,41 +77,38 @@ import {
 } from "./MucCalendarType";
 import MucCalendarYear from "./MucCalendarYear.vue";
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Initial date to be displayed on the selection screen
-     */
-    viewMonth?: Date;
+const {
+  viewMonth,
+  showAdjacentMonths = false,
+  variant = "single",
+  disabled = false,
+} = defineProps<{
+  /**
+   * Initial date to be displayed on the selection screen
+   */
+  viewMonth?: Date;
 
-    /**
-     * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
-     */
-    showAdjacentMonths?: boolean;
+  /**
+   * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
+   */
+  showAdjacentMonths?: boolean;
 
-    /**
-     * Select the selection type for the user - single, multiple or range. Defaults to single
-     */
-    variant?: CalendarTypes;
+  /**
+   * Select the selection type for the user - single, multiple or range. Defaults to single
+   */
+  variant?: CalendarTypes;
 
-    /**
-     * Disable the selection of dates by the user. Defaults to false
-     */
-    disabled?: boolean;
-  }>(),
-  {
-    showAdjacentMonths: false,
-    variant: "single",
-    disabled: false,
-  }
-);
+  /**
+   * Disable the selection of dates by the user. Defaults to false
+   */
+  disabled?: boolean;
+}>();
 
 /**
  * Determines the current shown month and year
  */
 const viewDate = ref<Date>(
-  props.viewMonth ||
-    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  viewMonth || new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
 /**
@@ -264,8 +261,8 @@ const updateMVRange = (newValue: Date) => {
  * @param date - The date that was clicked.
  */
 const clickedDate = (date: Date) => {
-  if (props.disabled) return;
-  switch (props.variant) {
+  if (disabled) return;
+  switch (variant) {
     case "single":
       updateMVSingle(date);
       break;
@@ -312,8 +309,8 @@ const detailedView = () => {
 provide(MucCalendarKey, {
   viewDate,
   selectedDate,
-  variant: readonly(toRef(props.variant)),
-  showAdjacentMonths: readonly(toRef(props.showAdjacentMonths)),
+  variant: readonly(toRef(variant)),
+  showAdjacentMonths: readonly(toRef(showAdjacentMonths)),
 });
 </script>
 
