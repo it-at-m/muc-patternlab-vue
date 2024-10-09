@@ -4,9 +4,11 @@ import { MucCallout } from "./Callout";
 import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucDivider } from "./Divider";
+import { MucFileDropzone } from "./FileDropzone";
 import {
   MucCheckbox,
   MucCheckboxGroup,
+  MucCounter,
   MucErrorList,
   MucInput,
   MucRadioButton,
@@ -17,6 +19,7 @@ import {
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
+import { MucPercentageSpinner } from "./PercentageSpinner";
 
 export {
   MucButton,
@@ -38,4 +41,7 @@ export {
   MucIcon,
   MucDivider,
   MucLink,
+  MucFileDropzone,
+  MucCounter,
+  MucPercentageSpinner,
 };
