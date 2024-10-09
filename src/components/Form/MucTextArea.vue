@@ -38,7 +38,7 @@
  */
 const modelValue = defineModel<string>({ default: "" });
 
-withDefaults(
+const { rows = 3, required = false } =
   defineProps<{
     /**
      * Displays error message and highlights the input form with a red border.
@@ -69,12 +69,7 @@ withDefaults(
      * Sets this input form as required. Default is false.
      */
     required?: boolean;
-  }>(),
-  {
-    rows: 3,
-    required: false,
-  }
-);
+  }>();
 </script>
 
 <style scoped></style>
