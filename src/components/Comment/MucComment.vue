@@ -77,23 +77,21 @@ type RatingDisplayType = {
   isHalfStar: boolean;
 };
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Number of stars to be displayed.
-     */
-    rating: number;
-    /**
-     * Choose the variant of the comment. Default is `listing`.
-     *
-     * This can be either `slider` oder `listing`.
-     */
-    variant?: CommentType;
-  }>(),
-  {
-    variant: "listing",
-  }
-);
+const {
+  rating,
+  variant = "listing",
+} = defineProps<{
+  /**
+   * Number of stars to be displayed.
+   */
+  rating: number;
+  /**
+   * Choose the variant of the comment. Default is `listing`.
+   *
+   * This can be either `slider` oder `listing`.
+   */
+  variant?: CommentType;
+}>();
 
 defineSlots<{
   /**
@@ -130,7 +128,7 @@ const showDate = computed(() => {
  * Computes class for given variant
  */
 const commentClass = computed(() => {
-  return props.variant === "slider"
+  return variant === "slider"
     ? "m-comment--slider"
     : "m-comment--listing";
 });
@@ -139,7 +137,7 @@ const commentClass = computed(() => {
  * Computes rating with min and max limits
  */
 const computedRating = computed(() =>
-  Math.min(Math.max(props.rating, 0), MAX_STARS)
+  Math.min(Math.max(rating, 0), MAX_STARS)
 );
 
 /*
