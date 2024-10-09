@@ -21,32 +21,36 @@ import { computed } from "vue";
 
 import { MucIcon } from "../Icon";
 
-const { href = "#", target = "_blank", noUnderline = false, } = defineProps<{
-    /**
-     * Text shown as the link
-     */
-    label: string;
+const {
+  href = "#",
+  target = "_blank",
+  noUnderline = false,
+} = defineProps<{
+  /**
+   * Text shown as the link
+   */
+  label: string;
 
-    /**
-     * href to link to
-     */
-    href?: string;
+  /**
+   * href to link to
+   */
+  href?: string;
 
-    /**
-     * Optional icon displayed behind the text
-     */
-    icon?: string;
+  /**
+   * Optional icon displayed behind the text
+   */
+  icon?: string;
 
-    /**
-     * Target on the link
-     */
-    target?: string;
+  /**
+   * Target on the link
+   */
+  target?: string;
 
-    /**
-     * Removes the underline from the label text
-     */
-    noUnderline?: boolean;
-  }>();
+  /**
+   * Removes the underline from the label text
+   */
+  noUnderline?: boolean;
+}>();
 
 defineSlots<{
   /**

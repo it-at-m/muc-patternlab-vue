@@ -37,9 +37,7 @@ import { MucIcon } from "../Icon";
 
 type calloutType = "info" | "warning" | "success" | "error";
 
-const {
-  type = "info",
-} = defineProps<{
+const { type = "info" } = defineProps<{
   /**
    * Type of the callout, default is `info`.
    *

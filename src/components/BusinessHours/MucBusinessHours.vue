@@ -104,9 +104,12 @@ const collapsed = ref(toggleable);
 /**
  * Keep reactivity intact when prop toggleable is changed
  */
-watch(() => toggleable, () => {
-  collapsed.value = toggleable
-})
+watch(
+  () => toggleable,
+  () => {
+    collapsed.value = toggleable;
+  }
+);
 
 const slots = defineSlots<{
   /**

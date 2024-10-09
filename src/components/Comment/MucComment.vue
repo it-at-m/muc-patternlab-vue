@@ -77,10 +77,7 @@ type RatingDisplayType = {
   isHalfStar: boolean;
 };
 
-const {
-  rating,
-  variant = "listing",
-} = defineProps<{
+const { rating, variant = "listing" } = defineProps<{
   /**
    * Number of stars to be displayed.
    */
@@ -128,17 +125,13 @@ const showDate = computed(() => {
  * Computes class for given variant
  */
 const commentClass = computed(() => {
-  return variant === "slider"
-    ? "m-comment--slider"
-    : "m-comment--listing";
+  return variant === "slider" ? "m-comment--slider" : "m-comment--listing";
 });
 
 /**
  * Computes rating with min and max limits
  */
-const computedRating = computed(() =>
-  Math.min(Math.max(rating, 0), MAX_STARS)
-);
+const computedRating = computed(() => Math.min(Math.max(rating, 0), MAX_STARS));
 
 /*
  * Converts the dot used on decimal numbers and converts it to a comma.

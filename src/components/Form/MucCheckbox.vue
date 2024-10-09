@@ -20,7 +20,7 @@
 /**
  * Input value from the checkbox component.
  */
-const modelValue = defineModel<boolean>( { default: false });
+const modelValue = defineModel<boolean>({ default: false });
 
 defineProps<{
   /**

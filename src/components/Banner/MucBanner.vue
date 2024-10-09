@@ -5,9 +5,7 @@ import { MucIcon } from "../Icon";
 
 type bannerType = "info" | "success" | "warning" | "emergency";
 
-const {
-  type = "info",
-} = defineProps<{
+const { type = "info" } = defineProps<{
   /**
    * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
    */

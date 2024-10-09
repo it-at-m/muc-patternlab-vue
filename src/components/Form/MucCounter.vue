@@ -88,16 +88,22 @@ const {
   disabled?: boolean;
 }>();
 
-watch(() => min, () => {
-  if(min && modelValue.value < min) {
-    modelValue.value = min;
+watch(
+  () => min,
+  () => {
+    if (min && modelValue.value < min) {
+      modelValue.value = min;
+    }
   }
-})
-watch(() => max, () => {
-  if(max && modelValue.value > max) {
-    modelValue.value = max;
+);
+watch(
+  () => max,
+  () => {
+    if (max && modelValue.value > max) {
+      modelValue.value = max;
+    }
   }
-})
+);
 
 /**
  * Function increases the value of modelValue by 1
@@ -120,9 +126,7 @@ const disablePlus = computed(
  */
 const disableMinus = computed(
   () =>
-    modelValue.value == 0 ||
-    (!!min && !(modelValue.value > min)) ||
-    disabled
+    modelValue.value == 0 || (!!min && !(modelValue.value > min)) || disabled
 );
 </script>
 

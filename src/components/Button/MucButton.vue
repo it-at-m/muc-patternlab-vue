@@ -26,7 +26,7 @@ type buttonType = "primary" | "secondary" | "ghost";
 const {
   variant = "primary",
   disabled = false,
-  iconAnimated = false
+  iconAnimated = false,
 } = defineProps<{
   /**
    * The variant prop gives you easy access to several different button styles.

@@ -55,6 +55,6 @@ provide(RadioButtonGroupKey, {
     modelValue.value = value;
   },
   modelValue,
-  disabled: readonly(toRef(() => disabled))
+  disabled: readonly(toRef(() => disabled)),
 });
 </script>

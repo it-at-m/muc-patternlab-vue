@@ -29,7 +29,7 @@ const {
   initials,
   author,
   date,
-  variant = "listing"
+  variant = "listing",
 } = defineProps<{
   /**
    * Text input to display in front of the date text input

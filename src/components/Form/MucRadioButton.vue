@@ -27,26 +27,26 @@ import { computed, inject } from "vue";
 
 import { RadioButtonGroupKey } from "./MucRadioButtonTypes";
 
-const { value, disabled = false, } = defineProps<{
-    /**
-     * value for this radiobutton
-     */
-    value: string;
+const { value, disabled = false } = defineProps<{
+  /**
+   * value for this radiobutton
+   */
+  value: string;
 
-    /**
-     * Optional label shown behind the radiobutton
-     */
-    label?: string;
+  /**
+   * Optional label shown behind the radiobutton
+   */
+  label?: string;
 
-    /**
-     * Optional hint shown beneath the radiobutton
-     */
-    hint?: string;
+  /**
+   * Optional hint shown beneath the radiobutton
+   */
+  hint?: string;
 
-    /**
-     * Optionally disable this specific radiobutton
-     */
-    disabled?: boolean;
+  /**
+   * Optionally disable this specific radiobutton
+   */
+  disabled?: boolean;
 }>();
 
 /**

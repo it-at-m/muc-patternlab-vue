@@ -27,7 +27,7 @@ export const CustomTitle = {
     title: "Oops, something went wrong!",
     errors: "Error 1",
   },
-}
+};
 
 export const Multiple = {
   args: {

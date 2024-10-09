@@ -24,8 +24,6 @@ const { item, itemLabel } = defineProps<{
  * Defines the displayed value
  */
 const itemText = computed(() =>
-  typeof item === "string"
-    ? item
-    : item[itemLabel!].toString()
+  typeof item === "string" ? item : item[itemLabel!].toString()
 );
 </script>
