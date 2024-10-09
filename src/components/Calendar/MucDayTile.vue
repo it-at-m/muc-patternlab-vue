@@ -3,6 +3,7 @@
     v-if="isCurrMonth || showAdjacentMonths"
     @click="clicked"
     :class="{
+      'disabled-tile': !mucCalData?.allowedDates(date),
       'off-month': !isCurrMonth,
       selected: isSelected,
       'selected-range': isInRange,
@@ -33,9 +34,12 @@ const props = withDefaults(
      * Determines if this date should be shown or not, depending on the month - defaults to false
      */
     showAdjacentMonths?: boolean;
+
+    disabled?: boolean;
   }>(),
   {
     showAdjacentMonths: false,
+    disabled: false,
   }
 );
 
@@ -118,6 +122,11 @@ const clicked = () => emit("click", props.date);
 .selected {
   background: var(--color-brand-main-blue);
   color: white;
+}
+
+.disabled-tile {
+  filter: grayscale(80%);
+  color: lightgray;
 }
 
 .selected-range {
