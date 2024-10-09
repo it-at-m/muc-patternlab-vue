@@ -9,17 +9,23 @@ import { computed } from "vue";
 
 import { MucSelectItemTypes } from "./MucSelectTypes";
 
-const props = defineProps<{
+const { item, itemLabel } = defineProps<{
+  /**
+   * Individual item to display inside the MucSelect component
+   */
   item: MucSelectItemTypes;
-  itemLabel: string;
+  /**
+   * A key of the `item` object, only required
+   */
+  itemLabel?: string;
 }>();
 
 /**
  * Defines the displayed value
  */
 const itemText = computed(() =>
-  typeof props.item === "string"
-    ? props.item
-    : props.item[props.itemLabel].toString()
+  typeof item === "string"
+    ? item
+    : item[itemLabel!].toString()
 );
 </script>
