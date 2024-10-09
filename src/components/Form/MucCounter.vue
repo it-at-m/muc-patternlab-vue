@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
@@ -81,6 +81,17 @@ const {
    */
   disabled?: boolean;
 }>();
+
+watch(() => min, () => {
+  if(min && modelValue.value < min) {
+    modelValue.value = min;
+  }
+})
+watch(() => max, () => {
+  if(max && modelValue.value > max) {
+    modelValue.value = max;
+  }
+})
 
 /**
  * Function increases the value of modelValue by 1
