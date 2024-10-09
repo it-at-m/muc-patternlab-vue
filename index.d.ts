@@ -1,5 +1,4 @@
-import { App } from '../vue/dist/vue.esm-bundler.js';
-
+import { App } from 'vue';
 declare function install(app: App): void;
 declare const _default: {
     install: typeof install;

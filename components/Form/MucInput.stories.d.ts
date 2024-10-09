@@ -1,150 +1,90 @@
 declare const _default: {
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"color" | "search" | "text" | "date" | "datetime-local" | "password">;
-                default: string;
-            };
-            required: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            datalist: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            hint: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            errorMsg: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            placeholder: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            suffixIcon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>> & {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            modelValue?: string;
+        } & {
+            errorMsg?: string;
+            placeholder?: string;
+            required?: boolean;
+            label?: string;
+            hint?: string;
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
+            suffixIcon?: string;
+        }> & Readonly<{
+            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            suffixClick: () => void;
-        }, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"color" | "search" | "text" | "date" | "datetime-local" | "password">;
-                default: string;
-            };
-            required: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            datalist: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            hint: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            errorMsg: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            placeholder: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            suffixIcon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>> & {
+        }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+            "update:modelValue": (modelValue: string) => any;
+        } & {
+            suffixClick: () => any;
+        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            modelValue?: string;
+        } & {
+            errorMsg?: string;
+            placeholder?: string;
+            required?: boolean;
+            label?: string;
+            hint?: string;
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
+            suffixIcon?: string;
+        }> & Readonly<{
+            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
-        }, {
-            type: "color" | "search" | "text" | "date" | "datetime-local" | "password";
+        }>, {
+            type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
             required: boolean;
-        }, true, {}, {}, {
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"color" | "search" | "text" | "date" | "datetime-local" | "password">;
-                default: string;
-            };
-            required: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            datalist: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            hint: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            errorMsg: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            placeholder: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            suffixIcon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>> & {
+        }, Readonly<{
+            modelValue?: string;
+        } & {
+            errorMsg?: string;
+            placeholder?: string;
+            required?: boolean;
+            label?: string;
+            hint?: string;
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
+            suffixIcon?: string;
+        }> & Readonly<{
+            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
-        }, {}, {}, {}, {}, {
-            type: "color" | "search" | "text" | "date" | "datetime-local" | "password";
+        }>, {}, {}, {}, {}, {
+            type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
             required: boolean;
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        type: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"color" | "search" | "text" | "date" | "datetime-local" | "password">;
-            default: string;
-        };
-        required: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-        datalist: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-        };
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        hint: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        errorMsg: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        placeholder: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        suffixIcon: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-    }>> & {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        modelValue?: string;
+    } & {
+        errorMsg?: string;
+        placeholder?: string;
+        required?: boolean;
+        label?: string;
+        hint?: string;
+        type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+        datalist?: string[];
+        suffixIcon?: string;
+    }> & Readonly<{
+        "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
         onSuffixClick?: (() => any) | undefined;
-    }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-        suffixClick: () => void;
+    }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+        "update:modelValue": (modelValue: string) => any;
+    } & {
+        suffixClick: () => any;
     }, string, {
-        type: "color" | "search" | "text" | "date" | "datetime-local" | "password";
+        type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
         required: boolean;
-    }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             prefix(): any;
         }> & {

@@ -1,34 +1,26 @@
 declare const _default: {
     components: {
         MucCheckboxGroup: {
-            new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, true, {}, {}, {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
                 C: {};
                 M: {};
                 Defaults: {};
-            }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, {}, {}, {}, {}>;
+            }, Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
             __isSuspense?: never;
-        } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 checkboxes(): any;
                 collapsableCheckboxes(): any;
@@ -37,53 +29,44 @@ declare const _default: {
                 collapsableCheckboxes(): any;
             };
         });
-        MucCheckbox: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: () => void;
-        }, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        MucCheckbox: import('vue').DefineComponent<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+            "update:modelValue": (modelValue: boolean) => any;
+        } & {
+            click: () => any;
+        }, string, import('vue').PublicProps, Readonly<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {}, {}>;
+            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     };
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, true, {}, {}, {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, {}, {}, {}, {}>;
+        }, Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        heading: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-    }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        heading?: string;
+    }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             checkboxes(): any;
             collapsableCheckboxes(): any;
@@ -105,52 +88,43 @@ declare const _default: {
 export default _default;
 export declare const NotCollapsable: () => {
     components: {
-        MucCheckbox: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: () => void;
-        }, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        MucCheckbox: import('vue').DefineComponent<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+            "update:modelValue": (modelValue: boolean) => any;
+        } & {
+            click: () => any;
+        }, string, import('vue').PublicProps, Readonly<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {}, {}>;
+            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
         MucCheckboxGroup: {
-            new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, true, {}, {}, {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
                 C: {};
                 M: {};
                 Defaults: {};
-            }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, {}, {}, {}, {}>;
+            }, Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
             __isSuspense?: never;
-        } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 checkboxes(): any;
                 collapsableCheckboxes(): any;
@@ -164,52 +138,43 @@ export declare const NotCollapsable: () => {
 };
 export declare const Collapsable: () => {
     components: {
-        MucCheckbox: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: () => void;
-        }, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        MucCheckbox: import('vue').DefineComponent<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+            "update:modelValue": (modelValue: boolean) => any;
+        } & {
+            click: () => any;
+        }, string, import('vue').PublicProps, Readonly<{
+            modelValue?: boolean;
+        } & {
+            label: string;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {}, {}>;
+            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
         MucCheckboxGroup: {
-            new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, true, {}, {}, {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
                 C: {};
                 M: {};
                 Defaults: {};
-            }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                heading: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                };
-            }>>, {}, {}, {}, {}, {}>;
+            }, Readonly<{
+                heading?: string;
+            }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
             __isSuspense?: never;
-        } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            heading: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            heading?: string;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 checkboxes(): any;
                 collapsableCheckboxes(): any;

@@ -1,43 +1,31 @@
 declare const _default: {
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
-                default: string;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
-                default: string;
-            };
-        }>>, {
-            type: "info" | "success" | "warning" | "error";
-        }, true, {}, {}, {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            type?: "error" | "info" | "success" | "warning";
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            type?: "error" | "info" | "success" | "warning";
+        }> & Readonly<{}>, {
+            type: "error" | "info" | "success" | "warning";
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            type: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
-                default: string;
-            };
-        }>>, {}, {}, {}, {}, {
-            type: "info" | "success" | "warning" | "error";
+        }, Readonly<{
+            type?: "error" | "info" | "success" | "warning";
+        }> & Readonly<{}>, {}, {}, {}, {}, {
+            type: "error" | "info" | "success" | "warning";
         }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        type: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"info" | "success" | "warning" | "error">;
-            default: string;
-        };
-    }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {
-        type: "info" | "success" | "warning" | "error";
-    }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        type?: "error" | "info" | "success" | "warning";
+    }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
+        type: "error" | "info" | "success" | "warning";
+    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             icon(): any;
             header(): any;

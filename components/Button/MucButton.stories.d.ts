@@ -1,73 +1,40 @@
 declare const _default: {
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            variant: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"primary" | "secondary" | "ghost">;
-                default: string;
-            };
-            disabled: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            iconAnimated: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>> & {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            variant?: "primary" | "secondary" | "ghost";
+            disabled?: boolean;
+            icon?: string;
+            iconAnimated?: boolean;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: () => void;
-        }, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            variant: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"primary" | "secondary" | "ghost">;
-                default: string;
-            };
-            disabled: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            iconAnimated: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>> & {
+        }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+            click: () => any;
+        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            variant?: "primary" | "secondary" | "ghost";
+            disabled?: boolean;
+            icon?: string;
+            iconAnimated?: boolean;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {
+        }>, {
             variant: "primary" | "secondary" | "ghost";
             disabled: boolean;
             iconAnimated: boolean;
-        }, true, {}, {}, {
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            variant: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"primary" | "secondary" | "ghost">;
-                default: string;
-            };
-            disabled: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-            iconAnimated: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>> & {
+        }, Readonly<{
+            variant?: "primary" | "secondary" | "ghost";
+            disabled?: boolean;
+            icon?: string;
+            iconAnimated?: boolean;
+        }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }, {}, {}, {}, {}, {
+        }>, {}, {}, {}, {}, {
             variant: "primary" | "secondary" | "ghost";
             disabled: boolean;
             iconAnimated: boolean;
@@ -75,31 +42,20 @@ declare const _default: {
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        icon: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        variant: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<"primary" | "secondary" | "ghost">;
-            default: string;
-        };
-        disabled: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-        iconAnimated: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-    }>> & {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        variant?: "primary" | "secondary" | "ghost";
+        disabled?: boolean;
+        icon?: string;
+        iconAnimated?: boolean;
+    }> & Readonly<{
         onClick?: (() => any) | undefined;
-    }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-        click: () => void;
+    }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+        click: () => any;
     }, string, {
         variant: "primary" | "secondary" | "ghost";
         disabled: boolean;
         iconAnimated: boolean;
-    }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): any;
         }> & {
@@ -109,7 +65,7 @@ declare const _default: {
     title: string;
     tags: string[];
     args: {
-        onClick: import('@vitest/spy').Mock<any, any>;
+        onClick: import('@vitest/spy').Mock<(...args: any[]) => any>;
     };
     parameters: {
         docs: {

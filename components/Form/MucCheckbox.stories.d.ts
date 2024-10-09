@@ -1,21 +1,20 @@
 declare const _default: {
-    component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-        modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            required: true;
-        };
-    }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-        click: () => void;
-    }, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            required: true;
-        };
-    }>> & {
+    component: import('vue').DefineComponent<{
+        modelValue?: boolean;
+    } & {
+        label: string;
+    }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+        "update:modelValue": (modelValue: boolean) => any;
+    } & {
+        click: () => any;
+    }, string, import('vue').PublicProps, Readonly<{
+        modelValue?: boolean;
+    } & {
+        label: string;
+    }> & Readonly<{
         onClick?: (() => any) | undefined;
-    }, {}, {}>;
+        "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
     parameters: {

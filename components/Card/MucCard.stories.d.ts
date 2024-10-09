@@ -1,65 +1,41 @@
 declare const _default: {
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            title: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            tagline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            title: string;
+            tagline: string;
+        }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: (click: Event) => void;
-        }, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            title: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            tagline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+            click: (click: Event) => any;
+        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            title: string;
+            tagline: string;
+        }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
-        }, {}, true, {}, {}, {
+        }>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            title: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            tagline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        }, Readonly<{
+            title: string;
+            tagline: string;
+        }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
-        }, {}, {}, {}, {}, {}>;
+        }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        title: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            required: true;
-        };
-        tagline: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            required: true;
-        };
-    }>> & {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        title: string;
+        tagline: string;
+    }> & Readonly<{
         onClick?: ((click: Event) => any) | undefined;
-    }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-        click: (click: Event) => void;
-    }, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+        click: (click: Event) => any;
+    }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             headerPrefix(): any;
             content(): any;
@@ -71,7 +47,7 @@ declare const _default: {
     title: string;
     tags: string[];
     args: {
-        onClick: import('@vitest/spy').Mock<any, any>;
+        onClick: import('@vitest/spy').Mock<(...args: any[]) => any>;
     };
     parameters: {
         docs: {
@@ -92,66 +68,42 @@ export declare const Default: {
 export declare const WithHeaderPrefix: () => {
     components: {
         MucCard: {
-            new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                title: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-                tagline: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-            }>> & {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                title: string;
+                tagline: string;
+            }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
-            }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-                click: (click: Event) => void;
-            }, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                title: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-                tagline: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-            }>> & {
+            }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+                click: (click: Event) => any;
+            }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+                title: string;
+                tagline: string;
+            }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
-            }, {}, true, {}, {}, {
+            }>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
                 C: {};
                 M: {};
                 Defaults: {};
-            }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-                title: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-                tagline: {
-                    type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                    required: true;
-                };
-            }>> & {
+            }, Readonly<{
+                title: string;
+                tagline: string;
+            }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
-            }, {}, {}, {}, {}, {}>;
+            }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
             __isSuspense?: never;
-        } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            title: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            tagline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-        }>> & {
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            title: string;
+            tagline: string;
+        }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
-        }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-            click: (click: Event) => void;
-        }, string, {}, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+        }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+            click: (click: Event) => any;
+        }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 headerPrefix(): any;
                 content(): any;

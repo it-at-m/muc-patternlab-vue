@@ -1,34 +1,35 @@
 import { RadioButtonValueTypes } from './MucRadioButtonTypes';
-
-declare function __VLS_template(): {
-    default?(_: {}): any;
+declare let __VLS_typeProps: {
+    /**
+     * Optional heading above all radiobuttons as a group heading
+     */
+    heading?: string;
+    /**
+     * Optionally disable all child radiobuttons - defaults to 'false'
+     */
+    disabled?: boolean;
 };
-declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-    modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<RadioButtonValueTypes>;
-    disabled: {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-        default: boolean;
+type __VLS_PublicProps = {
+    "modelValue"?: RadioButtonValueTypes;
+} & typeof __VLS_typeProps;
+declare function __VLS_template(): {
+    slots: {
+        default?(_: {}): any;
     };
-    heading: {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-    };
-}, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-    change: (value: RadioButtonValueTypes) => void;
-}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-    modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<RadioButtonValueTypes>;
-    disabled: {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-        default: boolean;
-    };
-    heading: {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-    };
-}>> & {
+    refs: {};
+    attrs: Partial<{}>;
+};
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    change: (value: RadioButtonValueTypes) => any;
+    "update:modelValue": (modelValue: RadioButtonValueTypes) => any;
+}, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     onChange?: ((value: RadioButtonValueTypes) => any) | undefined;
-}, {
+    "onUpdate:modelValue"?: ((modelValue: RadioButtonValueTypes) => any) | undefined;
+}>, {
     disabled: boolean;
-}, {}>;
-declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

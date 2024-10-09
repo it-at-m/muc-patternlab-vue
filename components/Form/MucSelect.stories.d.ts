@@ -1,39 +1,31 @@
 declare const _default: {
-    component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<{
-        modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string | string[]>;
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        hint: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        items: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-            required: true;
-        };
-        multiple: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-    }, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        modelValue: import('../../../vue/dist/vue.esm-bundler.js').PropType<string | string[]>;
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        hint: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        items: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string[]>;
-            required: true;
-        };
-        multiple: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-    }>>, {
+    component: import('vue').DefineComponent<{
+        modelValue?: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[];
+    } & {
+        items: import('./MucSelectTypes').MucSelectItemTypes[];
+        label?: string;
+        hint?: string;
+        multiple?: boolean;
+        noItemFoundMessage?: string;
+        itemTitle?: string;
+    }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+        "update:modelValue": (modelValue: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any;
+    }, string, import('vue').PublicProps, Readonly<{
+        modelValue?: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[];
+    } & {
+        items: import('./MucSelectTypes').MucSelectItemTypes[];
+        label?: string;
+        hint?: string;
+        multiple?: boolean;
+        noItemFoundMessage?: string;
+        itemTitle?: string;
+    }> & Readonly<{
+        "onUpdate:modelValue"?: ((modelValue: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any) | undefined;
+    }>, {
         multiple: boolean;
-    }, {}>;
+        noItemFoundMessage: string;
+        itemTitle: string;
+    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
     parameters: {
@@ -47,18 +39,44 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
-        modelValue: string;
-        items: string[];
+        modelValue: {
+            id: string;
+            name: string;
+            quantity: number;
+        };
+        items: {
+            id: string;
+            name: string;
+            quantity: number;
+        }[];
         label: string;
         hint: string;
+        itemTitle: string;
     };
 };
 export declare const MultiSelect: {
     args: {
         label: string;
         multiple: boolean;
+        modelValue: {
+            id: string;
+            name: string;
+            quantity: number;
+        };
+        items: {
+            id: string;
+            name: string;
+            quantity: number;
+        }[];
+        hint: string;
+        itemTitle: string;
+    };
+};
+export declare const StringSelect: {
+    args: {
         modelValue: string;
         items: string[];
+        label: string;
         hint: string;
     };
 };

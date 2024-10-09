@@ -1,44 +1,40 @@
-declare function __VLS_template(): Readonly<{
-    /**
-     * Icon shown above the callout. Defaults to icons matching the type.
-     */
-    headerPrefix(): any;
-    /**
-     * Content beneath the heading shown as text.
-     */
-    content(): any;
-}> & {
-    /**
-     * Icon shown above the callout. Defaults to icons matching the type.
-     */
-    headerPrefix(): any;
-    /**
-     * Content beneath the heading shown as text.
-     */
-    content(): any;
-};
-declare const __VLS_component: import('../../../vue/dist/vue.esm-bundler.js').DefineComponent<__VLS_TypePropsToRuntimeProps<{
-    title: string;
-    tagline: string;
-}>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {
-    click: (click: Event) => void;
-}, string, import('../../../vue/dist/vue.esm-bundler.js').PublicProps, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    title: string;
-    tagline: string;
-}>>> & {
-    onClick?: ((click: Event) => any) | undefined;
-}, {}, {}>;
-declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
-export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('../../../vue/dist/vue.esm-bundler.js').PropType<T[K]>;
-        required: true;
+declare function __VLS_template(): {
+    slots: Readonly<{
+        /**
+         * Icon shown above the callout. Defaults to icons matching the type.
+         */
+        headerPrefix(): any;
+        /**
+         * Content beneath the heading shown as text.
+         */
+        content(): any;
+    }> & {
+        /**
+         * Icon shown above the callout. Defaults to icons matching the type.
+         */
+        headerPrefix(): any;
+        /**
+         * Content beneath the heading shown as text.
+         */
+        content(): any;
     };
+    refs: {};
+    attrs: Partial<{}>;
 };
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<{
+    title: string;
+    tagline: string;
+}, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+    click: (click: Event) => any;
+}, string, import('vue').PublicProps, Readonly<{
+    title: string;
+    tagline: string;
+}> & Readonly<{
+    onClick?: ((click: Event) => any) | undefined;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
+export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;

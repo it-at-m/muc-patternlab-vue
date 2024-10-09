@@ -1,5 +1,4 @@
-import { InjectionKey, Ref } from '../../../vue/dist/vue.esm-bundler.js';
-
+import { InjectionKey, Ref } from 'vue';
 /**
  * Key for inject and provide
  *

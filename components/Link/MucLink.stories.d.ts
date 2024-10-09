@@ -1,77 +1,35 @@
 declare const _default: {
     component: {
-        new (...args: any[]): import('../../../vue/dist/vue.esm-bundler.js').CreateComponentPublicInstance<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            href: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            target: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            noUnderline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            href: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            target: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            noUnderline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>>, {
+        new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+            label: string;
+            href?: string;
+            icon?: string;
+            target?: string;
+            noUnderline?: boolean;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            label: string;
+            href?: string;
+            icon?: string;
+            target?: string;
+            noUnderline?: boolean;
+        }> & Readonly<{}>, {
             href: string;
             target: string;
             noUnderline: boolean;
-        }, true, {}, {}, {
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
             C: {};
             M: {};
             Defaults: {};
-        }, Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-            icon: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            };
-            label: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                required: true;
-            };
-            href: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            target: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-                default: string;
-            };
-            noUnderline: {
-                type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-                default: boolean;
-            };
-        }>>, {}, {}, {}, {}, {
+        }, Readonly<{
+            label: string;
+            href?: string;
+            icon?: string;
+            target?: string;
+            noUnderline?: boolean;
+        }> & Readonly<{}>, {}, {}, {}, {}, {
             href: string;
             target: string;
             noUnderline: boolean;
@@ -79,31 +37,17 @@ declare const _default: {
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
-    } & import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsBase<Readonly<import('../../../vue/dist/vue.esm-bundler.js').ExtractPropTypes<{
-        icon: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-        };
-        label: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            required: true;
-        };
-        href: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            default: string;
-        };
-        target: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<string>;
-            default: string;
-        };
-        noUnderline: {
-            type: import('../../../vue/dist/vue.esm-bundler.js').PropType<boolean>;
-            default: boolean;
-        };
-    }>>, {}, unknown, {}, {}, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, import('../../../vue/dist/vue.esm-bundler.js').ComponentOptionsMixin, {}, string, {
+    } & import('vue').ComponentOptionsBase<Readonly<{
+        label: string;
+        href?: string;
+        icon?: string;
+        target?: string;
+        noUnderline?: boolean;
+    }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
         href: string;
         target: string;
         noUnderline: boolean;
-    }, {}, string, {}> & import('../../../vue/dist/vue.esm-bundler.js').VNodeProps & import('../../../vue/dist/vue.esm-bundler.js').AllowedComponentProps & import('../../../vue/dist/vue.esm-bundler.js').ComponentCustomProps & (new () => {
+    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             icon(): void;
         }> & {
@@ -113,7 +57,7 @@ declare const _default: {
     title: string;
     tags: string[];
     args: {
-        onClick: import('@vitest/spy').Mock<any, any>;
+        onClick: import('@vitest/spy').Mock<(...args: any[]) => any>;
     };
     parameters: {
         docs: {
