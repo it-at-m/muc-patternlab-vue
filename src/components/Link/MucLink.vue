@@ -21,8 +21,7 @@ import { computed } from "vue";
 
 import { MucIcon } from "../Icon";
 
-const props = withDefaults(
-  defineProps<{
+const { href = "#", target = "_blank", noUnderline = false, } = defineProps<{
     /**
      * Text shown as the link
      */
@@ -47,13 +46,7 @@ const props = withDefaults(
      * Removes the underline from the label text
      */
     noUnderline?: boolean;
-  }>(),
-  {
-    noUnderline: false,
-    href: "#",
-    target: "_blank",
-  }
-);
+  }>();
 
 defineSlots<{
   /**
@@ -67,7 +60,7 @@ defineSlots<{
  * Computed class to remove the underline if chosen.
  */
 const reversedUnderlineClass = computed(() =>
-  props.noUnderline ? "m-link--reversed-underline" : ""
+  noUnderline ? "m-link--reversed-underline" : ""
 );
 </script>
 
