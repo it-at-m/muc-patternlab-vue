@@ -23,6 +23,7 @@
       <div class="container-view-size">
         <Transition
           class="transition"
+          :css="!noAnimation"
           :name="viewTransition"
         >
           <muc-calendar-year
@@ -33,6 +34,7 @@
         </Transition>
         <Transition
           class="transition"
+          :css="!noAnimation"
           :name="viewTransition"
         >
           <muc-calendar-month
@@ -43,6 +45,7 @@
         </Transition>
         <Transition
           class="transition"
+          :css="!noAnimation"
           :name="viewTransition"
         >
           <muc-calendar-day
@@ -82,6 +85,7 @@ const {
   showAdjacentMonths = false,
   variant = "single",
   disabled = false,
+  noAnimation = false,
 } = defineProps<{
   /**
    * Initial date to be displayed on the selection screen
@@ -102,6 +106,11 @@ const {
    * Disable the selection of dates by the user. Defaults to false
    */
   disabled?: boolean;
+
+  /**
+   * Disables the animation
+   */
+  noAnimation?: boolean;
 }>();
 
 /**
@@ -304,7 +313,7 @@ const detailedView = () => {
 };
 
 /**
- * Providing data for the day selection view - reduces amount of props
+ * Providing data for the day selection tile - reduces amount of props
  */
 provide(MucCalendarKey, {
   viewDate,
