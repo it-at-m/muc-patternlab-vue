@@ -1,38 +1,37 @@
-
 .muc-calendar-container {
-    --container-gap-size: 3px;
-    display: grid;
-    overflow: hidden;
-    grid-template-columns: repeat(
+  --container-gap-size: 3px;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(
     var(--container-grid-count, 4),
     minmax(auto, 1fr)
   );
-    gap: var(--container-gap-size) var(--container-gap-size);
-    padding: var(--container-gap-size);
+  gap: var(--container-gap-size) var(--container-gap-size);
+  padding: var(--container-gap-size);
 }
 
 .muc-calendar-item {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid white;
-    user-select: none;
-    transition: border-color 0.3s ease-in;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  user-select: none;
+  transition: border-color 0.3s ease-in;
 }
 
 .muc-calendar-item:hover {
-    border: 1px solid var(--color-neutrals-blue);
-    transition: border-color 0.1s ease-out;
-    cursor: pointer;
+  border: 1px solid var(--color-neutrals-blue);
+  transition: border-color 0.1s ease-out;
+  cursor: pointer;
 }
 
 .muc-calendar-view-full-size {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .muc-calendar-current-item {
-    background: var(--color-neutrals-blue);
+  background: var(--color-neutrals-blue);
 }
