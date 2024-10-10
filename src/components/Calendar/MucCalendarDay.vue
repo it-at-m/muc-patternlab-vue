@@ -108,6 +108,8 @@ const addDaysToDate = (date: Date, days: number) =>
 </script>
 
 <style scoped>
+@import "MucCalendar.css";
+
 .muc-calendar-container {
   --container-grid-count: 7;
 }

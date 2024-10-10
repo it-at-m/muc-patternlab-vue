@@ -112,6 +112,8 @@ const clicked = () => {
 </script>
 
 <style scoped>
+@import "MucCalendar.css";
+
 .selected {
   background: var(--color-brand-main-blue);
   color: white;

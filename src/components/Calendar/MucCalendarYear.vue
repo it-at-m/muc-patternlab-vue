@@ -68,6 +68,8 @@ const clickedYear = (date: Date) => emit("clicked", date);
 </script>
 
 <style scoped>
+@import "MucCalendar.css";
+
 .off-year {
   color: var(--color-neutrals-blue);
 }

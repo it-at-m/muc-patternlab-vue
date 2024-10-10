@@ -64,4 +64,6 @@ const monthDisplayment = (date: Date) =>
 const clickedMonth = (date: Date) => emit("clicked", date);
 </script>
 
-<style scoped></style>
+<style scoped>
+@import "MucCalendar.css";
+</style>
