@@ -23,12 +23,20 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const props = defineProps<{
+const TITLE_DEFAULT = "Ein Fehler ist aufgetreten!";
+
+const { title = TITLE_DEFAULT, errors } = defineProps<{
+  /**
+   * Title the components displays at the top
+   */
   title?: string;
+  /**
+   * Text (or array of texts) that contains the error messages
+   */
   errors: string | string[];
 }>();
 
 const listOfErrors = computed(() =>
-  typeof props.errors === "string" ? [props.errors] : props.errors
+  typeof errors === "string" ? [errors] : errors
 );
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div
     class="m-form-group"
-    ref="selectComponentRef"
+    ref="selectComponent"
   >
     <label class="m-label">
       {{ label }}
@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, ref, useTemplateRef, watch } from "vue";
 
 import useOnClickOutside from "../../composables/useOnClickOutside";
 import MucSelectItem from "./MucSelectItem.vue";
@@ -73,7 +73,7 @@ import { ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
 /**
  * Ref ot the component
  */
-const selectComponentRef = ref();
+const selectComponent = useTemplateRef("selectComponent");
 
 /**
  * Exposed selected value / values
@@ -105,44 +105,42 @@ const noItemsFound = ref<boolean>(false);
  */
 const activeItem = ref<MucSelectItemTypes>();
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * List of items to be available
-     */
-    items: MucSelectItemTypes[];
+const {
+  items,
+  multiple = false,
+  noItemFoundMessage = "No items found.",
+  itemTitle = "title",
+} = defineProps<{
+  /**
+   * List of items to be available
+   */
+  items: MucSelectItemTypes[];
 
-    /**
-     * Optional label shown above the input
-     */
-    label?: string;
+  /**
+   * Optional label shown above the input
+   */
+  label?: string;
 
-    /**
-     * Optional hint shown below the input
-     */
-    hint?: string;
+  /**
+   * Optional hint shown below the input
+   */
+  hint?: string;
 
-    /**
-     * Allow multiple selectable items
-     */
-    multiple?: boolean;
+  /**
+   * Allow multiple selectable items
+   */
+  multiple?: boolean;
 
-    /**
-     * Optional message shown no item is found after filtering
-     */
-    noItemFoundMessage?: string;
+  /**
+   * Optional message shown no item is found after filtering
+   */
+  noItemFoundMessage?: string;
 
-    /**
-     * Property that contains the value to be displayed in the list when a list of objects is used
-     */
-    itemTitle?: string;
-  }>(),
-  {
-    multiple: false,
-    noItemFoundMessage: "No items found.",
-    itemTitle: "title",
-  }
-);
+  /**
+   * Property that contains the value to be displayed in the list when a list of objects is used
+   */
+  itemTitle?: string;
+}>();
 
 /**
  * Toggles the list of items and sets the previously selected item as active
@@ -164,7 +162,7 @@ const openItemList = () => {
 /**
  * Closes the list after clicking outside the component
  */
-useOnClickOutside(selectComponentRef, () => {
+useOnClickOutside(selectComponent, () => {
   showItems.value = false;
   searchValue.value = outputTransformed.value;
 });
@@ -176,11 +174,9 @@ useOnClickOutside(selectComponentRef, () => {
 const clicked = (clickedValue: MucSelectItemTypes) => {
   lastClickedItem.value = clickedValue;
 
-  props.multiple
-    ? updateMVMultiple(clickedValue)
-    : updateMVSingle(clickedValue);
+  multiple ? updateMVMultiple(clickedValue) : updateMVSingle(clickedValue);
 
-  if (!props.multiple) showItems.value = false;
+  if (!multiple) showItems.value = false;
 };
 
 /**
@@ -196,9 +192,7 @@ const updateMVSingle = (newValue: MucSelectItemTypes) => {
     typeof newValue !== "string"
   ) {
     selectedValues.value =
-      selectedValues.value[props.itemTitle] === newValue[props.itemTitle]
-        ? ""
-        : newValue;
+      selectedValues.value[itemTitle] === newValue[itemTitle] ? "" : newValue;
   } else {
     selectedValues.value = selectedValues.value === newValue ? "" : newValue;
   }
@@ -221,11 +215,10 @@ const updateMVMultiple = (newValue: MucSelectItemTypes) => {
         : [...selectedValues.value, newValue];
     } else {
       selectedValues.value = selectedValues.value
-        .map((item: ItemAsObject) => item[props.itemTitle])
-        .includes(newValue[props.itemTitle])
+        .map((item: ItemAsObject) => item[itemTitle])
+        .includes(newValue[itemTitle])
         ? selectedValues.value.filter(
-            (val: ItemAsObject) =>
-              val[props.itemTitle] !== newValue[props.itemTitle]
+            (val: ItemAsObject) => val[itemTitle] !== newValue[itemTitle]
           )
         : [...selectedValues.value, newValue];
     }
@@ -239,15 +232,15 @@ const outputTransformed = computed(() => {
   if (typeof selectedValues.value === "string") {
     return selectedValues.value;
   } else if (!Array.isArray(selectedValues.value)) {
-    return selectedValues.value[props.itemTitle].toString();
+    return selectedValues.value[itemTitle].toString();
   } else if (
     selectedValues.value.every((item: any) => typeof item === "string")
   ) {
-    return selectedValues.value.join(props.multiple ? ", " : " ");
+    return selectedValues.value.join(multiple ? ", " : " ");
   } else {
     return selectedValues.value
-      .map((item) => item[props.itemTitle].toString())
-      .join(props.multiple ? ", " : " ");
+      .map((item) => item[itemTitle].toString())
+      .join(multiple ? ", " : " ");
   }
 });
 
@@ -265,7 +258,7 @@ const searchValue = ref<string>(outputTransformed.value);
  */
 const displayedItems = computed(() =>
   searchValue.value == outputTransformed.value
-    ? props.items
+    ? items
     : updateDisplayedItems(searchValue.value)
 );
 
@@ -276,17 +269,10 @@ const displayedItems = computed(() =>
  */
 const updateDisplayedItems = (search: string) => {
   noItemsFound.value = false;
-  const filteredItems = props.items.every(
-    (item: any) => typeof item === "string"
-  )
-    ? props.items.filter((item) =>
-        item.toLowerCase().includes(search.toLowerCase())
-      )
-    : props.items.filter((item: any) =>
-        item[props.itemTitle]
-          .toString()
-          .toLowerCase()
-          .includes(search.toLowerCase())
+  const filteredItems = items.every((item: any) => typeof item === "string")
+    ? items.filter((item) => item.toLowerCase().includes(search.toLowerCase()))
+    : items.filter((item: any) =>
+        item[itemTitle].toString().toLowerCase().includes(search.toLowerCase())
       );
   if (filteredItems.length === 0) {
     noItemsFound.value = true;
@@ -311,13 +297,13 @@ const isSelectedClass = (value: MucSelectItemTypes) => {
 
   if (Array.isArray(selectedValues.value)) {
     return selectedValues.value
-      .map((item) => item[props.itemTitle])
-      .includes(value[props.itemTitle])
+      .map((item) => item[itemTitle])
+      .includes(value[itemTitle])
       ? "selected"
       : "";
   }
   if (typeof selectedValues.value !== "string") {
-    return selectedValues.value[props.itemTitle] === value[props.itemTitle]
+    return selectedValues.value[itemTitle] === value[itemTitle]
       ? "selected"
       : "";
   }
@@ -339,7 +325,7 @@ const displayOptions = computed(() =>
  * Switches between the selection modes according to multiple. Checkboxes are shown on the multiple select
  */
 const selectType = computed(() =>
-  props.multiple && !noItemsFound.value
+  multiple && !noItemsFound.value
     ? "m-input-wrapper--multiselect multiselect"
     : "m-input-wrapper--select"
 );
