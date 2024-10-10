@@ -42,10 +42,12 @@ export const DisabledWithPreSelectedDate = {
   },
 };
 
-export const DisabledAnimation = {
+export const AllowedDatesWithNoAnimation = {
   args: {
     noAnimation: true,
-    allowedDates: () => false,
+    allowedDates: (date: Date) => {
+      return date.getDay() == new Date().getDay();
+    },
   },
 };
 

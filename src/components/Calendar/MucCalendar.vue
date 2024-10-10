@@ -325,8 +325,8 @@ const detailedView = () => {
 provide(MucCalendarKey, {
   viewDate,
   selectedDate,
-  variant: readonly(toRef(variant)),
-  showAdjacentMonths: readonly(toRef(showAdjacentMonths)),
+  variant: readonly(toRef(() => variant)),
+  showAdjacentMonths: readonly(toRef(() => showAdjacentMonths)),
   allowedDates: allowedDates,
 });
 </script>
@@ -458,6 +458,7 @@ provide(MucCalendarKey, {
   justify-content: center;
   align-items: center;
   border: 1px solid white;
+  user-select: none;
   transition: border-color 0.3s ease-in;
 }
 

@@ -23,25 +23,17 @@ import {
   MucCalendarKey,
 } from "./MucCalendarType";
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Date of for this tile to be displayed
-     */
-    date: Date;
+const { date, showAdjacentMonths = false } = defineProps<{
+  /**
+   * Date of for this tile to be displayed
+   */
+  date: Date;
 
-    /**
-     * Determines if this date should be shown or not, depending on the month - defaults to false
-     */
-    showAdjacentMonths?: boolean;
-
-    disabled?: boolean;
-  }>(),
-  {
-    showAdjacentMonths: false,
-    disabled: false,
-  }
-);
+  /**
+   * Determines if this date should be shown or not, depending on the month - defaults to false
+   */
+  showAdjacentMonths?: boolean;
+}>();
 
 /**
  * Injection of data needed for styling calculations
@@ -66,23 +58,20 @@ const isSelected = computed(() => {
 
   // variant single
   if (mucCalData?.selectedDate.value instanceof Date) {
-    return isEqualDates(mucCalData?.selectedDate.value, props.date);
+    return isEqualDates(mucCalData?.selectedDate.value, date);
   }
 
   //variant multiple
   if (Array.isArray(mucCalData?.selectedDate.value)) {
     return mucCalData?.selectedDate.value.some((selected) =>
-      isEqualDates(selected, props.date)
+      isEqualDates(selected, date)
     );
   }
 
   //variant range
   if (isMucDateRange(mucCalData!.selectedDate.value)) {
     const { from, to } = mucCalData!.selectedDate.value;
-    return (
-      (from && isEqualDates(from, props.date)) ||
-      (to && isEqualDates(to, props.date))
-    );
+    return (from && isEqualDates(from, date)) || (to && isEqualDates(to, date));
   }
 });
 
@@ -97,8 +86,8 @@ const isInRange = computed(() => {
     return (
       mucCalData?.selectedDate.value.from !== null &&
       mucCalData?.selectedDate.value.to !== null &&
-      isDateAfterOther(props.date, mucCalData!.selectedDate.value.from) &&
-      isDateAfterOther(mucCalData!.selectedDate.value.to, props.date)
+      isDateAfterOther(date, mucCalData!.selectedDate.value.from) &&
+      isDateAfterOther(mucCalData!.selectedDate.value.to, date)
     );
   }
 
@@ -109,13 +98,17 @@ const isInRange = computed(() => {
  * Is this day-tile in the current month or in the adjacent months
  */
 const isCurrMonth = computed(
-  () => props.date.getMonth() === mucCalData?.viewDate.value.getMonth()
+  () => date.getMonth() === mucCalData?.viewDate.value.getMonth()
 );
 
 /**
  * Action upon selecting a day - triggers emit
  */
-const clicked = () => emit("click", props.date);
+const clicked = () => {
+  if (mucCalData?.allowedDates(date)) {
+    emit("click", date);
+  }
+};
 </script>
 
 <style scoped>
@@ -127,6 +120,7 @@ const clicked = () => emit("click", props.date);
 .disabled-tile {
   filter: grayscale(80%);
   color: lightgray;
+  cursor: default !important;
 }
 
 .selected-range {
