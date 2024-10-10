@@ -2,13 +2,13 @@ import MucCalendar from "./MucCalendar.vue";
 
 export default {
   component: MucCalendar,
-  title: "unofficial/MucCalendar",
+  title: "MucCalendar",
   tags: ["autodocs"],
   // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-calendar\` component is a non patternlab-standard calendar component. It can be used to display calendar months or as fancy date selection. Multiple variants in the date selection are offered.`,
+        component: `The \`muc-calendar\` component is a non calendar component. It can be used to display calendar months or be used ás fancy date selection. Multiple variants in the date selection are offered. Quick date adjustments (months or years) can be done via clicking the month or year in the header.`,
       },
     },
   },
