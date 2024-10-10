@@ -77,5 +77,8 @@
     "vite-plugin-dts": "^4.0.0",
     "vitest": "^2.0.0",
     "vue-tsc": "^2.0.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "5.1.2"
   }
 }
