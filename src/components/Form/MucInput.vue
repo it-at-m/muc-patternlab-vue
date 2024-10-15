@@ -98,7 +98,7 @@ const {
   errorMsg,
   required = false,
   type = "text",
-  dataList = [],
+  dataList = [] as string[],
 } = defineProps<{
   /**
    * Displays error message and highlights the input form with a red border.
