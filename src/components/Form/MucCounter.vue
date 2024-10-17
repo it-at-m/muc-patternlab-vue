@@ -1,47 +1,51 @@
 <template>
-  <div class="wrapper">
-    <MucButton
-      v-on:click="clickedMinus"
-      variant="secondary"
-      :disabled="disableMinus"
-      :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
-    >
-      <template #default><muc-icon icon="minus" /></template>
-    </MucButton>
-    <p tabindex="0">
-      <strong
-        class="centered-text"
-        style="color: var(--color-brand-main-blue)"
+  <div class="grid">
+    <div class="grid-item">
+      <MucButton
+        v-on:click="clickedMinus"
+        variant="secondary"
+        :disabled="disableMinus"
+        :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
       >
-        <span class="visually-hidden">
-          Aktuell ausgewählte Anzahl für {{ label }} ist</span
+        <template #default><muc-icon icon="minus" /></template>
+      </MucButton>
+      <p tabindex="0">
+        <strong
+          class="centered-text-number"
+          style="color: var(--color-brand-main-blue)"
         >
-        {{ modelValue }}
-      </strong>
-    </p>
-    <MucButton
-      v-on:click="clickedPlus"
-      variant="secondary"
-      :disabled="disablePlus"
-      :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
-    >
-      <template #default><muc-icon icon="plus" /></template>
-    </MucButton>
-    <p v-if="link">
-      <label class="centered-text">
-        <muc-link
-          tabindex="0"
-          :label="label"
-          :href="link"
-        ></muc-link>
-      </label>
-    </p>
+          <span class="visually-hidden">
+            Aktuell ausgewählte Anzahl für {{ label }} ist</span
+          >
+          {{ modelValue }}
+        </strong>
+      </p>
+      <MucButton
+        v-on:click="clickedPlus"
+        variant="secondary"
+        :disabled="disablePlus"
+        :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
+      >
+        <template #default><muc-icon icon="plus" /></template>
+      </MucButton>
+    </div>
+    <div class="grid-item centered-text-label">
+      <p v-if="link">
+        <label>
+          <muc-link
+            tabindex="0"
+            :label="label"
+            :href="link"
+          ></muc-link>
+        </label>
+      </p>
 
-    <p v-else>
-      <label class="centered-text">
-        {{ label }}
-      </label>
-    </p>
+      <p v-else>
+        <label>
+          {{ label }}
+        </label>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -131,18 +135,57 @@ const disableMinus = computed(
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-}
-
-.wrapper > * {
-  margin: 0 8px;
-}
-
-.centered-text {
+.centered-text-number {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.centered-text-label {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+}
+
+.grid-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-item > * {
+  margin: 0 8px;
+}
+
+/* Desktop and tablet view */
+@media (min-width: 768px) {
+  .grid-item:nth-child(1) {
+    order: 1;
+  }
+  .grid-item:nth-child(2) {
+    order: 2;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .grid-item:nth-child(1) {
+    order: 2;
+  }
+  .grid-item:nth-child(2) {
+    order: 1;
+  }
+  .centered-text-label {
+    padding-bottom: 0.8rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
