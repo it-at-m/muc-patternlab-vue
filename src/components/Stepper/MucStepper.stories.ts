@@ -17,5 +17,30 @@ export default {
 };
 
 export const Default = {
+    args: {
+        stepItems: [
+            {
+                id: "1",
+                label: "Bestellung",
+                icon: "shopping-cart",
+            },
+            {
+                id: "2",
+                label: "Lieferung",
+                icon: "calendar",
+            },
+            {
+                id: "3",
+                label: "Kontakt",
+                icon: "mail",
+            },
+            {
+                id: "4",
+                label: "Übersicht",
+                icon: "information",
+            },
+        ],
+        activeItem: "2",
+    },
 };
 

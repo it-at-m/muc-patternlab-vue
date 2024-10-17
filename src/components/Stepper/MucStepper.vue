@@ -3,13 +3,13 @@
     <div class="container">
       <div class="m-component__grid">
         <div class="m-component__column">
-          <h2 class="visually-hidden">Schritt {{ indexOfActivItem + 1 }} von {{ stepItems.length }}: Projektinformationen</h2>
           <ol class="m-form-steps">
             <template v-for="item in stepItems" :key="item.id">
               <MucStepperItem
                   :item="item"
                   :is-active="isActive(item.id)"
                   :is-done="isDone(item.id)"
+                  v-on:click="handleChange"
               />
             </template>
           </ol>
@@ -24,8 +24,6 @@
 import {StepperItem} from "./MucStepperTypes";
 import { ref, watch } from "vue";
 import MucStepperItem from "./MucStepperItem.vue";
-
-const indexOfActivItem = ref<number>(0);
 
 const {
   stepItems,
@@ -45,10 +43,11 @@ const {
 
 const emit = defineEmits<{
   /**
-   * Triggered when step item is clicked.
+   * Triggered when step is clicked.
    * @param e Click-Event
+   * @param id
    */
-  (e: "changeStep"): void;
+  (e: "changeStep", id: string): void;
 }>();
 
 watch(
@@ -62,10 +61,15 @@ const getIndexOfItem = (id: string) => {
   return stepItems.findIndex(item => item.id === id);
 };
 
+const indexOfActivItem = ref<number>(getIndexOfItem(activeItem));
+
 const isActive = (id: string) => id === activeItem;
 
 const isDone = (id: string) => getIndexOfItem(id) < indexOfActivItem.value;
 
+const handleChange = (id: string) => {
+  emit("changeStep", id);
+};
 
 </script>
 
