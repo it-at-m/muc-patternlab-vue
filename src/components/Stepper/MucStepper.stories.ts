@@ -21,22 +21,22 @@ export const Default = {
     stepItems: [
       {
         id: "1",
-        label: "Bestellung",
+        label: "Order",
         icon: "shopping-cart",
       },
       {
         id: "2",
-        label: "Lieferung",
+        label: "Delivery",
         icon: "calendar",
       },
       {
         id: "3",
-        label: "Kontakt",
+        label: "Contact",
         icon: "mail",
       },
       {
         id: "4",
-        label: "Übersicht",
+        label: "Overview",
         icon: "information",
       },
     ],
