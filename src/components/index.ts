@@ -21,6 +21,7 @@ import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
 import { MucPercentageSpinner } from "./PercentageSpinner";
 import { MucStepper } from "./Stepper";
+import { MucCalendar } from "./Calendar";
 
 export {
   MucButton,
@@ -46,4 +47,5 @@ export {
   MucCounter,
   MucPercentageSpinner,
   MucStepper,
+  MucCalendar,
 };
