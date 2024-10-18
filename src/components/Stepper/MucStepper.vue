@@ -43,7 +43,7 @@ const {
 
 const emit = defineEmits<{
   /**
-   * Triggered when step is clicked.
+   * Triggered when an item is clicked.
    * @param e Click-Event
    * @param id
    */
@@ -57,16 +57,38 @@ watch(
     }
 );
 
+/**
+ * Returns the index of an item in the array
+ * @param id id of the item
+ * @return index of the item
+ */
 const getIndexOfItem = (id: string) => {
   return stepItems.findIndex(item => item.id === id);
 };
 
+/**
+ * Index of activ item
+ */
 const indexOfActivItem = ref<number>(getIndexOfItem(activeItem));
 
+/**
+ * Checks if an item is the activ item
+ * @param id id of the item
+ * @return if item is an active item
+ */
 const isActive = (id: string) => id === activeItem;
 
+/**
+ * Checks if an item is done
+ * @param id id of the item
+ * @return if item is done
+ */
 const isDone = (id: string) => getIndexOfItem(id) < indexOfActivItem.value;
 
+/**
+ * Handles a click on an item
+ * @param id id of the item
+ */
 const handleChange = (id: string) => {
   emit("changeStep", id);
 };

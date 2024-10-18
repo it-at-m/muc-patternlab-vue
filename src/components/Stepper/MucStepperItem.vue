@@ -3,10 +3,7 @@
     <div class="m-form-step__icon" :tabindex="getTabindex" :aria-label="getAriaLabel">
       <MucIcon :icon="getIcon" />
     </div>
-    <div v-if="!isActive" class="m-form-step__title hidden-mobile">
-      <span aria-disabled="true"> {{ item.label }}</span>
-    </div>
-    <div v-else class="m-form-step__title">
+    <div class="m-form-step__title">
       <span aria-disabled="true"> {{ item.label }}</span>
     </div>
   </li>
@@ -36,7 +33,7 @@ const { item, isActive, isDone } = defineProps<{
 
 const emit = defineEmits<{
   /**
-   * Triggered when step item is clicked.
+   * Triggered when an item is clicked.
    * @param e Click-Event
    * @param id
    */
@@ -85,13 +82,6 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-/* Mobile view */
-@media (max-width: 767px) {
-  .hidden-mobile {
-    display: none !important;
-  }
-}
-
 .show-cursor {
   cursor: pointer;
 }
