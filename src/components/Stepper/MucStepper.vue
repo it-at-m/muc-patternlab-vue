@@ -4,12 +4,15 @@
       <div class="m-component__grid">
         <div class="m-component__column">
           <ol class="m-form-steps">
-            <template v-for="item in stepItems" :key="item.id">
+            <template
+              v-for="item in stepItems"
+              :key="item.id"
+            >
               <MucStepperItem
-                  :item="item"
-                  :is-active="isActive(item.id)"
-                  :is-done="isDone(item.id)"
-                  v-on:click="handleChange"
+                :item="item"
+                :is-active="isActive(item.id)"
+                :is-done="isDone(item.id)"
+                v-on:click="handleChange"
               />
             </template>
           </ol>
@@ -20,15 +23,12 @@
 </template>
 
 <script setup lang="ts">
-
-import {StepperItem} from "./MucStepperTypes";
 import { ref, watch } from "vue";
-import MucStepperItem from "./MucStepperItem.vue";
 
-const {
-  stepItems,
-  activeItem,
-} = defineProps<{
+import MucStepperItem from "./MucStepperItem.vue";
+import { StepperItem } from "./MucStepperTypes";
+
+const { stepItems, activeItem } = defineProps<{
   /**
    * List of items displayed in the stepper
    */
@@ -38,7 +38,6 @@ const {
    * Id of the current step item
    */
   activeItem: string;
-
 }>();
 
 const emit = defineEmits<{
@@ -51,10 +50,10 @@ const emit = defineEmits<{
 }>();
 
 watch(
-    () => activeItem,
-    () => {
-      indexOfActivItem.value = getIndexOfItem(activeItem);
-    }
+  () => activeItem,
+  () => {
+    indexOfActivItem.value = getIndexOfItem(activeItem);
+  }
 );
 
 /**
@@ -63,7 +62,7 @@ watch(
  * @return index of the item
  */
 const getIndexOfItem = (id: string) => {
-  return stepItems.findIndex(item => item.id === id);
+  return stepItems.findIndex((item) => item.id === id);
 };
 
 /**
@@ -92,9 +91,6 @@ const isDone = (id: string) => getIndexOfItem(id) < indexOfActivItem.value;
 const handleChange = (id: string) => {
   emit("changeStep", id);
 };
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

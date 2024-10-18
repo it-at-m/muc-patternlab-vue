@@ -1,6 +1,13 @@
 <template>
-  <li :class="isActiveStep" @click="handleClick">
-    <div class="m-form-step__icon" :tabindex="getTabindex" :aria-label="getAriaLabel">
+  <li
+    :class="isActiveStep"
+    @click="handleClick"
+  >
+    <div
+      class="m-form-step__icon"
+      :tabindex="getTabindex"
+      :aria-label="getAriaLabel"
+    >
       <MucIcon :icon="getIcon" />
     </div>
     <div class="m-form-step__title">
@@ -11,6 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+
 import { MucIcon } from "../Icon";
 import { StepperItem } from "./MucStepperTypes";
 
@@ -43,42 +51,39 @@ const emit = defineEmits<{
 /**
  * Computed property set active state of step
  */
-const isActiveStep = computed(
-    () => isActive ? "m-form-step m-form-step--current" : "m-form-step" + clickableStep.value
+const isActiveStep = computed(() =>
+  isActive
+    ? "m-form-step m-form-step--current"
+    : "m-form-step" + clickableStep.value
 );
 
 /**
  * Computed property show courser on clickable step
  */
-const clickableStep = computed(
-    () => isDone ? " show-cursor" : ""
-);
+const clickableStep = computed(() => (isDone ? " show-cursor" : ""));
 
 /**
  * Computed property set icon of step
  */
-const getIcon = computed(
-    () => isDone ? "check" : item.icon
-);
+const getIcon = computed(() => (isDone ? "check" : item.icon));
 
 /**
  * Computed property set tabindex
  */
-const getTabindex = computed(
-    () => isActive || isDone ? 0 : -1
-);
+const getTabindex = computed(() => (isActive || isDone ? 0 : -1));
 
 /**
  * Computed property set aria-label
  */
-const getAriaLabel = computed(
-    () => isActive ? 'Aktueller Schritt: ' + item.label : 'Zurück zu Schritt: ' + item.label
+const getAriaLabel = computed(() =>
+  isActive
+    ? "Aktueller Schritt: " + item.label
+    : "Zurück zu Schritt: " + item.label
 );
 
 const handleClick = () => {
   if (isDone) emit("click", item.id);
 };
-
 </script>
 
 <style scoped>
