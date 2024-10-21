@@ -36,9 +36,7 @@
     v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
     class="m-error-message drop-zone-error-message"
   >
-    <MucIcon
-      icon="warning--filled"
-    />
+    <MucIcon icon="warning--filled" />
     <span>
       {{ maxTotalFileSizeWarning }}
     </span>
@@ -47,9 +45,7 @@
     v-if="!validFilesAmount"
     class="m-error-message drop-zone-error-message"
   >
-    <MucIcon
-      icon="warning--filled"
-    />
+    <MucIcon icon="warning--filled" />
     <span>
       {{ invalidAmountWarning }}
     </span>
