@@ -1,9 +1,3 @@
 <template>
-  <hr class="divider-border" />
+  <div class="muc-divider" />
 </template>
-
-<style scoped>
-.divider-border {
-  border-bottom: 1px solid var(--color-neutrals-blue);
-}
-</style>
