@@ -22,24 +22,37 @@
   </div>
   <span
     v-if="!validFileSizes && maxFileSizeWarning"
-    class="m-error-message"
+    class="m-error-message drop-zone-error-message"
   >
-    <MucIcon icon="warning--filled" />
-    {{ maxFileSizeWarning }}
+    <MucIcon
+      icon="warning--filled"
+      class="icon"
+    />
+    <span>
+      {{ maxFileSizeWarning }}
+    </span>
   </span>
   <span
     v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
-    class="m-error-message"
+    class="m-error-message drop-zone-error-message"
   >
-    <MucIcon icon="warning--filled" />
-    {{ maxTotalFileSizeWarning }}
+    <MucIcon
+      icon="warning--filled"
+    />
+    <span>
+      {{ maxTotalFileSizeWarning }}
+    </span>
   </span>
   <span
     v-if="!validFilesAmount"
-    class="m-error-message"
+    class="m-error-message drop-zone-error-message"
   >
-    <MucIcon icon="warning" />
-    {{ invalidAmountWarning }}
+    <MucIcon
+      icon="warning--filled"
+    />
+    <span>
+      {{ invalidAmountWarning }}
+    </span>
   </span>
 </template>
 
@@ -253,5 +266,18 @@ const _isTotalFilesSumValid = (files: File[]) => {
 
 .drop-zone.is-not-disabled {
   cursor: pointer;
+}
+
+.drop-zone-error-message {
+  display: flex;
+  align-items: flex-start;
+}
+
+.drop-zone-error-message .icon {
+  margin-top: 0;
+}
+
+.drop-zone-error-message span {
+  margin-left: 4px;
 }
 </style>
