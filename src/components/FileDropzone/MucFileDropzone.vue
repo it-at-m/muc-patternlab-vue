@@ -24,14 +24,14 @@
     v-if="!validFileSizes && maxFileSizeWarning"
     class="m-error-message"
   >
-    <MucIcon icon="warning" />
+    <MucIcon icon="warning--filled" />
     {{ maxFileSizeWarning }}
   </span>
   <span
     v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
     class="m-error-message"
   >
-    <MucIcon icon="warning" />
+    <MucIcon icon="warning--filled" />
     {{ maxTotalFileSizeWarning }}
   </span>
   <span
