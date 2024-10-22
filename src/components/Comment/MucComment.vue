@@ -4,7 +4,10 @@
     :class="commentClass"
   >
     <div class="m-comment__head">
-      <div class="m-comment__initials">
+      <div
+        v-if="showInitials"
+        class="m-comment__initials"
+      >
         <slot name="initials" />
       </div>
       <div class="m-comment__info">
@@ -117,9 +120,9 @@ defineSlots<{
   text(): any;
 }>();
 
-const showDate = computed(() => {
-  return !!slots["date"];
-});
+const showDate = computed(() => !!slots["date"]);
+
+const showInitials = computed(() => !!slots["initials"]);
 
 /**
  * Computes class for given variant
