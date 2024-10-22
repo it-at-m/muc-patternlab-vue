@@ -27,32 +27,27 @@ import { computed, inject } from "vue";
 
 import { RadioButtonGroupKey } from "./MucRadioButtonTypes";
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * value for this radiobutton
-     */
-    value: string;
+const { value, disabled = false } = defineProps<{
+  /**
+   * value for this radiobutton
+   */
+  value: string;
 
-    /**
-     * Optional label shown behind the radiobutton
-     */
-    label?: string;
+  /**
+   * Optional label shown behind the radiobutton
+   */
+  label?: string;
 
-    /**
-     * Optional hint shown beneath the radiobutton
-     */
-    hint?: string;
+  /**
+   * Optional hint shown beneath the radiobutton
+   */
+  hint?: string;
 
-    /**
-     * Optionally disable this specific radiobutton
-     */
-    disabled?: boolean;
-  }>(),
-  {
-    disabled: false,
-  }
-);
+  /**
+   * Optionally disable this specific radiobutton
+   */
+  disabled?: boolean;
+}>();
 
 /**
  * Data provided by the radio-button-group
@@ -62,17 +57,17 @@ const parentData = inject(RadioButtonGroupKey);
 /**
  * Function called upon clicking this radiobutton
  */
-const clicked = () => parentData?.set(props.value);
+const clicked = () => parentData?.set(value);
 
 /**
  * Computed property if this radiobutton is checked or not
  */
-const isChecked = computed(() => parentData?.modelValue.value === props.value);
+const isChecked = computed(() => parentData?.modelValue.value === value);
 
 /**
  * Computed property if this radiobutton should be disabled
  */
-const isDisabled = computed(() => props.disabled || parentData?.disabled.value);
+const isDisabled = computed(() => disabled || parentData?.disabled.value);
 
 /**
  * Determines if  this radiobutton is used inside a radiobutton-group

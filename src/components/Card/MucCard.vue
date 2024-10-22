@@ -29,15 +29,22 @@
 <script setup lang="ts">
 const emit = defineEmits<{
   /**
-   * Triggered when card is clicked.
-   * @param e Click-Event
+   * @param e eventname
+   * @param click click event itself
    */
   (e: "click", click: Event): void;
 }>();
 
 defineProps<{
+  /**
+   * Title the card displays at the top
+   */
   title: string;
-  tagline: string;
+
+  /**
+   * Optional tagline the card displays above the title
+   */
+  tagline?: string;
 }>();
 
 defineSlots<{

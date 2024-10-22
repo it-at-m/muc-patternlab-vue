@@ -21,7 +21,7 @@
 
 
 This repository contains a ready-to-use Vue-Components-Library based
-on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
+on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). Current supported Version is [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog).
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 
