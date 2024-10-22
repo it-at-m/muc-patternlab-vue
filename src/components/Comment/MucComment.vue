@@ -77,23 +77,18 @@ type RatingDisplayType = {
   isHalfStar: boolean;
 };
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Number of stars to be displayed.
-     */
-    rating: number;
-    /**
-     * Choose the variant of the comment. Default is `listing`.
-     *
-     * This can be either `slider` oder `listing`.
-     */
-    variant?: CommentType;
-  }>(),
-  {
-    variant: "listing",
-  }
-);
+const { rating, variant = "listing" } = defineProps<{
+  /**
+   * Number of stars to be displayed.
+   */
+  rating: number;
+  /**
+   * Choose the variant of the comment. Default is `listing`.
+   *
+   * This can be either `slider` oder `listing`.
+   */
+  variant?: CommentType;
+}>();
 
 defineSlots<{
   /**
@@ -130,17 +125,13 @@ const showDate = computed(() => {
  * Computes class for given variant
  */
 const commentClass = computed(() => {
-  return props.variant === "slider"
-    ? "m-comment--slider"
-    : "m-comment--listing";
+  return variant === "slider" ? "m-comment--slider" : "m-comment--listing";
 });
 
 /**
  * Computes rating with min and max limits
  */
-const computedRating = computed(() =>
-  Math.min(Math.max(props.rating, 0), MAX_STARS)
-);
+const computedRating = computed(() => Math.min(Math.max(rating, 0), MAX_STARS));
 
 /*
  * Converts the dot used on decimal numbers and converts it to a comma.
@@ -161,8 +152,8 @@ const evaluateRating = computed(() => {
   let emptyStars = Math.floor(MAX_STARS - computedRating.value);
   let isHalfStar = false;
 
-  // evaluating half-stars and if the rating is e.g. 3.9 an extra full star needs to be displayed
-  if (computedRating.value !== 0.0 && computedRating.value !== MAX_STARS) {
+  // evaluating half-stars and if the rating is e.g. 3.8 an extra full star needs to be displayed
+  if (decimalPart !== 0.0) {
     if (decimalPart <= LOWER_THRESHOLD) emptyStars++;
     else if (decimalPart >= UPPER_THRESHOLD) fullStars++;
     else isHalfStar = true;
