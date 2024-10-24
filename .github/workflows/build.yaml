@@ -21,9 +21,23 @@ jobs:
       - name: Run formater and linter
         run: npm run lint
 
-  build:
+  test:
     runs-on: ubuntu-latest
     needs: lint
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - run: npm ci             # install dependencies
+      - run: npm run test:unit
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
     permissions:
       contents: read
     steps:
