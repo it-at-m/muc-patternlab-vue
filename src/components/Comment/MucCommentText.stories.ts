@@ -32,7 +32,7 @@ export const Slider = {
     ...Default.args,
     rating: 2.3,
     author: "",
-    headline: "I am invisible",
+    headline: "I dont have an author",
     variant: "slider",
   },
 };
