@@ -8,7 +8,7 @@
       v-slot:initials
       >{{ computedInitials }}</template
     >
-    <template v-slot:datePrefix>am</template>
+    <template v-slot:datePrefix>{{ datePrefix }}</template>
     <template v-slot:author>{{ author }}</template>
     <template
       v-if="!!date"
