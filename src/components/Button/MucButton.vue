@@ -11,17 +11,20 @@
         v-if="icon"
         :icon="icon"
         class="m-button__icon"
+        :class="{ 'no-left-margin': !slots.default }"
       />
     </span>
   </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useSlots } from "vue";
 
 import { MucIcon } from "../Icon";
 
 type buttonType = "primary" | "secondary" | "ghost";
+
+const slots = useSlots();
 
 const {
   variant = "primary",
@@ -84,3 +87,9 @@ const handleClick = () => {
   emit("click");
 };
 </script>
+
+<style scoped>
+.no-left-margin {
+  margin-left: 0;
+}
+</style>
