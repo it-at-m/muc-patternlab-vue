@@ -3,7 +3,11 @@
     :rating="rating"
     :variant="variant"
   >
-    <template v-slot:initials>{{ computedInitials }}</template>
+    <template
+      v-if="!!computedInitials"
+      v-slot:initials
+      >{{ computedInitials }}</template
+    >
     <template v-slot:datePrefix>{{ datePrefix }}</template>
     <template v-slot:author>{{ author }}</template>
     <template

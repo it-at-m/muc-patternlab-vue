@@ -18,7 +18,9 @@
     >
       {{ buttonText }}
     </MucButton>
-    <small>{{ additionalInformation }}</small>
+    <span class="drop-zone-additional-information">{{
+      additionalInformation
+    }}</span>
   </div>
   <span
     v-if="!validFileSizes && maxFileSizeWarning"
@@ -275,5 +277,9 @@ const _isTotalFilesSumValid = (files: File[]) => {
 
 .drop-zone-error-message span {
   margin-left: 4px;
+}
+
+.drop-zone-additional-information {
+  font-size: 14px;
 }
 </style>
