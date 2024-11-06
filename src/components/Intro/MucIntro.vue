@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { MucDivider } from "../Divider";
+
 defineProps<{
   /**
    * Title of the Intro
@@ -41,10 +43,7 @@ defineSlots<{
           </h1>
         </div>
 
-        <div
-          v-if="divider"
-          class="muc-divider"
-        />
+        <muc-divider v-if="divider" />
 
         <div class="m-intro-vertical__content">
           <p style="padding-bottom: 32px">

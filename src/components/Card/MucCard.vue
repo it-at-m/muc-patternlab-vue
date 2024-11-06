@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="muc-divider" />
+      <muc-divider />
 
       <slot name="content" />
     </div>
@@ -27,6 +27,8 @@
 </template>
 
 <script setup lang="ts">
+import { MucDivider } from "../Divider";
+
 const emit = defineEmits<{
   /**
    * @param e eventname
