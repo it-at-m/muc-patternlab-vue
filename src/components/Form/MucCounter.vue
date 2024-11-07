@@ -1,56 +1,52 @@
 <template>
-  <div class="grid">
-    <div class="grid-item">
-      <MucButton
-        v-on:click="clickedMinus"
-        variant="secondary"
-        :disabled="disableMinus"
-        :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
+  <div class="wrapper">
+    <MucButton
+      v-on:click="clickedMinus"
+      variant="secondary"
+      :disabled="disableMinus"
+      :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
+    >
+      <template #default><muc-icon icon="minus" /></template>
+    </MucButton>
+    <p tabindex="0">
+      <strong
+        class="centered-text"
+        style="color: var(--color-brand-main-blue)"
       >
-        <template #default><muc-icon icon="minus" /></template>
-      </MucButton>
-      <p tabindex="0">
-        <strong
-          class="centered-text-number"
-          style="color: var(--color-brand-main-blue)"
+        <span class="visually-hidden">
+          Aktuell ausgewählte Anzahl für {{ label }} ist</span
         >
-          <span class="visually-hidden">
-            Aktuell ausgewählte Anzahl für {{ label }} ist</span
-          >
-          {{ modelValue }}
-        </strong>
-      </p>
-      <MucButton
-        v-on:click="clickedPlus"
-        variant="secondary"
-        :disabled="disablePlus"
-        :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
-      >
-        <template #default><muc-icon icon="plus" /></template>
-      </MucButton>
-    </div>
-    <div class="grid-item centered-text-label">
-      <p v-if="link">
-        <label>
-          <muc-link
-            tabindex="0"
-            :label="label"
-            :href="link"
-          ></muc-link>
-        </label>
-      </p>
+        {{ modelValue }}
+      </strong>
+    </p>
+    <MucButton
+      v-on:click="clickedPlus"
+      variant="secondary"
+      :disabled="disablePlus"
+      :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
+    >
+      <template #default><muc-icon icon="plus" /></template>
+    </MucButton>
+    <p v-if="link">
+      <label class="centered-text">
+        <muc-link
+          tabindex="0"
+          :label="label"
+          :href="link"
+        ></muc-link>
+      </label>
+    </p>
 
-      <p v-else>
-        <label>
-          {{ label }}
-        </label>
-      </p>
-    </div>
+    <p v-else>
+      <label class="centered-text">
+        {{ label }}
+      </label>
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from "vue";
+import { computed } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
@@ -61,51 +57,35 @@ import { MucLink } from "../Link";
  */
 const modelValue = defineModel<number>({ default: 0 });
 
-const {
-  min,
-  max,
-  disabled = false,
-} = defineProps<{
-  /**
-   * Label shown after the counter
-   */
-  label: string;
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Label shown after the counter
+     */
+    label: string;
 
-  /**
-   * Optional minimum of counter
-   */
-  min?: number;
+    /**
+     * Optional minimum of counter
+     */
+    min?: number;
 
-  /**
-   * Optional maximum of counter
-   */
-  max?: number;
+    /**
+     * Optional maximum of counter
+     */
+    max?: number;
 
-  /**
-   * Optional link for label
-   */
-  link?: string;
+    /**
+     * Optional link for label
+     */
+    link?: string;
 
-  /**
-   * Optionally disables the counter buttons
-   */
-  disabled?: boolean;
-}>();
-
-watch(
-  () => min,
-  () => {
-    if (min && modelValue.value < min) {
-      modelValue.value = min;
-    }
-  }
-);
-watch(
-  () => max,
-  () => {
-    if (max && modelValue.value > max) {
-      modelValue.value = max;
-    }
+    /**
+     * Optionally disable this specific counter
+     */
+    disabled?: boolean;
+  }>(),
+  {
+    disabled: false,
   }
 );
 
@@ -122,7 +102,7 @@ const clickedMinus = () => modelValue.value--;
  * Computed property if this plus button should be disabled
  */
 const disablePlus = computed(
-  () => (!!max && !(modelValue.value < max)) || disabled
+  () => (!!props.max && !(modelValue.value < props.max)) || props.disabled
 );
 
 /**
@@ -130,62 +110,25 @@ const disablePlus = computed(
  */
 const disableMinus = computed(
   () =>
-    modelValue.value == 0 || (!!min && !(modelValue.value > min)) || disabled
+    modelValue.value == 0 ||
+    (!!props.min && !(modelValue.value > props.min)) ||
+    props.disabled
 );
 </script>
 
 <style scoped>
-.centered-text-number {
+.wrapper {
+  display: flex;
+}
+
+.wrapper > * {
+  margin: 0 8px;
+}
+
+.centered-text {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.centered-text-label {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  height: 100%;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-}
-
-.grid-item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.grid-item > * {
-  margin: 0 8px;
-}
-
-/* Desktop and tablet view */
-@media (min-width: 768px) {
-  .grid-item:nth-child(1) {
-    order: 1;
-  }
-  .grid-item:nth-child(2) {
-    order: 2;
-  }
-}
-
-/* Mobile view */
-@media (max-width: 767px) {
-  .grid-item:nth-child(1) {
-    order: 2;
-  }
-  .grid-item:nth-child(2) {
-    order: 1;
-  }
-  .centered-text-label {
-    padding-bottom: 0.8rem;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-  }
 }
 </style>

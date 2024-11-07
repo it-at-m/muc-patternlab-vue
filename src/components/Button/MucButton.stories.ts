@@ -47,8 +47,9 @@ export const Disabled = {
   },
 };
 
-export const IconOnly = {
+export const Icon = {
   args: {
+    default: "With Icon",
     icon: "arrow-right",
   },
 };

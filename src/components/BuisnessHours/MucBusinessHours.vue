@@ -67,49 +67,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 
 import { MucIcon } from "../Icon";
 import { BusinessHourType } from "./BusinessHourType";
 
 const LOCALES = "de-DE";
 
-const {
-  businessHours,
-  toggleable = false,
-  icon = "time",
-} = defineProps<{
-  /**
-   * This array includes all the opening hours for all days of the week.
-   */
-  businessHours: BusinessHourType[];
+const props = withDefaults(
+  defineProps<{
+    /**
+     * This array includes all the opening hours for all days of the week.
+     */
+    businessHours: BusinessHourType[];
 
-  /**
-   * Lets you choose between the toggleable and fixed state of the component.
-   * In the fixed state, no toggle button will be shown.
-   */
-  toggleable?: boolean;
+    /**
+     * Lets you choose between the toggleable and fixed state of the component.
+     * In the fixed state, no toggle button will be shown.
+     */
+    toggleable?: boolean;
 
-  /**
-   * Choose an icon for the toggle button. The default if none is given is the time icon.
-   */
-  icon?: string;
-}>();
-
-/**
- * Stores information whether the component is collapsed or not
- */
-const collapsed = ref(toggleable);
-
-/**
- * Keep reactivity intact when prop toggleable is changed
- */
-watch(
-  () => toggleable,
-  () => {
-    collapsed.value = toggleable;
+    /**
+     * Choose an icon for the toggle button. The default if none is given is the time icon.
+     */
+    icon?: string;
+  }>(),
+  {
+    icon: "time",
+    toggleable: false,
   }
 );
+
+let collapsed = ref(props.toggleable);
 
 const slots = defineSlots<{
   /**
@@ -166,7 +155,7 @@ const highlightBusinessDay = (businessHour: BusinessHourType) => {
  * @returns {BusinessHourType | undefined} The business hours for today, if available.
  */
 const todaysBusinessHours = computed(() =>
-  businessHours.find((curr) => curr.weekDay === todaysDayShortName.value)
+  props.businessHours.find((curr) => curr.weekDay === todaysDayShortName.value)
 );
 </script>
 

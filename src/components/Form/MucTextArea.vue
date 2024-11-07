@@ -38,35 +38,43 @@
  */
 const modelValue = defineModel<string>({ default: "" });
 
-const { rows = 3, required = false } = defineProps<{
-  /**
-   * Displays error message and highlights the input form with a red border.
-   */
-  errorMsg?: string;
+withDefaults(
+  defineProps<{
+    /**
+     * Displays error message and highlights the input form with a red border.
+     */
+    errorMsg?: string;
 
-  /**
-   * Number of rows displayed of the textarea. Default is three.
-   */
-  rows?: number;
+    /**
+     * Number of rows displayed of the textarea. Default is three.
+     */
+    rows?: number;
 
-  /**
-   * Placeholder for empty input form.
-   */
-  placeholder?: string;
+    /**
+     * Placeholder for empty input form.
+     */
+    placeholder?: string;
 
-  /**
-   * Displays a label above the form component.
-   */
-  label?: string;
+    /**
+     * Displays a label above the form component.
+     */
+    label?: string;
 
-  /**
-   * Displays a hint beneath the form component.
-   */
-  hint?: string;
+    /**
+     * Displays a hint beneath the form component.
+     */
+    hint?: string;
 
-  /**
-   * Sets this input form as required. Default is false.
-   */
-  required?: boolean;
-}>();
+    /**
+     * Sets this input form as required. Default is false.
+     */
+    required?: boolean;
+  }>(),
+  {
+    rows: 3,
+    required: false,
+  }
+);
 </script>
+
+<style scoped></style>

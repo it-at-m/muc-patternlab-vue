@@ -24,19 +24,24 @@ import {
 /**
  * exposed two-way binding of the currently selected radiobuttons-value
  */
-const modelValue = defineModel<RadioButtonValueTypes>();
+const selectedButton = defineModel<RadioButtonValueTypes>("modelValue");
 
-const { disabled = false } = defineProps<{
-  /**
-   * Optional heading above all radiobuttons as a group heading
-   */
-  heading?: string;
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Optional heading above all radiobuttons as a group heading
+     */
+    heading?: string;
 
-  /**
-   * Optionally disable all child radiobuttons - defaults to 'false'
-   */
-  disabled?: boolean;
-}>();
+    /**
+     * Optionally disable all child radiobuttons - defaults to 'false'
+     */
+    disabled?: boolean;
+  }>(),
+  {
+    disabled: false,
+  }
+);
 
 const emit = defineEmits<{
   /**
@@ -52,9 +57,9 @@ const emit = defineEmits<{
 provide(RadioButtonGroupKey, {
   set: (value: RadioButtonValueTypes) => {
     emit("change", value);
-    modelValue.value = value;
+    selectedButton.value = value;
   },
-  modelValue,
-  disabled: readonly(toRef(() => disabled)),
+  modelValue: selectedButton,
+  disabled: readonly(toRef(props.disabled)),
 });
 </script>

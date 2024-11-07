@@ -4,10 +4,7 @@
     :class="commentClass"
   >
     <div class="m-comment__head">
-      <div
-        v-if="showInitials"
-        class="m-comment__initials"
-      >
+      <div class="m-comment__initials">
         <slot name="initials" />
       </div>
       <div class="m-comment__info">
@@ -80,18 +77,23 @@ type RatingDisplayType = {
   isHalfStar: boolean;
 };
 
-const { rating, variant = "listing" } = defineProps<{
-  /**
-   * Number of stars to be displayed.
-   */
-  rating: number;
-  /**
-   * Choose the variant of the comment. Default is `listing`.
-   *
-   * This can be either `slider` oder `listing`.
-   */
-  variant?: CommentType;
-}>();
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Number of stars to be displayed.
+     */
+    rating: number;
+    /**
+     * Choose the variant of the comment. Default is `listing`.
+     *
+     * This can be either `slider` oder `listing`.
+     */
+    variant?: CommentType;
+  }>(),
+  {
+    variant: "listing",
+  }
+);
 
 defineSlots<{
   /**
@@ -120,21 +122,25 @@ defineSlots<{
   text(): any;
 }>();
 
-const showDate = computed(() => !!slots["date"]);
-
-const showInitials = computed(() => !!slots["initials"]);
+const showDate = computed(() => {
+  return !!slots["date"];
+});
 
 /**
  * Computes class for given variant
  */
 const commentClass = computed(() => {
-  return variant === "slider" ? "m-comment--slider" : "m-comment--listing";
+  return props.variant === "slider"
+    ? "m-comment--slider"
+    : "m-comment--listing";
 });
 
 /**
  * Computes rating with min and max limits
  */
-const computedRating = computed(() => Math.min(Math.max(rating, 0), MAX_STARS));
+const computedRating = computed(() =>
+  Math.min(Math.max(props.rating, 0), MAX_STARS)
+);
 
 /*
  * Converts the dot used on decimal numbers and converts it to a comma.
@@ -155,8 +161,8 @@ const evaluateRating = computed(() => {
   let emptyStars = Math.floor(MAX_STARS - computedRating.value);
   let isHalfStar = false;
 
-  // evaluating half-stars and if the rating is e.g. 3.8 an extra full star needs to be displayed
-  if (decimalPart !== 0.0) {
+  // evaluating half-stars and if the rating is e.g. 3.9 an extra full star needs to be displayed
+  if (computedRating.value !== 0.0 && computedRating.value !== MAX_STARS) {
     if (decimalPart <= LOWER_THRESHOLD) emptyStars++;
     else if (decimalPart >= UPPER_THRESHOLD) fullStars++;
     else isHalfStar = true;

@@ -3,12 +3,8 @@
     :rating="rating"
     :variant="variant"
   >
-    <template
-      v-if="!!computedInitials"
-      v-slot:initials
-      >{{ computedInitials }}</template
-    >
-    <template v-slot:datePrefix>{{ datePrefix }}</template>
+    <template v-slot:initials>{{ computedInitials }}</template>
+    <template v-slot:datePrefix>am</template>
     <template v-slot:author>{{ author }}</template>
     <template
       v-if="!!date"
@@ -26,52 +22,24 @@ import { computed } from "vue";
 import { MucComment } from "../index";
 import CommentType from "./CommentType";
 
-const AUTHOR_NAME_SEPARATOR = " ";
+const AUTHOR_NAME_SEPERATOR = " ";
 
-const {
-  datePrefix = "am",
-  initials,
-  author,
-  date,
-  variant = "listing",
-} = defineProps<{
-  /**
-   * Text input to display in front of the date text input
-   */
-  datePrefix?: string;
-  /**
-   * Optional text input to display the initials of the author next to name
-   *
-   * (if kept empty will be calculated automatically)
-   */
-  initials?: string;
-  /**
-   * Text input to display the author name of the comment
-   */
-  author: string;
-  /**
-   * Text input to display the date of the comment
-   */
-  date?: string;
-  /**
-   * Text input to display the headline of the comment
-   */
-  headline?: string;
-  /**
-   * Text input to display the content of the comment
-   */
-  text: string;
-  /**
-   * Rating of the comment in stars, between 0.0 and 5.0
-   */
-  rating: number;
-  /**
-   * Choose the variant of the comment. Default is `listing`.
-   *
-   * This can be either `slider` oder `listing`.
-   */
-  variant?: CommentType;
-}>();
+const props = withDefaults(
+  defineProps<{
+    datePrefix?: string;
+    initials?: string;
+    author: string;
+    date?: string;
+    headline?: string;
+    text: string;
+    rating: number;
+    variant?: CommentType;
+  }>(),
+  {
+    datePrefix: "am",
+    variant: "listing",
+  }
+);
 
 /**
  * Initials will be computed if none are given.
@@ -80,12 +48,14 @@ const {
 const computedInitials = computed(() => {
   return (
     (
-      initials ??
-      author
-        .split(AUTHOR_NAME_SEPARATOR)
+      props.initials ??
+      props.author
+        .split(AUTHOR_NAME_SEPERATOR)
         .map((word) => word.charAt(0))
         .join("")
     ).match(/^.|.$/g) ?? [""]
   ).join("");
 });
 </script>
+
+<style scoped></style>

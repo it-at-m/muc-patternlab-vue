@@ -5,12 +5,17 @@ import { MucIcon } from "../Icon";
 
 type bannerType = "info" | "success" | "warning" | "emergency";
 
-const { type = "info" } = defineProps<{
-  /**
-   * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
-   */
-  type?: bannerType;
-}>();
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+     */
+    type?: bannerType;
+  }>(),
+  {
+    type: "info",
+  }
+);
 
 defineSlots<{
   /**
@@ -20,7 +25,7 @@ defineSlots<{
 }>();
 
 const typeClass = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "info":
       return "m-banner--info";
     case "success":
@@ -35,7 +40,7 @@ const typeClass = computed(() => {
 });
 
 const typeRole = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "info":
       return "dialog";
     case "success":
@@ -50,7 +55,7 @@ const typeRole = computed(() => {
 });
 
 const typeAriaLabel = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "info":
       return "Information";
     case "success":
@@ -65,7 +70,7 @@ const typeAriaLabel = computed(() => {
 });
 
 const typeIcon = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "success":
       return "check";
     case "warning":

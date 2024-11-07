@@ -37,14 +37,19 @@ import { MucIcon } from "../Icon";
 
 type calloutType = "info" | "warning" | "success" | "error";
 
-const { type = "info" } = defineProps<{
-  /**
-   * Type of the callout, default is `info`.
-   *
-   * Available are `info`, `warning`, `success` and `error`.
-   */
-  type?: calloutType;
-}>();
+const props = withDefaults(
+  defineProps<{
+    /**
+     * Type of the callout, default is `info`.
+     *
+     * Available are `info`, `warning`, `success` and `error`.
+     */
+    type?: calloutType;
+  }>(),
+  {
+    type: "info",
+  }
+);
 
 defineSlots<{
   /**
@@ -65,7 +70,7 @@ defineSlots<{
 Computing the corresponding icon-component for the given comment-type
  */
 const fallbackCalloutIcon = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "error":
     case "warning":
       return "warning";
@@ -80,7 +85,7 @@ const fallbackCalloutIcon = computed(() => {
 Computing the corresponding css-class for the given comment-type
 */
 const calloutClass = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "error":
       return "m-callout--error";
     case "warning":
@@ -96,7 +101,7 @@ const calloutClass = computed(() => {
 Computing the corresponding aria-label for the given comment-type, currently in german
 */
 const typeAriaLabel = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case "success":
       return "Erfolgreich";
     case "warning":

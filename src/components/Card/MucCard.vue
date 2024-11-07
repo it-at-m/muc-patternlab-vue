@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <muc-divider />
+      <div class="muc-divider" />
 
       <slot name="content" />
     </div>
@@ -27,26 +27,17 @@
 </template>
 
 <script setup lang="ts">
-import { MucDivider } from "../Divider";
-
 const emit = defineEmits<{
   /**
-   * @param e eventname
-   * @param click click event itself
+   * Triggered when card is clicked.
+   * @param e Click-Event
    */
   (e: "click", click: Event): void;
 }>();
 
 defineProps<{
-  /**
-   * Title the card displays at the top
-   */
   title: string;
-
-  /**
-   * Optional tagline the card displays above the title
-   */
-  tagline?: string;
+  tagline: string;
 }>();
 
 defineSlots<{

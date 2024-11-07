@@ -1,6 +1,5 @@
 import { MucBanner } from "./Banner";
 import { MucButton } from "./Button";
-import { MucCalendar } from "./Calendar";
 import { MucCallout } from "./Callout";
 import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
@@ -21,7 +20,6 @@ import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
 import { MucPercentageSpinner } from "./PercentageSpinner";
-import { MucStepper } from "./Stepper";
 
 export {
   MucButton,
@@ -46,6 +44,4 @@ export {
   MucFileDropzone,
   MucCounter,
   MucPercentageSpinner,
-  MucStepper,
-  MucCalendar,
 };

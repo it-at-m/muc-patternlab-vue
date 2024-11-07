@@ -18,19 +18,14 @@ export default {
 
 export const Default = {
   args: {
+    title: "A problem occurred!",
     errors: "Only one error line",
-  },
-};
-
-export const CustomTitle = {
-  args: {
-    title: "Oops, something went wrong!",
-    errors: "Error 1",
   },
 };
 
 export const Multiple = {
   args: {
+    title: "A problem occurred!",
     errors: ["Error 1", "Error 2", "Error 3", "Error 4"],
   },
 };

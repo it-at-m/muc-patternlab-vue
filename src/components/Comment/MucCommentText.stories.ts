@@ -22,7 +22,7 @@ export const Default = {
   args: {
     rating: 4.2,
     author: "Max Foo Bar Mustermann",
-    headline: "Lorem ipsum is great",
+    headline: "Initials shortend",
     text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum eirmod tempor invidunt ut",
   },
 };
@@ -32,7 +32,7 @@ export const Slider = {
     ...Default.args,
     rating: 2.3,
     author: "",
-    headline: "I dont have an author",
+    headline: "Empty Author",
     variant: "slider",
   },
 };

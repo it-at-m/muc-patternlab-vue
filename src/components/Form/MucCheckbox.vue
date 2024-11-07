@@ -7,7 +7,7 @@
       class="m-checkboxes__input"
       name="checkbox"
       type="checkbox"
-      :checked="modelValue"
+      :checked="checkBoxValue"
       @click.stop="clickedCheckbox"
     />
     <label class="m-label m-checkboxes__label">
@@ -20,7 +20,7 @@
 /**
  * Input value from the checkbox component.
  */
-const modelValue = defineModel<boolean>({ default: false });
+const checkBoxValue = defineModel<boolean>("modelValue", { default: false });
 
 defineProps<{
   /**
@@ -41,7 +41,7 @@ const emit = defineEmits<{
  * Called upon clicking the checkbox or label, switches the state of the checkbox and emits the event.
  */
 const clickedCheckbox = () => {
-  modelValue.value = !modelValue.value;
+  checkBoxValue.value = !checkBoxValue.value;
   emit("click");
 };
 </script>

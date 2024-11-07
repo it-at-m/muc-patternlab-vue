@@ -1,11 +1,9 @@
 <template>
-  <div class="muc-divider" />
+  <hr class="divider-border" />
 </template>
 
 <style scoped>
-.muc-divider {
-  align-self: stretch;
-  height: 0;
-  border-bottom: 1px var(--color-neutrals-blue) solid;
+.divider-border {
+  border-bottom: 1px solid var(--color-neutrals-blue);
 }
 </style>
