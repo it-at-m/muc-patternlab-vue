@@ -63,9 +63,3 @@ h5 {
         font-size: 1.25rem;
     }
 }
-
-.muc-divider {
-    align-self: stretch;
-    height: 0;
-    border: 1px var(--color-neutrals-blue) solid;
-}
