@@ -81,7 +81,7 @@ import { computed } from "vue";
 /**
  * Type includes all possible input types possible.
  */
-type inputType =
+type InputType =
   | "text"
   | "password"
   | "color"
@@ -94,54 +94,52 @@ type inputType =
  */
 const modelValue = defineModel<string>({ default: "" });
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * Displays error message and highlights the input form with a red border.
-     */
-    errorMsg?: string;
+const {
+  errorMsg,
+  required = false,
+  type = "text",
+  dataList = [] as string[],
+} = defineProps<{
+  /**
+   * Displays error message and highlights the input form with a red border.
+   */
+  errorMsg?: string;
 
-    /**
-     * Placeholder for empty input form.
-     */
-    placeholder?: string;
+  /**
+   * Placeholder for empty input form.
+   */
+  placeholder?: string;
 
-    /**
-     * Sets this input form as required. Default is wrong.
-     */
-    required?: boolean;
+  /**
+   * Sets this input form as required. Default is wrong.
+   */
+  required?: boolean;
 
-    /**
-     * Displays a label above the form component.
-     */
-    label?: string;
+  /**
+   * Displays a label above the form component.
+   */
+  label?: string;
 
-    /**
-     * Displays a hint beneath the form component.
-     */
-    hint?: string;
+  /**
+   * Displays a hint beneath the form component.
+   */
+  hint?: string;
 
-    /**
-     * Sets the type of this form component. This can be text, password, color, date or datetime-local.
-     */
-    type?: inputType;
+  /**
+   * Sets the type of this form component. This can be text, password, color, date or datetime-local.
+   */
+  type?: InputType;
 
-    /**
-     * Options for the form component. Type must set to 'search'.
-     */
-    datalist?: string[];
+  /**
+   * Options for the form component. Type must set to 'search'.
+   */
+  dataList?: string[];
 
-    /**
-     * Icon to be displayed as a suffix at the end of the input.
-     */
-    suffixIcon?: string;
-  }>(),
-  {
-    required: false,
-    type: "text",
-    dataList: [],
-  }
-);
+  /**
+   * Icon to be displayed as a suffix at the end of the input.
+   */
+  suffixIcon?: string;
+}>();
 
 const slots = defineSlots<{
   /**
@@ -162,13 +160,13 @@ const emits = defineEmits<{
  * Computes a CSS class based on the presence of an error message.
  * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
  */
-const isErrorClass = computed(() => (!props.errorMsg ? "" : "has-error"));
+const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
 
 /**
  * Computes whether the current type is "search".
  * @returns {boolean} Returns true if the type is "search", otherwise false.
  */
-const isSearch = computed(() => props.type === "search");
+const isSearch = computed(() => type === "search");
 
 /**
  * Computes the list of available options based on the current search value.
@@ -179,7 +177,7 @@ const currentAvalOptions = computed(() => {
   if (modelValue.value === "") return [];
 
   const searchValue = modelValue.value.toLowerCase();
-  return props.datalist!.filter(
+  return dataList!.filter(
     (option) =>
       option.toLowerCase().startsWith(searchValue) &&
       option.toLowerCase() !== searchValue

@@ -2,6 +2,7 @@
     <img height="140" src="docs/images/muc-patternlab.png" />
 </p>
 
+
 <p align="center">
 	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
 		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
@@ -21,7 +22,7 @@
 
 
 This repository contains a ready-to-use Vue-Components-Library based
-on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
+on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). Current supported Version is [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog).
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 

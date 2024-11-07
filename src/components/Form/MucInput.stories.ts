@@ -67,7 +67,7 @@ export const Search = {
   args: {
     ...Default.args,
     type: "search",
-    datalist: ["chocolate", "coconut", "vanilla", "mint"],
+    dataList: ["chocolate", "coconut", "vanilla", "mint"],
   },
 };
 
