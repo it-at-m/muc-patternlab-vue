@@ -16,7 +16,7 @@ declare let __VLS_typeProps: {
      */
     link?: string;
     /**
-     * Optionally disable this specific counter
+     * Optionally disables the counter buttons
      */
     disabled?: boolean;
 };
@@ -27,7 +27,5 @@ declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {},
     "update:modelValue": (modelValue: number) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     "onUpdate:modelValue"?: ((modelValue: number) => any) | undefined;
-}>, {
-    disabled: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

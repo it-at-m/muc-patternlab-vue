@@ -23,13 +23,25 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<{
+    /**
+     * Title the card displays at the top
+     */
     title: string;
-    tagline: string;
+    /**
+     * Optional tagline the card displays above the title
+     */
+    tagline?: string;
 }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
     click: (click: Event) => any;
 }, string, import('vue').PublicProps, Readonly<{
+    /**
+     * Title the card displays at the top
+     */
     title: string;
-    tagline: string;
+    /**
+     * Optional tagline the card displays above the title
+     */
+    tagline?: string;
 }> & Readonly<{
     onClick?: ((click: Event) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;

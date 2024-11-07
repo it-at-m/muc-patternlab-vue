@@ -5,7 +5,7 @@ declare let __VLS_typeProps: {
     label: string;
 };
 type __VLS_PublicProps = {
-    "modelValue"?: boolean;
+    modelValue?: boolean;
 } & typeof __VLS_typeProps;
 declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (modelValue: boolean) => any;

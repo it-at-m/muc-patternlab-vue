@@ -32,9 +32,7 @@ declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {},
     "update:modelValue": (modelValue: MucSelectItemTypes | MucSelectItemTypes[]) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     "onUpdate:modelValue"?: ((modelValue: MucSelectItemTypes | MucSelectItemTypes[]) => any) | undefined;
-}>, {
-    multiple: boolean;
-    noItemFoundMessage: string;
-    itemTitle: string;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
+    selectComponent: HTMLDivElement;
+}, any>;
 export default _default;

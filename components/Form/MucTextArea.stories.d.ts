@@ -21,10 +21,7 @@ declare const _default: {
         required?: boolean;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
-    }>, {
-        required: boolean;
-        rows: number;
-    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
     parameters: {

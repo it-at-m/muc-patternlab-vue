@@ -1,7 +1,7 @@
 /**
  * Type includes all possible input types possible.
  */
-type inputType = "text" | "password" | "color" | "search" | "date" | "datetime-local";
+type InputType = "text" | "password" | "color" | "search" | "date" | "datetime-local";
 declare let __VLS_typeProps: {
     /**
      * Displays error message and highlights the input form with a red border.
@@ -26,11 +26,11 @@ declare let __VLS_typeProps: {
     /**
      * Sets the type of this form component. This can be text, password, color, date or datetime-local.
      */
-    type?: inputType;
+    type?: InputType;
     /**
      * Options for the form component. Type must set to 'search'.
      */
-    datalist?: string[];
+    dataList?: string[];
     /**
      * Icon to be displayed as a suffix at the end of the input.
      */
@@ -62,10 +62,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
     onSuffixClick?: (() => any) | undefined;
-}>, {
-    type: inputType;
-    required: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

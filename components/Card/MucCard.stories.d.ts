@@ -2,17 +2,12 @@ declare const _default: {
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             title: string;
-            tagline: string;
+            tagline?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
             click: (click: Event) => any;
-        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
-            title: string;
-            tagline: string;
-        }> & Readonly<{
-            onClick?: ((click: Event) => any) | undefined;
-        }>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -21,7 +16,7 @@ declare const _default: {
             Defaults: {};
         }, Readonly<{
             title: string;
-            tagline: string;
+            tagline?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
@@ -30,7 +25,7 @@ declare const _default: {
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
         title: string;
-        tagline: string;
+        tagline?: string;
     }> & Readonly<{
         onClick?: ((click: Event) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -70,17 +65,12 @@ export declare const WithHeaderPrefix: () => {
         MucCard: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 title: string;
-                tagline: string;
+                tagline?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
                 click: (click: Event) => any;
-            }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
-                title: string;
-                tagline: string;
-            }> & Readonly<{
-                onClick?: ((click: Event) => any) | undefined;
-            }>, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+            }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
@@ -89,7 +79,7 @@ export declare const WithHeaderPrefix: () => {
                 Defaults: {};
             }, Readonly<{
                 title: string;
-                tagline: string;
+                tagline?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
@@ -98,7 +88,7 @@ export declare const WithHeaderPrefix: () => {
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{
             title: string;
-            tagline: string;
+            tagline?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {

@@ -9,18 +9,7 @@ declare const _default: {
             onClick?: (() => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
             click: () => any;
-        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
-            variant?: "primary" | "secondary" | "ghost";
-            disabled?: boolean;
-            icon?: string;
-            iconAnimated?: boolean;
-        }> & Readonly<{
-            onClick?: (() => any) | undefined;
-        }>, {
-            variant: "primary" | "secondary" | "ghost";
-            disabled: boolean;
-            iconAnimated: boolean;
-        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -34,11 +23,7 @@ declare const _default: {
             iconAnimated?: boolean;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
-        }>, {}, {}, {}, {}, {
-            variant: "primary" | "secondary" | "ghost";
-            disabled: boolean;
-            iconAnimated: boolean;
-        }>;
+        }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
@@ -51,11 +36,7 @@ declare const _default: {
         onClick?: (() => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
         click: () => any;
-    }, string, {
-        variant: "primary" | "secondary" | "ghost";
-        disabled: boolean;
-        iconAnimated: boolean;
-    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+    }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): any;
         }> & {
@@ -99,9 +80,8 @@ export declare const Disabled: {
         disabled: boolean;
     };
 };
-export declare const Icon: {
+export declare const IconOnly: {
     args: {
-        default: string;
         icon: string;
     };
 };

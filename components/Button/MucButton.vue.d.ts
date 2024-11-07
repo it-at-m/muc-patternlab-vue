@@ -61,11 +61,7 @@ declare const __VLS_component: import('vue').DefineComponent<{
     iconAnimated?: boolean;
 }> & Readonly<{
     onClick?: (() => any) | undefined;
-}>, {
-    variant: buttonType;
-    disabled: boolean;
-    iconAnimated: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

@@ -45,9 +45,7 @@ declare const __VLS_component: import('vue').DefineComponent<{
      * Available are `info`, `warning`, `success` and `error`.
      */
     type?: calloutType;
-}> & Readonly<{}>, {
-    type: calloutType;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
