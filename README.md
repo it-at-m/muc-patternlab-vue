@@ -2,6 +2,7 @@
     <img height="140" src="docs/images/muc-patternlab.png" />
 </p>
 
+
 <p align="center">
 	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
 		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
