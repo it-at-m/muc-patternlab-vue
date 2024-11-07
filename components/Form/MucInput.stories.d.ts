@@ -8,8 +8,8 @@ declare const _default: {
             required?: boolean;
             label?: string;
             hint?: string;
-            type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
-            dataList?: string[];
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
             suffixIcon?: string;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
@@ -18,7 +18,24 @@ declare const _default: {
             "update:modelValue": (modelValue: string) => any;
         } & {
             suffixClick: () => any;
-        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
+            modelValue?: string;
+        } & {
+            errorMsg?: string;
+            placeholder?: string;
+            required?: boolean;
+            label?: string;
+            hint?: string;
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
+            suffixIcon?: string;
+        }> & Readonly<{
+            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
+            onSuffixClick?: (() => any) | undefined;
+        }>, {
+            type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            required: boolean;
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -33,13 +50,16 @@ declare const _default: {
             required?: boolean;
             label?: string;
             hint?: string;
-            type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
-            dataList?: string[];
+            type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            datalist?: string[];
             suffixIcon?: string;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
-        }>, {}, {}, {}, {}, {}>;
+        }>, {}, {}, {}, {}, {
+            type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+            required: boolean;
+        }>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
@@ -51,8 +71,8 @@ declare const _default: {
         required?: boolean;
         label?: string;
         hint?: string;
-        type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
-        dataList?: string[];
+        type?: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+        datalist?: string[];
         suffixIcon?: string;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
@@ -61,7 +81,10 @@ declare const _default: {
         "update:modelValue": (modelValue: string) => any;
     } & {
         suffixClick: () => any;
-    }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+    }, string, {
+        type: "color" | "text" | "search" | "date" | "datetime-local" | "password";
+        required: boolean;
+    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             prefix(): any;
         }> & {
@@ -121,7 +144,7 @@ export declare const SuffixIcon: {
 export declare const Search: {
     args: {
         type: string;
-        dataList: string[];
+        datalist: string[];
         placeholder: string;
     };
 };

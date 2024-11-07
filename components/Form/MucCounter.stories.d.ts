@@ -19,7 +19,9 @@ declare const _default: {
         disabled?: boolean;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((modelValue: number) => any) | undefined;
-    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    }>, {
+        disabled: boolean;
+    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
     parameters: {

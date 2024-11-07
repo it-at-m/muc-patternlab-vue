@@ -77,7 +77,9 @@ declare const __VLS_component: import('vue').DefineComponent<{
      * This can be either `slider` oder `listing`.
      */
     variant?: CommentType;
-}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}> & Readonly<{}>, {
+    variant: CommentType;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

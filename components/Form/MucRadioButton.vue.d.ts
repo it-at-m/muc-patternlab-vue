@@ -32,5 +32,7 @@ declare const _default: import('vue').DefineComponent<{
      * Optionally disable this specific radiobutton
      */
     disabled?: boolean;
-}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}> & Readonly<{}>, {
+    disabled: boolean;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

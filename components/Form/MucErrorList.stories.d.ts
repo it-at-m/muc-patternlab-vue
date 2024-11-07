@@ -19,17 +19,13 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
-        errors: string;
-    };
-};
-export declare const CustomTitle: {
-    args: {
         title: string;
         errors: string;
     };
 };
 export declare const Multiple: {
     args: {
+        title: string;
         errors: string[];
     };
 };
