@@ -6,17 +6,7 @@ declare const _default: {
             icon?: string;
             target?: string;
             noUnderline?: boolean;
-        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & Readonly<{
-            label: string;
-            href?: string;
-            icon?: string;
-            target?: string;
-            noUnderline?: boolean;
-        }> & Readonly<{}>, {
-            href: string;
-            target: string;
-            noUnderline: boolean;
-        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -29,11 +19,7 @@ declare const _default: {
             icon?: string;
             target?: string;
             noUnderline?: boolean;
-        }> & Readonly<{}>, {}, {}, {}, {}, {
-            href: string;
-            target: string;
-            noUnderline: boolean;
-        }>;
+        }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
         __isSuspense?: never;
@@ -43,11 +29,7 @@ declare const _default: {
         icon?: string;
         target?: string;
         noUnderline?: boolean;
-    }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
-        href: string;
-        target: string;
-        noUnderline: boolean;
-    }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+    }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             icon(): void;
         }> & {

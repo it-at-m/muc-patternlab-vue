@@ -21,11 +21,9 @@ declare const _default: {
         itemTitle?: string;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((modelValue: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any) | undefined;
-    }>, {
-        multiple: boolean;
-        noItemFoundMessage: string;
-        itemTitle: string;
-    }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
+        selectComponent: HTMLDivElement;
+    }, any>;
     title: string;
     tags: string[];
     parameters: {

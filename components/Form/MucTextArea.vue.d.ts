@@ -31,8 +31,5 @@ declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {},
     "update:modelValue": (modelValue: string) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
-}>, {
-    required: boolean;
-    rows: number;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

@@ -10,7 +10,7 @@ declare let __VLS_typeProps: {
     disabled?: boolean;
 };
 type __VLS_PublicProps = {
-    "modelValue"?: RadioButtonValueTypes;
+    modelValue?: RadioButtonValueTypes;
 } & typeof __VLS_typeProps;
 declare function __VLS_template(): {
     slots: {
@@ -26,9 +26,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, 
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
     onChange?: ((value: RadioButtonValueTypes) => any) | undefined;
     "onUpdate:modelValue"?: ((modelValue: RadioButtonValueTypes) => any) | undefined;
-}>, {
-    disabled: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

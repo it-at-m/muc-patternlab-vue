@@ -58,11 +58,7 @@ declare const __VLS_component: import('vue').DefineComponent<{
      * Removes the underline from the label text
      */
     noUnderline?: boolean;
-}> & Readonly<{}>, {
-    href: string;
-    target: string;
-    noUnderline: boolean;
-}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
