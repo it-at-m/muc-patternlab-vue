@@ -109,11 +109,11 @@ This project uses [semantic-release](https://github.com/semantic-release/semanti
 
 It follows [gitmoji commit conventions](https://gitmoji.dev/). For example:
 
-| gitmoji                                  | Sample Commit message                                                                                                               | Release type  |
-|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| :lipstick / :lock: / :ambulance: / :bug: | `:lipstick` / `:lock:` / `:ambulance:` / `:bug: stop graphite breaking when too much pressure applied`                              | Patch Release |
-| :sparkles:                               | `:sparkles: add 'graphiteWidth' option`                                                                                             | Minor Release |
-| :boom:                                   | `:boom: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | Major Release |
+| gitmoji                             | Sample Commit message                                                                                                               | Release type  |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| :lipstick: :lock: :ambulance: :bug: | `:lipstick` / `:lock:` / `:ambulance:` / `:bug: stop graphite breaking when too much pressure applied`                              | Patch Release |
+| :sparkles:                          | `:sparkles: add 'graphiteWidth' option`                                                                                             | Minor Release |
+| :boom:                              | `:boom: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | Major Release |
 
 ## License
 
