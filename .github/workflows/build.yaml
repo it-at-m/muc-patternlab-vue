@@ -32,8 +32,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
-      - run: npm ci             # install dependencies
-      - run: npm run test:unit
+      - run: npm ci
+      - run: npm run test
 
   build:
     runs-on: ubuntu-latest
