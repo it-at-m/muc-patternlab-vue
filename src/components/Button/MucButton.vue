@@ -1,9 +1,9 @@
 <template>
   <button
     @click="handleClick"
-    :disabled="disabled"
+    :aria-disabled="disabled"
     class="m-button"
-    :class="[buttonVariantClass, iconAnimatedClass]"
+    :class="[buttonVariantClass, iconAnimatedClass, disabledClass]"
   >
     <span>
       <slot />
@@ -38,7 +38,7 @@ const {
    */
   variant?: buttonType;
   /**
-   * Let`s you indicate that the button is not currently interactive or clickable.
+   * Lets you indicate that the button is not currently interactive or clickable.
    */
   disabled?: boolean;
   /**
@@ -46,7 +46,7 @@ const {
    */
   icon?: string;
   /**
-   * Wether the Icon should be animated on hover (slide-right) or not.
+   * Whether the Icon should be animated on hover (slide-right) or not.
    *
    * Default is `false`
    */
@@ -83,13 +83,25 @@ const iconAnimatedClass = computed(() =>
   iconAnimated ? "m-button--animated-right" : ""
 );
 
+/**
+ * Emit a click event if not in disabled state.
+ */
 const handleClick = () => {
-  emit("click");
+  if (!disabled) emit("click");
 };
+
+/**
+ * Ensure that the disabled button style is applied when it is in the 'disabled' state.
+ */
+const disabledClass = computed(() => (disabled ? "disabled" : ""));
 </script>
 
 <style scoped>
 .no-left-margin {
   margin-left: 0;
+}
+
+[aria-disabled="true"] {
+  pointer-events: none;
 }
 </style>
