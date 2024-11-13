@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
-    "test:unit": "vitest",
+    "test": "vitest",
     "build-only": "vite build",
     "lint": "prettier . --check && eslint . --ignore-path .gitignore && vue-tsc -p tsconfig.json --emitDeclarationOnly --skipLibCheck --composite false",
     "fix": "prettier . --write && eslint . --fix --ignore-path .gitignore",
