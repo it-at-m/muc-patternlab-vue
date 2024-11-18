@@ -46,7 +46,7 @@
     "@muenchen/prettier-codeformat": "1.0.2",
     "@rushstack/eslint-patch": "1.10.4",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "11.0.0",
+    "@semantic-release/github": "11.0.1",
     "@storybook/addon-a11y": "8.4.4",
     "@storybook/addon-essentials": "8.4.4",
     "@storybook/addon-interactions": "8.4.4",
