@@ -1,0 +1,179 @@
+// Variablen für Steps und Basis-Werte
+$steps: 16;
+$unit: 4px;
+
+/**
+ * Generate margin, padding and gap classes
+ */
+$directions: ("all", "top", "right", "bottom", "left", "x", "y");
+
+@mixin generate-spacing-classes($property, $steps, $unit, $directions) {
+  @each $direction in $directions {
+    @for $i from 0 through $steps {
+      @if $direction == "all" {
+        // Für alle Seiten
+        .#{str-slice($property, 1, 1)}#{str-slice($direction, 1, 1)}-#{$i} {
+          #{$property}: $i * $unit;
+        }
+      } @else if $direction == "x" {
+        // Für horizontale Achse (left + right)
+        .#{str-slice($property, 1, 1)}x-#{$i} {
+          #{$property}-left: $i * $unit;
+          #{$property}-right: $i * $unit;
+        }
+      } @else if $direction == "y" {
+        // Für vertikale Achse (top + bottom)
+        .#{str-slice($property, 1, 1)}y-#{$i} {
+          #{$property}-top: $i * $unit;
+          #{$property}-bottom: $i * $unit;
+        }
+      } @else {
+        // Für einzelne Richtungen (top, right, bottom, left)
+        .#{str-slice($property, 1, 1)}#{str-slice($direction, 1, 1)}-#{$i} {
+          #{$property}-#{$direction}: $i * $unit;
+        }
+      }
+    }
+  }
+}
+
+@include generate-spacing-classes(
+                "padding",
+                $steps,
+                $unit,
+                $directions
+);
+@include generate-spacing-classes(
+                "margin",
+                $steps,
+                $unit,
+                $directions
+);
+@include generate-spacing-classes(
+                "gap",
+                $steps,
+                $unit,
+                $directions
+);
+
+/**
+ * Elevation classes
+ */
+@for $i from 0 through $steps {
+  .elevation-#{$i} {
+    elevation: $i px;
+  }
+}
+
+/**
+ * Generate flex, justify and align classes
+ */
+@function get-before-dash($string) {
+  $index: str-index($string, "-"); // Position des ersten '-'
+  @if $index {
+    @return str-slice($string, 1, $index - 1); // Schneide bis vor das '-'
+  }
+  @return $string; // Gibt den gesamten String zurück, wenn kein '-' vorhanden ist
+}
+
+@mixin generate-flex-classes($property, $list) {
+  @each $key, $value in $list {
+    .#{get-before-dash($property)}-#{$key} {
+      #{$property}: #{$value}
+    }
+  }
+}
+
+@include generate-flex-classes("flex-direction", (
+        "row": row,
+        "row-reverse": row-reverse,
+        "column": column,
+        "column-reverse": column-reverse
+));
+
+@include generate-flex-classes("justify-content", (
+        "start": flex-start,
+        "end": flex-end,
+        "center": center,
+        "space-between": space-between,
+        "space-around": space-around,
+        "space-evenly": space-evenly
+));
+
+@include generate-flex-classes("align-items", (
+        "start": flex-start,
+        "end": flex-end,
+        "center": center,
+        "baseline": baseline,
+        "stretch": stretch
+));
+
+/**
+ * Generate opacity classes
+ */
+@for $i from 0 through 10 {
+  .opacity-#{$i * 10} {
+    opacity: $i * 10%;
+  }
+}
+
+/**
+ * Generate cursor classes
+ */
+
+@each $cursor in (
+        "auto",
+        "default",
+        "grab",
+        "grabbing",
+        "help",
+        "move",
+        "none",
+        "not-allowed",
+        "pointer",
+        "progress-text",
+        "wait"
+) {
+  .cursor-#{$cursor} {
+    cursor: $cursor;
+  }
+}
+
+
+/**
+ * Generate overflow classes
+ */
+@each $overflow in ("auto", "hidden", "visible", "x-auto", "x-hidden", "x-visible", "y-auto", "y-hidden", "y-visible") {
+  .overflow-#{$overflow} {
+    overflow: $overflow;
+  }
+}
+
+/**
+ * Generate position classes
+ */
+@each $position in ("top","bottom","right", "left") {
+  .#{$position}-0 {
+    #{$position}: 0
+  }
+}
+
+@each $position in ("static","relative","absolute", "fixed", "sticky") {
+  .position-#{$position} {
+    position: #{$position}
+  }
+}
+
+/**
+ * Generate sizing classes
+ */
+@each $size in ("auto", "0", "25", "33", "50", "66", "75", "100") {
+  .w-#{$size} {
+    width: $size;
+  }
+  .h-#{$size} {
+    height: $size;
+  }
+}
+
+
