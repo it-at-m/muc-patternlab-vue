@@ -3,7 +3,8 @@
 .idea
 .vscode
 dist
-public
+public/assets/fonts
+public/assets/images
 storybook-static
 
 # Files
