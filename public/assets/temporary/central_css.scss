@@ -37,24 +37,9 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
   }
 }
 
-@include generate-spacing-classes(
-                "padding",
-                $steps,
-                $unit,
-                $directions
-);
-@include generate-spacing-classes(
-                "margin",
-                $steps,
-                $unit,
-                $directions
-);
-@include generate-spacing-classes(
-                "gap",
-                $steps,
-                $unit,
-                $directions
-);
+@include generate-spacing-classes("padding", $steps, $unit, $directions);
+@include generate-spacing-classes("margin", $steps, $unit, $directions);
+@include generate-spacing-classes("gap", $steps, $unit, $directions);
 
 /**
  * Elevation classes
@@ -79,34 +64,43 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
 @mixin generate-flex-classes($property, $list) {
   @each $key, $value in $list {
     .#{get-before-dash($property)}-#{$key} {
-      #{$property}: #{$value}
+      #{$property}: #{$value};
     }
   }
 }
 
-@include generate-flex-classes("flex-direction", (
-        "row": row,
-        "row-reverse": row-reverse,
-        "column": column,
-        "column-reverse": column-reverse
-));
+@include generate-flex-classes(
+  "flex-direction",
+  (
+    "row": row,
+    "row-reverse": row-reverse,
+    "column": column,
+    "column-reverse": column-reverse,
+  )
+);
 
-@include generate-flex-classes("justify-content", (
-        "start": flex-start,
-        "end": flex-end,
-        "center": center,
-        "space-between": space-between,
-        "space-around": space-around,
-        "space-evenly": space-evenly
-));
+@include generate-flex-classes(
+  "justify-content",
+  (
+    "start": flex-start,
+    "end": flex-end,
+    "center": center,
+    "space-between": space-between,
+    "space-around": space-around,
+    "space-evenly": space-evenly,
+  )
+);
 
-@include generate-flex-classes("align-items", (
-        "start": flex-start,
-        "end": flex-end,
-        "center": center,
-        "baseline": baseline,
-        "stretch": stretch
-));
+@include generate-flex-classes(
+  "align-items",
+  (
+    "start": flex-start,
+    "end": flex-end,
+    "center": center,
+    "baseline": baseline,
+    "stretch": stretch,
+  )
+);
 
 /**
  * Generate opacity classes
@@ -121,29 +115,42 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
  * Generate cursor classes
  */
 
-@each $cursor in (
-        "auto",
-        "default",
-        "grab",
-        "grabbing",
-        "help",
-        "move",
-        "none",
-        "not-allowed",
-        "pointer",
-        "progress-text",
-        "wait"
-) {
+@each $cursor
+  in (
+    "auto",
+    "default",
+    "grab",
+    "grabbing",
+    "help",
+    "move",
+    "none",
+    "not-allowed",
+    "pointer",
+    "progress-text",
+    "wait"
+  )
+{
   .cursor-#{$cursor} {
     cursor: $cursor;
   }
 }
 
-
 /**
  * Generate overflow classes
  */
-@each $overflow in ("auto", "hidden", "visible", "x-auto", "x-hidden", "x-visible", "y-auto", "y-hidden", "y-visible") {
+@each $overflow
+  in (
+    "auto",
+    "hidden",
+    "visible",
+    "x-auto",
+    "x-hidden",
+    "x-visible",
+    "y-auto",
+    "y-hidden",
+    "y-visible"
+  )
+{
   .overflow-#{$overflow} {
     overflow: $overflow;
   }
@@ -152,15 +159,15 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
 /**
  * Generate position classes
  */
-@each $position in ("top","bottom","right", "left") {
+@each $position in ("top", "bottom", "right", "left") {
   .#{$position}-0 {
-    #{$position}: 0
+    #{$position}: 0;
   }
 }
 
-@each $position in ("static","relative","absolute", "fixed", "sticky") {
+@each $position in ("static", "relative", "absolute", "fixed", "sticky") {
   .position-#{$position} {
-    position: #{$position}
+    position: #{$position};
   }
 }
 
@@ -175,5 +182,3 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
     height: $size;
   }
 }
-
-
