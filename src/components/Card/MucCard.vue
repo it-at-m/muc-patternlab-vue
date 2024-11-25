@@ -3,13 +3,13 @@
     class="card"
     @click="emit('click', $event)"
   >
-    <div class="card-content">
-      <div class="card-header">
+    <div class="px-6 py-8">
+      <div class="d-flex">
         <slot name="headerPrefix" />
         <div>
           <div
             v-if="tagline"
-            class="card-tagline"
+            class="card-tagline pb-1"
           >
             {{ tagline }}
           </div>
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="muc-divider" />
+      <div class="my-4" />
 
       <slot name="content" />
     </div>
@@ -71,14 +71,6 @@ defineSlots<{
   background-color: #f1f1f1;
 }
 
-.card-content {
-  padding: 32px 24px;
-}
-
-.card-header {
-  display: flex;
-}
-
 .card-tagline {
   font-size: 16px;
   font-family:
@@ -88,12 +80,5 @@ defineSlots<{
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word;
-
-  padding-bottom: 4px;
-}
-
-.muc-divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
 }
 </style>
