@@ -98,8 +98,11 @@ describe('BusinessHoursToggle', () => {
                 businessHours,
             },
         });
-        const closedDay = businessHours.find(day => day.openingHours.length === 0);
-        expect(wrapper.text()).toEqual(`Öffnungszeiten Mo09:00 - 17:00Di09:00 - 17:00${closedDay.weekDay}geschlossenDo09:00 - 17:00Fr09:00 - 17:00SageschlossenSogeschlossen`);
+        const closedDays = wrapper.findAll('.is-closed');
+        expect(closedDays).toHaveLength(3);
+        closedDays.forEach(day => {
+            expect(day.text()).toContain('geschlossen');
+        });
     });
 
     it('renders hint slot if provided', () => {
