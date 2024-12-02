@@ -1,16 +1,16 @@
 import { mount } from "@vue/test-utils";
 import { beforeEach, describe, expect, it } from "vitest";
-import {ComponentPublicInstance, h} from "vue";
+import { ComponentPublicInstance, h } from "vue";
 
+import { BusinessHourType } from "./BusinessHourType";
 import BusinessHoursToggle from "./MucBusinessHours.vue";
-import {BusinessHourType} from "./BusinessHourType";
 
 describe("MucBusinessHours", () => {
   interface MucBusinessHourType extends ComponentPublicInstance {
-       collapsed: boolean;
-       collapseClass: string;
-       toggleCollapsable: () => void;
-        todaysBusinessHours: BusinessHourType;
+    collapsed: boolean;
+    collapseClass: string;
+    toggleCollapsable: () => void;
+    todaysBusinessHours: BusinessHourType;
   }
 
   let businessHours: Array<BusinessHourType>;
@@ -61,7 +61,9 @@ describe("MucBusinessHours", () => {
     });
     expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(true); // Initialzustand
     await wrapper.find(".m-business-hours-toggle__trigger").trigger("click");
-    expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(false); // Nach dem Klick
+    expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(
+      false
+    ); // Nach dem Klick
     await wrapper.find(".m-business-hours-toggle__trigger").trigger("click");
     expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(true); // Nach erneutem Klick
   });
@@ -73,9 +75,13 @@ describe("MucBusinessHours", () => {
         toggleable: true,
       },
     });
-    expect((wrapper.vm as unknown as MucBusinessHourType).collapseClass).toBe("collapse");
+    expect((wrapper.vm as unknown as MucBusinessHourType).collapseClass).toBe(
+      "collapse"
+    );
     (wrapper.vm as unknown as MucBusinessHourType).toggleCollapsable();
-    expect((wrapper.vm as unknown as MucBusinessHourType).collapseClass).toBe("");
+    expect((wrapper.vm as unknown as MucBusinessHourType).collapseClass).toBe(
+      ""
+    );
   });
 
   it("computes todaysBusinessHours correctly", () => {
@@ -86,7 +92,9 @@ describe("MucBusinessHours", () => {
     });
     const today = new Date().toLocaleDateString("de-DE", { weekday: "short" });
     const todaysHours = businessHours.find((bh) => bh.weekDay === today);
-    expect((wrapper.vm as unknown as MucBusinessHourType).todaysBusinessHours).toEqual(todaysHours);
+    expect(
+      (wrapper.vm as unknown as MucBusinessHourType).todaysBusinessHours
+    ).toEqual(todaysHours);
   });
 
   it("renders the correct opening hours for today", () => {
@@ -143,7 +151,9 @@ describe("MucBusinessHours", () => {
     });
     expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(true);
     await wrapper.setProps({ toggleable: false });
-    expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(false);
+    expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(
+      false
+    );
     await wrapper.setProps({ toggleable: true });
     expect((wrapper.vm as unknown as MucBusinessHourType).collapsed).toBe(true);
   });
