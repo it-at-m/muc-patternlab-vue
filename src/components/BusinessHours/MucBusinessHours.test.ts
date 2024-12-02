@@ -5,7 +5,11 @@ import { h } from "vue";
 import BusinessHoursToggle from "./MucBusinessHours.vue"; // Pfad zur Komponente anpassen
 
 describe("BusinessHoursToggle", () => {
-  let businessHours: Array<any>;
+  interface BusinessHour {
+    weekDay: string;
+    openingHours: Array<{ from: string; to: string }>;
+  }
+  let businessHours: Array<BusinessHour>;
 
   beforeEach(() => {
     businessHours = [
