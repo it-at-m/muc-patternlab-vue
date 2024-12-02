@@ -93,11 +93,13 @@ describe("BusinessHoursToggle", () => {
     });
     const today = new Date().toLocaleDateString("de-DE", { weekday: "short" });
     const todaysHours = businessHours.find((bh) => bh.weekDay === today);
-    if (todaysHours) {
+    if (todaysHours && todaysHours.openingHours.length > 0) {
       const hoursText = todaysHours.openingHours
         .map((time) => `${time.from} - ${time.to}`)
         .join(", ");
       expect(wrapper.html()).toContain(hoursText);
+    } else {
+      expect(wrapper.html()).toContain("geschlossen");
     }
   });
 
