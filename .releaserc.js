@@ -31,7 +31,7 @@ module.exports = {
         releaseRules: {
           major: [":boom:"],
           minor: [":sparkles:"],
-          patch: [":bug:", ":ambulance:", ":lock:", ":lipstick"],
+          patch: [":bug:", ":ambulance:", ":lock:", ":lipstick:"],
         },
         releaseNotes: {
           template,
