@@ -2,7 +2,7 @@ import { MucBanner } from "./Banner";
 import { MucButton } from "./Button";
 import { MucCalendar } from "./Calendar";
 import { MucCallout } from "./Callout";
-import { MucCard, MucCardContainer } from "./Card";
+import { MucCard, MucCardContainer, MucCardSlider } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucDivider } from "./Divider";
 import { MucFileDropzone } from "./FileDropzone";
@@ -30,6 +30,7 @@ export {
   MucCallout,
   MucCard,
   MucCardContainer,
+  MucCardSlider,
   MucComment,
   MucCommentText,
   MucRadioButton,
