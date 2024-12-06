@@ -22,7 +22,7 @@ import { computed } from "vue";
 import { MucIcon } from "../Icon";
 import { StepperItem } from "./MucStepperTypes";
 
-const { item, isActive, isDone } = defineProps<{
+const { item, isActive, isDone, disabled } = defineProps<{
   /**
    * Individual item to display inside the MucStepper component
    */
@@ -37,6 +37,11 @@ const { item, isActive, isDone } = defineProps<{
    * Show stepper as done
    */
   isDone: boolean;
+
+  /**
+   * Disabled click on stepper
+   */
+  disabled: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -60,7 +65,9 @@ const isActiveStep = computed(() =>
 /**
  * Computed property show courser on clickable step
  */
-const clickableStep = computed(() => (isDone ? " show-cursor" : ""));
+const clickableStep = computed(() =>
+  isDone && !disabled ? " show-cursor" : ""
+);
 
 /**
  * Computed property set icon of step
@@ -70,7 +77,9 @@ const getIcon = computed(() => (isDone ? "check" : item.icon));
 /**
  * Computed property set tabindex
  */
-const getTabindex = computed(() => (isActive || isDone ? 0 : -1));
+const getTabindex = computed(() =>
+  isActive || (isDone && !disabled) ? 0 : -1
+);
 
 /**
  * Computed property set aria-label
@@ -82,7 +91,7 @@ const getAriaLabel = computed(() =>
 );
 
 const handleClick = () => {
-  if (isDone) emit("click", item.id);
+  if (isDone && !disabled) emit("click", item.id);
 };
 </script>
 
