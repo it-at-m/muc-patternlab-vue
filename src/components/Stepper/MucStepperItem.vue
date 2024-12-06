@@ -72,9 +72,7 @@ const clickableStep = computed(() =>
 /**
  * Computed property set disabled state to step
  */
-const disabledStep = computed(() =>
-    disabled ? " disabled" : ""
-);
+const disabledStep = computed(() => (disabled ? " disabled" : ""));
 
 /**
  * Computed property set icon of step
