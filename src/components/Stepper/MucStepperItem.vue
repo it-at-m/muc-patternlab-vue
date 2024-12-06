@@ -4,13 +4,13 @@
     @click="handleClick"
   >
     <div
-      class="m-form-step__icon"
+      :class="'m-form-step__icon' + disabledStep"
       :tabindex="getTabindex"
       :aria-label="getAriaLabel"
     >
       <MucIcon :icon="getIcon" />
     </div>
-    <div class="m-form-step__title">
+    <div :class="'m-form-step__title' + disabledStep">
       <span aria-disabled="true"> {{ item.label }}</span>
     </div>
   </li>
@@ -39,7 +39,7 @@ const { item, isActive, isDone, disabled } = defineProps<{
   isDone: boolean;
 
   /**
-   * Disabled click on stepper
+   * Disabled stepper
    */
   disabled: boolean;
 }>();
@@ -67,6 +67,13 @@ const isActiveStep = computed(() =>
  */
 const clickableStep = computed(() =>
   isDone && !disabled ? " show-cursor" : ""
+);
+
+/**
+ * Computed property set disabled state to step
+ */
+const disabledStep = computed(() =>
+    disabled ? " disabled" : ""
 );
 
 /**
@@ -98,5 +105,10 @@ const handleClick = () => {
 <style scoped>
 .show-cursor {
   cursor: pointer;
+}
+
+.disabled {
+  color: #9ca8b3;
+  border-color: #9ca8b3;
 }
 </style>
