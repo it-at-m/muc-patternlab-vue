@@ -12,6 +12,7 @@
                 :item="item"
                 :is-active="isActive(item.id)"
                 :is-done="isDone(item.id)"
+                :disabled="disabled(item.id)"
                 v-on:click="handleChange"
               />
             </template>
@@ -28,7 +29,11 @@ import { ref, watch } from "vue";
 import MucStepperItem from "./MucStepperItem.vue";
 import { StepperItem } from "./MucStepperTypes";
 
-const { stepItems, activeItem } = defineProps<{
+const {
+  stepItems,
+  activeItem,
+  disablePerviousSteps = false,
+} = defineProps<{
   /**
    * List of items displayed in the stepper
    */
@@ -38,6 +43,11 @@ const { stepItems, activeItem } = defineProps<{
    * Id of the current step item
    */
   activeItem: string;
+
+  /**
+   * Disables the previous steps
+   */
+  disablePerviousSteps?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -83,6 +93,14 @@ const isActive = (id: string) => id === activeItem;
  * @return if item is done
  */
 const isDone = (id: string) => getIndexOfItem(id) < indexOfActivItem.value;
+
+/**
+ * Checks if an item is disabled
+ * @param id id of the item
+ * @return if item is disabled
+ */
+const disabled = (id: string) =>
+  disablePerviousSteps && !isActive(id) && isDone(id);
 
 /**
  * Handles a click on an item
