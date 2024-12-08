@@ -71,7 +71,6 @@ const {
   maxFileSizeWarning,
   maxTotalFileSize = 0,
   maxTotalFileSizeWarning,
-  showWarning = false,
 } = defineProps<{
   /**
    * Text on the upload button
@@ -109,10 +108,6 @@ const {
    * Warning for invalid file size sum
    */
   maxTotalFileSizeWarning?: string;
-  /**
-   * Clears warnings when changes from 'true' to 'false'.
-   */
-  showWarning?: boolean;
 }>();
 
 const emit = defineEmits([
@@ -252,25 +247,20 @@ const _isTotalFilesSumValid = (files: File[]) => {
 };
 
 /**
- * Watches for changes in {@link Props#showWarning} and clears all warnings if it switches to 'false'.
- */
-watch(
-  () => showWarning,
-  (isShowWarning: boolean) => {
-    if (!isShowWarning) {
-      _clearWarnings();
-    }
-  }
-);
-
-/**
  * Clears all warnings.
  */
-const _clearWarnings = () => {
+const clearWarnings = () => {
   validFileSizes.value = true;
   validTotalFileSizes.value = true;
   validFilesAmount.value = true;
 };
+
+/**
+ * Expose function to be called via ref
+ */
+defineExpose({
+  clearWarnings,
+});
 </script>
 
 <style scoped>
