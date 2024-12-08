@@ -1,3 +1,6 @@
+import { useTemplateRef } from "vue";
+
+import MucButton from "../Button/MucButton.vue";
 import MucFileDropzone from "./MucFileDropzone.vue";
 
 export default {
@@ -27,3 +30,19 @@ export const Example = {
   },
 };
 export const Default = {};
+
+export const ClearWarningsShowCase = () => ({
+  components: { MucFileDropzone, MucButton },
+
+  template: `
+    <div>
+      <muc-button @click="key => {
+        const dropZone = useTemplateRef('dropZone');
+        dropZone.value.clearWarnings();
+      }">Clear warnings
+      </muc-button>
+      <MucFileDropzone ref="dropZone" button-text="Dokument hochladen" max-file-size="1"
+                       maxFileSizeWarning="Eine Datei hat mehr als 2 MB und kann nicht angefügt werden." />
+    </div>
+  `,
+});
