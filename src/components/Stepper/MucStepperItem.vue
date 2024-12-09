@@ -5,13 +5,16 @@
   >
     <div
       class="m-form-step__icon"
-      :class="{disabled: disabled}"
+      :class="{ disabled: disabled }"
       :tabindex="getTabindex"
       :aria-label="getAriaLabel"
     >
       <MucIcon :icon="getIcon" />
     </div>
-    <div class="m-form-step__title" :class="{disabled: disabled}">
+    <div
+      class="m-form-step__title"
+      :class="{ disabled: disabled }"
+    >
       <span aria-disabled="true"> {{ item.label }}</span>
     </div>
   </li>
