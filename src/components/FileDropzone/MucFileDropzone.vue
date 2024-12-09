@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated, ref } from "vue";
+import { onMounted, onUpdated, ref, watch } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
@@ -71,6 +71,7 @@ const {
   maxFileSizeWarning,
   maxTotalFileSize = 0,
   maxTotalFileSizeWarning,
+  showWarning = false,
 } = defineProps<{
   /**
    * Text on the upload button
@@ -108,6 +109,10 @@ const {
    * Warning for invalid file size sum
    */
   maxTotalFileSizeWarning?: string;
+  /**
+   * Clears warnings when changes from 'true' to 'false'.
+   */
+  showWarning?: boolean;
 }>();
 
 const emit = defineEmits([
@@ -115,6 +120,10 @@ const emit = defineEmits([
    * Dropped files as {@link File[]} array
    */
   "files",
+  /**
+   * Event that signals when warnings are displayed.
+   */
+  "warning",
 ]);
 
 /** Flag signals if file size is valid */
@@ -212,6 +221,7 @@ const _emitFiles = (files: File[]) => {
   validTotalFileSizes.value = _isTotalFilesSumValid(files);
 
   if (!validFileSizes.value || !validTotalFileSizes.value) {
+    emit("warning");
     return;
   }
 
@@ -239,6 +249,27 @@ const _isTotalFilesSumValid = (files: File[]) => {
       maxTotalFileSize * 1024 * 1024
     );
   return true;
+};
+
+/**
+ * Watches for changes in {@link Props#showWarning} and clears all warnings if it switches to 'false'.
+ */
+watch(
+  () => showWarning,
+  (isShowWarning: boolean) => {
+    if (!isShowWarning) {
+      _clearWarnings();
+    }
+  }
+);
+
+/**
+ * Clears all warnings.
+ */
+const _clearWarnings = () => {
+  validFileSizes.value = true;
+  validTotalFileSizes.value = true;
+  validFilesAmount.value = true;
 };
 </script>
 
