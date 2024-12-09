@@ -4,13 +4,14 @@
     @click="handleClick"
   >
     <div
-      :class="'m-form-step__icon' + disabledStep"
+      class="m-form-step__icon"
+      :class="{disabled: disabled}"
       :tabindex="getTabindex"
       :aria-label="getAriaLabel"
     >
       <MucIcon :icon="getIcon" />
     </div>
-    <div :class="'m-form-step__title' + disabledStep">
+    <div class="m-form-step__title" :class="{disabled: disabled}">
       <span aria-disabled="true"> {{ item.label }}</span>
     </div>
   </li>
@@ -68,11 +69,6 @@ const isActiveStep = computed(() =>
 const clickableStep = computed(() =>
   isDone && !disabled ? " show-cursor" : ""
 );
-
-/**
- * Computed property set disabled state to step
- */
-const disabledStep = computed(() => (disabled ? " disabled" : ""));
 
 /**
  * Computed property set icon of step

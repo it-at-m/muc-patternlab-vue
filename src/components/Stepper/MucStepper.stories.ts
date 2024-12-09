@@ -44,7 +44,7 @@ export const Default = {
   },
 };
 
-export const DisablePerviousSteps = {
+export const DisablePreviousSteps = {
   args: {
     stepItems: [
       {
@@ -69,6 +69,6 @@ export const DisablePerviousSteps = {
       },
     ],
     activeItem: "2",
-    disablePerviousSteps: true,
+    disablePreviousSteps: true,
   },
 };

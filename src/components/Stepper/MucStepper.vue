@@ -32,7 +32,7 @@ import { StepperItem } from "./MucStepperTypes";
 const {
   stepItems,
   activeItem,
-  disablePerviousSteps = false,
+  disablePreviousSteps = false,
 } = defineProps<{
   /**
    * List of items displayed in the stepper
@@ -47,7 +47,7 @@ const {
   /**
    * Disables the previous steps
    */
-  disablePerviousSteps?: boolean;
+  disablePreviousSteps?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -100,7 +100,7 @@ const isDone = (id: string) => getIndexOfItem(id) < indexOfActivItem.value;
  * @return if item is disabled
  */
 const disabled = (id: string) =>
-  disablePerviousSteps && !isActive(id) && isDone(id);
+  disablePreviousSteps && !isActive(id) && isDone(id);
 
 /**
  * Handles a click on an item
