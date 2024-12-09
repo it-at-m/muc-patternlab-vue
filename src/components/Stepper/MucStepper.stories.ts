@@ -43,3 +43,32 @@ export const Default = {
     activeItem: "2",
   },
 };
+
+export const DisablePreviousSteps = {
+  args: {
+    stepItems: [
+      {
+        id: "1",
+        label: "Order",
+        icon: "shopping-cart",
+      },
+      {
+        id: "2",
+        label: "Delivery",
+        icon: "calendar",
+      },
+      {
+        id: "3",
+        label: "Contact",
+        icon: "mail",
+      },
+      {
+        id: "4",
+        label: "Overview",
+        icon: "information",
+      },
+    ],
+    activeItem: "2",
+    disablePreviousSteps: true,
+  },
+};
