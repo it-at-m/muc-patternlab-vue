@@ -53,10 +53,9 @@ const {
 const emit = defineEmits<{
   /**
    * Triggered when an item is clicked.
-   * @param e Click-Event
-   * @param id
+   * @param id of the clicked item
    */
-  (e: "changeStep", id: string): void;
+  changeStep: [id: string];
 }>();
 
 watch(
