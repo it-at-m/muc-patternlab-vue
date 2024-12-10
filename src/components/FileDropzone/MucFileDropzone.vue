@@ -114,7 +114,7 @@ const emit = defineEmits<{
   /**
    * Dropped files as {@link File[]} array
    */
-  files: [];
+  files: [files: File[]];
 
   /**
    * Event that signals when warnings are displayed.
