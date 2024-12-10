@@ -76,6 +76,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useFuse } from "@vueuse/integrations/useFuse";
 import { computed } from "vue";
 
 /**
@@ -173,16 +174,7 @@ const isSearch = computed(() => type === "search");
  * Filters the options from the datalist based on whether they start with the search value.
  * @returns {string[]} Returns an array of matching options.
  */
-const currentAvalOptions = computed(() => {
-  if (modelValue.value === "") return [];
-
-  const searchValue = modelValue.value.toLowerCase();
-  return dataList!.filter(
-    (option) =>
-      option.toLowerCase().startsWith(searchValue) &&
-      option.toLowerCase() !== searchValue
-  );
-});
+const currentAvalOptions = useFuse(modelValue.value, dataList);
 
 /**
  * Handles the selection of an option.
