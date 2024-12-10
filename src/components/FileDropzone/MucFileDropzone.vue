@@ -18,9 +18,9 @@
     >
       {{ buttonText }}
     </MucButton>
-    <span class="drop-zone-additional-information">{{
-      additionalInformation
-    }}</span>
+    <span class="drop-zone-additional-information">
+      {{ additionalInformation }}
+    </span>
   </div>
   <span
     v-if="!validFileSizes && maxFileSizeWarning"
