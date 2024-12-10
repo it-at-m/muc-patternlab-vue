@@ -1,7 +1,10 @@
 <template>
   <li
     class="m-form-step"
-    :class="{'m-form-step--current': isActive ,'show-cursor': isDone && !disabled && !isActive }"
+    :class="{
+      'm-form-step--current': isActive,
+      'show-cursor': isDone && !disabled && !isActive,
+    }"
     @click="handleClick"
   >
     <div
