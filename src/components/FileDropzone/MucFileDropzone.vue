@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated, ref, watch } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 
 import { MucButton } from "../Button";
 import { MucIcon } from "../Icon";
