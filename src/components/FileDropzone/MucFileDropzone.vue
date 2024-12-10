@@ -110,16 +110,17 @@ const {
   maxTotalFileSizeWarning?: string;
 }>();
 
-const emit = defineEmits([
+const emit = defineEmits<{
   /**
    * Dropped files as {@link File[]} array
    */
-  "files",
+  files: [];
+
   /**
    * Event that signals when warnings are displayed.
    */
-  "warning",
-]);
+  warning: [];
+}>();
 
 /** Flag signals if file size is valid */
 const validFileSizes = ref(true);
