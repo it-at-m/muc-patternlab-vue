@@ -146,7 +146,7 @@ onMounted(() => {
     const target = event.target as HTMLInputElement;
     if (target?.files && target.files.length > 0) {
       const filesArray = Array.from(target.files);
-      _emitFiles(filesArray);
+      emitFiles(filesArray);
     }
   };
 });
@@ -210,7 +210,7 @@ const onDrop = (event: DragEvent) => {
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.files?.length > 0) {
       const filesArray = Array.from(dataTransfer.files);
-      _emitFiles(filesArray);
+      emitFiles(filesArray);
     }
   }
 };
@@ -219,9 +219,9 @@ const onDrop = (event: DragEvent) => {
  * Emits the files to upload to the surrounding element.
  * @param {File[]} files array of dropped or chosen files to upload
  */
-const _emitFiles = (files: File[]) => {
-  validFileSizes.value = _areFilesValid(files);
-  validTotalFileSizes.value = _isTotalFilesSumValid(files);
+const emitFiles = (files: File[]) => {
+  validFileSizes.value = areFilesValid(files);
+  validTotalFileSizes.value = isTotalFilesSumValid(files);
 
   if (!validFileSizes.value || !validTotalFileSizes.value) {
     emit("warning");
@@ -234,7 +234,7 @@ const _emitFiles = (files: File[]) => {
  * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
  * @param {File[]} files array files
  */
-const _areFilesValid = (files: File[]) => {
+const areFilesValid = (files: File[]) => {
   return maxFileSize
     ? !files.some((file) => file.size > maxFileSize * 1024 * 1024)
     : true;
@@ -244,7 +244,7 @@ const _areFilesValid = (files: File[]) => {
  * Checks if the sum of all files is inside the allowed range that is given by {@link Props#maxTotalFileSize}.
  * @param {File[]} files array files
  */
-const _isTotalFilesSumValid = (files: File[]) => {
+const isTotalFilesSumValid = (files: File[]) => {
   if (maxTotalFileSize)
     return (
       files.reduce((acc, file) => acc + (file.size || 0), 0) <=
