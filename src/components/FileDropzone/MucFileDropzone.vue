@@ -166,9 +166,13 @@ const selectFiles = () => {
   fileInput.click();
 };
 
-/** Sets flag {@link isDragOver} true. */
+/**
+ * Sets flag {@link isDragOver} true.
+ */
 const onDragOver = (event: DragEvent) => {
-  if (disabled) return;
+  if (disabled) {
+    return;
+  }
   if (!fileInput?.multiple) {
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.items?.length > 1) {
@@ -179,7 +183,9 @@ const onDragOver = (event: DragEvent) => {
   isDragOver.value = true;
 };
 
-/** Sets flag {@link isDragOver} false. */
+/**
+ * Sets flag {@link isDragOver} false.
+ */
 const onDragLeave = () => {
   isDragOver.value = false;
   validFilesAmount.value = true;
@@ -190,20 +196,22 @@ const onDragLeave = () => {
  * @param {DragEvent} event dropped files
  */
 const onDrop = (event: DragEvent) => {
-  if (disabled) return;
+  if (disabled) {
+    return;
+  }
   if (!validFilesAmount.value) {
     /*
     user drops files with invalid amount
     -> warning disappears
      */
     validFilesAmount.value = true;
-    return;
-  }
-  isDragOver.value = false;
-  const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
-  if (dataTransfer?.files?.length > 0) {
-    const filesArray = Array.from(dataTransfer.files);
-    _emitFiles(filesArray);
+  } else {
+    isDragOver.value = false;
+    const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
+    if (dataTransfer?.files?.length > 0) {
+      const filesArray = Array.from(dataTransfer.files);
+      _emitFiles(filesArray);
+    }
   }
 };
 
@@ -217,10 +225,9 @@ const _emitFiles = (files: File[]) => {
 
   if (!validFileSizes.value || !validTotalFileSizes.value) {
     emit("warning");
-    return;
+  } else {
+    emit("files", files);
   }
-
-  emit("files", files);
 };
 
 /**
@@ -228,9 +235,9 @@ const _emitFiles = (files: File[]) => {
  * @param {File[]} files array files
  */
 const _areFilesValid = (files: File[]) => {
-  if (maxFileSize)
-    return !files.some((file) => file.size > maxFileSize * 1024 * 1024);
-  return true;
+  return maxFileSize
+    ? !files.some((file) => file.size > maxFileSize * 1024 * 1024)
+    : true;
 };
 
 /**
