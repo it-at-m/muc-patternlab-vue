@@ -13,7 +13,7 @@
                 :is-active="isActive(item.id)"
                 :is-done="isDone(item.id)"
                 :disabled="disabled(item.id)"
-                v-on:click="handleChange"
+                @click="handleChange"
               />
             </template>
           </ol>

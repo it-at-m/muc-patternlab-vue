@@ -1,6 +1,7 @@
 <template>
   <li
-    :class="isActiveStep"
+    class="m-form-step"
+    :class="{'m-form-step--current': isActive ,'show-cursor': isDone && !disabled && !isActive }"
     @click="handleClick"
   >
     <div
@@ -57,22 +58,6 @@ const emit = defineEmits<{
 }>();
 
 /**
- * Computed property set active state of step
- */
-const isActiveStep = computed(() =>
-  isActive
-    ? "m-form-step m-form-step--current"
-    : "m-form-step" + clickableStep.value
-);
-
-/**
- * Computed property show courser on clickable step
- */
-const clickableStep = computed(() =>
-  isDone && !disabled ? " show-cursor" : ""
-);
-
-/**
  * Computed property set icon of step
  */
 const getIcon = computed(() => (isDone ? "check" : item.icon));
@@ -94,7 +79,9 @@ const getAriaLabel = computed(() =>
 );
 
 const handleClick = () => {
-  if (isDone && !disabled) emit("click", item.id);
+  if (isDone && !disabled) {
+    emit("click", item.id);
+  }
 };
 </script>
 
