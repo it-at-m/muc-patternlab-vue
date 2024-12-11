@@ -9,7 +9,8 @@
             data-m-slider-splide="m-slider-comment"
           >
             <p class="visually-hidden">
-              Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie die Pfeiltaste links und rechts oder die Buttons um zu navigieren.
+              Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
+              die Pfeiltaste links und rechts oder die Buttons um zu navigieren.
             </p>
             <button
               class="previous-button is-control"
@@ -80,7 +81,7 @@ const prevSlide = () => {
 
 onMounted(() => {
   if (splide.value && splide.value.splide) {
-    splide.value.splide.on('move', () => {
+    splide.value.splide.on("move", () => {
       console.log("Value: ", splide.value.splide.index);
       emit("changeSlide", splide.value.splide.index);
     });
