@@ -39,6 +39,20 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true, // https://storybook.js.org/docs/configure/telemetry
   },
+  viteFinal: (config) => {
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      include: ["@vueuse/**"],
+    };
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        "@": path.resolve(__dirname, "../src"),
+      },
+    };
+    return config;
+  },
 };
 
 export default config;
