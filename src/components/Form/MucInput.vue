@@ -47,12 +47,16 @@
         <li
           class="autocomplete-result"
           v-for="option in currentAvalOptions"
-          :key="option"
-          @click="handleOptionSelection(option)"
+          :key="option.item"
+          @click="handleOptionSelection(option.item)"
         >
-          {{ option }}
+          {{ option.item }}
         </li>
       </ul>
+      <div>
+        {{ dataList }} {{ currentAvalOptions.length }}
+        {{ modelValue }}
+      </div>
       <button
         v-if="suffixIcon"
         class="m-input__suffix"
@@ -174,7 +178,15 @@ const isSearch = computed(() => type === "search");
  * Filters the options from the datalist based on whether they start with the search value.
  * @returns {string[]} Returns an array of matching options.
  */
-const currentAvalOptions = useFuse(modelValue.value, dataList);
+const { results: currentAvalOptions } = useFuse(
+  modelValue.value,
+  dataList || [],
+  {
+    fuseOptions: {
+      isCaseSensitive: false,
+    },
+  }
+);
 
 /**
  * Handles the selection of an option.
