@@ -82,7 +82,6 @@ const prevSlide = () => {
 onMounted(() => {
   if (splide.value && splide.value.splide) {
     splide.value.splide.on("move", () => {
-      console.log("Value: ", splide.value.splide.index);
       emit("changeSlide", splide.value.splide.index);
     });
   }
