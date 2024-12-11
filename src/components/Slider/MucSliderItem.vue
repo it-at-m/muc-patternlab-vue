@@ -2,12 +2,10 @@
   <SplideSlide>
     <slot />
   </SplideSlide>
-
 </template>
 
 <script setup lang="ts">
-
-import {SplideSlide} from "@splidejs/vue-splide";
+import { SplideSlide } from "@splidejs/vue-splide";
 
 defineSlots<{
   /**
@@ -15,6 +13,4 @@ defineSlots<{
    */
   default(): any;
 }>();
-
 </script>
-
