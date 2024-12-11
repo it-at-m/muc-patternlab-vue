@@ -2,7 +2,7 @@ import { MucBanner } from "./Banner";
 import { MucButton } from "./Button";
 import { MucCalendar } from "./Calendar";
 import { MucCallout } from "./Callout";
-import { MucCard, MucCardContainer, MucCardSlider } from "./Card";
+import { MucCard, MucCardContainer } from "./Card";
 import { MucComment, MucCommentText } from "./Comment/";
 import { MucDivider } from "./Divider";
 import { MucFileDropzone } from "./FileDropzone";
@@ -21,6 +21,7 @@ import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
 import { MucPercentageSpinner } from "./PercentageSpinner";
+import { MucSlider, MucSliderItem } from "./Slider";
 import { MucStepper } from "./Stepper";
 
 export {
@@ -30,7 +31,6 @@ export {
   MucCallout,
   MucCard,
   MucCardContainer,
-  MucCardSlider,
   MucComment,
   MucCommentText,
   MucRadioButton,
@@ -49,4 +49,6 @@ export {
   MucPercentageSpinner,
   MucStepper,
   MucCalendar,
+  MucSlider,
+  MucSliderItem,
 };
