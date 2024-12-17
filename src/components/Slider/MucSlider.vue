@@ -1,5 +1,8 @@
 <template>
-  <div class="m-component m-component-slider-comment" style="overflow: hidden;">
+  <div
+    class="m-component m-component-slider-comment"
+    style="overflow: hidden"
+  >
     <div class="container">
       <div class="m-component__grid">
         <div class="m-component__column">
@@ -97,18 +100,20 @@ const prevSlide = () => {
 /**
  * Computed property set back button
  */
-const showBackArrow = computed(() =>  currentSlide.value > 0);
+const showBackArrow = computed(() => currentSlide.value > 0);
 
 /**
  * Computed property set next button
  */
-const showNextArrow = computed(() =>  currentSlide.value < splideLength.value-1);
+const showNextArrow = computed(
+  () => currentSlide.value < splideLength.value - 1
+);
 
 onMounted(() => {
   if (splide.value && splide.value.splide) {
     splideLength.value = splide.value.length;
     splide.value.splide.on("move", () => {
-      if(splide.value) {
+      if (splide.value) {
         currentSlide.value = splide.value.splide.index;
         emit("changeSlide", splide.value.splide.index);
       }
