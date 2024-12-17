@@ -9,7 +9,7 @@ import { SplideSlide } from "@splidejs/vue-splide";
 
 defineSlots<{
   /**
-   * MucCards can be put into this slot.
+   * Elements can be put into this slot.
    */
   default(): any;
 }>();

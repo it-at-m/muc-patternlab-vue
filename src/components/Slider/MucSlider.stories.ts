@@ -1,5 +1,3 @@
-import { fn } from "@storybook/test";
-
 import MucCard from "../Card/MucCard.vue";
 import MucSlider from "./MucSlider.vue";
 import MucSliderItem from "./MucSliderItem.vue";
@@ -9,14 +7,12 @@ export default {
   component: MucSlider,
   title: "MucSlider",
   tags: ["autodocs"],
-  // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
-  args: { onClick: fn() },
   parameters: {
     docs: {
       description: {
-        component: `A wrapping Layout to use with [MucCard](/docs/muccard--docs).
+        component: `A wrapping layout to show elements in a carousel and slide them, for example [MucCards](/docs/muccard--docs).
 
-🔗 Patternlab-Docs (not yet available)
+🔗 Patternlab-Docs (https://patternlab.muenchen.space/?p=components-slider-quote)
 `,
       },
     },
