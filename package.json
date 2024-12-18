@@ -78,6 +78,6 @@
     "vue-tsc": "2.1.10"
   },
   "dependencies": {
-    "@splidejs/vue-splide": "0.6.12"
+    "@splidejs/vue-splide": "github:joris-gallot/vue-splide"
   }
 }
