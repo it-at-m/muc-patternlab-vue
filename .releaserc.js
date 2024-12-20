@@ -65,19 +65,7 @@ module.exports = {
           {
             path: "dist/muc-patternlab-vue.es.js",
             label: "JS distribution",
-          },
-          {
-            path: "dist/assets/temporary/muenchende-style.css",
-            label: "CSS distribution",
-          },
-          {
-            path: "dist/assets/temporary/muenchende-fontfaces.css",
-            label: "CSS fontface distribution",
-          },
-          {
-            path: "dist/assets/temporary/muc-icons.svg",
-            label: "SVG sprite distribution",
-          },
+          }
         ],
       },
     ],
