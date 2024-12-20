@@ -42,7 +42,7 @@
 import type { Options } from "@splidejs/splide";
 
 import { Splide } from "@splidejs/vue-splide";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, useTemplateRef } from "vue";
 
 import { MucButton } from "../Button";
 
@@ -61,7 +61,7 @@ const emit = defineEmits<{
   changeSlide: [index: number];
 }>();
 
-const splide = ref();
+const splide = useTemplateRef("splide");
 
 /**
  * Index of the current silde
