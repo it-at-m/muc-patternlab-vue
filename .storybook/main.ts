@@ -6,11 +6,11 @@ import { StorybookConfig } from "@storybook/vue3-vite";
 const fs = require("fs");
 const path = require("path");
 const mucIconsSvg = fs.readFileSync(
-  path.resolve(__dirname, "../public/assets/temporary/muc-icons.svg"),
+  path.resolve(__dirname, "../public/assets/icons/muc-icons.svg"),
   "utf8"
 );
 const customIconsSvg = fs.readFileSync(
-  path.resolve(__dirname, "../public/assets/temporary/custom-icons.svg"),
+  path.resolve(__dirname, "../public/assets/icons/custom-icons.svg"),
   "utf8"
 );
 
