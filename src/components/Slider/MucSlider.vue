@@ -11,16 +11,12 @@
             aria-label="Slider mit Elementen"
             data-m-slider-splide="m-slider-comment"
           >
-            <button
+            <muc-button
               v-if="showBackArrow"
-              aria-label="Vorheriges Element"
               class="previous-button is-control"
+              icon="arrow-left"
               @click="prevSlide"
-            >
-              <svg class="icon">
-                <use xlink:href="#icon-arrow-left"></use>
-              </svg>
-            </button>
+            />
             <Splide
               :options="sliderOptions"
               aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
@@ -29,16 +25,12 @@
             >
               <slot />
             </Splide>
-            <button
+            <muc-button
               v-if="showNextArrow"
-              aria-label="Nächstes Element"
               class="next-button is-control"
+              icon="arrow-right"
               @click="nextSlide"
-            >
-              <svg class="icon">
-                <use xlink:href="#icon-arrow-right"></use>
-              </svg>
-            </button>
+            />
           </section>
         </div>
       </div>
@@ -51,6 +43,8 @@ import type { Options } from "@splidejs/splide";
 
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref } from "vue";
+
+import { MucButton } from "../Button";
 
 defineSlots<{
   /**
