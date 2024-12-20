@@ -267,6 +267,9 @@ const clearWarnings = () => {
  * Expose function to be called via ref
  */
 defineExpose({
+  /**
+   * Exposed function to clear all warnings
+   */
   clearWarnings,
 });
 </script>
