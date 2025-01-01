@@ -23,9 +23,11 @@
       "import": "./muc-patternlab-vue.es.js"
     },
     "./style.css": "./style.css",
-    "./assets/css/custom-style.css": "./assets/css/custom-style.css",
-    "./assets/icons/muc-icons.svg": "./assets/icons/muc-icons.svg",
-    "./assets/icons/custom-icons.svg": "./assets/icons/custom-icons.svg"
+    "./assets/temporary/custom-style.css": "./assets/temporary/custom-style.css",
+    "./assets/temporary/muenchende-style.css": "./assets/temporary/muenchende-style.css",
+    "./assets/temporary/muenchende-fontfaces.css": "./assets/temporary/muenchende-fontfaces.css",
+    "./assets/temporary/muc-icons.svg": "./assets/temporary/muc-icons.svg",
+    "./assets/temporary/custom-icons.svg": "./assets/temporary/custom-icons.svg"
   },
   "scripts": {
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
