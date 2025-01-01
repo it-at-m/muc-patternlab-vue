@@ -7,6 +7,13 @@ import dts from "vite-plugin-dts";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), dts()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./public/css/central_css.scss";`,
+      },
+    },
+  },
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
