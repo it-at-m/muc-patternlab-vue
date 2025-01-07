@@ -17,12 +17,6 @@
         <span class="visually-hidden">(erforderlich)</span>
       </span>
     </label>
-    <p
-      id="text-input-error"
-      class="m-error-message"
-    >
-      {{ errorMsg }}
-    </p>
     <div class="m-input-wrapper m-autocomplete">
       <div
         v-if="!!slots.prefix"
@@ -73,10 +67,17 @@
     >
       {{ hint }}
     </p>
+    <form-error-message
+        id="text-input-error"
+        v-if="errorMsg"
+    >
+      {{ errorMsg }}
+    </form-error-message>
   </div>
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
+import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
  * Type includes all possible input types possible.
