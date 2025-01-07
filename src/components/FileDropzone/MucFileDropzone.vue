@@ -22,43 +22,25 @@
       additionalInformation
     }}</span>
   </div>
-  <span
-    v-if="!validFileSizes && maxFileSizeWarning"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon
-      icon="warning--filled"
-      class="icon"
-    />
-    <span>
-      {{ maxFileSizeWarning }}
-    </span>
-  </span>
-  <span
-    v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon icon="warning--filled" />
-    <span>
-      {{ maxTotalFileSizeWarning }}
-    </span>
-  </span>
-  <span
-    v-if="!validFilesAmount"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon icon="warning--filled" />
-    <span>
-      {{ invalidAmountWarning }}
-    </span>
-  </span>
+
+  <form-error-message v-if="!validFileSizes && maxFileSizeWarning">
+    {{ maxFileSizeWarning }}
+  </form-error-message>
+
+  <form-error-message v-if="!validTotalFileSizes && maxTotalFileSizeWarning">
+    {{ maxTotalFileSizeWarning }}
+  </form-error-message>
+
+  <form-error-message v-if="!validFilesAmount">
+    {{ invalidAmountWarning }}
+  </form-error-message>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUpdated, ref, watch } from "vue";
 
 import { MucButton } from "../Button";
-import { MucIcon } from "../Icon";
+import FormErrorMessage from "../Form/FormErrorMessage.vue";
 import IconFileUpload from "./IconFileUpload.vue";
 
 const {
@@ -295,19 +277,6 @@ const _clearWarnings = () => {
 
 .drop-zone.is-not-disabled {
   cursor: pointer;
-}
-
-.drop-zone-error-message {
-  display: flex;
-  align-items: flex-start;
-}
-
-.drop-zone-error-message .icon {
-  margin-top: 0;
-}
-
-.drop-zone-error-message span {
-  margin-left: 4px;
 }
 
 .drop-zone-additional-information {
