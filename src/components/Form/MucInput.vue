@@ -68,8 +68,8 @@
       {{ hint }}
     </p>
     <form-error-message
-        id="text-input-error"
-        v-if="errorMsg"
+      id="text-input-error"
+      v-if="errorMsg"
     >
       {{ errorMsg }}
     </form-error-message>
@@ -77,6 +77,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
+
 import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**

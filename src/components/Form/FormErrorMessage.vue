@@ -1,12 +1,9 @@
 <script setup lang="ts">
-
-import {MucIcon} from "../Icon";
+import { MucIcon } from "../Icon";
 </script>
 
 <template>
-  <span
-      class="m-error-message form-error-message"
-  >
+  <span class="m-error-message form-error-message">
     <MucIcon icon="warning--filled" />
     <span>
       <slot></slot>
