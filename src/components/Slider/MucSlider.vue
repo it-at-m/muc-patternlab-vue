@@ -47,9 +47,10 @@
 </template>
 
 <script setup lang="ts">
-import { sliderOptions } from './SliderOptions';
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
+
+import { sliderOptions } from "./SliderOptions";
 
 defineSlots<{
   /**
