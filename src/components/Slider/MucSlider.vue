@@ -11,12 +11,16 @@
             aria-label="Slider mit Elementen"
             data-m-slider-splide="m-slider-comment"
           >
-            <muc-button
+            <button
               v-if="showBackArrow"
+              aria-label="Vorheriges Element"
               class="previous-button is-control"
-              icon="arrow-left"
               @click="prevSlide"
-            />
+            >
+              <svg class="icon">
+                <use xlink:href="#icon-arrow-left"></use>
+              </svg>
+            </button>
             <Splide
               :options="sliderOptions"
               aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
@@ -25,12 +29,16 @@
             >
               <slot />
             </Splide>
-            <muc-button
+            <button
               v-if="showNextArrow"
+              aria-label="Nächstes Element"
               class="next-button is-control"
-              icon="arrow-right"
               @click="nextSlide"
-            />
+            >
+              <svg class="icon">
+                <use xlink:href="#icon-arrow-right"></use>
+              </svg>
+            </button>
           </section>
         </div>
       </div>
@@ -39,12 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Options } from "@splidejs/splide";
-
+import { sliderOptions } from './SliderOptions';
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
-
-import { MucButton } from "../Button";
 
 defineSlots<{
   /**
@@ -114,40 +119,11 @@ onMounted(() => {
     });
   }
 });
-
-const sliderOptions: Options = {
-  autoplay: false,
-  keyboard: true,
-  slideFocus: true,
-  lazyLoad: false,
-  arrows: false,
-  perMove: 1,
-  gap: "0",
-  type: "slide",
-  perPage: 1,
-  pagination: false,
-  speed: 350,
-  mediaQuery: "min",
-  breakpoints: {
-    1: {
-      perPage: 1,
-      gap: "1.5rem",
-    },
-    768: {
-      perPage: 1,
-      gap: "1.5rem",
-    },
-    1200: {
-      perPage: 1,
-      gap: "2rem",
-    },
-  },
-};
 </script>
 
 <style scoped>
 .m-component-slider-comment {
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
+  padding-right: 1.8rem;
+  padding-left: 1.8rem;
 }
 </style>
