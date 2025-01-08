@@ -1,6 +1,6 @@
 import type { Options } from "@splidejs/splide";
 
-export const sliderOptions: Options = {
+export const mucSliderOptions: Options = {
   autoplay: false,
   keyboard: true,
   slideFocus: true,

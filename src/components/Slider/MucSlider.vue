@@ -22,7 +22,7 @@
               </svg>
             </button>
             <Splide
-              :options="sliderOptions"
+              :options="mucSliderOptions"
               aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
               die Pfeiltaste links und rechts oder die Buttons um zu navigieren."
               ref="splide"
@@ -50,7 +50,7 @@
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 
-import { sliderOptions } from "./SliderOptions";
+import { mucSliderOptions } from "./MucSliderOptions";
 
 defineSlots<{
   /**
