@@ -76,5 +76,8 @@
     "vite-plugin-dts": "4.4.0",
     "vitest": "2.1.8",
     "vue-tsc": "2.2.0"
+  },
+  "dependencies": {
+    "@splidejs/vue-splide": "github:joris-gallot/vue-splide"
   }
 }
