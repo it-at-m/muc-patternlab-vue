@@ -60,3 +60,11 @@ export const IconAnimated = {
     iconAnimated: true,
   },
 };
+
+export const IconShownLeft = {
+  args: {
+    default: "With Icon",
+    icon: "arrow-left",
+    iconShownLeft: true,
+  },
+};

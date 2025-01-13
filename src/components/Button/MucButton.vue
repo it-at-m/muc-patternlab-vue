@@ -6,9 +6,15 @@
     :class="[buttonVariantClass, iconAnimatedClass, disabledClass]"
   >
     <span>
+      <muc-icon
+          v-if="icon && iconShownLeft"
+          :icon="icon"
+          class="m-button__icon set-right-margin"
+          :class="{ 'no-left-margin': !iconAnimated }"
+      />
       <slot />
       <muc-icon
-        v-if="icon"
+        v-if="icon && !iconShownLeft"
         :icon="icon"
         class="m-button__icon"
         :class="{ 'no-left-margin': !slots.default }"
@@ -30,6 +36,7 @@ const {
   variant = "primary",
   disabled = false,
   iconAnimated = false,
+  iconShownLeft = false,
 } = defineProps<{
   /**
    * The variant prop gives you easy access to several different button styles.
@@ -51,6 +58,12 @@ const {
    * Default is `false`
    */
   iconAnimated?: boolean;
+  /**
+   * Whether the Icon should be shown on the left side of the button (slide-right) or not.
+   *
+   * Default is `false`
+   */
+  iconShownLeft?: boolean;
 }>();
 
 defineSlots<{
@@ -79,9 +92,15 @@ const buttonVariantClass = computed(() => {
   }
 });
 
-const iconAnimatedClass = computed(() =>
-  iconAnimated ? "m-button--animated-right" : ""
-);
+const iconAnimatedClass = computed(() => {
+      if (iconAnimated && iconShownLeft) {
+        return "m-button--animated-left";
+      } else if (iconAnimated) {
+        return "m-button--animated-right";
+      } else {
+        return "";
+      }
+});
 
 /**
  * Emit a click event if not in disabled state.
@@ -99,6 +118,10 @@ const disabledClass = computed(() => (disabled ? "disabled" : ""));
 <style scoped>
 .no-left-margin {
   margin-left: 0;
+}
+
+.set-right-margin {
+  margin-right: 0.75rem;
 }
 
 [aria-disabled="true"] {
