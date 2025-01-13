@@ -7,10 +7,10 @@
   >
     <span>
       <muc-icon
-          v-if="icon && iconShownLeft"
-          :icon="icon"
-          class="m-button__icon set-right-margin"
-          :class="{ 'no-left-margin': !iconAnimated }"
+        v-if="icon && iconShownLeft"
+        :icon="icon"
+        class="m-button__icon set-right-margin"
+        :class="{ 'no-left-margin': !iconAnimated }"
       />
       <slot />
       <muc-icon
@@ -93,13 +93,13 @@ const buttonVariantClass = computed(() => {
 });
 
 const iconAnimatedClass = computed(() => {
-      if (iconAnimated && iconShownLeft) {
-        return "m-button--animated-left";
-      } else if (iconAnimated) {
-        return "m-button--animated-right";
-      } else {
-        return "";
-      }
+  if (iconAnimated && iconShownLeft) {
+    return "m-button--animated-left";
+  } else if (iconAnimated) {
+    return "m-button--animated-right";
+  } else {
+    return "";
+  }
 });
 
 /**
