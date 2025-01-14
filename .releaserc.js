@@ -1,12 +1,9 @@
 const { promisify } = require("util");
 const dateFormat = require("dateformat");
-const { join, resolve} = require("node:path");
+const { join, resolve } = require("node:path");
 const readFileAsync = promisify(require("fs").readFile);
 
-const releaseNotesTemplatePath = resolve(
-  __dirname,
-  "build/release-notes.hbs"
-);
+const releaseNotesTemplatePath = resolve(__dirname, "build/release-notes.hbs");
 const commitTemplateDir =
   "node_modules/semantic-release-gitmoji/lib/assets/templates";
 
