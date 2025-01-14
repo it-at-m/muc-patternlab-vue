@@ -18,47 +18,29 @@
     >
       {{ buttonText }}
     </MucButton>
-    <span class="drop-zone-additional-information">{{
-      additionalInformation
-    }}</span>
+    <span class="drop-zone-additional-information">
+      {{ additionalInformation }}
+    </span>
   </div>
-  <span
-    v-if="!validFileSizes && maxFileSizeWarning"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon
-      icon="warning--filled"
-      class="icon"
-    />
-    <span>
-      {{ maxFileSizeWarning }}
-    </span>
-  </span>
-  <span
-    v-if="!validTotalFileSizes && maxTotalFileSizeWarning"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon icon="warning--filled" />
-    <span>
-      {{ maxTotalFileSizeWarning }}
-    </span>
-  </span>
-  <span
-    v-if="!validFilesAmount"
-    class="m-error-message drop-zone-error-message"
-  >
-    <MucIcon icon="warning--filled" />
-    <span>
-      {{ invalidAmountWarning }}
-    </span>
-  </span>
+
+  <form-error-message v-if="!validFileSizes && maxFileSizeWarning">
+    {{ maxFileSizeWarning }}
+  </form-error-message>
+
+  <form-error-message v-if="!validTotalFileSizes && maxTotalFileSizeWarning">
+    {{ maxTotalFileSizeWarning }}
+  </form-error-message>
+
+  <form-error-message v-if="!validFilesAmount">
+    {{ invalidAmountWarning }}
+  </form-error-message>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUpdated, ref } from "vue";
 
 import { MucButton } from "../Button";
-import { MucIcon } from "../Icon";
+import FormErrorMessage from "../Form/FormErrorMessage.vue";
 import IconFileUpload from "./IconFileUpload.vue";
 
 const {
@@ -110,12 +92,17 @@ const {
   maxTotalFileSizeWarning?: string;
 }>();
 
-const emit = defineEmits([
+const emit = defineEmits<{
   /**
    * Dropped files as {@link File[]} array
    */
-  "files",
-]);
+  files: [files: File[]];
+
+  /**
+   * Event that signals when warnings are displayed.
+   */
+  warning: [];
+}>();
 
 /** Flag signals if file size is valid */
 const validFileSizes = ref(true);
@@ -142,7 +129,7 @@ onMounted(() => {
     const target = event.target as HTMLInputElement;
     if (target?.files && target.files.length > 0) {
       const filesArray = Array.from(target.files);
-      _emitFiles(filesArray);
+      emitFiles(filesArray);
     }
   };
 });
@@ -162,9 +149,13 @@ const selectFiles = () => {
   fileInput.click();
 };
 
-/** Sets flag {@link isDragOver} true. */
+/**
+ * Sets flag {@link isDragOver} true.
+ */
 const onDragOver = (event: DragEvent) => {
-  if (disabled) return;
+  if (disabled) {
+    return;
+  }
   if (!fileInput?.multiple) {
     const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
     if (dataTransfer?.items?.length > 1) {
@@ -175,7 +166,9 @@ const onDragOver = (event: DragEvent) => {
   isDragOver.value = true;
 };
 
-/** Sets flag {@link isDragOver} false. */
+/**
+ * Sets flag {@link isDragOver} false.
+ */
 const onDragLeave = () => {
   isDragOver.value = false;
   validFilesAmount.value = true;
@@ -186,20 +179,22 @@ const onDragLeave = () => {
  * @param {DragEvent} event dropped files
  */
 const onDrop = (event: DragEvent) => {
-  if (disabled) return;
+  if (disabled) {
+    return;
+  }
   if (!validFilesAmount.value) {
     /*
     user drops files with invalid amount
     -> warning disappears
      */
     validFilesAmount.value = true;
-    return;
-  }
-  isDragOver.value = false;
-  const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
-  if (dataTransfer?.files?.length > 0) {
-    const filesArray = Array.from(dataTransfer.files);
-    _emitFiles(filesArray);
+  } else {
+    isDragOver.value = false;
+    const dataTransfer: DataTransfer = event.dataTransfer as DataTransfer;
+    if (dataTransfer?.files?.length > 0) {
+      const filesArray = Array.from(dataTransfer.files);
+      emitFiles(filesArray);
+    }
   }
 };
 
@@ -207,32 +202,32 @@ const onDrop = (event: DragEvent) => {
  * Emits the files to upload to the surrounding element.
  * @param {File[]} files array of dropped or chosen files to upload
  */
-const _emitFiles = (files: File[]) => {
-  validFileSizes.value = _areFilesValid(files);
-  validTotalFileSizes.value = _isTotalFilesSumValid(files);
+const emitFiles = (files: File[]) => {
+  validFileSizes.value = areFilesValid(files);
+  validTotalFileSizes.value = isTotalFilesSumValid(files);
 
   if (!validFileSizes.value || !validTotalFileSizes.value) {
-    return;
+    emit("warning");
+  } else {
+    emit("files", files);
   }
-
-  emit("files", files);
 };
 
 /**
  * Checks if all files are inside the allowed file size range that is given by {@link Props#maxFileSize}.
  * @param {File[]} files array files
  */
-const _areFilesValid = (files: File[]) => {
-  if (maxFileSize)
-    return !files.some((file) => file.size > maxFileSize * 1024 * 1024);
-  return true;
+const areFilesValid = (files: File[]) => {
+  return maxFileSize
+    ? !files.some((file) => file.size > maxFileSize * 1024 * 1024)
+    : true;
 };
 
 /**
  * Checks if the sum of all files is inside the allowed range that is given by {@link Props#maxTotalFileSize}.
  * @param {File[]} files array files
  */
-const _isTotalFilesSumValid = (files: File[]) => {
+const isTotalFilesSumValid = (files: File[]) => {
   if (maxTotalFileSize)
     return (
       files.reduce((acc, file) => acc + (file.size || 0), 0) <=
@@ -240,6 +235,25 @@ const _isTotalFilesSumValid = (files: File[]) => {
     );
   return true;
 };
+
+/**
+ * Clears all warnings.
+ */
+const clearWarnings = () => {
+  validFileSizes.value = true;
+  validTotalFileSizes.value = true;
+  validFilesAmount.value = true;
+};
+
+/**
+ * Expose function to be called via ref
+ */
+defineExpose({
+  /**
+   * Exposed function to clear all warnings
+   */
+  clearWarnings,
+});
 </script>
 
 <style scoped>
@@ -264,19 +278,6 @@ const _isTotalFilesSumValid = (files: File[]) => {
 
 .drop-zone.is-not-disabled {
   cursor: pointer;
-}
-
-.drop-zone-error-message {
-  display: flex;
-  align-items: flex-start;
-}
-
-.drop-zone-error-message .icon {
-  margin-top: 0;
-}
-
-.drop-zone-error-message span {
-  margin-left: 4px;
 }
 
 .drop-zone-additional-information {

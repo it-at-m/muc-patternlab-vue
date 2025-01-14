@@ -14,9 +14,6 @@
         <span class="visually-hidden">(erforderlich)</span>
       </span>
     </label>
-    <p class="m-error-message">
-      {{ errorMsg }}
-    </p>
     <div class="m-input-wrapper">
       <textarea
         class="m-textarea"
@@ -29,10 +26,15 @@
     <p class="m-hint">
       {{ hint }}
     </p>
+    <form-error-message v-if="errorMsg">
+      {{ errorMsg }}
+    </form-error-message>
   </div>
 </template>
 
 <script setup lang="ts">
+import FormErrorMessage from "./FormErrorMessage.vue";
+
 /**
  * Input value from the form component.
  */

@@ -1,17 +1,21 @@
 <template>
   <div class="grid">
     <div class="grid-item">
-      <MucButton
-        v-on:click="clickedMinus"
-        variant="secondary"
-        :disabled="disableMinus"
-        :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
-      >
-        <template #default><muc-icon icon="minus" /></template>
-      </MucButton>
+      <div class="content-centered">
+        <MucButton
+          v-on:click="clickedMinus"
+          variant="secondary"
+          :disabled="disableMinus"
+          :aria-label="
+            'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)
+          "
+        >
+          <template #default><muc-icon icon="minus" /></template>
+        </MucButton>
+      </div>
       <p tabindex="0">
         <strong
-          class="centered-text-number"
+          class="content-centered"
           style="color: var(--color-brand-main-blue)"
         >
           <span class="visually-hidden">
@@ -20,16 +24,18 @@
           {{ modelValue }}
         </strong>
       </p>
-      <MucButton
-        v-on:click="clickedPlus"
-        variant="secondary"
-        :disabled="disablePlus"
-        :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
-      >
-        <template #default><muc-icon icon="plus" /></template>
-      </MucButton>
+      <div class="content-centered">
+        <MucButton
+          v-on:click="clickedPlus"
+          variant="secondary"
+          :disabled="disablePlus"
+          :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
+        >
+          <template #default><muc-icon icon="plus" /></template>
+        </MucButton>
+      </div>
     </div>
-    <div class="grid-item centered-text-label">
+    <div class="grid-item content-centered-justify-left">
       <p v-if="link">
         <label>
           <muc-link
@@ -135,14 +141,14 @@ const disableMinus = computed(
 </script>
 
 <style scoped>
-.centered-text-number {
+.content-centered {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.centered-text-label {
+.content-centered-justify-left {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -151,7 +157,10 @@ const disableMinus = computed(
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-template-columns: 175px minmax(500px, 1fr) repeat(
+      auto-fill,
+      minmax(175px, 1fr)
+    );
 }
 
 .grid-item {
@@ -181,7 +190,7 @@ const disableMinus = computed(
   .grid-item:nth-child(2) {
     order: 1;
   }
-  .centered-text-label {
+  .content-centered-justify-left {
     padding-bottom: 0.8rem;
   }
   .grid {
