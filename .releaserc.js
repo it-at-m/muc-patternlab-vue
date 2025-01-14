@@ -1,9 +1,9 @@
 const { promisify } = require("util");
 const dateFormat = require("dateformat");
-const { join } = require("node:path");
+const { join, resolve} = require("node:path");
 const readFileAsync = promisify(require("fs").readFile);
 
-const releaseNotesTemplatePath = path.resolve(
+const releaseNotesTemplatePath = resolve(
   __dirname,
   "build/release-notes.hbs"
 );
