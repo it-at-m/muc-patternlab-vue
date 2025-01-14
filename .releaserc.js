@@ -3,11 +3,17 @@ const dateFormat = require("dateformat");
 const { join } = require("node:path");
 const readFileAsync = promisify(require("fs").readFile);
 
-const releaseNotesTemplatePath = path.resolve(__dirname, 'build/release-notes.hbs')
-const commitTemplateDir = "node_modules/semantic-release-gitmoji/lib/assets/templates";
+const releaseNotesTemplatePath = path.resolve(
+  __dirname,
+  "build/release-notes.hbs"
+);
+const commitTemplateDir =
+  "node_modules/semantic-release-gitmoji/lib/assets/templates";
 
 const releaseNotesTemplate = readFileAsync(releaseNotesTemplatePath);
-const commitTemplate = readFileAsync(join(commitTemplateDir, "commit-template.hbs"));
+const commitTemplate = readFileAsync(
+  join(commitTemplateDir, "commit-template.hbs")
+);
 
 module.exports = {
   branches: [
