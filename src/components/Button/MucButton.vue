@@ -6,19 +6,14 @@
     :class="[buttonVariantClass, iconAnimatedClass, disabledClass]"
   >
     <span>
+      <slot v-if="!iconShownLeft" />
       <muc-icon
-        v-if="icon && iconShownLeft"
-        :icon="icon"
-        class="m-button__icon set-right-margin"
-        :class="{ 'no-left-margin': !iconAnimated }"
-      />
-      <slot />
-      <muc-icon
-        v-if="icon && !iconShownLeft"
+        v-if="icon"
         :icon="icon"
         class="m-button__icon"
-        :class="{ 'no-left-margin': !slots.default }"
+        :class="iconPositionClass"
       />
+      <slot v-if="iconShownLeft" />
     </span>
   </button>
 </template>
@@ -101,6 +96,11 @@ const iconAnimatedClass = computed(() => {
     return "";
   }
 });
+
+const iconPositionClass = computed(() => ({
+  "set-right-margin": iconShownLeft,
+  "no-left-margin": !iconShownLeft ? !slots.default : !iconAnimated,
+}));
 
 /**
  * Emit a click event if not in disabled state.
