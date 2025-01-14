@@ -8,7 +8,7 @@ declare const _default: {
         link?: string;
         disabled?: boolean;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: number) => any;
+        "update:modelValue": (value: number) => any;
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: number;
     } & {
@@ -18,8 +18,8 @@ declare const _default: {
         link?: string;
         disabled?: boolean;
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((modelValue: number) => any) | undefined;
-    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+        "onUpdate:modelValue"?: ((value: number) => any) | undefined;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

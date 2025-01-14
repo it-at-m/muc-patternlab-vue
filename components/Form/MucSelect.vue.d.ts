@@ -1,5 +1,5 @@
 import { MucSelectItemTypes } from './MucSelectTypes';
-declare let __VLS_typeProps: {
+type __VLS_Props = {
     /**
      * List of items to be available
      */
@@ -27,12 +27,12 @@ declare let __VLS_typeProps: {
 };
 type __VLS_PublicProps = {
     "modelValue"?: MucSelectItemTypes | MucSelectItemTypes[];
-} & typeof __VLS_typeProps;
+} & __VLS_Props;
 declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (modelValue: MucSelectItemTypes | MucSelectItemTypes[]) => any;
+    "update:modelValue": (value: MucSelectItemTypes | MucSelectItemTypes[]) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
-    "onUpdate:modelValue"?: ((modelValue: MucSelectItemTypes | MucSelectItemTypes[]) => any) | undefined;
+    "onUpdate:modelValue"?: ((value: MucSelectItemTypes | MucSelectItemTypes[]) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     selectComponent: HTMLDivElement;
-}, any>;
+}, HTMLDivElement>;
 export default _default;

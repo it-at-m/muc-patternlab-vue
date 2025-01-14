@@ -9,7 +9,7 @@ declare const _default: {
         noAnimation?: boolean;
         allowedDates?: import('./MucCalendarType').AllowedDateFunction;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: import('./MucCalendarType').MucCalendarSelected) => any;
+        "update:modelValue": (value: import('./MucCalendarType').MucCalendarSelected) => any;
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: import('./MucCalendarType').MucCalendarSelected;
     } & {
@@ -20,8 +20,8 @@ declare const _default: {
         noAnimation?: boolean;
         allowedDates?: import('./MucCalendarType').AllowedDateFunction;
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((modelValue: import('./MucCalendarType').MucCalendarSelected) => any) | undefined;
-    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+        "onUpdate:modelValue"?: ((value: import('./MucCalendarType').MucCalendarSelected) => any) | undefined;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

@@ -9,7 +9,7 @@ declare const _default: {
         hint?: string;
         required?: boolean;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: string) => any;
+        "update:modelValue": (value: string) => any;
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: string;
     } & {
@@ -20,8 +20,8 @@ declare const _default: {
         hint?: string;
         required?: boolean;
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
-    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+        "onUpdate:modelValue"?: ((value: string) => any) | undefined;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

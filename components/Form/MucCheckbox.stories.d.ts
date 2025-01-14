@@ -4,7 +4,7 @@ declare const _default: {
     } & {
         label: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: boolean) => any;
+        "update:modelValue": (value: boolean) => any;
     } & {
         click: () => any;
     }, string, import('vue').PublicProps, Readonly<{
@@ -13,8 +13,8 @@ declare const _default: {
         label: string;
     }> & Readonly<{
         onClick?: (() => any) | undefined;
-        "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
-    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+        "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
+    }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

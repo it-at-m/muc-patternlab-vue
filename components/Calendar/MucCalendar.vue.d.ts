@@ -1,5 +1,5 @@
 import { AllowedDateFunction, CalendarTypes, MucCalendarSelected } from './MucCalendarType';
-declare let __VLS_typeProps: {
+type __VLS_Props = {
     /**
      * Initial date to be displayed on the selection screen
      */
@@ -27,10 +27,10 @@ declare let __VLS_typeProps: {
 };
 type __VLS_PublicProps = {
     "modelValue"?: MucCalendarSelected;
-} & typeof __VLS_typeProps;
+} & __VLS_Props;
 declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (modelValue: MucCalendarSelected) => any;
+    "update:modelValue": (value: MucCalendarSelected) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
-    "onUpdate:modelValue"?: ((modelValue: MucCalendarSelected) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    "onUpdate:modelValue"?: ((value: MucCalendarSelected) => any) | undefined;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 export default _default;

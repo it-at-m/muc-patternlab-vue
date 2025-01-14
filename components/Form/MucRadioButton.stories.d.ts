@@ -42,11 +42,11 @@ export declare const Default: () => {
                 disabled?: boolean;
             }> & Readonly<{
                 onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
-                "onUpdate:modelValue"?: ((modelValue: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+                "onUpdate:modelValue"?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
                 change: (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
-                "update:modelValue": (modelValue: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
-            }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+                "update:modelValue": (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
+            }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
@@ -60,7 +60,7 @@ export declare const Default: () => {
                 disabled?: boolean;
             }> & Readonly<{
                 onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
-                "onUpdate:modelValue"?: ((modelValue: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+                "onUpdate:modelValue"?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -72,10 +72,10 @@ export declare const Default: () => {
             disabled?: boolean;
         }> & Readonly<{
             onChange?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
-            "onUpdate:modelValue"?: ((modelValue: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
+            "onUpdate:modelValue"?: ((value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             change: (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
-            "update:modelValue": (modelValue: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
+            "update:modelValue": (value: import('./MucRadioButtonTypes').RadioButtonValueTypes) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: {
                 default?(_: {}): any;

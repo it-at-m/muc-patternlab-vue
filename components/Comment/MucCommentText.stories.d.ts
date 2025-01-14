@@ -17,7 +17,7 @@ declare const _default: {
         text: string;
         rating: number;
         variant?: import('./CommentType').default;
-    }> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    }> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

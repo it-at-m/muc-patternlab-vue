@@ -9,7 +9,7 @@ declare const _default: {
         noItemFoundMessage?: string;
         itemTitle?: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any;
+        "update:modelValue": (value: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any;
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[];
     } & {
@@ -20,10 +20,10 @@ declare const _default: {
         noItemFoundMessage?: string;
         itemTitle?: string;
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((modelValue: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any) | undefined;
+        "onUpdate:modelValue"?: ((value: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any) | undefined;
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
         selectComponent: HTMLDivElement;
-    }, any>;
+    }, HTMLDivElement>;
     title: string;
     tags: string[];
     parameters: {

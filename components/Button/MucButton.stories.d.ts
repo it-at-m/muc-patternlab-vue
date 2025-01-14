@@ -5,11 +5,12 @@ declare const _default: {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            iconShownLeft?: boolean;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
             click: () => any;
-        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -21,6 +22,7 @@ declare const _default: {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            iconShownLeft?: boolean;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
@@ -32,6 +34,7 @@ declare const _default: {
         disabled?: boolean;
         icon?: string;
         iconAnimated?: boolean;
+        iconShownLeft?: boolean;
     }> & Readonly<{
         onClick?: (() => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -90,5 +93,12 @@ export declare const IconAnimated: {
         default: string;
         icon: string;
         iconAnimated: boolean;
+    };
+};
+export declare const IconShownLeft: {
+    args: {
+        default: string;
+        icon: string;
+        iconShownLeft: boolean;
     };
 };

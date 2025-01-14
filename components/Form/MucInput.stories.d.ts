@@ -12,13 +12,13 @@ declare const _default: {
             dataList?: string[];
             suffixIcon?: string;
         }> & Readonly<{
-            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
+            "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            "update:modelValue": (modelValue: string) => any;
+            "update:modelValue": (value: string) => any;
         } & {
             suffixClick: () => any;
-        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -37,7 +37,7 @@ declare const _default: {
             dataList?: string[];
             suffixIcon?: string;
         }> & Readonly<{
-            "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
+            "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
@@ -55,10 +55,10 @@ declare const _default: {
         dataList?: string[];
         suffixIcon?: string;
     }> & Readonly<{
-        "onUpdate:modelValue"?: ((modelValue: string) => any) | undefined;
+        "onUpdate:modelValue"?: ((value: string) => any) | undefined;
         onSuffixClick?: (() => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        "update:modelValue": (modelValue: string) => any;
+        "update:modelValue": (value: string) => any;
     } & {
         suffixClick: () => any;
     }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {

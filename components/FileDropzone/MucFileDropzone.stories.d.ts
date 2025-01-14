@@ -9,8 +9,11 @@ declare const _default: {
         maxFileSizeWarning?: string;
         maxTotalFileSize?: number;
         maxTotalFileSizeWarning?: string;
-    }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-        files: (...args: any[]) => void;
+    }, {
+        clearWarnings: () => void;
+    }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+        warning: () => any;
+        files: (files: File[]) => any;
     }, string, import('vue').PublicProps, Readonly<{
         buttonText: string;
         additionalInformation?: string;
@@ -22,7 +25,8 @@ declare const _default: {
         maxTotalFileSize?: number;
         maxTotalFileSizeWarning?: string;
     }> & Readonly<{
-        onFiles?: ((...args: any[]) => any) | undefined;
+        onWarning?: (() => any) | undefined;
+        onFiles?: ((files: File[]) => any) | undefined;
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
@@ -35,6 +39,7 @@ declare const _default: {
     };
 };
 export default _default;
+export declare const Default: {};
 export declare const Example: {
     args: {
         buttonText: string;
@@ -46,4 +51,3 @@ export declare const Example: {
         maxTotalFileSizeWarning: string;
     };
 };
-export declare const Default: {};

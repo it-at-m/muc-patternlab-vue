@@ -1,4 +1,27 @@
+type __VLS_Props = {
+    /**
+     * Text shown as the link
+     */
+    label: string;
+    /**
+     * href to link to
+     */
+    href?: string;
+    /**
+     * Optional icon displayed behind the text
+     */
+    icon?: string;
+    /**
+     * Target on the link
+     */
+    target?: string;
+    /**
+     * Removes the underline from the label text
+     */
+    noUnderline?: boolean;
+};
 declare function __VLS_template(): {
+    attrs: Partial<{}>;
     slots: Readonly<{
         /**
          * Icon slots overrides chosen prop icon.
@@ -13,52 +36,10 @@ declare function __VLS_template(): {
         icon(): void;
     };
     refs: {};
-    attrs: Partial<{}>;
+    rootEl: HTMLAnchorElement;
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
-declare const __VLS_component: import('vue').DefineComponent<{
-    /**
-     * Text shown as the link
-     */
-    label: string;
-    /**
-     * href to link to
-     */
-    href?: string;
-    /**
-     * Optional icon displayed behind the text
-     */
-    icon?: string;
-    /**
-     * Target on the link
-     */
-    target?: string;
-    /**
-     * Removes the underline from the label text
-     */
-    noUnderline?: boolean;
-}, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<{
-    /**
-     * Text shown as the link
-     */
-    label: string;
-    /**
-     * href to link to
-     */
-    href?: string;
-    /**
-     * Optional icon displayed behind the text
-     */
-    icon?: string;
-    /**
-     * Target on the link
-     */
-    target?: string;
-    /**
-     * Removes the underline from the label text
-     */
-    noUnderline?: boolean;
-}> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLAnchorElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {

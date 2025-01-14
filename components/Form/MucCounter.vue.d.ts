@@ -1,4 +1,4 @@
-declare let __VLS_typeProps: {
+type __VLS_Props = {
     /**
      * Label shown after the counter
      */
@@ -22,10 +22,10 @@ declare let __VLS_typeProps: {
 };
 type __VLS_PublicProps = {
     modelValue?: number;
-} & typeof __VLS_typeProps;
+} & __VLS_Props;
 declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    "update:modelValue": (modelValue: number) => any;
+    "update:modelValue": (value: number) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
-    "onUpdate:modelValue"?: ((modelValue: number) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+    "onUpdate:modelValue"?: ((value: number) => any) | undefined;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 export default _default;

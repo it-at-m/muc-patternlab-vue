@@ -1,5 +1,5 @@
 import { StepperItem } from './MucStepperTypes';
-declare const _default: import('vue').DefineComponent<{
+type __VLS_Props = {
     /**
      * List of items displayed in the stepper
      */
@@ -8,18 +8,14 @@ declare const _default: import('vue').DefineComponent<{
      * Id of the current step item
      */
     activeItem: string;
-}, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
+    /**
+     * Disables the previous steps
+     */
+    disablePreviousSteps?: boolean;
+};
+declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     changeStep: (id: string) => any;
-}, string, import('vue').PublicProps, Readonly<{
-    /**
-     * List of items displayed in the stepper
-     */
-    stepItems: StepperItem[];
-    /**
-     * Id of the current step item
-     */
-    activeItem: string;
-}> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
     onChangeStep?: ((id: string) => any) | undefined;
-}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
 export default _default;

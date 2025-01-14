@@ -3,7 +3,7 @@ declare const _default: {
         MucCheckboxGroup: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 heading?: string;
-            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
@@ -20,11 +20,11 @@ declare const _default: {
             heading?: string;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             }> & {
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             };
         });
         MucCheckbox: import('vue').DefineComponent<{
@@ -32,7 +32,7 @@ declare const _default: {
         } & {
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            "update:modelValue": (modelValue: boolean) => any;
+            "update:modelValue": (value: boolean) => any;
         } & {
             click: () => any;
         }, string, import('vue').PublicProps, Readonly<{
@@ -41,13 +41,13 @@ declare const _default: {
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
-            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
-        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+            "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     };
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             heading?: string;
-        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -64,11 +64,11 @@ declare const _default: {
         heading?: string;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            checkboxes(): any;
-            collapsableCheckboxes(): any;
+            checkboxes: any;
+            collapsableCheckboxes: any;
         }> & {
-            checkboxes(): any;
-            collapsableCheckboxes(): any;
+            checkboxes: any;
+            collapsableCheckboxes: any;
         };
     });
     title: string;
@@ -89,7 +89,7 @@ export declare const NotCollapsable: () => {
         } & {
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            "update:modelValue": (modelValue: boolean) => any;
+            "update:modelValue": (value: boolean) => any;
         } & {
             click: () => any;
         }, string, import('vue').PublicProps, Readonly<{
@@ -98,12 +98,12 @@ export declare const NotCollapsable: () => {
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
-            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
-        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+            "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
         MucCheckboxGroup: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 heading?: string;
-            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
@@ -120,11 +120,11 @@ export declare const NotCollapsable: () => {
             heading?: string;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             }> & {
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             };
         });
     };
@@ -137,7 +137,7 @@ export declare const Collapsable: () => {
         } & {
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            "update:modelValue": (modelValue: boolean) => any;
+            "update:modelValue": (value: boolean) => any;
         } & {
             click: () => any;
         }, string, import('vue').PublicProps, Readonly<{
@@ -146,12 +146,12 @@ export declare const Collapsable: () => {
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
-            "onUpdate:modelValue"?: ((modelValue: boolean) => any) | undefined;
-        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+            "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
+        }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
         MucCheckboxGroup: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 heading?: string;
-            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
                 D: {};
@@ -168,11 +168,11 @@ export declare const Collapsable: () => {
             heading?: string;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             }> & {
-                checkboxes(): any;
-                collapsableCheckboxes(): any;
+                checkboxes: any;
+                collapsableCheckboxes: any;
             };
         });
     };
