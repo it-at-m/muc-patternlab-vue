@@ -1,19 +1,19 @@
 <template>
-  <div class="m-form-group has-error">
+  <div
+    class="m-form-group"
+    :class="isErrorClass"
+  >
     <label
+      v-if="label"
       for="textarea"
       class="m-label"
+      :class="isRequiredClass"
     >
       {{ label }}
-      <span
-        v-if="required"
-        aria-hidden="true"
-        class="mandatory"
-      >
-        *
-        <span class="visually-hidden">(erforderlich)</span>
-      </span>
     </label>
+    <p class="m-hint">
+      {{ hint }}
+    </p>
     <div class="m-input-wrapper">
       <textarea
         class="m-textarea"
@@ -23,9 +23,6 @@
         v-model="modelValue"
       />
     </div>
-    <p class="m-hint">
-      {{ hint }}
-    </p>
     <form-error-message v-if="errorMsg">
       {{ errorMsg }}
     </form-error-message>
@@ -33,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
@@ -40,7 +39,11 @@ import FormErrorMessage from "./FormErrorMessage.vue";
  */
 const modelValue = defineModel<string>({ default: "" });
 
-const { rows = 3, required = false } = defineProps<{
+const {
+  errorMsg,
+  rows = 3,
+  required = false,
+} = defineProps<{
   /**
    * Displays error message and highlights the input form with a red border.
    */
@@ -71,4 +74,16 @@ const { rows = 3, required = false } = defineProps<{
    */
   required?: boolean;
 }>();
+
+/**
+ * Computes a CSS class based on the presence of an error message.
+ * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
+ */
+const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
+
+/**
+ * Computes a CSS class for optional fields.
+ * @returns {string} Returns "m-label--optional" if the field is optional, otherwise an empty string.
+ */
+const isRequiredClass = computed(() => (required ? "" : "m-label--optional"));
 </script>
