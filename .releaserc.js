@@ -1,13 +1,16 @@
 const { promisify } = require("util");
 const dateFormat = require("dateformat");
-const { join } = require("node:path");
+const { join, resolve } = require("node:path");
 const readFileAsync = promisify(require("fs").readFile);
 
-const TEMPLATE_DIR =
+const releaseNotesTemplatePath = resolve(__dirname, "build/release-notes.hbs");
+const commitTemplateDir =
   "node_modules/semantic-release-gitmoji/lib/assets/templates";
-// the *.hbs template and partials should be passed as strings of contents
-const template = readFileAsync(join(TEMPLATE_DIR, "default-template.hbs"));
-const commitTemplate = readFileAsync(join(TEMPLATE_DIR, "commit-template.hbs"));
+
+const releaseNotesTemplate = readFileAsync(releaseNotesTemplatePath);
+const commitTemplate = readFileAsync(
+  join(commitTemplateDir, "commit-template.hbs")
+);
 
 module.exports = {
   branches: [
@@ -31,10 +34,10 @@ module.exports = {
         releaseRules: {
           major: [":boom:"],
           minor: [":sparkles:"],
-          patch: [":bug:", ":ambulance:", ":lock:", ":lipstick:"],
+          patch: [":bug:", ":ambulance:", ":lock:", ":lipstick:", "arrow_up"],
         },
         releaseNotes: {
-          template,
+          template: releaseNotesTemplate,
           partials: { commitTemplate },
           helpers: {
             datetime: function (format = "UTC:yyyy-mm-dd") {

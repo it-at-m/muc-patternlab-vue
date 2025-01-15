@@ -5,6 +5,7 @@
 dist
 public
 storybook-static
+build
 
 # Files
 package.json

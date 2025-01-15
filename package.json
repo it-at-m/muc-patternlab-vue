@@ -30,6 +30,7 @@
     "./assets/temporary/custom-icons.svg": "./assets/temporary/custom-icons.svg"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
     "test": "vitest",
     "build-only": "vite build",
@@ -78,6 +79,7 @@
     "vue-tsc": "2.2.0"
   },
   "dependencies": {
-    "@splidejs/vue-splide": "github:joris-gallot/vue-splide"
+    "@splidejs/vue-splide": "0.6.12",
+    "patch-package": "^8.0.0"
   }
 }
