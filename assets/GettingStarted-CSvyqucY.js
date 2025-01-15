@@ -1,4 +1,4 @@
-import{ae as e,af as o}from"./index-IDqYU5PF.js";import{u as r}from"./index-CjSQqLZK.js";import"./iframe-D5214VXL.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Cu4lwwaE.js";import"./index-mmRH1Wqy.js";import"./index-ogSvIofg.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started"}),`
+import{ae as e,af as o}from"./index-DeLZ9nof.js";import{u as r}from"./index-BGD1vUrD.js";import"./iframe-Cf1pXGrc.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Cu4lwwaE.js";import"./index-mmRH1Wqy.js";import"./index-ogSvIofg.js";function s(t){const n={code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started"}),`
 `,e.jsx(n.h1,{id:"getting-started",children:"Getting Started"}),`
 `,e.jsx(n.h2,{id:"installation",children:"Installation"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-shell",children:`npm i @muenchen/muc-patternlab-vue

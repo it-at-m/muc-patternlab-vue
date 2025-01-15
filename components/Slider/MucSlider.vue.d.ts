@@ -28,35 +28,7 @@ declare function __VLS_template(): {
                 type: BooleanConstructor;
             };
         }>> & Readonly<{
-            "onSplide:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:ready"?: ((...args: any[]) => any) | undefined;
-            "onSplide:click"?: ((...args: any[]) => any) | undefined;
-            "onSplide:move"?: ((...args: any[]) => any) | undefined;
-            "onSplide:moved"?: ((...args: any[]) => any) | undefined;
-            "onSplide:active"?: ((...args: any[]) => any) | undefined;
-            "onSplide:inactive"?: ((...args: any[]) => any) | undefined;
-            "onSplide:visible"?: ((...args: any[]) => any) | undefined;
-            "onSplide:hidden"?: ((...args: any[]) => any) | undefined;
-            "onSplide:refresh"?: ((...args: any[]) => any) | undefined;
-            "onSplide:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:resize"?: ((...args: any[]) => any) | undefined;
-            "onSplide:resized"?: ((...args: any[]) => any) | undefined;
-            "onSplide:drag"?: ((...args: any[]) => any) | undefined;
-            "onSplide:dragging"?: ((...args: any[]) => any) | undefined;
-            "onSplide:dragged"?: ((...args: any[]) => any) | undefined;
-            "onSplide:scroll"?: ((...args: any[]) => any) | undefined;
-            "onSplide:scrolled"?: ((...args: any[]) => any) | undefined;
-            "onSplide:overflow"?: ((...args: any[]) => any) | undefined;
-            "onSplide:destroy"?: ((...args: any[]) => any) | undefined;
-            "onSplide:arrows:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:arrows:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:pagination:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:pagination:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:navigation:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:play"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:playing"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:pause"?: ((...args: any[]) => any) | undefined;
-            "onSplide:lazyload:loaded"?: ((...args: any[]) => any) | undefined;
+            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
         }>, {
             splide: import('vue').Ref<import('@splidejs/splide').Splide | undefined, import('@splidejs/splide').Splide | undefined>;
             root: import('vue').Ref<HTMLElement | undefined, HTMLElement | undefined>;
@@ -64,7 +36,7 @@ declare function __VLS_template(): {
             length: import('vue').ComputedRef<number>;
             go: (control: number | string) => void;
             sync: (target: import('@splidejs/splide').Splide) => void;
-        }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ("splide:mounted" | "splide:ready" | "splide:click" | "splide:move" | "splide:moved" | "splide:active" | "splide:inactive" | "splide:visible" | "splide:hidden" | "splide:refresh" | "splide:updated" | "splide:resize" | "splide:resized" | "splide:drag" | "splide:dragging" | "splide:dragged" | "splide:scroll" | "splide:scrolled" | "splide:overflow" | "splide:destroy" | "splide:arrows:mounted" | "splide:arrows:updated" | "splide:pagination:mounted" | "splide:pagination:updated" | "splide:navigation:mounted" | "splide:autoplay:play" | "splide:autoplay:playing" | "splide:autoplay:pause" | "splide:lazyload:loaded")[], import('vue').PublicProps, {
+        }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, string[], import('vue').PublicProps, {
             tag: string;
             options: import('@splidejs/splide').Options;
             hasTrack: boolean;
@@ -93,35 +65,7 @@ declare function __VLS_template(): {
                 type: BooleanConstructor;
             };
         }>> & Readonly<{
-            "onSplide:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:ready"?: ((...args: any[]) => any) | undefined;
-            "onSplide:click"?: ((...args: any[]) => any) | undefined;
-            "onSplide:move"?: ((...args: any[]) => any) | undefined;
-            "onSplide:moved"?: ((...args: any[]) => any) | undefined;
-            "onSplide:active"?: ((...args: any[]) => any) | undefined;
-            "onSplide:inactive"?: ((...args: any[]) => any) | undefined;
-            "onSplide:visible"?: ((...args: any[]) => any) | undefined;
-            "onSplide:hidden"?: ((...args: any[]) => any) | undefined;
-            "onSplide:refresh"?: ((...args: any[]) => any) | undefined;
-            "onSplide:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:resize"?: ((...args: any[]) => any) | undefined;
-            "onSplide:resized"?: ((...args: any[]) => any) | undefined;
-            "onSplide:drag"?: ((...args: any[]) => any) | undefined;
-            "onSplide:dragging"?: ((...args: any[]) => any) | undefined;
-            "onSplide:dragged"?: ((...args: any[]) => any) | undefined;
-            "onSplide:scroll"?: ((...args: any[]) => any) | undefined;
-            "onSplide:scrolled"?: ((...args: any[]) => any) | undefined;
-            "onSplide:overflow"?: ((...args: any[]) => any) | undefined;
-            "onSplide:destroy"?: ((...args: any[]) => any) | undefined;
-            "onSplide:arrows:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:arrows:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:pagination:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:pagination:updated"?: ((...args: any[]) => any) | undefined;
-            "onSplide:navigation:mounted"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:play"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:playing"?: ((...args: any[]) => any) | undefined;
-            "onSplide:autoplay:pause"?: ((...args: any[]) => any) | undefined;
-            "onSplide:lazyload:loaded"?: ((...args: any[]) => any) | undefined;
+            [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
         }>, {
             splide: import('vue').Ref<import('@splidejs/splide').Splide | undefined, import('@splidejs/splide').Splide | undefined>;
             root: import('vue').Ref<HTMLElement | undefined, HTMLElement | undefined>;
@@ -159,35 +103,7 @@ declare const __VLS_component: import('vue').DefineComponent<{}, {}, {}, {}, {},
             type: BooleanConstructor;
         };
     }>> & Readonly<{
-        "onSplide:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:ready"?: ((...args: any[]) => any) | undefined;
-        "onSplide:click"?: ((...args: any[]) => any) | undefined;
-        "onSplide:move"?: ((...args: any[]) => any) | undefined;
-        "onSplide:moved"?: ((...args: any[]) => any) | undefined;
-        "onSplide:active"?: ((...args: any[]) => any) | undefined;
-        "onSplide:inactive"?: ((...args: any[]) => any) | undefined;
-        "onSplide:visible"?: ((...args: any[]) => any) | undefined;
-        "onSplide:hidden"?: ((...args: any[]) => any) | undefined;
-        "onSplide:refresh"?: ((...args: any[]) => any) | undefined;
-        "onSplide:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:resize"?: ((...args: any[]) => any) | undefined;
-        "onSplide:resized"?: ((...args: any[]) => any) | undefined;
-        "onSplide:drag"?: ((...args: any[]) => any) | undefined;
-        "onSplide:dragging"?: ((...args: any[]) => any) | undefined;
-        "onSplide:dragged"?: ((...args: any[]) => any) | undefined;
-        "onSplide:scroll"?: ((...args: any[]) => any) | undefined;
-        "onSplide:scrolled"?: ((...args: any[]) => any) | undefined;
-        "onSplide:overflow"?: ((...args: any[]) => any) | undefined;
-        "onSplide:destroy"?: ((...args: any[]) => any) | undefined;
-        "onSplide:arrows:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:arrows:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:pagination:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:pagination:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:navigation:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:play"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:playing"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:pause"?: ((...args: any[]) => any) | undefined;
-        "onSplide:lazyload:loaded"?: ((...args: any[]) => any) | undefined;
+        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
     }>, {
         splide: import('vue').Ref<import('@splidejs/splide').Splide | undefined, import('@splidejs/splide').Splide | undefined>;
         root: import('vue').Ref<HTMLElement | undefined, HTMLElement | undefined>;
@@ -195,7 +111,7 @@ declare const __VLS_component: import('vue').DefineComponent<{}, {}, {}, {}, {},
         length: import('vue').ComputedRef<number>;
         go: (control: number | string) => void;
         sync: (target: import('@splidejs/splide').Splide) => void;
-    }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, ("splide:mounted" | "splide:ready" | "splide:click" | "splide:move" | "splide:moved" | "splide:active" | "splide:inactive" | "splide:visible" | "splide:hidden" | "splide:refresh" | "splide:updated" | "splide:resize" | "splide:resized" | "splide:drag" | "splide:dragging" | "splide:dragged" | "splide:scroll" | "splide:scrolled" | "splide:overflow" | "splide:destroy" | "splide:arrows:mounted" | "splide:arrows:updated" | "splide:pagination:mounted" | "splide:pagination:updated" | "splide:navigation:mounted" | "splide:autoplay:play" | "splide:autoplay:playing" | "splide:autoplay:pause" | "splide:lazyload:loaded")[], import('vue').PublicProps, {
+    }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, string[], import('vue').PublicProps, {
         tag: string;
         options: import('@splidejs/splide').Options;
         hasTrack: boolean;
@@ -224,35 +140,7 @@ declare const __VLS_component: import('vue').DefineComponent<{}, {}, {}, {}, {},
             type: BooleanConstructor;
         };
     }>> & Readonly<{
-        "onSplide:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:ready"?: ((...args: any[]) => any) | undefined;
-        "onSplide:click"?: ((...args: any[]) => any) | undefined;
-        "onSplide:move"?: ((...args: any[]) => any) | undefined;
-        "onSplide:moved"?: ((...args: any[]) => any) | undefined;
-        "onSplide:active"?: ((...args: any[]) => any) | undefined;
-        "onSplide:inactive"?: ((...args: any[]) => any) | undefined;
-        "onSplide:visible"?: ((...args: any[]) => any) | undefined;
-        "onSplide:hidden"?: ((...args: any[]) => any) | undefined;
-        "onSplide:refresh"?: ((...args: any[]) => any) | undefined;
-        "onSplide:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:resize"?: ((...args: any[]) => any) | undefined;
-        "onSplide:resized"?: ((...args: any[]) => any) | undefined;
-        "onSplide:drag"?: ((...args: any[]) => any) | undefined;
-        "onSplide:dragging"?: ((...args: any[]) => any) | undefined;
-        "onSplide:dragged"?: ((...args: any[]) => any) | undefined;
-        "onSplide:scroll"?: ((...args: any[]) => any) | undefined;
-        "onSplide:scrolled"?: ((...args: any[]) => any) | undefined;
-        "onSplide:overflow"?: ((...args: any[]) => any) | undefined;
-        "onSplide:destroy"?: ((...args: any[]) => any) | undefined;
-        "onSplide:arrows:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:arrows:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:pagination:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:pagination:updated"?: ((...args: any[]) => any) | undefined;
-        "onSplide:navigation:mounted"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:play"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:playing"?: ((...args: any[]) => any) | undefined;
-        "onSplide:autoplay:pause"?: ((...args: any[]) => any) | undefined;
-        "onSplide:lazyload:loaded"?: ((...args: any[]) => any) | undefined;
+        [x: `on${Capitalize<string>}`]: ((...args: any[]) => any) | undefined;
     }>, {
         splide: import('vue').Ref<import('@splidejs/splide').Splide | undefined, import('@splidejs/splide').Splide | undefined>;
         root: import('vue').Ref<HTMLElement | undefined, HTMLElement | undefined>;
