@@ -6,6 +6,12 @@
     <label class="m-label">
       {{ label }}
     </label>
+    <p
+      v-if="!!hint"
+      class="m-hint"
+    >
+      {{ hint }}
+    </p>
     <div
       class="m-input-wrapper"
       :class="selectType"
@@ -54,12 +60,6 @@
         </li>
       </ul>
     </div>
-    <p
-      v-if="!!hint"
-      class="m-hint"
-    >
-      {{ hint }}
-    </p>
   </div>
 </template>
 

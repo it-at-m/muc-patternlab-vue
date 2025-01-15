@@ -4,19 +4,19 @@
     :class="isErrorClass"
   >
     <label
+      v-if="label"
       for="search-input"
       class="m-label"
+      :class="isRequiredClass"
     >
       {{ label }}
-      <span
-        v-if="required"
-        aria-hidden="true"
-        class="mandatory"
-      >
-        *
-        <span class="visually-hidden">(erforderlich)</span>
-      </span>
     </label>
+    <p
+      class="m-hint"
+      id="text-input-hint"
+    >
+      {{ hint }}
+    </p>
     <div class="m-input-wrapper m-autocomplete">
       <div
         v-if="!!slots.prefix"
@@ -61,12 +61,6 @@
         <span class="visually-hidden">Suchen</span>
       </button>
     </div>
-    <p
-      class="m-hint"
-      id="text-input-hint"
-    >
-      {{ hint }}
-    </p>
     <form-error-message
       id="text-input-error"
       v-if="errorMsg"
@@ -169,6 +163,12 @@ const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
  * @returns {boolean} Returns true if the type is "search", otherwise false.
  */
 const isSearch = computed(() => type === "search");
+
+/**
+ * Computes a CSS class for optional fields.
+ * @returns {string} Returns "m-label--optional" if the field is optional, otherwise an empty string.
+ */
+const isRequiredClass = computed(() => (required ? "" : "m-label--optional"));
 
 /**
  * Computes the list of available options based on the current search value.
