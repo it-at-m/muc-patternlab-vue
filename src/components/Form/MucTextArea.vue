@@ -1,13 +1,13 @@
 <template>
   <div
     class="m-form-group"
-    :class="isErrorClass"
+    :class="{ 'has-error': errorMsg }"
   >
     <label
       v-if="label"
       for="textarea"
       class="m-label"
-      :class="isRequiredClass"
+      :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
     </label>
@@ -75,15 +75,4 @@ const {
   required?: boolean;
 }>();
 
-/**
- * Computes a CSS class based on the presence of an error message.
- * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
- */
-const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
-
-/**
- * Computes a CSS class for optional fields.
- * @returns {string} Returns "m-label--optional" if the field is optional, otherwise an empty string.
- */
-const isRequiredClass = computed(() => (required ? "" : "m-label--optional"));
 </script>
