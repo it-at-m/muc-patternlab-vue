@@ -1,22 +1,22 @@
 <template>
   <div
     class="m-form-group"
-    :class="isErrorClass"
+    :class="{ 'has-error': errorMsg }"
   >
     <label
+      v-if="label"
       for="search-input"
       class="m-label"
+      :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
-      <span
-        v-if="required"
-        aria-hidden="true"
-        class="mandatory"
-      >
-        *
-        <span class="visually-hidden">(erforderlich)</span>
-      </span>
     </label>
+    <p
+      class="m-hint"
+      id="text-input-hint"
+    >
+      {{ hint }}
+    </p>
     <div class="m-input-wrapper m-autocomplete">
       <div
         v-if="!!slots.prefix"
@@ -61,12 +61,6 @@
         <span class="visually-hidden">Suchen</span>
       </button>
     </div>
-    <p
-      class="m-hint"
-      id="text-input-hint"
-    >
-      {{ hint }}
-    </p>
     <form-error-message
       id="text-input-error"
       v-if="errorMsg"
@@ -157,12 +151,6 @@ const emits = defineEmits<{
    */
   (e: "suffixClick"): void;
 }>();
-
-/**
- * Computes a CSS class based on the presence of an error message.
- * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
- */
-const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
 
 /**
  * Computes whether the current type is "search".

@@ -1,19 +1,19 @@
 <template>
-  <div class="m-form-group has-error">
+  <div
+    class="m-form-group"
+    :class="{ 'has-error': errorMsg }"
+  >
     <label
+      v-if="label"
       for="textarea"
       class="m-label"
+      :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
-      <span
-        v-if="required"
-        aria-hidden="true"
-        class="mandatory"
-      >
-        *
-        <span class="visually-hidden">(erforderlich)</span>
-      </span>
     </label>
+    <p class="m-hint">
+      {{ hint }}
+    </p>
     <div class="m-input-wrapper">
       <textarea
         class="m-textarea"
@@ -23,9 +23,6 @@
         v-model="modelValue"
       />
     </div>
-    <p class="m-hint">
-      {{ hint }}
-    </p>
     <form-error-message v-if="errorMsg">
       {{ errorMsg }}
     </form-error-message>
@@ -40,7 +37,11 @@ import FormErrorMessage from "./FormErrorMessage.vue";
  */
 const modelValue = defineModel<string>({ default: "" });
 
-const { rows = 3, required = false } = defineProps<{
+const {
+  errorMsg,
+  rows = 3,
+  required = false,
+} = defineProps<{
   /**
    * Displays error message and highlights the input form with a red border.
    */
