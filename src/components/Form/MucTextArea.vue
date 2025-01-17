@@ -72,5 +72,4 @@ const {
    */
   required?: boolean;
 }>();
-
 </script>
