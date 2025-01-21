@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 /**
  * Input value from the checkbox component.
  */

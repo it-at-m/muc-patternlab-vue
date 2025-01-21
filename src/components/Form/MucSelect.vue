@@ -4,9 +4,9 @@
     ref="selectComponent"
   >
     <label
-        v-if="label"
-        :for="'select-' + id"
-        class="m-label"
+      v-if="label"
+      :for="'select-' + id"
+      class="m-label"
     >
       {{ label }}
     </label>

@@ -12,9 +12,9 @@
       {{ label }}
     </label>
     <p
-        v-if="hint"
-        :id="'textarea-hint-' + id"
-        class="m-hint"
+      v-if="hint"
+      :id="'textarea-hint-' + id"
+      class="m-hint"
     >
       {{ hint }}
     </p>
@@ -29,8 +29,8 @@
       />
     </div>
     <form-error-message
-        v-if="errorMsg"
-        tabindex="0"
+      v-if="errorMsg"
+      tabindex="0"
     >
       {{ errorMsg }}
     </form-error-message>

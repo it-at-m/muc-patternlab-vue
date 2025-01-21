@@ -19,8 +19,8 @@
     >
       {{ label }}
       <span
-          :id="'radio-hint-' + id"
-          class="m-hint"
+        :id="'radio-hint-' + id"
+        class="m-hint"
       >
         {{ hint }}
       </span>
