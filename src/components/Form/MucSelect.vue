@@ -3,12 +3,17 @@
     class="m-form-group"
     ref="selectComponent"
   >
-    <label class="m-label">
+    <label
+        v-if="label"
+        :for="'select-' + id"
+        class="m-label"
+    >
       {{ label }}
     </label>
     <p
-      v-if="!!hint"
+      v-if="hint"
       class="m-hint"
+      :id="'select-hint-' + id"
     >
       {{ hint }}
     </p>
@@ -17,8 +22,10 @@
       :class="selectType"
     >
       <input
+        :id="'select-' + id"
         type="text"
         class="m-input m-combobox m-combobox--single"
+        :aria-describedby="'select-hint-' + id"
         v-model="searchValue"
         @click="openItemList"
       />
@@ -111,6 +118,10 @@ const {
   noItemFoundMessage = "No items found.",
   itemTitle = "title",
 } = defineProps<{
+  /**
+   * id of select
+   */
+  id: string;
   /**
    * List of items to be available
    */

@@ -18,6 +18,7 @@ export default {
 
 export const Default = {
   args: {
+    id: "default",
     placeholder: "Write some very long text here",
   },
 };
@@ -25,6 +26,7 @@ export const Default = {
 export const Error = {
   args: {
     ...Default.args,
+    id: "error",
     errorMsg: "An error occured",
   },
 };
@@ -33,6 +35,7 @@ export const Required = {
   args: {
     label: "Required textarea",
     ...Default.args,
+    id: "required",
     required: true,
   },
 };
@@ -40,6 +43,7 @@ export const Required = {
 export const BigTextArea = {
   args: {
     ...Default.args,
+    id: "big-test-area",
     rows: 7,
     label: "Big textarea",
     hint: "Write a lot of text",

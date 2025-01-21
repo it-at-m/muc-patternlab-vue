@@ -5,25 +5,33 @@
   >
     <label
       v-if="label"
-      for="textarea"
+      :for="'textarea-' + id"
       class="m-label"
       :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
     </label>
-    <p class="m-hint">
+    <p
+        v-if="hint"
+        :id="'textarea-hint-' + id"
+        class="m-hint"
+    >
       {{ hint }}
     </p>
     <div class="m-input-wrapper">
       <textarea
+        :id="'textarea-' + id"
         class="m-textarea"
+        :aria-describedby="'textarea-hint-' + id"
         :rows="rows"
-        aria-describedby="textarea input"
         :placeholder="placeholder"
         v-model="modelValue"
       />
     </div>
-    <form-error-message v-if="errorMsg">
+    <form-error-message
+        v-if="errorMsg"
+        tabindex="0"
+    >
       {{ errorMsg }}
     </form-error-message>
   </div>
@@ -42,6 +50,10 @@ const {
   rows = 3,
   required = false,
 } = defineProps<{
+  /**
+   * id of textarea
+   */
+  id: string;
   /**
    * Displays error message and highlights the input form with a red border.
    */

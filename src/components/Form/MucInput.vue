@@ -5,15 +5,16 @@
   >
     <label
       v-if="label"
-      for="search-input"
+      :for="'input-' + id"
       class="m-label"
       :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
     </label>
     <p
+      v-if="hint"
       class="m-hint"
-      id="text-input-hint"
+      :id="'input-hint-' + id"
     >
       {{ hint }}
     </p>
@@ -27,10 +28,11 @@
         </span>
       </div>
       <input
+        :id="'input-' + id"
         class="m-input autocomplete-input"
         :type="type"
         v-model="modelValue"
-        :aria-describedby="type + '-input'"
+        :aria-describedby="'input-hint-' + id"
         :placeholder="placeholder"
         :required="required"
       />
@@ -64,6 +66,7 @@
     <form-error-message
       id="text-input-error"
       v-if="errorMsg"
+      tabindex="0"
     >
       {{ errorMsg }}
     </form-error-message>
@@ -96,6 +99,10 @@ const {
   type = "text",
   dataList = [] as string[],
 } = defineProps<{
+  /**
+   * id of input
+   */
+  id: string;
   /**
    * Displays error message and highlights the input form with a red border.
    */

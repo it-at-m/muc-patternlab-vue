@@ -18,6 +18,7 @@ export default {
 
 export const Default = {
   args: {
+    id: "default",
     modelValue: {
       id: "1",
       name: "Object 1",
@@ -54,6 +55,7 @@ export const Default = {
 export const MultiSelect = {
   args: {
     ...Default.args,
+    id: "multi-select",
     label: "Select multiple objects",
     multiple: true,
   },
@@ -61,6 +63,7 @@ export const MultiSelect = {
 
 export const StringSelect = {
   args: {
+    id: "string-select",
     modelValue: "String 1",
     items: ["String 1", "String 2", "String 3", "String 4"],
     label: "Select strings",
