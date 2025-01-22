@@ -22,7 +22,7 @@
       <textarea
         :id="'textarea-' + id"
         class="m-textarea"
-        :aria-describedby="'textarea-hint-' + id"
+        :aria-describedby="hint ? 'textarea-hint-' + id : undefined"
         :rows="rows"
         :placeholder="placeholder"
         v-model="modelValue"
@@ -31,6 +31,8 @@
     <form-error-message
       v-if="errorMsg"
       tabindex="0"
+      role="alert"
+      aria-live="polite"
     >
       {{ errorMsg }}
     </form-error-message>
@@ -51,7 +53,7 @@ const {
   required = false,
 } = defineProps<{
   /**
-   * id of textarea
+   * Unique identifier for the textarea. Required property used  to associate the textarea with its label and hint text for accessibility.
    */
   id: string;
   /**

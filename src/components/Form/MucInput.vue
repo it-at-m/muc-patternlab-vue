@@ -32,7 +32,7 @@
         class="m-input autocomplete-input"
         :type="type"
         v-model="modelValue"
-        :aria-describedby="'input-hint-' + id"
+        :aria-describedby="hint ? 'input-hint-' + id : undefined"
         :placeholder="placeholder"
         :required="required"
       />
@@ -67,6 +67,8 @@
       id="text-input-error"
       v-if="errorMsg"
       tabindex="0"
+      role="alert"
+      aria-live="polite"
     >
       {{ errorMsg }}
     </form-error-message>
@@ -100,7 +102,7 @@ const {
   dataList = [] as string[],
 } = defineProps<{
   /**
-   * id of input
+   *  Unique identifier for the input. Required property used to associate the input with its label and hint text for accessibility.
    */
   id: string;
   /**

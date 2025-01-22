@@ -7,7 +7,7 @@
       :id="'radio-' + id"
       class="m-radios__input"
       type="radio"
-      :aria-describedby="'radio-hint-' + id"
+      :aria-describedby="hint ? 'radio-hint-' + id : undefined"
       :checked="isChecked"
       :disabled="isDisabled"
       @click.stop="clicked"
@@ -35,7 +35,7 @@ import { RadioButtonGroupKey } from "./MucRadioButtonTypes";
 
 const { value, disabled = false } = defineProps<{
   /**
-   * id of radiobutton
+   *  Unique identifier for the radiobutton. Required property used to associate the radiobutton with its label and hint text for accessibility.
    */
   id: string;
   /**

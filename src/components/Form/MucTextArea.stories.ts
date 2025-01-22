@@ -43,7 +43,7 @@ export const Required = {
 export const BigTextArea = {
   args: {
     ...Default.args,
-    id: "big-test-area",
+    id: "big-text-area",
     rows: 7,
     label: "Big textarea",
     hint: "Write a lot of text",

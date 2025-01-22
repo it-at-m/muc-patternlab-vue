@@ -25,7 +25,7 @@
         :id="'select-' + id"
         type="text"
         class="m-input m-combobox m-combobox--single"
-        :aria-describedby="'select-hint-' + id"
+        :aria-describedby="hint ? 'select-hint-' + id : undefined"
         v-model="searchValue"
         @click="openItemList"
       />
@@ -119,7 +119,7 @@ const {
   itemTitle = "title",
 } = defineProps<{
   /**
-   * id of select
+   * Unique identifier for the select. Required property used to associate the select with its label and hint text for accessibility.
    */
   id: string;
   /**

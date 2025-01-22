@@ -28,7 +28,7 @@ const modelValue = defineModel<boolean>({ default: false });
 
 const { label } = defineProps<{
   /**
-   * id of checkbox
+   *  Unique identifier for the checkbox. Required property used to associate the checkbox with its label and hint text for accessibility.
    */
   id: string;
   /**
