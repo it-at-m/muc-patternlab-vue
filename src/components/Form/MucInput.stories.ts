@@ -20,6 +20,7 @@ export default {
 
 export const Default = {
   args: {
+    id: "default",
     placeholder: "Please type here",
   },
 };
@@ -27,6 +28,7 @@ export const Default = {
 export const HintAndLabel = {
   args: {
     ...Default.args,
+    id: "hint-and-label",
     hint: "This is a hint",
     label: "This is a label",
   },
@@ -35,6 +37,7 @@ export const HintAndLabel = {
 export const Password = {
   args: {
     ...Default.args,
+    id: "password",
     type: "password",
     modelValue: "password",
     hint: "The input text is 'password'",
@@ -44,6 +47,7 @@ export const Password = {
 export const Error = {
   args: {
     ...Default.args,
+    id: "error",
     errorMsg: "Oops, an error occurred",
     hint: "An error message triggers the error state",
   },
@@ -52,6 +56,7 @@ export const Error = {
 export const Prefix = {
   args: {
     ...Default.args,
+    id: "prefix",
     prefix: "Prefix",
   },
 };
@@ -59,6 +64,7 @@ export const Prefix = {
 export const SuffixIcon = {
   args: {
     ...Default.args,
+    id: "suffix-icon",
     suffixIcon: "search",
   },
 };
@@ -66,6 +72,7 @@ export const SuffixIcon = {
 export const Search = {
   args: {
     ...Default.args,
+    id: "search",
     type: "search",
     dataList: ["chocolate", "coconut", "vanilla", "mint"],
   },
@@ -73,18 +80,21 @@ export const Search = {
 
 export const Color = {
   args: {
+    id: "color",
     type: "color",
   },
 };
 
 export const Date = {
   args: {
+    id: "date",
     type: "date",
   },
 };
 
 export const Datetime_Local = {
   args: {
+    id: "datetime",
     type: "datetime-local",
   },
 };
