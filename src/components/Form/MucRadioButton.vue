@@ -4,18 +4,24 @@
     v-if="isInRadioButtonGroup"
   >
     <input
+      :id="'radio-' + id"
       class="m-radios__input"
       type="radio"
+      :aria-describedby="hint ? 'radio-hint-' + id : undefined"
       :checked="isChecked"
       :disabled="isDisabled"
       @click.stop="clicked"
     />
     <label
       class="m-label m-radios__label"
+      :for="'radio-' + id"
       @click="clicked"
     >
       {{ label }}
-      <span class="m-hint">
+      <span
+        :id="'radio-hint-' + id"
+        class="m-hint"
+      >
         {{ hint }}
       </span>
     </label>
@@ -28,6 +34,10 @@ import { computed, inject } from "vue";
 import { RadioButtonGroupKey } from "./MucRadioButtonTypes";
 
 const { value, disabled = false } = defineProps<{
+  /**
+   *  Unique identifier for the radiobutton. Required property used to associate the radiobutton with its label and hint text for accessibility.
+   */
+  id: string;
   /**
    * value for this radiobutton
    */

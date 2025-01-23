@@ -22,7 +22,7 @@ export const NotCollapsable = () => ({
   template: `
       <MucCheckboxGroup heading="Collapsable checkbox group ">
          <template #checkboxes>
-           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" />
+           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" :id="index"/>
          </template>
       </MucCheckboxGroup>
   `,
@@ -33,10 +33,10 @@ export const Collapsable = () => ({
   template: `
       <MucCheckboxGroup heading="Collapsable checkbox group ">
          <template #checkboxes>
-           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" />
+           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" :id="'not-collapsed-' + index" />
          </template>
          <template #collapsableCheckboxes>
-           <MucCheckbox v-for="index in 4" :key="index" :label="'collapsed-' + index" />
+           <MucCheckbox v-for="index in 4" :key="index" :label="'collapsed-' + index" :id="'collapsed-' + index" />
          </template>  
       </MucCheckboxGroup>
   `,
