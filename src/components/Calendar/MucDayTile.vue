@@ -2,12 +2,14 @@
   <div
     v-if="isCurrMonth || showAdjacentMonths"
     @click="clicked"
+    @keyup.enter="clicked"
     :class="{
       'disabled-tile': !mucCalData?.allowedDates(date),
       'off-month': !isCurrMonth,
       selected: isSelected,
       'selected-range': isInRange,
     }"
+    :tabindex="mucCalData?.allowedDates(date) ? '0' : '-1'"
   >
     {{ date.getDate() }}
   </div>

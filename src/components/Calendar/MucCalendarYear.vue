@@ -9,6 +9,8 @@
           new Date().getFullYear() === date.getFullYear(),
       }"
       @click="clickedYear(date)"
+      @keyup.enter="clickedYear(date)"
+      tabindex="0"
     >
       {{ yearDisplayment(date) }}
     </div>

@@ -4,18 +4,20 @@
       <div class="caption">
         <muc-button
           @click="clickedPrev"
+          :aria-label="ariaLabelPrev"
           variant="ghost"
           icon="chevron-left"
         />
         <muc-button
           class="header"
           variant="ghost"
-          @click="broaderView"
+          @click="disableViewChange ? null : broaderView()"
         >
           <h3>{{ computedCaption }}</h3>
         </muc-button>
         <muc-button
           @click="clickedNext"
+          :aria-label="ariaLabelNext"
           variant="ghost"
           icon="chevron-right"
         />
@@ -86,6 +88,7 @@ const {
   showAdjacentMonths = false,
   variant = "single",
   disabled = false,
+  disableViewChange = false,
   noAnimation = false,
   allowedDates = () => true,
 } = defineProps<{
@@ -108,6 +111,11 @@ const {
    * Disable the selection of dates by the user. Defaults to false
    */
   disabled?: boolean;
+
+  /**
+   * Disables the change of the calendar view. Only show month view. Defaults to false
+   */
+  disableViewChange?: boolean;
 
   /**
    * Disables the animation
@@ -211,6 +219,41 @@ const clickedNext = () => {
       );
   }
 };
+
+/**
+ * Aria label on previous button - changes depending on the current view.
+ */
+const ariaLabelPrev = computed(() => {
+  switch (view.value) {
+    case "day":
+      return "Vorheriger Monat"
+    case "month":
+      return "Vorheriges Jahr"
+    case "year": {
+      return "Vorherige Jahre"
+    }
+    default:
+      return "";
+  }
+});
+
+
+/**
+ * Aria label on next button - changes depending on the current view.
+ */
+const ariaLabelNext = computed(() => {
+  switch (view.value) {
+    case "day":
+      return "Nächster Monat"
+    case "month":
+      return "Nächstes Jahr"
+    case "year":
+      return "Weitere Jahre"
+    default:
+      return "";
+  }
+});
+
 
 /**
  * If a different type as single was previously chosen - the datatype will be converted to a single date.

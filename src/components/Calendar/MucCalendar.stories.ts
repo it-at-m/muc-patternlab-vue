@@ -58,3 +58,11 @@ export const DisabledPreSelectedViewMonth = {
     viewMonth: new Date(1970, 0, 1),
   },
 };
+
+export const DisableViewChange = {
+  args: {
+    variant: "single",
+    showAdjacentMonths: true,
+    disableViewChange: true,
+  },
+};

@@ -21,7 +21,9 @@
   transition: border-color 0.3s ease-in;
 }
 
-.muc-calendar-item:hover {
+.muc-calendar-item:hover,
+.muc-calendar-item:focus {
+  outline: none;
   border: 1px solid var(--color-neutrals-blue);
   transition: border-color 0.1s ease-out;
   cursor: pointer;

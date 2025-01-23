@@ -10,6 +10,8 @@
       }"
       class="muc-calendar-item"
       @click="clickedMonth(date)"
+      @keyup.enter="clickedMonth(date)"
+      tabindex="0"
     >
       <p>{{ monthDisplayment(date) }}</p>
     </div>
