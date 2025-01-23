@@ -20,6 +20,7 @@ export default {
 
 export const Default = {
   args: {
+    id: "default",
     label: "This is a checkbox - click me",
   },
 };

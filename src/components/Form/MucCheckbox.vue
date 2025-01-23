@@ -4,13 +4,17 @@
     @click="clickedCheckbox"
   >
     <input
+      :id="'checkbox-' + id"
       class="m-checkboxes__input"
       name="checkbox"
       type="checkbox"
       :checked="modelValue"
       @click.stop="clickedCheckbox"
     />
-    <label class="m-label m-checkboxes__label">
+    <label
+      class="m-label m-checkboxes__label"
+      :for="'checkbox-' + id"
+    >
       {{ label }}
     </label>
   </div>
@@ -22,7 +26,11 @@
  */
 const modelValue = defineModel<boolean>({ default: false });
 
-defineProps<{
+const { label } = defineProps<{
+  /**
+   *  Unique identifier for the checkbox. Required property used to associate the checkbox with its label and hint text for accessibility.
+   */
+  id: string;
   /**
    * Label is displayed to the right of the checkbox as information for the user.
    */
