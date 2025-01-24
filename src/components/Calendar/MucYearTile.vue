@@ -1,13 +1,13 @@
 <template>
   <div
-      @click="clicked"
-      @keyup.enter="clicked"
-      :class="{
+    @click="clicked"
+    @keyup.enter="clicked"
+    :class="{
       'disabled-tile': isDisabled,
       'muc-calendar-current-item':
-          new Date().getFullYear() === date.getFullYear(),
+        new Date().getFullYear() === date.getFullYear(),
     }"
-      :tabindex="!isDisabled ? '0' : '-1'"
+    :tabindex="!isDisabled ? '0' : '-1'"
   >
     <p>{{ yearDisplayment(date) }}</p>
   </div>
@@ -15,11 +15,8 @@
 
 <script setup lang="ts">
 import { computed, inject } from "vue";
-import { LOCALES } from "./MucCalendarType";
 
-import {
-  MucCalendarKey,
-} from "./MucCalendarType";
+import { LOCALES, MucCalendarKey } from "./MucCalendarType";
 
 const { date } = defineProps<{
   /**
@@ -50,24 +47,21 @@ const YEAR_NOTATION = "numeric";
  * @param date to be displayed
  */
 const yearDisplayment = (date: Date) =>
-    date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION });
+  date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION });
 
 /**
  * Determines if this year-tile is disabled
  */
 const isDisabled = computed(() => {
-
   const yearOfDate = date.getFullYear();
 
-  const isBeforeMin = mucCalData?.min && (
-      yearOfDate < mucCalData.min.getFullYear()
-  );
+  const isBeforeMin =
+    mucCalData?.min && yearOfDate < mucCalData.min.getFullYear();
 
-  const isAfterMax = mucCalData?.max && (
-      yearOfDate > mucCalData.max.getFullYear()
-  );
+  const isAfterMax =
+    mucCalData?.max && yearOfDate > mucCalData.max.getFullYear();
 
-  return isBeforeMin || isAfterMax
+  return isBeforeMin || isAfterMax;
 });
 
 /**

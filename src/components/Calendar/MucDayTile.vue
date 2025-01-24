@@ -100,16 +100,18 @@ const isInRange = computed(() => {
  * Determines if this day-tile is disabled
  */
 const isDisabled = computed(() => {
+  const isAllowed = mucCalData?.allowedDates(date)
+    ? mucCalData.allowedDates(date)
+    : false;
 
-  const isAllowed = mucCalData?.allowedDates(date) ? mucCalData.allowedDates(date) : false;
+  const isEarlierThanMin =
+    mucCalData?.min !== undefined && date.getTime() < mucCalData.min.getTime();
 
-  const isEarlierThanMin = mucCalData?.min !== undefined && date.getTime() < mucCalData.min.getTime();
-
-  const isLaterThanMax = mucCalData?.max !== undefined && date.getTime() > mucCalData.max.getTime();
+  const isLaterThanMax =
+    mucCalData?.max !== undefined && date.getTime() > mucCalData.max.getTime();
 
   return !isAllowed || isEarlierThanMin || isLaterThanMax;
 });
-
 
 /**
  * Is this day-tile in the current month or in the adjacent months

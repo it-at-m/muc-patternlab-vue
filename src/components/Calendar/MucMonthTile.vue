@@ -16,11 +16,8 @@
 
 <script setup lang="ts">
 import { computed, inject } from "vue";
-import { LOCALES } from "./MucCalendarType";
 
-import {
-  MucCalendarKey,
-} from "./MucCalendarType";
+import { LOCALES, MucCalendarKey } from "./MucCalendarType";
 
 const { date } = defineProps<{
   /**
@@ -51,27 +48,28 @@ const MONTH_NOTATION = "short";
  * @param date to be displayed
  */
 const monthDisplayment = (date: Date) =>
-    date.toLocaleDateString(LOCALES, { month: MONTH_NOTATION });
+  date.toLocaleDateString(LOCALES, { month: MONTH_NOTATION });
 
 /**
  * Determines if this month-tile is disabled
  */
 const isDisabled = computed(() => {
-
   const yearOfDate = date.getFullYear();
   const monthOfDate = date.getMonth();
 
-  const isBeforeMin = mucCalData?.min && (
-      yearOfDate < mucCalData.min.getFullYear() ||
-      (yearOfDate === mucCalData.min.getFullYear() && monthOfDate < mucCalData.min.getMonth())
-  );
+  const isBeforeMin =
+    mucCalData?.min &&
+    (yearOfDate < mucCalData.min.getFullYear() ||
+      (yearOfDate === mucCalData.min.getFullYear() &&
+        monthOfDate < mucCalData.min.getMonth()));
 
-  const isAfterMax = mucCalData?.max && (
-      yearOfDate > mucCalData.max.getFullYear() ||
-      (yearOfDate === mucCalData.max.getFullYear() && monthOfDate > mucCalData.max.getMonth())
-  );
+  const isAfterMax =
+    mucCalData?.max &&
+    (yearOfDate > mucCalData.max.getFullYear() ||
+      (yearOfDate === mucCalData.max.getFullYear() &&
+        monthOfDate > mucCalData.max.getMonth()));
 
-  return isBeforeMin || isAfterMax
+  return isBeforeMin || isAfterMax;
 });
 
 /**
