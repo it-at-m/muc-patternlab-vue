@@ -4,12 +4,12 @@
     @click="clicked"
     @keyup.enter="clicked"
     :class="{
-      'disabled-tile': !mucCalData?.allowedDates(date),
+      'disabled-tile': isDisabled,
       'off-month': !isCurrMonth,
       selected: isSelected,
       'selected-range': isInRange,
     }"
-    :tabindex="mucCalData?.allowedDates(date) ? '0' : '-1'"
+    :tabindex="!isDisabled ? '0' : '-1'"
   >
     {{ date.getDate() }}
   </div>
@@ -97,6 +97,21 @@ const isInRange = computed(() => {
 });
 
 /**
+ * Determines if this day-tile is disabled
+ */
+const isDisabled = computed(() => {
+
+  const isAllowed = mucCalData?.allowedDates(date) ? mucCalData.allowedDates(date) : false;
+
+  const isEarlierThanMin = mucCalData?.min !== undefined && date.getTime() < mucCalData.min.getTime();
+
+  const isLaterThanMax = mucCalData?.max !== undefined && date.getTime() > mucCalData.max.getTime();
+
+  return !isAllowed || isEarlierThanMin || isLaterThanMax;
+});
+
+
+/**
  * Is this day-tile in the current month or in the adjacent months
  */
 const isCurrMonth = computed(
@@ -107,7 +122,7 @@ const isCurrMonth = computed(
  * Action upon selecting a day - triggers emit
  */
 const clicked = () => {
-  if (mucCalData?.allowedDates(date)) {
+  if (!isDisabled.value) {
     emit("click", date);
   }
 };
@@ -119,12 +134,6 @@ const clicked = () => {
 .selected {
   background: var(--color-brand-main-blue);
   color: white;
-}
-
-.disabled-tile {
-  filter: grayscale(80%);
-  color: lightgray;
-  cursor: default !important;
 }
 
 .selected-range {

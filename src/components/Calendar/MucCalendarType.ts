@@ -30,6 +30,8 @@ type MucCalendarSelected = null | Date | Date[] | MucDateRange;
  */
 type MucCalendarInjection = {
   viewDate: Readonly<Ref<Date>>;
+  min: Readonly<Date | undefined>;
+  max: Readonly<Date | undefined>;
   selectedDate: Readonly<Ref<MucCalendarSelected>>;
   variant: Readonly<Ref<CalendarTypes>>;
   showAdjacentMonths: Readonly<Ref<boolean>>;

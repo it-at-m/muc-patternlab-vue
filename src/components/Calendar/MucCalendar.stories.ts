@@ -66,3 +66,12 @@ export const DisableViewChange = {
     disableViewChange: true,
   },
 };
+
+export const MinAndMax = {
+  args: {
+    variant: "single",
+    viewMonth: new Date(2025, 0, 1),
+    min: new Date(2025, 0, 5),
+    max: new Date(2027, 2, 12),
+  },
+};

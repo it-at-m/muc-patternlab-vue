@@ -5,6 +5,8 @@
         <muc-button
           @click="clickedPrev"
           :aria-label="ariaLabelPrev"
+          :disabled="disablePrev"
+          class="button-disabled"
           variant="ghost"
           icon="chevron-left"
         />
@@ -18,6 +20,8 @@
         <muc-button
           @click="clickedNext"
           :aria-label="ariaLabelNext"
+          :disabled="disableNext"
+          class="button-disabled"
           variant="ghost"
           icon="chevron-right"
         />
@@ -85,6 +89,8 @@ import MucCalendarYear from "./MucCalendarYear.vue";
 
 const {
   viewMonth,
+  min,
+  max,
   showAdjacentMonths = false,
   variant = "single",
   disabled = false,
@@ -96,6 +102,16 @@ const {
    * Initial date to be displayed on the selection screen
    */
   viewMonth?: Date;
+
+  /**
+   * Earliest selectable date
+   */
+  min?: Date;
+
+  /**
+   * Latest selectable date
+   */
+  max?: Date;
 
   /**
    * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
@@ -254,6 +270,48 @@ const ariaLabelNext = computed(() => {
   }
 });
 
+/**
+ * Determines if this previous button is disabled.
+ */
+const disablePrev = computed(() => {
+  if (min) {
+    switch (view.value) {
+      case "day":
+        return viewDate.value.getFullYear() < min.getFullYear() ||
+            (viewDate.value.getFullYear() === min.getFullYear() && viewDate.value.getMonth() <= min.getMonth())
+      case "month":
+        return viewDate.value.getFullYear() <= min.getFullYear()
+      case "year": {
+        return (viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10)) <= min.getFullYear()
+      }
+      default:
+        return false;
+    }
+  }
+  return false;
+});
+
+
+/**
+ * Determines if this next button is disabled.
+ */
+const disableNext = computed(() => {
+  if (max) {
+    switch (view.value) {
+      case "day":
+        return viewDate.value.getFullYear() > max.getFullYear() ||
+            (viewDate.value.getFullYear() === max.getFullYear() && viewDate.value.getMonth() >= max.getMonth())
+      case "month":
+        return viewDate.value.getFullYear() >= max.getFullYear()
+      case "year":
+        return (viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10) + 10) >= max.getFullYear()
+      default:
+        return false;
+    }
+  }
+  return false;
+});
+
 
 /**
  * If a different type as single was previously chosen - the datatype will be converted to a single date.
@@ -367,6 +425,8 @@ const detailedView = () => {
  */
 provide(MucCalendarKey, {
   viewDate,
+  min,
+  max,
   selectedDate,
   variant: readonly(toRef(() => variant)),
   showAdjacentMonths: readonly(toRef(() => showAdjacentMonths)),
@@ -478,5 +538,10 @@ provide(MucCalendarKey, {
   height: var(--cal-container-view-height);
   overflow: hidden;
   position: relative;
+}
+
+.button-disabled {
+  background-color: var(--color-neutrals-blue-xlight);
+  border-color: var(--color-neutrals-blue-xlight);
 }
 </style>

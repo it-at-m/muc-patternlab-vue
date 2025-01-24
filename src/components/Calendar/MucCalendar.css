@@ -37,3 +37,9 @@
 .muc-calendar-current-item {
   background: var(--color-neutrals-blue);
 }
+
+.disabled-tile {
+  filter: grayscale(80%);
+  color: lightgray;
+  cursor: default !important;
+}
