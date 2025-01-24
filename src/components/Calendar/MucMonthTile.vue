@@ -9,6 +9,8 @@
         new Date().getFullYear() === date.getFullYear(),
     }"
     :tabindex="!isDisabled ? '0' : '-1'"
+    role="button"
+    :aria-label="`${date.toLocaleDateString(LOCALES, { month: 'long' })} auswählen`"
   >
     <p>{{ monthDisplayment(date) }}</p>
   </div>

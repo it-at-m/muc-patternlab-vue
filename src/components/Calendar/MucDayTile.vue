@@ -10,6 +10,8 @@
       'selected-range': isInRange,
     }"
     :tabindex="!isDisabled ? '0' : '-1'"
+    role="button"
+    :aria-label="`${date.getDate()} auswählen`"
   >
     {{ date.getDate() }}
   </div>

@@ -8,6 +8,8 @@
         new Date().getFullYear() === date.getFullYear(),
     }"
     :tabindex="!isDisabled ? '0' : '-1'"
+    role="button"
+    :aria-label="`${date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION })} auswählen`"
   >
     <p>{{ yearDisplayment(date) }}</p>
   </div>
