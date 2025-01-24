@@ -1,11 +1,11 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
     <muc-year-tile
-        v-for="(date, index) in computedYears"
-        :key="index"
-        class="muc-calendar-item"
-        :date="date"
-        @click="clickedYear(date)"
+      v-for="(date, index) in computedYears"
+      :key="index"
+      class="muc-calendar-item"
+      :date="date"
+      @click="clickedYear(date)"
     />
   </div>
 </template>

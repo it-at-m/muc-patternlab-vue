@@ -242,17 +242,16 @@ const clickedNext = () => {
 const ariaLabelPrev = computed(() => {
   switch (view.value) {
     case "day":
-      return "Vorheriger Monat"
+      return "Vorheriger Monat";
     case "month":
-      return "Vorheriges Jahr"
+      return "Vorheriges Jahr";
     case "year": {
-      return "Vorherige Jahre"
+      return "Vorherige Jahre";
     }
     default:
       return "";
   }
 });
-
 
 /**
  * Aria label on next button - changes depending on the current view.
@@ -260,11 +259,11 @@ const ariaLabelPrev = computed(() => {
 const ariaLabelNext = computed(() => {
   switch (view.value) {
     case "day":
-      return "Nächster Monat"
+      return "Nächster Monat";
     case "month":
-      return "Nächstes Jahr"
+      return "Nächstes Jahr";
     case "year":
-      return "Weitere Jahre"
+      return "Weitere Jahre";
     default:
       return "";
   }
@@ -277,12 +276,18 @@ const disablePrev = computed(() => {
   if (min) {
     switch (view.value) {
       case "day":
-        return viewDate.value.getFullYear() < min.getFullYear() ||
-            (viewDate.value.getFullYear() === min.getFullYear() && viewDate.value.getMonth() <= min.getMonth())
+        return (
+          viewDate.value.getFullYear() < min.getFullYear() ||
+          (viewDate.value.getFullYear() === min.getFullYear() &&
+            viewDate.value.getMonth() <= min.getMonth())
+        );
       case "month":
-        return viewDate.value.getFullYear() <= min.getFullYear()
+        return viewDate.value.getFullYear() <= min.getFullYear();
       case "year": {
-        return (viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10)) <= min.getFullYear()
+        return (
+          viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10) <=
+          min.getFullYear()
+        );
       }
       default:
         return false;
@@ -291,7 +296,6 @@ const disablePrev = computed(() => {
   return false;
 });
 
-
 /**
  * Determines if this next button is disabled.
  */
@@ -299,19 +303,26 @@ const disableNext = computed(() => {
   if (max) {
     switch (view.value) {
       case "day":
-        return viewDate.value.getFullYear() > max.getFullYear() ||
-            (viewDate.value.getFullYear() === max.getFullYear() && viewDate.value.getMonth() >= max.getMonth())
+        return (
+          viewDate.value.getFullYear() > max.getFullYear() ||
+          (viewDate.value.getFullYear() === max.getFullYear() &&
+            viewDate.value.getMonth() >= max.getMonth())
+        );
       case "month":
-        return viewDate.value.getFullYear() >= max.getFullYear()
+        return viewDate.value.getFullYear() >= max.getFullYear();
       case "year":
-        return (viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10) + 10) >= max.getFullYear()
+        return (
+          viewDate.value.getFullYear() -
+            (viewDate.value.getFullYear() % 10) +
+            10 >=
+          max.getFullYear()
+        );
       default:
         return false;
     }
   }
   return false;
 });
-
 
 /**
  * If a different type as single was previously chosen - the datatype will be converted to a single date.

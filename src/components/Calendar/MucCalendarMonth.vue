@@ -1,11 +1,11 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
     <muc-month-tile
-        v-for="(date, index) in computedMonths"
-        :key="index"
-        class="muc-calendar-item"
-        :date="date"
-        @click="clickedMonth"
+      v-for="(date, index) in computedMonths"
+      :key="index"
+      class="muc-calendar-item"
+      :date="date"
+      @click="clickedMonth"
     />
   </div>
 </template>
