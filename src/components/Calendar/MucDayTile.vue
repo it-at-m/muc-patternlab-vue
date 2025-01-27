@@ -107,10 +107,12 @@ const isDisabled = computed(() => {
     : false;
 
   const isEarlierThanMin =
-    mucCalData?.minDate.value !== undefined && date.getTime() < mucCalData.minDate.value.getTime();
+    mucCalData?.minDate.value !== undefined &&
+    date.getTime() < mucCalData.minDate.value.getTime();
 
   const isLaterThanMax =
-    mucCalData?.maxDate.value !== undefined && date.getTime() > mucCalData.maxDate.value.getTime();
+    mucCalData?.maxDate.value !== undefined &&
+    date.getTime() > mucCalData.maxDate.value.getTime();
 
   return !isAllowed || isEarlierThanMin || isLaterThanMax;
 });

@@ -150,7 +150,7 @@ const {
  */
 const viewMonthDate = computed(() => {
   if (!viewMonth) return undefined;
-  return viewMonth instanceof Date ? viewMonth : new Date (viewMonth);
+  return viewMonth instanceof Date ? viewMonth : new Date(viewMonth);
 });
 
 /**
@@ -159,7 +159,7 @@ const viewMonthDate = computed(() => {
  */
 const minDate = computed(() => {
   if (!min) return undefined;
-  return min instanceof Date ? min : new Date (min);
+  return min instanceof Date ? min : new Date(min);
 });
 
 /**
@@ -168,16 +168,15 @@ const minDate = computed(() => {
  */
 const maxDate = computed(() => {
   if (!max) return undefined;
-  return max instanceof Date ? max : new Date (max);
+  return max instanceof Date ? max : new Date(max);
 });
-
-
 
 /**
  * Determines the current shown month and year
  */
 const viewDate = ref<Date>(
-  viewMonthDate.value || new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  viewMonthDate.value ||
+    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
 /**
@@ -388,8 +387,12 @@ const updateMVMultiple = (newValue: Date) => {
     ].filter((date) => date !== null);
   }
 
-  selectedDate.value = selectedDate.value.some(date => date.getTime() === newValue.getTime())
-    ? selectedDate.value.filter((val: Date) => val.getTime() !== newValue.getTime())
+  selectedDate.value = selectedDate.value.some(
+    (date) => date.getTime() === newValue.getTime()
+  )
+    ? selectedDate.value.filter(
+        (val: Date) => val.getTime() !== newValue.getTime()
+      )
     : [...selectedDate.value, newValue];
 };
 
