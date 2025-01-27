@@ -1,4 +1,4 @@
-import {ComputedRef, InjectionKey, Ref} from "vue";
+import { ComputedRef, InjectionKey, Ref } from "vue";
 
 /**
  * Different possible types of date selection for the calendar
