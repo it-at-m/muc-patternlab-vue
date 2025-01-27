@@ -145,10 +145,39 @@ const {
 }>();
 
 /**
+ * Returns viewMonth as date
+ * @returns {Date} Returns viewMonth as date
+ */
+const viewMonthDate = computed(() => {
+  if (!viewMonth) return undefined;
+  return viewMonth instanceof Date ? viewMonth : new Date (viewMonth);
+});
+
+/**
+ * Returns min as date
+ * @returns {Date} Returns min as date
+ */
+const minDate = computed(() => {
+  if (!min) return undefined;
+  return min instanceof Date ? min : new Date (min);
+});
+
+/**
+ * Returns max as date
+ * @returns {Date} Returns max as date
+ */
+const maxDate = computed(() => {
+  if (!max) return undefined;
+  return max instanceof Date ? max : new Date (max);
+});
+
+
+
+/**
  * Determines the current shown month and year
  */
 const viewDate = ref<Date>(
-  viewMonth || new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  viewMonthDate.value || new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
 /**
@@ -273,20 +302,20 @@ const ariaLabelNext = computed(() => {
  * Determines if this previous button is disabled.
  */
 const disablePrev = computed(() => {
-  if (min) {
+  if (minDate.value) {
     switch (view.value) {
       case "day":
         return (
-          viewDate.value.getFullYear() < min.getFullYear() ||
-          (viewDate.value.getFullYear() === min.getFullYear() &&
-            viewDate.value.getMonth() <= min.getMonth())
+          viewDate.value.getFullYear() < minDate.value.getFullYear() ||
+          (viewDate.value.getFullYear() === minDate.value.getFullYear() &&
+            viewDate.value.getMonth() <= minDate.value.getMonth())
         );
       case "month":
-        return viewDate.value.getFullYear() <= min.getFullYear();
+        return viewDate.value.getFullYear() <= minDate.value.getFullYear();
       case "year": {
         return (
           viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10) <=
-          min.getFullYear()
+          minDate.value.getFullYear()
         );
       }
       default:
@@ -300,22 +329,22 @@ const disablePrev = computed(() => {
  * Determines if this next button is disabled.
  */
 const disableNext = computed(() => {
-  if (max) {
+  if (maxDate.value) {
     switch (view.value) {
       case "day":
         return (
-          viewDate.value.getFullYear() > max.getFullYear() ||
-          (viewDate.value.getFullYear() === max.getFullYear() &&
-            viewDate.value.getMonth() >= max.getMonth())
+          viewDate.value.getFullYear() > maxDate.value.getFullYear() ||
+          (viewDate.value.getFullYear() === maxDate.value.getFullYear() &&
+            viewDate.value.getMonth() >= maxDate.value.getMonth())
         );
       case "month":
-        return viewDate.value.getFullYear() >= max.getFullYear();
+        return viewDate.value.getFullYear() >= maxDate.value.getFullYear();
       case "year":
         return (
           viewDate.value.getFullYear() -
             (viewDate.value.getFullYear() % 10) +
             10 >=
-          max.getFullYear()
+          maxDate.value.getFullYear()
         );
       default:
         return false;
@@ -359,8 +388,8 @@ const updateMVMultiple = (newValue: Date) => {
     ].filter((date) => date !== null);
   }
 
-  selectedDate.value = selectedDate.value.includes(newValue)
-    ? selectedDate.value.filter((val: Date) => val !== newValue)
+  selectedDate.value = selectedDate.value.some(date => date.getTime() === newValue.getTime())
+    ? selectedDate.value.filter((val: Date) => val.getTime() !== newValue.getTime())
     : [...selectedDate.value, newValue];
 };
 
@@ -436,8 +465,8 @@ const detailedView = () => {
  */
 provide(MucCalendarKey, {
   viewDate,
-  min,
-  max,
+  minDate,
+  maxDate,
   selectedDate,
   variant: readonly(toRef(() => variant)),
   showAdjacentMonths: readonly(toRef(() => showAdjacentMonths)),

@@ -58,10 +58,10 @@ const isDisabled = computed(() => {
   const yearOfDate = date.getFullYear();
 
   const isBeforeMin =
-    mucCalData?.min && yearOfDate < mucCalData.min.getFullYear();
+    mucCalData?.minDate.value && yearOfDate < mucCalData.minDate.value.getFullYear();
 
   const isAfterMax =
-    mucCalData?.max && yearOfDate > mucCalData.max.getFullYear();
+    mucCalData?.maxDate.value && yearOfDate > mucCalData.maxDate.value.getFullYear();
 
   return isBeforeMin || isAfterMax;
 });

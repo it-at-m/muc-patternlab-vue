@@ -60,16 +60,16 @@ const isDisabled = computed(() => {
   const monthOfDate = date.getMonth();
 
   const isBeforeMin =
-    mucCalData?.min &&
-    (yearOfDate < mucCalData.min.getFullYear() ||
-      (yearOfDate === mucCalData.min.getFullYear() &&
-        monthOfDate < mucCalData.min.getMonth()));
+    mucCalData?.minDate.value &&
+    (yearOfDate < mucCalData.minDate.value.getFullYear() ||
+      (yearOfDate === mucCalData.minDate.value.getFullYear() &&
+        monthOfDate < mucCalData.minDate.value.getMonth()));
 
   const isAfterMax =
-    mucCalData?.max &&
-    (yearOfDate > mucCalData.max.getFullYear() ||
-      (yearOfDate === mucCalData.max.getFullYear() &&
-        monthOfDate > mucCalData.max.getMonth()));
+    mucCalData?.maxDate.value &&
+    (yearOfDate > mucCalData.maxDate.value.getFullYear() ||
+      (yearOfDate === mucCalData.maxDate.value.getFullYear() &&
+        monthOfDate > mucCalData.maxDate.value.getMonth()));
 
   return isBeforeMin || isAfterMax;
 });

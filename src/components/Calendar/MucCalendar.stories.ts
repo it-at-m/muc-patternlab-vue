@@ -15,6 +15,17 @@ export default {
 };
 
 export const Single = {
+  argTypes: {
+    viewMonth: {
+      control: "date",
+    },
+    min: {
+      control: "date",
+    },
+    max: {
+      control: "date",
+    },
+  },
   args: {
     variant: "single",
     showAdjacentMonths: true,
@@ -22,6 +33,7 @@ export const Single = {
 };
 
 export const MultipleWithSelectedViewMonth = {
+  argTypes: Single.argTypes,
   args: {
     variant: "multiple",
     viewMonth: new Date(2023, 0, 1),
@@ -29,12 +41,14 @@ export const MultipleWithSelectedViewMonth = {
 };
 
 export const Range = {
+  argTypes: Single.argTypes,
   args: {
     variant: "range",
     showAdjacentMonths: true,
   },
 };
 export const DisabledWithPreSelectedDate = {
+  argTypes: Single.argTypes,
   args: {
     disabled: true,
     showAdjacentMonths: true,
@@ -43,6 +57,7 @@ export const DisabledWithPreSelectedDate = {
 };
 
 export const AllowedDatesWithNoAnimation = {
+  argTypes: Single.argTypes,
   args: {
     noAnimation: true,
     allowedDates: (date: Date) => {
@@ -52,6 +67,7 @@ export const AllowedDatesWithNoAnimation = {
 };
 
 export const DisabledPreSelectedViewMonth = {
+  argTypes: Single.argTypes,
   args: {
     disabled: true,
     showAdjacentMonths: true,
@@ -60,6 +76,7 @@ export const DisabledPreSelectedViewMonth = {
 };
 
 export const DisableViewChange = {
+  argTypes: Single.argTypes,
   args: {
     variant: "single",
     showAdjacentMonths: true,
@@ -68,6 +85,7 @@ export const DisableViewChange = {
 };
 
 export const MinAndMax = {
+  argTypes: Single.argTypes,
   args: {
     variant: "single",
     viewMonth: new Date(2025, 0, 1),
