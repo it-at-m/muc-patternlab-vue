@@ -197,6 +197,11 @@ const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
 });
 
 /**
+ * Modulo for calculating the start and end of a decade in which a year is located
+ */
+const DECADE_MODULO = 10;
+
+/**
  * Caption above the user selection view - changes depending on the current view.
  */
 const computedCaption = computed(() => {
@@ -313,7 +318,7 @@ const disablePrev = computed(() => {
         return viewDate.value.getFullYear() <= minDate.value.getFullYear();
       case "year": {
         return (
-          viewDate.value.getFullYear() - (viewDate.value.getFullYear() % 10) <=
+          viewDate.value.getFullYear() - (viewDate.value.getFullYear() % DECADE_MODULO) <=
           minDate.value.getFullYear()
         );
       }
@@ -341,7 +346,7 @@ const disableNext = computed(() => {
       case "year":
         return (
           viewDate.value.getFullYear() -
-            (viewDate.value.getFullYear() % 10) +
+            (viewDate.value.getFullYear() % DECADE_MODULO) +
             10 >=
           maxDate.value.getFullYear()
         );
