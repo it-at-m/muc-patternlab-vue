@@ -318,7 +318,8 @@ const disablePrev = computed(() => {
         return viewDate.value.getFullYear() <= minDate.value.getFullYear();
       case "year": {
         return (
-          viewDate.value.getFullYear() - (viewDate.value.getFullYear() % DECADE_MODULO) <=
+          viewDate.value.getFullYear() -
+            (viewDate.value.getFullYear() % DECADE_MODULO) <=
           minDate.value.getFullYear()
         );
       }
