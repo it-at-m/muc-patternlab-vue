@@ -4,18 +4,24 @@
       <div class="caption">
         <muc-button
           @click="clickedPrev"
+          :aria-label="ariaLabelPrev"
+          :disabled="disablePrev"
+          class="button-disabled"
           variant="ghost"
           icon="chevron-left"
         />
         <muc-button
           class="header"
           variant="ghost"
-          @click="broaderView"
+          @click="disableViewChange ? null : broaderView()"
         >
           <h3>{{ computedCaption }}</h3>
         </muc-button>
         <muc-button
           @click="clickedNext"
+          :aria-label="ariaLabelNext"
+          :disabled="disableNext"
+          class="button-disabled"
           variant="ghost"
           icon="chevron-right"
         />
@@ -83,9 +89,12 @@ import MucCalendarYear from "./MucCalendarYear.vue";
 
 const {
   viewMonth,
+  min,
+  max,
   showAdjacentMonths = false,
   variant = "single",
   disabled = false,
+  disableViewChange = false,
   noAnimation = false,
   allowedDates = () => true,
 } = defineProps<{
@@ -93,6 +102,16 @@ const {
    * Initial date to be displayed on the selection screen
    */
   viewMonth?: Date;
+
+  /**
+   * Earliest selectable date
+   */
+  min?: Date;
+
+  /**
+   * Latest selectable date
+   */
+  max?: Date;
 
   /**
    * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
@@ -110,6 +129,11 @@ const {
   disabled?: boolean;
 
   /**
+   * Disables the change of the calendar view. Only show month view. Defaults to false
+   */
+  disableViewChange?: boolean;
+
+  /**
    * Disables the animation
    */
   noAnimation?: boolean;
@@ -121,10 +145,38 @@ const {
 }>();
 
 /**
+ * Returns viewMonth as date
+ * @returns {Date} Returns viewMonth as date
+ */
+const viewMonthDate = computed(() => {
+  if (!viewMonth) return undefined;
+  return viewMonth instanceof Date ? viewMonth : new Date(viewMonth);
+});
+
+/**
+ * Returns min as date
+ * @returns {Date} Returns min as date
+ */
+const minDate = computed(() => {
+  if (!min) return undefined;
+  return min instanceof Date ? min : new Date(min);
+});
+
+/**
+ * Returns max as date
+ * @returns {Date} Returns max as date
+ */
+const maxDate = computed(() => {
+  if (!max) return undefined;
+  return max instanceof Date ? max : new Date(max);
+});
+
+/**
  * Determines the current shown month and year
  */
 const viewDate = ref<Date>(
-  viewMonth || new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  viewMonthDate.value ||
+    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
 );
 
 /**
@@ -143,6 +195,11 @@ const viewTransition = ref<"view-broad" | "view-detail">();
 const selectedDate = defineModel<MucCalendarSelected>("modelValue", {
   default: null,
 });
+
+/**
+ * Modulo for calculating the start and end of a decade in which a year is located
+ */
+const DECADE_MODULO = 10;
 
 /**
  * Caption above the user selection view - changes depending on the current view.
@@ -213,6 +270,95 @@ const clickedNext = () => {
 };
 
 /**
+ * Aria label on previous button - changes depending on the current view.
+ */
+const ariaLabelPrev = computed(() => {
+  switch (view.value) {
+    case "day":
+      return "Vorheriger Monat";
+    case "month":
+      return "Vorheriges Jahr";
+    case "year": {
+      return "Vorherige Jahre";
+    }
+    default:
+      return "";
+  }
+});
+
+/**
+ * Aria label on next button - changes depending on the current view.
+ */
+const ariaLabelNext = computed(() => {
+  switch (view.value) {
+    case "day":
+      return "Nächster Monat";
+    case "month":
+      return "Nächstes Jahr";
+    case "year":
+      return "Weitere Jahre";
+    default:
+      return "";
+  }
+});
+
+/**
+ * Determines if this previous button is disabled.
+ */
+const disablePrev = computed(() => {
+  if (minDate.value) {
+    switch (view.value) {
+      case "day":
+        return (
+          viewDate.value.getFullYear() < minDate.value.getFullYear() ||
+          (viewDate.value.getFullYear() === minDate.value.getFullYear() &&
+            viewDate.value.getMonth() <= minDate.value.getMonth())
+        );
+      case "month":
+        return viewDate.value.getFullYear() <= minDate.value.getFullYear();
+      case "year": {
+        return (
+          viewDate.value.getFullYear() -
+            (viewDate.value.getFullYear() % DECADE_MODULO) <=
+          minDate.value.getFullYear()
+        );
+      }
+      default:
+        return false;
+    }
+  }
+  return false;
+});
+
+/**
+ * Determines if this next button is disabled.
+ */
+const disableNext = computed(() => {
+  if (maxDate.value) {
+    switch (view.value) {
+      case "day":
+        return (
+          viewDate.value.getFullYear() > maxDate.value.getFullYear() ||
+          (viewDate.value.getFullYear() === maxDate.value.getFullYear() &&
+            viewDate.value.getMonth() >= maxDate.value.getMonth())
+        );
+      case "month":
+        return viewDate.value.getFullYear() >= maxDate.value.getFullYear();
+      case "year":
+        return (
+          viewDate.value.getFullYear() -
+            (viewDate.value.getFullYear() % DECADE_MODULO) +
+            10 >=
+          maxDate.value.getFullYear()
+        );
+      default:
+        return false;
+    }
+  }
+  return false;
+});
+
+/**
  * If a different type as single was previously chosen - the datatype will be converted to a single date.
  * The newly selected date will be compared to the current selected date and either deleted or set.
  * @param newValue is the newly selected date.
@@ -247,8 +393,12 @@ const updateMVMultiple = (newValue: Date) => {
     ].filter((date) => date !== null);
   }
 
-  selectedDate.value = selectedDate.value.includes(newValue)
-    ? selectedDate.value.filter((val: Date) => val !== newValue)
+  selectedDate.value = selectedDate.value.some(
+    (date) => date.getTime() === newValue.getTime()
+  )
+    ? selectedDate.value.filter(
+        (val: Date) => val.getTime() !== newValue.getTime()
+      )
     : [...selectedDate.value, newValue];
 };
 
@@ -324,6 +474,8 @@ const detailedView = () => {
  */
 provide(MucCalendarKey, {
   viewDate,
+  minDate,
+  maxDate,
   selectedDate,
   variant: readonly(toRef(() => variant)),
   showAdjacentMonths: readonly(toRef(() => showAdjacentMonths)),
@@ -435,5 +587,10 @@ provide(MucCalendarKey, {
   height: var(--cal-container-view-height);
   overflow: hidden;
   position: relative;
+}
+
+.button-disabled {
+  background-color: var(--color-neutrals-blue-xlight);
+  border-color: var(--color-neutrals-blue-xlight);
 }
 </style>
