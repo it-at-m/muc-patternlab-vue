@@ -108,11 +108,21 @@ const isDisabled = computed(() => {
 
   const isEarlierThanMin =
     mucCalData?.minDate.value !== undefined &&
-    date.getTime() < mucCalData.minDate.value.getTime();
+    (date.getFullYear() < mucCalData.minDate.value.getFullYear() ||
+      (date.getFullYear() === mucCalData.minDate.value.getFullYear() &&
+        date.getMonth() < mucCalData.minDate.value.getMonth()) ||
+      (date.getFullYear() === mucCalData.minDate.value.getFullYear() &&
+        date.getMonth() === mucCalData.minDate.value.getMonth() &&
+        date.getDate() < mucCalData.minDate.value.getDate()));
 
   const isLaterThanMax =
     mucCalData?.maxDate.value !== undefined &&
-    date.getTime() > mucCalData.maxDate.value.getTime();
+    (date.getFullYear() > mucCalData.maxDate.value.getFullYear() ||
+      (date.getFullYear() === mucCalData.maxDate.value.getFullYear() &&
+        date.getMonth() > mucCalData.maxDate.value.getMonth()) ||
+      (date.getFullYear() === mucCalData.maxDate.value.getFullYear() &&
+        date.getMonth() === mucCalData.maxDate.value.getMonth() &&
+        date.getDate() > mucCalData.maxDate.value.getDate()));
 
   return !isAllowed || isEarlierThanMin || isLaterThanMax;
 });
