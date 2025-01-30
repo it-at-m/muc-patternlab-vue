@@ -1,12 +1,11 @@
 <template>
   <div>
     <div class="container-wrapper">
-      <div class="caption">
+      <div class="calendar-caption">
         <muc-button
           @click="clickedPrev"
           :aria-label="ariaLabelPrev"
           :disabled="disablePrev"
-          class="button-disabled"
           variant="ghost"
           icon="chevron-left"
         />
@@ -21,7 +20,6 @@
           @click="clickedNext"
           :aria-label="ariaLabelNext"
           :disabled="disableNext"
-          class="button-disabled"
           variant="ghost"
           icon="chevron-right"
         />
@@ -483,6 +481,13 @@ provide(MucCalendarKey, {
 });
 </script>
 
+<style>
+.calendar-caption > .m-button--ghost.disabled {
+  background-color: var(--color-neutrals-blue-xlight);
+  border-color: var(--color-neutrals-blue-xlight);
+}
+</style>
+
 <style scoped>
 /*animation - backwards is not working here because of interchanging of the animations*/
 @keyframes appear-broad {
@@ -566,7 +571,7 @@ provide(MucCalendarKey, {
   justify-content: center;
 }
 
-.caption {
+.calendar-caption {
   padding: 5px;
   border-bottom: 1px solid var(--color-neutrals-blue);
   background-color: var(--color-neutrals-blue-xlight);
@@ -587,10 +592,5 @@ provide(MucCalendarKey, {
   height: var(--cal-container-view-height);
   overflow: hidden;
   position: relative;
-}
-
-.button-disabled {
-  background-color: var(--color-neutrals-blue-xlight);
-  border-color: var(--color-neutrals-blue-xlight);
 }
 </style>
