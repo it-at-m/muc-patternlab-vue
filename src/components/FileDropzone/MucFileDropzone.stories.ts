@@ -13,6 +13,8 @@ export default {
   },
 };
 
+export const Default = {};
+
 export const Example = {
   args: {
     buttonText: "Dokument hochladen",
@@ -26,4 +28,3 @@ export const Example = {
       "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
   },
 };
-export const Default = {};

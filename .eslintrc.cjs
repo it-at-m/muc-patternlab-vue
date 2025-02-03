@@ -12,5 +12,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
-  ignorePatterns: ["/storybook-static", "/dist"], // Ignoriere die Ordner foo und bar
+  ignorePatterns: ["/storybook-static", "/dist", "/build"], // Ignoriere die Ordner foo und bar
 };

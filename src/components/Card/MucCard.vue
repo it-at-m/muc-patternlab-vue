@@ -3,13 +3,13 @@
     class="card"
     @click="emit('click', $event)"
   >
-    <div class="px-6 py-8">
-      <div class="d-flex">
+    <div class="card-content">
+      <div class="card-header">
         <slot name="headerPrefix" />
         <div>
           <div
             v-if="tagline"
-            class="card-tagline pb-1"
+            class="card-tagline"
           >
             {{ tagline }}
           </div>
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="my-4" />
+      <muc-divider />
 
       <slot name="content" />
     </div>
@@ -27,6 +27,8 @@
 </template>
 
 <script setup lang="ts">
+import { MucDivider } from "../Divider";
+
 const emit = defineEmits<{
   /**
    * @param e eventname
@@ -71,6 +73,14 @@ defineSlots<{
   background-color: #f1f1f1;
 }
 
+.card-content {
+  padding: 32px 24px;
+}
+
+.card-header {
+  display: flex;
+}
+
 .card-tagline {
   font-size: 16px;
   font-family:
@@ -80,5 +90,12 @@ defineSlots<{
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word;
+
+  padding-bottom: 4px;
+}
+
+.muc-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 </style>

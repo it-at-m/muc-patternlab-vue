@@ -2,26 +2,39 @@
     <img height="140" src="docs/images/muc-patternlab.png" />
 </p>
 
+
 <p align="center">
 	<a href="https://github.com/it-at-m/muc-patternlab-vue/actions/workflows/build.yaml?query=branch%3Amain">
-		<img src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
-			 alt="Build Status">
+		<img 
+            alt="Build Status"
+            src="https://img.shields.io/github/actions/workflow/status/it-at-m/muc-patternlab-vue/build.yaml"
+        >
+	</a>
+	<a href="https://www.npmjs.com/package/@muenchen/muc-patternlab-vue/">
+		<img 
+            alt="NPM Version"
+            src="https://img.shields.io/npm/v/%40muenchen%2Fmuc-patternlab-vue"
+        >
 	</a>
 	<a href="https://gitmoji.dev">
-		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg"
-			 alt="Gitmoji">
+		<img 
+            alt="Gitmoji"
+            src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg"
+        >
 	</a>
 	<a href="https://github.com/semantic-release/semantic-release">
-		<img src="https://img.shields.io/badge/semantic--release-gitmoji-e10079?logo=semantic-release"
-			 alt="semantic-release: gitmoji">
+		<img 
+            alt="semantic-release: gitmoji"
+            src="https://img.shields.io/badge/semantic--release-gitmoji-e10079?logo=semantic-release"
+        >
 	</a>
 </p>
 
 # muc-patternlab-vue
 
-
 This repository contains a ready-to-use Vue-Components-Library based
-on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). Current supported Version is [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog).
+on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). Current supported Version
+is [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog).
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 
@@ -96,11 +109,11 @@ This project uses [semantic-release](https://github.com/semantic-release/semanti
 
 It follows [gitmoji commit conventions](https://gitmoji.dev/). For example:
 
-| Commit message                                                                                                                      | Release type  |
-|-------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| `:lipstick` / `:lock:` / `:ambulance:` / `:bug: stop graphite breaking when too much pressure applied`                              | Patch Release |
-| `:sparkles: add 'graphiteWidth' option`                                                                                             | Minor Release |
-| `:boom: The graphiteWidth option has been removed.`<br>`The default graphite width of 10mm is always used for performance reasons.` | Major Release |
+| gitmoji                                        | Sample Commit message                                                                    | Release type  |
+|------------------------------------------------|------------------------------------------------------------------------------------------|---------------|
+| :lipstick: :lock: :ambulance: :bug: :arrow_up: | `:lipstick` / `:lock:` / `:ambulance:` / `:bug:` / `:arrow_up: some cool commit message` | Patch Release |
+| :sparkles:                                     | `:sparkles: some new feature added`                                                      | Minor Release |
+| :boom:                                         | `:boom: some breaking change happened.`<br>` Here is how to fix it: `                    | Major Release |
 
 ## License
 

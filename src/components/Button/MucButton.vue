@@ -1,32 +1,37 @@
 <template>
   <button
     @click="handleClick"
-    :disabled="disabled"
+    :aria-disabled="disabled"
     class="m-button"
-    :class="[buttonVariantClass, iconAnimatedClass]"
+    :class="[buttonVariantClass, iconAnimatedClass, disabledClass]"
   >
     <span>
-      <slot />
+      <slot v-if="!iconShownLeft" />
       <muc-icon
         v-if="icon"
         :icon="icon"
         class="m-button__icon"
+        :class="iconPositionClass"
       />
+      <slot v-if="iconShownLeft" />
     </span>
   </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useSlots } from "vue";
 
 import { MucIcon } from "../Icon";
 
 type buttonType = "primary" | "secondary" | "ghost";
 
+const slots = useSlots();
+
 const {
   variant = "primary",
   disabled = false,
   iconAnimated = false,
+  iconShownLeft = false,
 } = defineProps<{
   /**
    * The variant prop gives you easy access to several different button styles.
@@ -35,7 +40,7 @@ const {
    */
   variant?: buttonType;
   /**
-   * Let`s you indicate that the button is not currently interactive or clickable.
+   * Lets you indicate that the button is not currently interactive or clickable.
    */
   disabled?: boolean;
   /**
@@ -43,11 +48,17 @@ const {
    */
   icon?: string;
   /**
-   * Wether the Icon should be animated on hover (slide-right) or not.
+   * Whether the Icon should be animated on hover (slide-right) or not.
    *
    * Default is `false`
    */
   iconAnimated?: boolean;
+  /**
+   * Whether the Icon should be shown on the left side of the button (slide-right) or not.
+   *
+   * Default is `false`
+   */
+  iconShownLeft?: boolean;
 }>();
 
 defineSlots<{
@@ -76,11 +87,44 @@ const buttonVariantClass = computed(() => {
   }
 });
 
-const iconAnimatedClass = computed(() =>
-  iconAnimated ? "m-button--animated-right" : ""
-);
+const iconAnimatedClass = computed(() => {
+  if (iconAnimated && iconShownLeft) {
+    return "m-button--animated-left";
+  } else if (iconAnimated) {
+    return "m-button--animated-right";
+  } else {
+    return "";
+  }
+});
 
+const iconPositionClass = computed(() => ({
+  "set-right-margin": iconShownLeft,
+  "no-left-margin": !iconShownLeft ? !slots.default : !iconAnimated,
+}));
+
+/**
+ * Emit a click event if not in disabled state.
+ */
 const handleClick = () => {
-  emit("click");
+  if (!disabled) emit("click");
 };
+
+/**
+ * Ensure that the disabled button style is applied when it is in the 'disabled' state.
+ */
+const disabledClass = computed(() => (disabled ? "disabled" : ""));
 </script>
+
+<style scoped>
+.no-left-margin {
+  margin-left: 0;
+}
+
+.set-right-margin {
+  margin-right: 0.75rem;
+}
+
+[aria-disabled="true"] {
+  pointer-events: none;
+}
+</style>

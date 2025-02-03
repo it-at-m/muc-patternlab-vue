@@ -1,27 +1,22 @@
 <template>
   <div
     class="m-form-group"
-    :class="isErrorClass"
+    :class="{ 'has-error': errorMsg }"
   >
     <label
-      for="search-input"
+      v-if="label"
+      :for="'input-' + id"
       class="m-label"
+      :class="{ 'm-label--optional': !required }"
     >
       {{ label }}
-      <span
-        v-if="required"
-        aria-hidden="true"
-        class="mandatory"
-      >
-        *
-        <span class="visually-hidden">(erforderlich)</span>
-      </span>
     </label>
     <p
-      id="text-input-error"
-      class="m-error-message"
+      v-if="hint"
+      class="m-hint"
+      :id="'input-hint-' + id"
     >
-      {{ errorMsg }}
+      {{ hint }}
     </p>
     <div class="m-input-wrapper m-autocomplete">
       <div
@@ -33,10 +28,11 @@
         </span>
       </div>
       <input
+        :id="'input-' + id"
         class="m-input autocomplete-input"
         :type="type"
         v-model="modelValue"
-        :aria-describedby="type + '-input'"
+        :aria-describedby="hint ? 'input-hint-' + id : undefined"
         :placeholder="placeholder"
         :required="required"
       />
@@ -67,16 +63,21 @@
         <span class="visually-hidden">Suchen</span>
       </button>
     </div>
-    <p
-      class="m-hint"
-      id="text-input-hint"
+    <form-error-message
+      id="text-input-error"
+      v-if="errorMsg"
+      tabindex="0"
+      role="alert"
+      aria-live="polite"
     >
-      {{ hint }}
-    </p>
+      {{ errorMsg }}
+    </form-error-message>
   </div>
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
+
+import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
  * Type includes all possible input types possible.
@@ -100,6 +101,10 @@ const {
   type = "text",
   dataList = [] as string[],
 } = defineProps<{
+  /**
+   *  Unique identifier for the input. Required property used to associate the input with its label and hint text for accessibility.
+   */
+  id: string;
   /**
    * Displays error message and highlights the input form with a red border.
    */
@@ -155,12 +160,6 @@ const emits = defineEmits<{
    */
   (e: "suffixClick"): void;
 }>();
-
-/**
- * Computes a CSS class based on the presence of an error message.
- * @returns {string} Returns "has-error" if there is an error message, otherwise an empty string.
- */
-const isErrorClass = computed(() => (!errorMsg ? "" : "has-error"));
 
 /**
  * Computes whether the current type is "search".

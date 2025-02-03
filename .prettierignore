@@ -6,6 +6,7 @@ dist
 public/assets/fonts
 public/assets/images
 storybook-static
+build
 
 # Files
 package.json

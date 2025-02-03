@@ -21,7 +21,9 @@
   transition: border-color 0.3s ease-in;
 }
 
-.muc-calendar-item:hover {
+.muc-calendar-item:hover,
+.muc-calendar-item:focus {
+  outline: none;
   border: 1px solid var(--color-neutrals-blue);
   transition: border-color 0.1s ease-out;
   cursor: pointer;
@@ -34,4 +36,10 @@
 
 .muc-calendar-current-item {
   background: var(--color-neutrals-blue);
+}
+
+.disabled-tile {
+  filter: grayscale(80%);
+  color: lightgray;
+  cursor: default !important;
 }
