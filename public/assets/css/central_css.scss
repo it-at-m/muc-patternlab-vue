@@ -1,3 +1,4 @@
+@use "sass:string";
 /*
  * General css classes leaned on styling classes from vuetify
  */
@@ -16,24 +17,24 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
     @for $i from 0 through $steps {
       @if $direction == "all" {
         // Für alle Seiten
-        .#{str-slice($property, 1, 1)}#{str-slice($direction, 1, 1)}-#{$i} {
+        .#{string.slice($property, 1, 1)}#{string.slice($direction, 1, 1)}-#{$i} {
           #{$property}: $i * $unit;
         }
       } @else if $direction == "x" {
         // Für horizontale Achse (left + right)
-        .#{str-slice($property, 1, 1)}x-#{$i} {
+        .#{string.slice($property, 1, 1)}x-#{$i} {
           #{$property}-left: $i * $unit;
           #{$property}-right: $i * $unit;
         }
       } @else if $direction == "y" {
         // Für vertikale Achse (top + bottom)
-        .#{str-slice($property, 1, 1)}y-#{$i} {
+        .#{string.slice($property, 1, 1)}y-#{$i} {
           #{$property}-top: $i * $unit;
           #{$property}-bottom: $i * $unit;
         }
       } @else {
         // Für einzelne Richtungen (top, right, bottom, left)
-        .#{str-slice($property, 1, 1)}#{str-slice($direction, 1, 1)}-#{$i} {
+        .#{string.slice($property, 1, 1)}#{string.slice($direction, 1, 1)}-#{$i} {
           #{$property}-#{$direction}: $i * $unit;
         }
       }
@@ -58,9 +59,9 @@ $directions: ("all", "top", "right", "bottom", "left", "x", "y");
  * Generate flex, justify and align classes
  */
 @function get-before-dash($string) {
-  $index: str-index($string, "-"); // Position des ersten '-'
+  $index: string.index($string, "-"); // Position des ersten '-'
   @if $index {
-    @return str-slice($string, 1, $index - 1); // Schneide bis vor das '-'
+    @return string.slice($string, 1, $index - 1); // Schneide bis vor das '-'
   }
   @return $string; // Gibt den gesamten String zurück, wenn kein '-' vorhanden ist
 }
