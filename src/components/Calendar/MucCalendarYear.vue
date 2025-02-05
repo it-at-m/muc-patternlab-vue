@@ -1,29 +1,20 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
-    <div
+    <muc-year-tile
       v-for="(date, index) in computedYears"
       :key="index"
       class="muc-calendar-item"
-      :class="{
-        'muc-calendar-current-item':
-          new Date().getFullYear() === date.getFullYear(),
-      }"
+      :date="date"
       @click="clickedYear(date)"
-    >
-      {{ yearDisplayment(date) }}
-    </div>
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { LOCALES, NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
-
-/**
- * Chosen notation for date.toLocaleDateString() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#year
- */
-const YEAR_NOTATION = "numeric";
+import { NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
+import MucYearTile from "./MucYearTile.vue";
 
 const props = defineProps<{
   /**
@@ -52,13 +43,6 @@ const computedYears = computed(() =>
       )
   )
 );
-
-/**
- * String displayment for a given year
- * @param date to be displayed
- */
-const yearDisplayment = (date: Date) =>
-  date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION });
 
 /**
  * Action upon selecting a year - triggers emit

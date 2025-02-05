@@ -2,12 +2,16 @@
   <div
     v-if="isCurrMonth || showAdjacentMonths"
     @click="clicked"
+    @keyup.enter="clicked"
     :class="{
-      'disabled-tile': !mucCalData?.allowedDates(date),
+      'disabled-tile': isDisabled,
       'off-month': !isCurrMonth,
       selected: isSelected,
       'selected-range': isInRange,
     }"
+    :tabindex="!isDisabled ? '0' : '-1'"
+    role="button"
+    :aria-label="`${date.getDate()} auswählen`"
   >
     {{ date.getDate() }}
   </div>
@@ -95,6 +99,35 @@ const isInRange = computed(() => {
 });
 
 /**
+ * Determines if this day-tile is disabled
+ */
+const isDisabled = computed(() => {
+  const isAllowed = mucCalData?.allowedDates(date)
+    ? mucCalData.allowedDates(date)
+    : false;
+
+  const isEarlierThanMin =
+    mucCalData?.minDate.value !== undefined &&
+    (date.getFullYear() < mucCalData.minDate.value.getFullYear() ||
+      (date.getFullYear() === mucCalData.minDate.value.getFullYear() &&
+        date.getMonth() < mucCalData.minDate.value.getMonth()) ||
+      (date.getFullYear() === mucCalData.minDate.value.getFullYear() &&
+        date.getMonth() === mucCalData.minDate.value.getMonth() &&
+        date.getDate() < mucCalData.minDate.value.getDate()));
+
+  const isLaterThanMax =
+    mucCalData?.maxDate.value !== undefined &&
+    (date.getFullYear() > mucCalData.maxDate.value.getFullYear() ||
+      (date.getFullYear() === mucCalData.maxDate.value.getFullYear() &&
+        date.getMonth() > mucCalData.maxDate.value.getMonth()) ||
+      (date.getFullYear() === mucCalData.maxDate.value.getFullYear() &&
+        date.getMonth() === mucCalData.maxDate.value.getMonth() &&
+        date.getDate() > mucCalData.maxDate.value.getDate()));
+
+  return !isAllowed || isEarlierThanMin || isLaterThanMax;
+});
+
+/**
  * Is this day-tile in the current month or in the adjacent months
  */
 const isCurrMonth = computed(
@@ -105,7 +138,7 @@ const isCurrMonth = computed(
  * Action upon selecting a day - triggers emit
  */
 const clicked = () => {
-  if (mucCalData?.allowedDates(date)) {
+  if (!isDisabled.value) {
     emit("click", date);
   }
 };
@@ -117,12 +150,6 @@ const clicked = () => {
 .selected {
   background: var(--color-brand-main-blue);
   color: white;
-}
-
-.disabled-tile {
-  filter: grayscale(80%);
-  color: lightgray;
-  cursor: default !important;
 }
 
 .selected-range {

@@ -1,30 +1,20 @@
 <template>
   <div class="muc-calendar-container muc-calendar-view-full-size">
-    <div
+    <muc-month-tile
       v-for="(date, index) in computedMonths"
       :key="index"
-      :class="{
-        'muc-calendar-current-item':
-          new Date().getMonth() === date.getMonth() &&
-          new Date().getFullYear() === date.getFullYear(),
-      }"
       class="muc-calendar-item"
-      @click="clickedMonth(date)"
-    >
-      <p>{{ monthDisplayment(date) }}</p>
-    </div>
+      :date="date"
+      @click="clickedMonth"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { LOCALES, NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
-
-/**
- * Chosen notation for date.toLocaleDateString() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month
- */
-const MONTH_NOTATION = "short";
+import { NUM_OF_BROAD_SELECTIONS } from "./MucCalendarType";
+import MucMonthTile from "./MucMonthTile.vue";
 
 const props = defineProps<{
   /**
@@ -49,13 +39,6 @@ const computedMonths = computed(() =>
     (_, i) => new Date(props.viewDate.getFullYear(), i)
   )
 );
-
-/**
- * String displayment for a given date
- * @param date to be displayed
- */
-const monthDisplayment = (date: Date) =>
-  date.toLocaleDateString(LOCALES, { month: MONTH_NOTATION });
 
 /**
  * Action upon selecting a month - triggers emit

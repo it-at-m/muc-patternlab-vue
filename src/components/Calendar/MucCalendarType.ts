@@ -1,4 +1,4 @@
-import { InjectionKey, Ref } from "vue";
+import { ComputedRef, InjectionKey, Ref } from "vue";
 
 /**
  * Different possible types of date selection for the calendar
@@ -30,6 +30,8 @@ type MucCalendarSelected = null | Date | Date[] | MucDateRange;
  */
 type MucCalendarInjection = {
   viewDate: Readonly<Ref<Date>>;
+  minDate: ComputedRef<Date | undefined>;
+  maxDate: ComputedRef<Date | undefined>;
   selectedDate: Readonly<Ref<MucCalendarSelected>>;
   variant: Readonly<Ref<CalendarTypes>>;
   showAdjacentMonths: Readonly<Ref<boolean>>;
