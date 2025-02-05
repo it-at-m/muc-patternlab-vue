@@ -1,5 +1,9 @@
 type __VLS_Props = {
     /**
+     * Unique identifier for the textarea. Required property used  to associate the textarea with its label and hint text for accessibility.
+     */
+    id: string;
+    /**
      * Displays error message and highlights the input form with a red border.
      */
     errorMsg?: string;

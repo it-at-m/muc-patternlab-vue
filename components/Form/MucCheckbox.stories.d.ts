@@ -2,6 +2,7 @@ declare const _default: {
     component: import('vue').DefineComponent<{
         modelValue?: boolean;
     } & {
+        id: string;
         label: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: boolean) => any;
@@ -10,6 +11,7 @@ declare const _default: {
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: boolean;
     } & {
+        id: string;
         label: string;
     }> & Readonly<{
         onClick?: (() => any) | undefined;
@@ -28,6 +30,7 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
+        id: string;
         label: string;
     };
 };

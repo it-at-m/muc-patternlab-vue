@@ -5,6 +5,14 @@ type __VLS_Props = {
      */
     viewMonth?: Date;
     /**
+     * Earliest selectable date
+     */
+    min?: Date;
+    /**
+     * Latest selectable date
+     */
+    max?: Date;
+    /**
      * Select if adjacent (before and after) month should be shown in the selection of the day. Defaults to false
      */
     showAdjacentMonths?: boolean;
@@ -16,6 +24,10 @@ type __VLS_Props = {
      * Disable the selection of dates by the user. Defaults to false
      */
     disabled?: boolean;
+    /**
+     * Disables the change of the calendar view. Only show month view. Defaults to false
+     */
+    disableViewChange?: boolean;
     /**
      * Disables the animation
      */

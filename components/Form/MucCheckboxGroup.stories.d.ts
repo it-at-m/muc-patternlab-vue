@@ -30,6 +30,7 @@ declare const _default: {
         MucCheckbox: import('vue').DefineComponent<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (value: boolean) => any;
@@ -38,6 +39,7 @@ declare const _default: {
         }, string, import('vue').PublicProps, Readonly<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
@@ -87,6 +89,7 @@ export declare const NotCollapsable: () => {
         MucCheckbox: import('vue').DefineComponent<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (value: boolean) => any;
@@ -95,6 +98,7 @@ export declare const NotCollapsable: () => {
         }, string, import('vue').PublicProps, Readonly<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;
@@ -135,6 +139,7 @@ export declare const Collapsable: () => {
         MucCheckbox: import('vue').DefineComponent<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
             "update:modelValue": (value: boolean) => any;
@@ -143,6 +148,7 @@ export declare const Collapsable: () => {
         }, string, import('vue').PublicProps, Readonly<{
             modelValue?: boolean;
         } & {
+            id: string;
             label: string;
         }> & Readonly<{
             onClick?: (() => any) | undefined;

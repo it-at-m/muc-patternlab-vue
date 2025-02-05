@@ -2,6 +2,7 @@ declare const _default: {
     component: import('vue').DefineComponent<{
         modelValue?: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[];
     } & {
+        id: string;
         items: import('./MucSelectTypes').MucSelectItemTypes[];
         label?: string;
         hint?: string;
@@ -13,6 +14,7 @@ declare const _default: {
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[];
     } & {
+        id: string;
         items: import('./MucSelectTypes').MucSelectItemTypes[];
         label?: string;
         hint?: string;
@@ -37,6 +39,7 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
+        id: string;
         modelValue: {
             id: string;
             name: string;
@@ -54,6 +57,7 @@ export declare const Default: {
 };
 export declare const MultiSelect: {
     args: {
+        id: string;
         label: string;
         multiple: boolean;
         modelValue: {
@@ -72,6 +76,7 @@ export declare const MultiSelect: {
 };
 export declare const StringSelect: {
     args: {
+        id: string;
         modelValue: string;
         items: string[];
         label: string;

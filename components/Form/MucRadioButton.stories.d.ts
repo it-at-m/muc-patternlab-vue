@@ -1,10 +1,12 @@
 declare const _default: {
     component: import('vue').DefineComponent<{
+        id: string;
         value: string;
         label?: string;
         hint?: string;
         disabled?: boolean;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<{
+        id: string;
         value: string;
         label?: string;
         hint?: string;
@@ -24,11 +26,13 @@ export default _default;
 export declare const Default: () => {
     components: {
         MucRadioButton: import('vue').DefineComponent<{
+            id: string;
             value: string;
             label?: string;
             hint?: string;
             disabled?: boolean;
         }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<{
+            id: string;
             value: string;
             label?: string;
             hint?: string;

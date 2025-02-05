@@ -4,6 +4,10 @@
 type InputType = "text" | "password" | "color" | "search" | "date" | "datetime-local";
 type __VLS_Props = {
     /**
+     *  Unique identifier for the input. Required property used to associate the input with its label and hint text for accessibility.
+     */
+    id: string;
+    /**
      * Displays error message and highlights the input form with a red border.
      */
     errorMsg?: string;

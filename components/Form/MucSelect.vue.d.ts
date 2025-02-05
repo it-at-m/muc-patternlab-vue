@@ -1,6 +1,10 @@
 import { MucSelectItemTypes } from './MucSelectTypes';
 type __VLS_Props = {
     /**
+     * Unique identifier for the select. Required property used to associate the select with its label and hint text for accessibility.
+     */
+    id: string;
+    /**
      * List of items to be available
      */
     items: MucSelectItemTypes[];

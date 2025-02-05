@@ -3,6 +3,7 @@ declare const _default: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             modelValue?: string;
         } & {
+            id: string;
             errorMsg?: string;
             placeholder?: string;
             required?: boolean;
@@ -28,6 +29,7 @@ declare const _default: {
         }, Readonly<{
             modelValue?: string;
         } & {
+            id: string;
             errorMsg?: string;
             placeholder?: string;
             required?: boolean;
@@ -46,6 +48,7 @@ declare const _default: {
     } & import('vue').ComponentOptionsBase<Readonly<{
         modelValue?: string;
     } & {
+        id: string;
         errorMsg?: string;
         placeholder?: string;
         required?: boolean;
@@ -81,11 +84,13 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
+        id: string;
         placeholder: string;
     };
 };
 export declare const HintAndLabel: {
     args: {
+        id: string;
         hint: string;
         label: string;
         placeholder: string;
@@ -93,6 +98,7 @@ export declare const HintAndLabel: {
 };
 export declare const Password: {
     args: {
+        id: string;
         type: string;
         modelValue: string;
         hint: string;
@@ -101,6 +107,7 @@ export declare const Password: {
 };
 export declare const Error: {
     args: {
+        id: string;
         errorMsg: string;
         hint: string;
         placeholder: string;
@@ -108,18 +115,21 @@ export declare const Error: {
 };
 export declare const Prefix: {
     args: {
+        id: string;
         prefix: string;
         placeholder: string;
     };
 };
 export declare const SuffixIcon: {
     args: {
+        id: string;
         suffixIcon: string;
         placeholder: string;
     };
 };
 export declare const Search: {
     args: {
+        id: string;
         type: string;
         dataList: string[];
         placeholder: string;
@@ -127,16 +137,19 @@ export declare const Search: {
 };
 export declare const Color: {
     args: {
+        id: string;
         type: string;
     };
 };
 export declare const Date: {
     args: {
+        id: string;
         type: string;
     };
 };
 export declare const Datetime_Local: {
     args: {
+        id: string;
         type: string;
     };
 };

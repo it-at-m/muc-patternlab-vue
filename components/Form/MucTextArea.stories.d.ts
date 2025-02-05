@@ -2,6 +2,7 @@ declare const _default: {
     component: import('vue').DefineComponent<{
         modelValue?: string;
     } & {
+        id: string;
         errorMsg?: string;
         rows?: number;
         placeholder?: string;
@@ -13,6 +14,7 @@ declare const _default: {
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: string;
     } & {
+        id: string;
         errorMsg?: string;
         rows?: number;
         placeholder?: string;
@@ -35,17 +37,20 @@ declare const _default: {
 export default _default;
 export declare const Default: {
     args: {
+        id: string;
         placeholder: string;
     };
 };
 export declare const Error: {
     args: {
+        id: string;
         errorMsg: string;
         placeholder: string;
     };
 };
 export declare const Required: {
     args: {
+        id: string;
         required: boolean;
         placeholder: string;
         label: string;
@@ -53,6 +58,7 @@ export declare const Required: {
 };
 export declare const BigTextArea: {
     args: {
+        id: string;
         rows: number;
         label: string;
         hint: string;

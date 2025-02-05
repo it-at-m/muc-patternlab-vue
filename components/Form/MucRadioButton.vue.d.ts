@@ -1,5 +1,9 @@
 type __VLS_Props = {
     /**
+     *  Unique identifier for the radiobutton. Required property used to associate the radiobutton with its label and hint text for accessibility.
+     */
+    id: string;
+    /**
      * value for this radiobutton
      */
     value: string;
