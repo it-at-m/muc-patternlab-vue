@@ -95,10 +95,3 @@ const typeIcon = computed(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.m-banner--success {
-  background-color: #f1f6f3;
-  border-bottom: 1px solid #3a7f53;
-}
-</style>

@@ -108,29 +108,3 @@ const typeAriaLabel = computed(() => {
   }
 });
 </script>
-
-<style scoped>
-/* class below may look unused but they are used dynamically! Do NOT remove them!! */
-.m-callout--success {
-  background-color: #f1f6f3;
-  border-color: #95b9a2;
-}
-
-/* class below may look unused but they are used dynamically! Do NOT remove them!! */
-.m-callout--success .m-callout__icon {
-  background-color: #3a7f53;
-  box-shadow: 0 0.3125rem 0.625rem rgba(0, 90, 159, 0.2);
-}
-
-/* class below may look unused but they are used dynamically! Do NOT remove them!! */
-.m-callout--error {
-  background-color: #f8f2f2;
-  border-color: #c79a9b;
-}
-
-/* class below may look unused but they are used dynamically! Do NOT remove them!! */
-.m-callout--error .m-callout__icon {
-  background-color: #984447;
-  box-shadow: 0 0.3125rem 0.625rem rgba(0, 90, 159, 0.2);
-}
-</style>
