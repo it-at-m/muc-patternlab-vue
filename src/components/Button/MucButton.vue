@@ -97,7 +97,7 @@ const iconAnimatedClass = computed(() => {
   }
 });
 
-const iconPositionClass = computed(() => ({
+const iconPositionClass: Object = computed(() => ({
   "set-right-margin": iconShownLeft,
   "no-left-margin": !iconShownLeft ? !slots.default : !iconAnimated,
 }));
