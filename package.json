@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "0.6.12",
+    "choices.js": "11.0.3",
     "patch-package": "8.0.0"
   }
 }
