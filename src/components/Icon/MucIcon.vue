@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useAttrs } from "vue";
+import { computed, ComputedRef, useAttrs } from "vue";
 
 const attr = useAttrs();
 
@@ -25,5 +25,5 @@ defineProps<{
   color?: string;
 }>();
 
-const iconClass = computed(() => attr.class ?? "icon");
+const iconClass: ComputedRef<Object> = computed(() => attr.class ?? "icon");
 </script>
