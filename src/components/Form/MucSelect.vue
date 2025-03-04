@@ -31,7 +31,7 @@
 import Choices from "choices.js";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
-import { ChoiceType, MucSelectItemTypes } from "./MucSelectTypes";
+import { ChoiceType, ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
 
 const elementRef = ref<HTMLSelectElement>();
 const choicesInstance = ref<Choices>();
@@ -199,7 +199,8 @@ const setDefaultSelectedValue = () => {
           if (typeof item === "string") {
             return item == selectedValues.value;
           } else {
-            return item[itemTitle] == selectedValues.value[itemTitle];
+            const value = selectedValues.value as ItemAsObject;
+            return item[itemTitle] == value[itemTitle];
           }
         });
         choicesInstance.value.setChoiceByValue(itemId.toString());
