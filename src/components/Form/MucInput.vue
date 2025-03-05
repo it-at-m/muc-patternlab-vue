@@ -35,6 +35,7 @@
         :aria-describedby="hint ? 'input-hint-' + id : undefined"
         :placeholder="placeholder"
         :required="required"
+        :maxlength="max"
       />
       <ul
         v-if="isSearch && currentAvalOptions.length !== 0"
@@ -144,6 +145,11 @@ const {
    * Icon to be displayed as a suffix at the end of the input.
    */
   suffixIcon?: string;
+
+  /**
+   * Restricts character input to the specified number
+   */
+  max?: number;
 }>();
 
 const slots = defineSlots<{
