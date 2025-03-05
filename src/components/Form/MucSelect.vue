@@ -7,6 +7,7 @@
       v-if="label"
       :for="'select-' + id"
       class="m-label"
+      tabindex="0"
     >
       {{ label }}
     </label>
@@ -14,6 +15,7 @@
       v-if="hint"
       class="m-hint"
       :id="'select-hint-' + id"
+      tabindex="0"
     >
       {{ hint }}
     </p>
