@@ -139,6 +139,15 @@ const createChoicesInstance = () => {
     placeholderValue: placeholder,
     removeItemButton: multiple,
     searchFields: ["label"],
+    fuseOptions: {
+      includeScore: false,
+      threshold: 0.0,
+      distance: 100,
+      minMatchCharLength: 1,
+      ignoreLocation: true,
+      ignoreFieldNorm: true,
+      isCaseSensitive: false,
+    },
   });
   addChoices();
   setDefaultSelectedValue();
