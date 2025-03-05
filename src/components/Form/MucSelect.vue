@@ -122,7 +122,6 @@ watch(
     if (choicesInstance.value) {
       choicesInstance.value.destroy();
       createChoicesInstance();
-      elementRef.value;
     }
   }
 );
