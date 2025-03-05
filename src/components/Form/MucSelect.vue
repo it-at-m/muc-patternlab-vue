@@ -7,6 +7,7 @@
       v-if="label"
       :for="'select-' + id"
       class="m-label"
+      tabindex="0"
     >
       {{ label }}
     </label>
@@ -14,73 +15,28 @@
       v-if="hint"
       class="m-hint"
       :id="'select-hint-' + id"
+      tabindex="0"
     >
       {{ hint }}
     </p>
-    <div
-      class="m-input-wrapper"
-      :class="selectType"
-    >
-      <input
-        :id="'select-' + id"
-        type="text"
-        class="m-input m-combobox m-combobox--single"
-        :aria-describedby="hint ? 'select-hint-' + id : undefined"
-        v-model="searchValue"
-        @click="openItemList"
-      />
-      <span
-        class="m-input__trigger"
-        @click="toggleItemList"
-      >
-        <svg
-          aria-hidden="true"
-          class="icon"
-        >
-          <use xlink:href="#icon-chevron-down"></use>
-        </svg>
-        <span class="visually-hidden">Auswahlliste öffnen</span>
-      </span>
-      <ul
-        class="listbox"
-        :class="displayOptions"
-        @mouseleave="emptyActiveItem"
-      >
-        <li
-          v-for="(option, index) in displayedItems"
-          :key="index"
-          class="option"
-          @mouseenter="activeItem = option"
-          :class="[isActiveClass(option), isSelectedClass(option)]"
-          @click="clicked(option)"
-        >
-          <MucSelectItem
-            :item="option"
-            :item-label="itemTitle"
-          />
-        </li>
-        <li
-          v-if="noItemsFound"
-          class="option"
-        >
-          {{ noItemFoundMessage }}
-        </li>
-      </ul>
-    </div>
+    <select
+      ref="elementRef"
+      :id="'select-' + id"
+      :aria-describedby="hint ? 'select-hint-' + id : undefined"
+      class="m-select"
+      :multiple="multiple"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, watch } from "vue";
+import Choices from "choices.js";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
-import useOnClickOutside from "../../composables/useOnClickOutside";
-import MucSelectItem from "./MucSelectItem.vue";
-import { ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
+import { ChoiceType, ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
 
-/**
- * Ref ot the component
- */
-const selectComponent = useTemplateRef("selectComponent");
+const elementRef = ref<HTMLSelectElement>();
+const choicesInstance = ref<Choices>();
 
 /**
  * Exposed selected value / values
@@ -92,31 +48,12 @@ const selectedValues = defineModel<MucSelectItemTypes | MucSelectItemTypes[]>(
   }
 );
 
-/**
- * If list of items is shown
- */
-const showItems = ref<boolean>(false);
-
-/**
- * Last interacted item - selected or deselected
- */
-const lastClickedItem = ref<MucSelectItemTypes>();
-
-/**
- * If no items found after filtering
- */
-const noItemsFound = ref<boolean>(false);
-
-/**
- * Index of currently actively hovered item or selected item
- */
-const activeItem = ref<MucSelectItemTypes>();
-
 const {
   items,
   multiple = false,
   noItemFoundMessage = "No items found.",
   itemTitle = "title",
+  placeholder,
 } = defineProps<{
   /**
    * Unique identifier for the select. Required property used to associate the select with its label and hint text for accessibility.
@@ -151,199 +88,156 @@ const {
    * Property that contains the value to be displayed in the list when a list of objects is used
    */
   itemTitle?: string;
+
+  /**
+   * Optional placeholder shown on the input
+   */
+  placeholder?: string;
 }>();
 
 /**
- * Toggles the list of items and sets the previously selected item as active
+ * Creates an array with the displayed labels.
  */
-const toggleItemList = () => {
-  showItems.value = !showItems.value;
-  activeItem.value = lastClickedItem.value;
-};
-
-/**
- * Opens the list of items and sets the previously selected item as active
- */
-const openItemList = () => {
-  showItems.value = true;
-  activeItem.value = lastClickedItem.value;
-  searchValue.value = "";
-};
-
-/**
- * Closes the list after clicking outside the component
- */
-useOnClickOutside(selectComponent, () => {
-  showItems.value = false;
-  searchValue.value = outputTransformed.value;
+const displayedLabels = computed(() => {
+  let displayedItems: string[] = [];
+  items.forEach((item) => {
+    if (typeof item === "string") {
+      displayedItems.push(item);
+    } else {
+      displayedItems.push(item[itemTitle]);
+    }
+  });
+  return displayedItems;
 });
 
+watch(
+  () => [
+    displayedLabels.value,
+    multiple,
+    noItemFoundMessage,
+    itemTitle,
+    placeholder,
+  ],
+  () => {
+    if (choicesInstance.value) {
+      choicesInstance.value.destroy();
+      createChoicesInstance();
+    }
+  }
+);
+
 /**
- * Actions upon clicking an item
- * @param clickedValue clicked item value
+ * Creates a new instance of Choices in which the current configuration is set.
+ * Must be executed for every change, as some of the values cannot be changed on the existing instance.
  */
-const clicked = (clickedValue: MucSelectItemTypes) => {
-  lastClickedItem.value = clickedValue;
-
-  multiple ? updateMVMultiple(clickedValue) : updateMVSingle(clickedValue);
-
-  if (!multiple) showItems.value = false;
+const createChoicesInstance = () => {
+  choicesInstance.value = new Choices(elementRef.value, {
+    allowHTML: true,
+    itemSelectText: "",
+    noResultsText: noItemFoundMessage,
+    placeholder: !!placeholder,
+    placeholderValue: placeholder,
+    removeItemButton: multiple,
+    searchFields: ["label"],
+  });
+  addChoices();
+  setDefaultSelectedValue();
+  choicesInstance.value.passedElement.element.addEventListener(
+    "change",
+    updateSelectedValues
+  );
 };
 
 /**
- * Update the modelValue with the given. Performs conversion to string if necessary.
- * @param newValue the new value
+ * Replaces the selection options in the existing instance of Choices.
  */
-const updateMVSingle = (newValue: MucSelectItemTypes) => {
-  if (Array.isArray(selectedValues.value))
-    selectedValues.value = selectedValues.value.join(" ");
-
-  if (
-    typeof selectedValues.value !== "string" &&
-    typeof newValue !== "string"
-  ) {
-    selectedValues.value =
-      selectedValues.value[itemTitle] === newValue[itemTitle] ? "" : newValue;
-  } else {
-    selectedValues.value = selectedValues.value === newValue ? "" : newValue;
+const addChoices = () => {
+  if (choicesInstance.value) {
+    choicesInstance.value.clearChoices();
+    let newChoices: ChoiceType[] = [];
+    displayedLabels.value.forEach((item, index) => {
+      newChoices.push({
+        value: index.toString(),
+        label: item,
+        selected: false,
+        disabled: false,
+      });
+    });
+    choicesInstance.value.setChoices(newChoices);
   }
 };
 
 /**
- * Update the modelValue with the given. Performs conversion to array if necessary.
- * @param newValue the new value
+ * Updates the modelValue when the selected option changes.
  */
-const updateMVMultiple = (newValue: MucSelectItemTypes) => {
-  if (!Array.isArray(selectedValues.value))
-    selectedValues.value = [selectedValues.value];
-
-  if (Array.isArray(selectedValues.value)) {
-    if (typeof newValue === "string") {
-      selectedValues.value = selectedValues.value
-        .map((item: string) => item)
-        .includes(newValue)
-        ? selectedValues.value.filter((val: string) => val !== newValue)
-        : [...selectedValues.value, newValue];
+const updateSelectedValues = () => {
+  if (choicesInstance.value) {
+    let values = choicesInstance.value.getValue(true);
+    if (Array.isArray(values)) {
+      let selectedItems: MucSelectItemTypes[] = [];
+      values.forEach((item) => selectedItems.push(items[parseInt(item)]));
+      selectedValues.value = selectedItems;
     } else {
-      selectedValues.value = selectedValues.value
-        .map((item: ItemAsObject) => item[itemTitle])
-        .includes(newValue[itemTitle])
-        ? selectedValues.value.filter(
-            (val: ItemAsObject) => val[itemTitle] !== newValue[itemTitle]
-          )
-        : [...selectedValues.value, newValue];
+      selectedValues.value = items[parseInt(values)];
     }
   }
 };
 
-/**
- * Converts the displayed text depending on the selection mode
- */
-const outputTransformed = computed(() => {
-  if (typeof selectedValues.value === "string") {
-    return selectedValues.value;
-  } else if (!Array.isArray(selectedValues.value)) {
-    return selectedValues.value[itemTitle].toString();
-  } else if (
-    selectedValues.value.every((item: any) => typeof item === "string")
-  ) {
-    return selectedValues.value.join(multiple ? ", " : " ");
-  } else {
-    return selectedValues.value
-      .map((item) => item[itemTitle].toString())
-      .join(multiple ? ", " : " ");
+watch(
+  () => selectedValues.value,
+  () => {
+    setDefaultSelectedValue();
   }
-});
-
-watch(outputTransformed, (newOutput) => {
-  searchValue.value = newOutput;
-});
-
-/**
- * Current search value
- */
-const searchValue = ref<string>(outputTransformed.value);
-
-/**
- * Determines whether all or only the searched elements are displayed
- */
-const displayedItems = computed(() =>
-  searchValue.value == outputTransformed.value
-    ? items
-    : updateDisplayedItems(searchValue.value)
 );
 
 /**
- * Filters the list of elements after entering the search string
- * @param search the search string
- * @return list of searched items
+ * Sets the preselected option in the current instance of Choices.
  */
-const updateDisplayedItems = (search: string) => {
-  noItemsFound.value = false;
-  const filteredItems = items.every((item: any) => typeof item === "string")
-    ? items.filter((item) => item.toLowerCase().includes(search.toLowerCase()))
-    : items.filter((item: any) =>
-        item[itemTitle].toString().toLowerCase().includes(search.toLowerCase())
-      );
-  if (filteredItems.length === 0) {
-    noItemsFound.value = true;
-  }
-  return filteredItems;
-};
-
-/**
- * Apply active class to hovered item
- * @param value of item
- */
-const isActiveClass = (value: MucSelectItemTypes) =>
-  value === activeItem.value ? "active" : "";
-
-/**
- * Apply selected class to selected items
- * @param value of item
- */
-const isSelectedClass = (value: MucSelectItemTypes) => {
-  if (typeof value === "string")
-    return selectedValues.value.includes(value) ? "selected" : "";
-
-  if (Array.isArray(selectedValues.value)) {
-    return selectedValues.value
-      .map((item) => item[itemTitle])
-      .includes(value[itemTitle])
-      ? "selected"
-      : "";
-  }
-  if (typeof selectedValues.value !== "string") {
-    return selectedValues.value[itemTitle] === value[itemTitle]
-      ? "selected"
-      : "";
+const setDefaultSelectedValue = () => {
+  if (choicesInstance.value) {
+    if (selectedValues.value && selectedValues.value.length != 0) {
+      if (Array.isArray(selectedValues.value)) {
+        let selectedItems: string[] = [];
+        selectedValues.value.forEach((value) =>
+          selectedItems.push(
+            items
+              .findIndex((item) => {
+                if (typeof item === "string") {
+                  return item == value;
+                } else {
+                  return item[itemTitle] == value[itemTitle];
+                }
+              })
+              .toString()
+          )
+        );
+        choicesInstance.value.setChoiceByValue(selectedItems);
+      } else {
+        const itemId = items.findIndex((item) => {
+          if (typeof item === "string") {
+            return item == selectedValues.value;
+          } else {
+            const value = selectedValues.value as ItemAsObject;
+            return item[itemTitle] == value[itemTitle];
+          }
+        });
+        choicesInstance.value.setChoiceByValue(itemId.toString());
+      }
+    } else {
+      choicesInstance.value.setChoiceByValue("");
+    }
   }
 };
 
-/**
- * Resets the currently activeItem
- */
-const emptyActiveItem = () => (activeItem.value = "");
+onMounted(() => {
+  if (elementRef.value) {
+    createChoicesInstance();
+  }
+});
 
-/**
- * Display the list of item by changing the css-display property
- */
-const displayOptions = computed(() =>
-  showItems.value ? "display-listbox" : ""
-);
-
-/**
- * Switches between the selection modes according to multiple. Checkboxes are shown on the multiple select
- */
-const selectType = computed(() =>
-  multiple && !noItemsFound.value
-    ? "m-input-wrapper--multiselect multiselect"
-    : "m-input-wrapper--select"
-);
+onBeforeUnmount(() => {
+  if (choicesInstance.value) {
+    choicesInstance.value.destroy();
+  }
+});
 </script>
-
-<style scoped>
-.display-listbox {
-  display: block !important;
-}
-</style>
