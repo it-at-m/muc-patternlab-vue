@@ -93,7 +93,10 @@ const {
   placeholder?: string;
 }>();
 
-const computedItems = computed(() => {
+/**
+ * Creates an array with the displayed labels.
+ */
+const displayedLabels = computed(() => {
   let displayedItems: string[] = [];
   items.forEach((item) => {
     if (typeof item === "string") {
@@ -107,7 +110,7 @@ const computedItems = computed(() => {
 
 watch(
   () => [
-    computedItems.value,
+    displayedLabels.value,
     multiple,
     noItemFoundMessage,
     itemTitle,
@@ -122,6 +125,10 @@ watch(
   }
 );
 
+/**
+ * Creates a new instance of Choices in which the current configuration is set.
+ * Must be executed for every change, as some of the values cannot be changed on the existing instance.
+ */
 const createChoicesInstance = () => {
   choicesInstance.value = new Choices(elementRef.value, {
     allowHTML: true,
@@ -129,6 +136,7 @@ const createChoicesInstance = () => {
     noResultsText: noItemFoundMessage,
     placeholder: !!placeholder,
     placeholderValue: placeholder,
+    removeItemButton: multiple,
     searchFields: ["label"],
   });
   addChoices();
@@ -139,11 +147,14 @@ const createChoicesInstance = () => {
   );
 };
 
+/**
+ * Replaces the selection options in the existing instance of Choices.
+ */
 const addChoices = () => {
   if (choicesInstance.value) {
     choicesInstance.value.clearChoices();
     let newChoices: ChoiceType[] = [];
-    computedItems.value.forEach((item, index) => {
+    displayedLabels.value.forEach((item, index) => {
       newChoices.push({
         value: index.toString(),
         label: item,
@@ -155,6 +166,9 @@ const addChoices = () => {
   }
 };
 
+/**
+ * Updates the modelValue when the selected option changes.
+ */
 const updateSelectedValues = () => {
   if (choicesInstance.value) {
     let values = choicesInstance.value.getValue(true);
@@ -175,6 +189,9 @@ watch(
   }
 );
 
+/**
+ * Sets the preselected option in the current instance of Choices.
+ */
 const setDefaultSelectedValue = () => {
   if (choicesInstance.value) {
     if (selectedValues.value && selectedValues.value.length != 0) {
