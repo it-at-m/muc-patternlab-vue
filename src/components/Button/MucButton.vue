@@ -10,10 +10,10 @@
       <muc-icon
         v-if="icon"
         :icon="icon"
-        class="m-button__icon "
+        class="m-button__icon"
         :class="{
           'm-button__icon--after': !iconShownLeft && variant != 'icon',
-          'm-button__icon--before': iconShownLeft && variant != 'icon'
+          'm-button__icon--before': iconShownLeft && variant != 'icon',
         }"
       />
       <slot v-if="iconShownLeft" />
@@ -27,7 +27,6 @@ import { computed } from "vue";
 import { MucIcon } from "../Icon";
 
 type buttonType = "primary" | "secondary" | "ghost" | "icon";
-
 
 const {
   variant = "primary",
