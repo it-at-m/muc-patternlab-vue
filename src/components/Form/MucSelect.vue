@@ -19,13 +19,18 @@
     >
       {{ hint }}
     </p>
-    <select
-      ref="elementRef"
-      :id="'select-' + id"
-      :aria-describedby="hint ? 'select-hint-' + id : undefined"
-      class="m-select"
-      :multiple="multiple"
-    />
+    <div
+      ref="selectComponentWrapper"
+      @click="openDropdown"
+    >
+      <select
+        ref="elementRef"
+        :id="'select-' + id"
+        :aria-describedby="hint ? 'select-hint-' + id : undefined"
+        class="m-select"
+        :multiple="multiple"
+      />
+    </div>
   </div>
 </template>
 
@@ -35,6 +40,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 import { ChoiceType, ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
 
+const selectComponentWrapper = ref<HTMLDivElement>();
 const elementRef = ref<HTMLSelectElement>();
 const choicesInstance = ref<Choices>();
 
@@ -139,6 +145,15 @@ const createChoicesInstance = () => {
     placeholderValue: placeholder,
     removeItemButton: multiple,
     searchFields: ["label"],
+    fuseOptions: {
+      includeScore: false,
+      threshold: 0.0,
+      distance: 100,
+      minMatchCharLength: 1,
+      ignoreLocation: true,
+      ignoreFieldNorm: true,
+      isCaseSensitive: false,
+    },
   });
   addChoices();
   setDefaultSelectedValue();
@@ -229,6 +244,30 @@ const setDefaultSelectedValue = () => {
   }
 };
 
+/**
+ * Workaround to open dropdown after click
+ */
+const openDropdown = (event: Event) => {
+  event.stopPropagation();
+  const dropdown =
+    selectComponentWrapper.value?.parentElement?.querySelector<HTMLElement>(
+      ".choices__list.choices__list--dropdown"
+    );
+  const dropdown_input =
+    selectComponentWrapper.value?.parentElement?.querySelector<HTMLElement>(
+      ".choices__input.choices__input--cloned"
+    );
+
+  if (dropdown && !dropdown.classList.contains("is-active")) {
+    dropdown.classList.add("is-active");
+    dropdown.setAttribute("aria-expanded", "true");
+
+    if (dropdown_input) {
+      dropdown_input.focus();
+    }
+  }
+};
+
 onMounted(() => {
   if (elementRef.value) {
     createChoicesInstance();
@@ -241,3 +280,9 @@ onBeforeUnmount(() => {
   }
 });
 </script>
+
+<style>
+.choices {
+  overflow: visible;
+}
+</style>
