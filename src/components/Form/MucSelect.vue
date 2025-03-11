@@ -168,7 +168,7 @@ const createChoicesInstance = () => {
  */
 const addChoices = () => {
   if (choicesInstance.value) {
-    choicesInstance.value.clearChoices();
+    choicesInstance.value.clearStore();
     let newChoices: ChoiceType[] = [];
     displayedLabels.value.forEach((item, index) => {
       newChoices.push({
