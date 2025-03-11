@@ -97,9 +97,10 @@ const iconAnimatedClass = computed(() => {
   }
 });
 
-const iconPositionClass = computed(() => ({
+const iconPositionClass: Object = computed(() => ({
   "set-right-margin": iconShownLeft,
-  "no-left-margin": !iconShownLeft ? !slots.default : !iconAnimated,
+  "set-left-margin": !iconShownLeft && slots.default,
+  "no-left-margin": iconShownLeft && !iconAnimated,
 }));
 
 /**
@@ -122,6 +123,14 @@ const disabledClass = computed(() => (disabled ? "disabled" : ""));
 
 .set-right-margin {
   margin-right: 0.75rem;
+}
+
+.set-left-margin {
+  margin-left: 0.75rem;
+}
+
+.m-button--ghost {
+  padding-right: 0;
 }
 
 [aria-disabled="true"] {

@@ -62,7 +62,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, useSlots } from "vue";
+import { computed, ComputedRef, useSlots } from "vue";
 
 import { MucIcon } from "../Icon";
 import CommentType from "./CommentType";
@@ -120,9 +120,9 @@ defineSlots<{
   text(): any;
 }>();
 
-const showDate = computed(() => !!slots["date"]);
+const showDate: ComputedRef<boolean> = computed(() => !!slots["date"]);
 
-const showInitials = computed(() => !!slots["initials"]);
+const showInitials: ComputedRef<boolean> = computed(() => !!slots["initials"]);
 
 /**
  * Computes class for given variant

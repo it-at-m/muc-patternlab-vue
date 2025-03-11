@@ -33,8 +33,14 @@
 # muc-patternlab-vue
 
 This repository contains a ready-to-use Vue-Components-Library based
-on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). Current supported Version
-is [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog).
+on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/). 
+
+The supported MDE-Version can be taken out of the following table:
+
+| muc-patternlab-vue | MDE Version |
+| >= 4.x | [1.0.7](https://patternlab.muenchen.space/?p=documentation-changelog) |
+| >= 3.x | [1.0.6](https://patternlab.muenchen.space/?p=documentation-changelog) |
+| < 3.x | [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog) |
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 
