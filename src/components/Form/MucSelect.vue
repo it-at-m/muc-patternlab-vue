@@ -260,7 +260,7 @@ const openDropdown = (event: Event) => {
 
   if (dropdown && !dropdown.classList.contains("is-active")) {
     dropdown.classList.add("is-active");
-    //dropdown.setAttribute("aria-expanded", "true");
+    dropdown.setAttribute("aria-expanded", "true");
 
     if (dropdown_input) {
       dropdown_input.focus();
