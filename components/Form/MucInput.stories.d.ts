@@ -12,6 +12,7 @@ declare const _default: {
             type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
             dataList?: string[];
             suffixIcon?: string;
+            max?: number;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
@@ -38,6 +39,7 @@ declare const _default: {
             type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
             dataList?: string[];
             suffixIcon?: string;
+            max?: number;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
@@ -57,6 +59,7 @@ declare const _default: {
         type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
         dataList?: string[];
         suffixIcon?: string;
+        max?: number;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: string) => any) | undefined;
         onSuffixClick?: (() => any) | undefined;

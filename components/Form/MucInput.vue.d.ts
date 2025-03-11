@@ -39,6 +39,10 @@ type __VLS_Props = {
      * Icon to be displayed as a suffix at the end of the input.
      */
     suffixIcon?: string;
+    /**
+     * Restricts character input to the specified number
+     */
+    max?: number;
 };
 type __VLS_PublicProps = {
     modelValue?: string;

@@ -28,6 +28,10 @@ type __VLS_Props = {
      * Property that contains the value to be displayed in the list when a list of objects is used
      */
     itemTitle?: string;
+    /**
+     * Optional placeholder shown on the input
+     */
+    placeholder?: string;
 };
 type __VLS_PublicProps = {
     "modelValue"?: MucSelectItemTypes | MucSelectItemTypes[];
@@ -38,5 +42,7 @@ declare const _default: import('vue').DefineComponent<__VLS_PublicProps, {}, {},
     "onUpdate:modelValue"?: ((value: MucSelectItemTypes | MucSelectItemTypes[]) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     selectComponent: HTMLDivElement;
+    selectComponentWrapper: HTMLDivElement;
+    elementRef: HTMLSelectElement;
 }, HTMLDivElement>;
 export default _default;

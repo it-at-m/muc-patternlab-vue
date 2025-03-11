@@ -9,6 +9,7 @@ declare const _default: {
         multiple?: boolean;
         noItemFoundMessage?: string;
         itemTitle?: string;
+        placeholder?: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any;
     }, string, import('vue').PublicProps, Readonly<{
@@ -21,10 +22,13 @@ declare const _default: {
         multiple?: boolean;
         noItemFoundMessage?: string;
         itemTitle?: string;
+        placeholder?: string;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: import('./MucSelectTypes').MucSelectItemTypes | import('./MucSelectTypes').MucSelectItemTypes[]) => any) | undefined;
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
         selectComponent: HTMLDivElement;
+        selectComponentWrapper: HTMLDivElement;
+        elementRef: HTMLSelectElement;
     }, HTMLDivElement>;
     title: string;
     tags: string[];
@@ -57,14 +61,14 @@ export declare const Default: {
 };
 export declare const MultiSelect: {
     args: {
-        id: string;
-        label: string;
-        multiple: boolean;
         modelValue: {
             id: string;
             name: string;
             quantity: number;
-        };
+        }[];
+        id: string;
+        label: string;
+        multiple: boolean;
         items: {
             id: string;
             name: string;
@@ -81,5 +85,19 @@ export declare const StringSelect: {
         items: string[];
         label: string;
         hint: string;
+    };
+};
+export declare const Placeholder: {
+    args: {
+        id: string;
+        items: {
+            id: string;
+            name: string;
+            quantity: number;
+        }[];
+        label: string;
+        hint: string;
+        itemTitle: string;
+        placeholder: string;
     };
 };
