@@ -283,6 +283,6 @@ onBeforeUnmount(() => {
 
 <style>
 .choices {
-  overflow: visible;
+  overflow: visible !important;
 }
 </style>
