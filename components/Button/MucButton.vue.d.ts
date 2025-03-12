@@ -1,4 +1,4 @@
-type buttonType = "primary" | "secondary" | "ghost";
+type buttonType = "primary" | "secondary" | "ghost" | "icon";
 type __VLS_Props = {
     /**
      * The variant prop gives you easy access to several different button styles.

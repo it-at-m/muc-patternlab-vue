@@ -1,4 +1,4 @@
-import{M as f}from"./MucCounter-CZenMsZy.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucButton-CH9fssm7.js";import"./MucIcon-B70FWVBC.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";import"./MucLink-8YPAiQ8D.js";const S={component:f,title:"Forms/MucCounter",tags:["autodocs"],parameters:{docs:{description:{component:`The MucCounter offers the functionality of a simple counter.
+import{M as f}from"./MucCounter-x31vwwkJ.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucButton-CllWkO84.js";import"./MucIcon-B70FWVBC.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";import"./MucLink-8YPAiQ8D.js";const S={component:f,title:"Forms/MucCounter",tags:["autodocs"],parameters:{docs:{description:{component:`The MucCounter offers the functionality of a simple counter.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-combobox)
 `}}}},e={args:{modelValue:0,label:"This is a label"}},a={args:{...e.args,modelValue:2,min:2,max:10}},r={args:{...e.args,link:"#"}},s={args:{...e.args,disabled:!0}};var o,t,n;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{

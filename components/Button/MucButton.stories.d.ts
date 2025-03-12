@@ -1,7 +1,7 @@
 declare const _default: {
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-            variant?: "primary" | "secondary" | "ghost";
+            variant?: "icon" | "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
@@ -18,7 +18,7 @@ declare const _default: {
             M: {};
             Defaults: {};
         }, Readonly<{
-            variant?: "primary" | "secondary" | "ghost";
+            variant?: "icon" | "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
@@ -30,7 +30,7 @@ declare const _default: {
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
-        variant?: "primary" | "secondary" | "ghost";
+        variant?: "icon" | "primary" | "secondary" | "ghost";
         disabled?: boolean;
         icon?: string;
         iconAnimated?: boolean;
@@ -86,6 +86,7 @@ export declare const Disabled: {
 export declare const IconOnly: {
     args: {
         icon: string;
+        variant: string;
     };
 };
 export declare const IconAnimated: {
