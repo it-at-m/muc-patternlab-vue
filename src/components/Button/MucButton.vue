@@ -11,7 +11,10 @@
         v-if="icon"
         :icon="icon"
         class="m-button__icon"
-        :class="iconPositionClass"
+        :class="{
+          'm-button__icon--after': !iconShownLeft && variant != 'icon',
+          'm-button__icon--before': iconShownLeft && variant != 'icon',
+        }"
       />
       <slot v-if="iconShownLeft" />
     </span>
@@ -19,13 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useSlots } from "vue";
+import { computed } from "vue";
 
 import { MucIcon } from "../Icon";
 
-type buttonType = "primary" | "secondary" | "ghost";
-
-const slots = useSlots();
+type buttonType = "primary" | "secondary" | "ghost" | "icon";
 
 const {
   variant = "primary",
@@ -96,12 +97,6 @@ const iconAnimatedClass = computed(() => {
     return "";
   }
 });
-
-const iconPositionClass: Object = computed(() => ({
-  "set-right-margin": iconShownLeft,
-  "set-left-margin": !iconShownLeft && slots.default,
-  "no-left-margin": iconShownLeft && !iconAnimated,
-}));
 
 /**
  * Emit a click event if not in disabled state.
