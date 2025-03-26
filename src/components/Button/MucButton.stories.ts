@@ -50,6 +50,7 @@ export const Disabled = {
 export const IconOnly = {
   args: {
     icon: "arrow-right",
+    variant: "icon",
   },
 };
 
