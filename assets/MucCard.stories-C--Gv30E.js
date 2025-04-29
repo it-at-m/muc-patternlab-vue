@@ -1,4 +1,4 @@
-import{f as d}from"./index-DnoWEEHi.js";import{M as m}from"./MucCard-C2uOawli.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucDivider-BVaAihCd.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const v={component:m,title:"Card/MucCard",tags:["autodocs"],args:{onClick:d()},parameters:{docs:{description:{component:`A Card-Component in Patternlab-Style.
+import{f as d}from"./index-CSfNH8kT.js";import{M as m}from"./MucCard-C2uOawli.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucDivider-BVaAihCd.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const v={component:m,title:"Card/MucCard",tags:["autodocs"],args:{onClick:d()},parameters:{docs:{description:{component:`A Card-Component in Patternlab-Style.
                 
 Use inside [MucCardContainer](/docs/muccardcontainer--docs) for a automatically wrapping layout.
 
