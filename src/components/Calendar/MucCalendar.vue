@@ -17,7 +17,10 @@
         >
           <h3>{{ computedCaption }}</h3>
         </muc-button>
-        <div v-else class="header">
+        <div
+          v-else
+          class="header"
+        >
           <h3>{{ computedCaption }}</h3>
         </div>
         <muc-button
