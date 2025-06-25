@@ -1,4 +1,4 @@
-import{f as i}from"./index-CSfNH8kT.js";import{_ as l}from"./MucLink-8YPAiQ8D.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucIcon-B70FWVBC.js";const b={component:l,title:"MucLink",tags:["autodocs"],args:{onClick:i()},parameters:{docs:{description:{component:`The \`muc-link\` component is a wrapper commponent for a standard html-a tag.
+import{f as i}from"./index-Dw9iTma1.js";import{_ as l}from"./MucLink-8YPAiQ8D.js";import"./vue.esm-bundler-CDd4cxOR.js";import"./MucIcon-B70FWVBC.js";const b={component:l,title:"MucLink",tags:["autodocs"],args:{onClick:i()},parameters:{docs:{description:{component:`The \`muc-link\` component is a wrapper commponent for a standard html-a tag.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-links)
 `}}}},e={args:{label:"Generic link label"}},r={args:{icon:"youtube",label:"youtube",href:"https://www.youtube.com",noUnderline:!0}};var n,o,t;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`{
