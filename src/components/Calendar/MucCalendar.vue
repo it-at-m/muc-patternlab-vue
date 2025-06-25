@@ -10,12 +10,19 @@
           icon="chevron-left"
         />
         <muc-button
+          v-if="!disableViewChange"
           class="header"
           variant="ghost"
-          @click="disableViewChange ? null : broaderView()"
+          @click="broaderView()"
         >
           <h3>{{ computedCaption }}</h3>
         </muc-button>
+        <div
+          v-else
+          class="header"
+        >
+          <h3>{{ computedCaption }}</h3>
+        </div>
         <muc-button
           @click="clickedNext"
           :aria-label="ariaLabelNext"
@@ -583,6 +590,9 @@ provide(MucCalendarKey, {
 .header {
   justify-content: center;
   display: flex;
+}
+
+.header .m-button {
   cursor: pointer;
 }
 
