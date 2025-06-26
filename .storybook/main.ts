@@ -17,7 +17,11 @@ const customIconsSvg = fs.readFileSync(
 const config: StorybookConfig = {
   stories: ["../docs/*.mdx", "../src/components/**/*.stories.ts"],
   staticDirs: ["../public", "../docs/images"],
-  addons: ["@storybook/addon-links", "@storybook/addon-a11y", "@storybook/addon-docs"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
+  ],
 
   framework: {
     name: "@storybook/vue3-vite",
@@ -31,7 +35,7 @@ const config: StorybookConfig = {
 
   core: {
     disableTelemetry: true, // https://storybook.js.org/docs/configure/telemetry
-  }
+  },
 };
 
 export default config;
