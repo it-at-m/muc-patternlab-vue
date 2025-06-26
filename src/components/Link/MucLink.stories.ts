@@ -20,9 +20,24 @@ export default {
   },
 };
 
-export const Weather = {
+export const GenericLink = {
   args: {
     label: "Generic link label",
+  },
+};
+
+export const DisabledLink = {
+  args: {
+    label: "Link disabled",
+    disabled: true,
+  },
+};
+
+export const LinkWithoutUnderlinedLabel = {
+  args: {
+    label: "facebook",
+    href: "https://www.facebook.com",
+    noUnderline: true,
   },
 };
 
@@ -31,6 +46,14 @@ export const LinkWithIcon = {
     icon: "youtube",
     label: "youtube",
     href: "https://www.youtube.com",
-    noUnderline: true,
+  },
+};
+
+export const LinkWithPrependIcon = {
+  args: {
+    icon: "munich",
+    label: "muenchen.de - Das offizielle Stadtportal",
+    href: "https://www.muenchen.de/",
+    iconShownLeft: true,
   },
 };

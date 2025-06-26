@@ -3,16 +3,25 @@
     :href="href"
     :target="target"
     class="m-link"
-    :class="reversedUnderlineClass"
+    :class="[reversedUnderlineClass, disabledClass]"
   >
+    <span v-if="iconShownLeft">
+      <slot name="icon">
+        <muc-icon
+          v-if="icon"
+          class="icon icon--before"
+          :icon="icon" />
+      </slot>
+    </span>
     {{ label }}
-    <slot name="icon">
-      <muc-icon
-        v-if="icon"
-        :icon="icon"
-        class="icon icon--after"
-      />
-    </slot>
+    <span v-if="!iconShownLeft">
+      <slot name="icon">
+        <muc-icon
+          v-if="icon"
+          class="icon icon--after"
+          :icon="icon" />
+      </slot>
+    </span>
   </a>
 </template>
 
@@ -25,6 +34,8 @@ const {
   href = "#",
   target = "_blank",
   noUnderline = false,
+  disabled = false,
+  iconShownLeft = false,
 } = defineProps<{
   /**
    * Text shown as the link
@@ -50,12 +61,21 @@ const {
    * Removes the underline from the label text
    */
   noUnderline?: boolean;
+  /**
+   * Disables the link
+   */
+  disabled?: boolean;
+  /**
+   * Whether the Icon should be shown on the left side of the link (slide-right) or not.
+   *
+   * Default is `false`
+   */
+  iconShownLeft?: boolean;
 }>();
 
 defineSlots<{
   /**
    * Icon slots overrides chosen prop icon.
-   * The icon can be displayed infront or behind the label with these classes: icon--after | icon--before
    */
   icon(): void;
 }>();
@@ -66,6 +86,10 @@ defineSlots<{
 const reversedUnderlineClass = computed(() =>
   noUnderline ? "m-link--reversed-underline" : ""
 );
+
+const disabledClass = computed(() =>
+  disabled ? "m-link--disabled" : ""
+)
 </script>
 
 <style scoped></style>
