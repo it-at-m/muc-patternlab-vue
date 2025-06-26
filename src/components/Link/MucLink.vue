@@ -10,7 +10,8 @@
         <muc-icon
           v-if="icon"
           class="icon icon--before"
-          :icon="icon" />
+          :icon="icon"
+        />
       </slot>
     </span>
     {{ label }}
@@ -19,7 +20,8 @@
         <muc-icon
           v-if="icon"
           class="icon icon--after"
-          :icon="icon" />
+          :icon="icon"
+        />
       </slot>
     </span>
   </a>
@@ -87,9 +89,7 @@ const reversedUnderlineClass = computed(() =>
   noUnderline ? "m-link--reversed-underline" : ""
 );
 
-const disabledClass = computed(() =>
-  disabled ? "m-link--disabled" : ""
-)
+const disabledClass = computed(() => (disabled ? "m-link--disabled" : ""));
 </script>
 
 <style scoped></style>
