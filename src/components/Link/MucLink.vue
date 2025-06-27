@@ -5,25 +5,21 @@
     class="m-link"
     :class="[reversedUnderlineClass, disabledClass]"
   >
-    <span v-if="iconShownLeft">
-      <slot name="icon">
-        <muc-icon
-          v-if="icon"
-          class="icon icon--before"
-          :icon="icon"
-        />
-      </slot>
-    </span>
+    <slot name="prepend">
+      <muc-icon
+        v-if="prependIcon"
+        class="icon icon--before"
+        :icon="prependIcon"
+      />
+    </slot>
     {{ label }}
-    <span v-if="!iconShownLeft">
-      <slot name="icon">
-        <muc-icon
-          v-if="icon"
-          class="icon icon--after"
-          :icon="icon"
-        />
-      </slot>
-    </span>
+    <slot name="append">
+      <muc-icon
+        v-if="appendIcon"
+        class="icon icon--after"
+        :icon="appendIcon"
+      />
+    </slot>
   </a>
 </template>
 
@@ -37,7 +33,8 @@ const {
   target = "_blank",
   noUnderline = false,
   disabled = false,
-  iconShownLeft = false,
+  prependIcon = "",
+  appendIcon = "",
 } = defineProps<{
   /**
    * Text shown as the link
@@ -50,9 +47,14 @@ const {
   href?: string;
 
   /**
+   * Optional icon displayed before the text
+   */
+  prependIcon?: string;
+
+  /**
    * Optional icon displayed behind the text
    */
-  icon?: string;
+  appendIcon?: string;
 
   /**
    * Target on the link
@@ -67,19 +69,17 @@ const {
    * Disables the link
    */
   disabled?: boolean;
-  /**
-   * Whether the Icon should be shown on the left side of the link (slide-right) or not.
-   *
-   * Default is `false`
-   */
-  iconShownLeft?: boolean;
 }>();
 
 defineSlots<{
   /**
-   * Icon slots overrides chosen prop icon.
+   * This slot allows you to inject custom content before the link label.
    */
-  icon(): void;
+  prepend(): void;
+  /**
+   * This slot allows you to inject custom content behind the link label.
+   */
+  append(): void;
 }>();
 
 /**

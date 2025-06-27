@@ -43,7 +43,7 @@ export const LinkWithoutUnderlinedLabel = {
 
 export const LinkWithIcon = {
   args: {
-    icon: "youtube",
+    appendIcon: "youtube",
     label: "youtube",
     href: "https://www.youtube.com",
   },
@@ -51,9 +51,8 @@ export const LinkWithIcon = {
 
 export const LinkWithPrependIcon = {
   args: {
-    icon: "munich",
+    prependIcon: "munich",
     label: "muenchen.de - Das offizielle Stadtportal",
     href: "https://www.muenchen.de/",
-    iconShownLeft: true,
   },
 };
