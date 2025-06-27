@@ -3,14 +3,21 @@
     :href="href"
     :target="target"
     class="m-link"
-    :class="reversedUnderlineClass"
+    :class="[reversedUnderlineClass, disabledClass]"
   >
-    {{ label }}
-    <slot name="icon">
+    <slot name="prepend">
       <muc-icon
-        v-if="icon"
-        :icon="icon"
+        v-if="prependIcon"
+        class="icon icon--before"
+        :icon="prependIcon"
+      />
+    </slot>
+    {{ label }}
+    <slot name="append">
+      <muc-icon
+        v-if="appendIcon"
         class="icon icon--after"
+        :icon="appendIcon"
       />
     </slot>
   </a>
@@ -25,6 +32,9 @@ const {
   href = "#",
   target = "_blank",
   noUnderline = false,
+  disabled = false,
+  prependIcon = "",
+  appendIcon = "",
 } = defineProps<{
   /**
    * Text shown as the link
@@ -37,9 +47,14 @@ const {
   href?: string;
 
   /**
+   * Optional icon displayed before the text
+   */
+  prependIcon?: string;
+
+  /**
    * Optional icon displayed behind the text
    */
-  icon?: string;
+  appendIcon?: string;
 
   /**
    * Target on the link
@@ -50,14 +65,21 @@ const {
    * Removes the underline from the label text
    */
   noUnderline?: boolean;
+  /**
+   * Disables the link
+   */
+  disabled?: boolean;
 }>();
 
 defineSlots<{
   /**
-   * Icon slots overrides chosen prop icon.
-   * The icon can be displayed infront or behind the label with these classes: icon--after | icon--before
+   * This slot allows you to inject custom content before the link label.
    */
-  icon(): void;
+  prepend(): void;
+  /**
+   * This slot allows you to inject custom content behind the link label.
+   */
+  append(): void;
 }>();
 
 /**
@@ -66,6 +88,8 @@ defineSlots<{
 const reversedUnderlineClass = computed(() =>
   noUnderline ? "m-link--reversed-underline" : ""
 );
+
+const disabledClass = computed(() => (disabled ? "m-link--disabled" : ""));
 </script>
 
 <style scoped></style>
