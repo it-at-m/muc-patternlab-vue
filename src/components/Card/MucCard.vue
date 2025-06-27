@@ -29,13 +29,13 @@
 <script setup lang="ts">
 import { MucDivider } from "../Divider";
 
-const emit = defineEmits<{
+const emit = defineEmits<
   /**
    * @param e eventname
    * @param click click event itself
    */
-  (e: "click", click: Event): void;
-}>();
+  (e: "click", click: Event) => void
+>();
 
 defineProps<{
   /**
@@ -53,11 +53,11 @@ defineSlots<{
   /**
    * Icon shown above the callout. Defaults to icons matching the type.
    */
-  headerPrefix(): any;
+  headerPrefix(): unknown;
   /**
    * Content beneath the heading shown as text.
    */
-  content(): any;
+  content(): unknown;
 }>();
 </script>
 

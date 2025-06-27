@@ -21,14 +21,14 @@
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
             </button>
-            <Splide
+            <splide
               :options="mucSliderOptions"
               aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
               die Pfeiltaste links und rechts oder die Buttons um zu navigieren."
               ref="splide"
             >
               <slot />
-            </Splide>
+            </splide>
             <button
               v-if="showNextArrow"
               aria-label="Nächstes Element"
@@ -47,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 
@@ -56,7 +57,7 @@ defineSlots<{
   /**
    * MucSliderItems can be put into this slot.
    */
-  default(): any;
+  default(): unknown;
 }>();
 
 const emit = defineEmits<{
@@ -113,9 +114,9 @@ onMounted(() => {
   if (splide.value && splide.value.splide) {
     splideLength.value = splide.value.length;
     splide.value.splide.on("move", () => {
-      if (splide.value) {
-        currentSlide.value = splide.value.splide!.index;
-        emit("changeSlide", splide.value.splide!.index);
+      if (splide.value && splide.value.splide) {
+        currentSlide.value = splide.value.splide.index;
+        emit("changeSlide", splide.value.splide.index);
       }
     });
   }

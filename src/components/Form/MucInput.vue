@@ -156,16 +156,16 @@ const slots = defineSlots<{
   /**
    * Slot in front of the user input with divider.
    */
-  prefix(): any;
+  prefix(): unknown;
 }>();
 
-const emits = defineEmits<{
+const emits = defineEmits<
   /**
    * Triggered when suffix-button is clicked.
    * @param e Click-Event
    */
-  (e: "suffixClick"): void;
-}>();
+  (e: "suffixClick") => void
+>();
 
 /**
  * Computes whether the current type is "search".
@@ -182,7 +182,7 @@ const currentAvalOptions = computed(() => {
   if (modelValue.value === "") return [];
 
   const searchValue = modelValue.value.toLowerCase();
-  return dataList!.filter(
+  return dataList.filter(
     (option) =>
       option.toLowerCase().startsWith(searchValue) &&
       option.toLowerCase() !== searchValue
@@ -198,4 +198,3 @@ const handleOptionSelection = (option: string) => (modelValue.value = option);
 
 const handleSuffixClick = () => emits("suffixClick");
 </script>
-<style scoped></style>

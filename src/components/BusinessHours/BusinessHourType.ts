@@ -10,19 +10,19 @@ type WeekDays = "Mo" | "Di" | "Mi" | "Do" | "Fr" | "Sa" | "So";
  * @property {string} from - The start time of the opening period (in 'HH:mm' format).
  * @property {string} to - The end time of the opening period (in 'HH:mm' format).
  */
-type OpeningHour = {
+interface OpeningHour {
   from: string;
   to: string;
-};
+}
 
 /**
  * @typedef {Object} BusinessHourType
  * @property {WeekDays} weekDay - The day of the week for which the opening hours apply.
  * @property {OpeningHour[]} openingHours - A list of opening hours for the specified day of the week.
  */
-type BusinessHourType = {
+interface BusinessHourType {
   weekDay: WeekDays;
   openingHours: OpeningHour[];
-};
+}
 
 export type { BusinessHourType, OpeningHour, WeekDays };

@@ -50,15 +50,15 @@ defineSlots<{
   /**
    * Icon shown above the callout. Defaults to icons matching the type.
    */
-  icon(): any;
+  icon(): unknown;
   /**
    * Heading of the callout.
    */
-  header(): any;
+  header(): unknown;
   /**
    * Content beneath the heading shown as text.
    */
-  content(): any;
+  content(): unknown;
 }>();
 
 /*

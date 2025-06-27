@@ -8,7 +8,7 @@
               v-for="item in stepItems"
               :key="item.id"
             >
-              <MucStepperItem
+              <muc-stepper-item
                 :item="item"
                 :is-active="isActive(item.id)"
                 :is-done="isDone(item.id)"

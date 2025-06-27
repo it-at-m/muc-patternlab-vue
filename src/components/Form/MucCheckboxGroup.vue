@@ -55,12 +55,12 @@ defineSlots<{
   /**
    * Slot directly beneath the heading which will be displayed at all times.
    */
-  checkboxes: any;
+  checkboxes: unknown;
 
   /**
    * Slot beneath the regular checkbox slot which will be collapsed at first.
    */
-  collapsableCheckboxes: any;
+  collapsableCheckboxes: unknown;
 }>();
 
 /**
