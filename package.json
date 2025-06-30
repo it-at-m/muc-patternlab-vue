@@ -22,7 +22,8 @@
       "types": "./index.d.ts",
       "import": "./muc-patternlab-vue.es.js"
     },
-    "./style.css": "./style.css",
+    "./style.css": "./muc-patternlab-vue.css",
+    "./muc-patternlab-vue.css": "./muc-patternlab-vue.css",
     "./assets/css/custom-style.css": "./assets/css/custom-style.css",
     "./assets/icons/muc-icons.svg": "./assets/icons/muc-icons.svg",
     "./assets/icons/custom-icons.svg": "./assets/icons/custom-icons.svg"
