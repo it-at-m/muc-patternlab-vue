@@ -74,11 +74,11 @@ const MAX_STARS = 5;
 
 const slots = useSlots();
 
-type RatingDisplayType = {
+interface RatingDisplayType {
   fullStars: number;
   emptyStars: number;
   isHalfStar: boolean;
-};
+}
 
 const { rating, variant = "listing" } = defineProps<{
   /**
@@ -97,27 +97,27 @@ defineSlots<{
   /**
    * Slot for the commenter's initials or avatar.
    */
-  initials(): any;
+  initials(): unknown;
   /**
    * Slot for the author's name or username.
    */
-  author(): any;
+  author(): unknown;
   /**
    * Prefix for the date (e.g., "am").
    */
-  datePrefix(): any;
+  datePrefix(): unknown;
   /**
    * Slot for the comment's date.
    */
-  date(): any;
+  date(): unknown;
   /**
    * Slot for the comment's headline or title.
    */
-  headline(): any;
+  headline(): unknown;
   /**
    * Slot for the main text content of the comment.
    */
-  text(): any;
+  text(): unknown;
 }>();
 
 const showDate: ComputedRef<boolean> = computed(() => !!slots["date"]);
@@ -169,5 +169,3 @@ const evaluateRating = computed(() => {
   } as RatingDisplayType;
 });
 </script>
-
-<style scoped></style>

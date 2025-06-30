@@ -13,7 +13,7 @@
       :tabindex="getTabindex"
       :aria-label="getAriaLabel"
     >
-      <MucIcon :icon="getIcon" />
+      <muc-icon :icon="getIcon" />
     </div>
     <div
       class="m-form-step__title"

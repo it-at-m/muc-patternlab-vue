@@ -20,7 +20,7 @@ defineSlots<{
   /**
    * Body of the Intro.
    */
-  default(): any;
+  default(): unknown;
 }>();
 </script>
 

@@ -37,13 +37,13 @@ const { label } = defineProps<{
   label: string;
 }>();
 
-const emit = defineEmits<{
+const emit = defineEmits<
   /**
    * Emits every time the checkbox or the label is clicked - thus switching the state.
    * @param e emits the click event.
    */
-  (e: "click"): void;
-}>();
+  (e: "click") => void
+>();
 
 /**
  * Called upon clicking the checkbox or label, switches the state of the checkbox and emits the event.

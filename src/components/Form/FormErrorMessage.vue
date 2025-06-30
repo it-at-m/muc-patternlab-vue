@@ -4,7 +4,7 @@ import { MucIcon } from "../Icon";
 
 <template>
   <span class="m-error-message form-error-message">
-    <MucIcon icon="warning--filled" />
+    <muc-icon icon="warning--filled" />
     <span>
       <slot></slot>
     </span>

@@ -1,7 +1,7 @@
 <template>
-  <SplideSlide>
+  <splide-slide>
     <slot />
-  </SplideSlide>
+  </splide-slide>
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,6 @@ defineSlots<{
   /**
    * Elements can be put into this slot.
    */
-  default(): any;
+  default(): unknown;
 }>();
 </script>

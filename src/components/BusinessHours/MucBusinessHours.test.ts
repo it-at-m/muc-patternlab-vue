@@ -13,7 +13,7 @@ describe("MucBusinessHours", () => {
     todaysBusinessHours: BusinessHourType;
   }
 
-  let businessHours: Array<BusinessHourType>;
+  let businessHours: BusinessHourType[];
 
   beforeEach(() => {
     businessHours = [

@@ -10,14 +10,14 @@
     @drop.prevent="onDrop"
     @click="selectFiles"
   >
-    <IconFileUpload />
-    <MucButton
+    <icon-file-upload />
+    <muc-button
       variant="secondary"
       icon="upload"
       :disabled="disabled"
     >
       {{ buttonText }}
-    </MucButton>
+    </muc-button>
     <span class="drop-zone-additional-information">
       {{ additionalInformation }}
     </span>

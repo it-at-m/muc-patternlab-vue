@@ -115,7 +115,7 @@ const slots = defineSlots<{
   /**
    * Display a hint beneath all the opening hours.
    */
-  hint(): any;
+  hint(): unknown;
 }>();
 
 /**

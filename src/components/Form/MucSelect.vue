@@ -105,12 +105,12 @@ const {
  * Creates an array with the displayed labels.
  */
 const displayedLabels = computed(() => {
-  let displayedItems: string[] = [];
+  const displayedItems: string[] = [];
   items.forEach((item) => {
     if (typeof item === "string") {
       displayedItems.push(item);
     } else {
-      displayedItems.push(item[itemTitle]);
+      displayedItems.push(item[itemTitle] as string);
     }
   });
   return displayedItems;
@@ -169,7 +169,7 @@ const createChoicesInstance = () => {
 const addChoices = () => {
   if (choicesInstance.value) {
     choicesInstance.value.clearStore();
-    let newChoices: ChoiceType[] = [];
+    const newChoices: ChoiceType[] = [];
     displayedLabels.value.forEach((item, index) => {
       newChoices.push({
         value: index.toString(),
@@ -187,9 +187,9 @@ const addChoices = () => {
  */
 const updateSelectedValues = () => {
   if (choicesInstance.value) {
-    let values = choicesInstance.value.getValue(true);
+    const values = choicesInstance.value.getValue(true);
     if (Array.isArray(values)) {
-      let selectedItems: MucSelectItemTypes[] = [];
+      const selectedItems: MucSelectItemTypes[] = [];
       values.forEach((item) => selectedItems.push(items[parseInt(item)]));
       selectedValues.value = selectedItems;
     } else {
@@ -212,8 +212,10 @@ const setDefaultSelectedValue = () => {
   if (choicesInstance.value) {
     if (selectedValues.value && selectedValues.value.length != 0) {
       if (Array.isArray(selectedValues.value)) {
-        let selectedItems: string[] = [];
-        selectedValues.value.forEach((value) =>
+        const selectedItems: string[] = [];
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        selectedValues.value.forEach((value: any) =>
           selectedItems.push(
             items
               .findIndex((item) => {

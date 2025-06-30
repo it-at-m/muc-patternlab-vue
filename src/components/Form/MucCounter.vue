@@ -2,7 +2,7 @@
   <div class="grid">
     <div class="grid-item">
       <div class="content-centered">
-        <MucButton
+        <muc-button
           v-on:click="clickedMinus"
           variant="secondary"
           :disabled="disableMinus"
@@ -11,7 +11,7 @@
           "
         >
           <template #default><muc-icon icon="minus" /></template>
-        </MucButton>
+        </muc-button>
       </div>
       <p tabindex="0">
         <strong
@@ -25,14 +25,14 @@
         </strong>
       </p>
       <div class="content-centered">
-        <MucButton
+        <muc-button
           v-on:click="clickedPlus"
           variant="secondary"
           :disabled="disablePlus"
           :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
         >
           <template #default><muc-icon icon="plus" /></template>
-        </MucButton>
+        </muc-button>
       </div>
     </div>
     <div class="grid-item content-centered-justify-left">
