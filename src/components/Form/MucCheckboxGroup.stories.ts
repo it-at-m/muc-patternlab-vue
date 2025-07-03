@@ -22,7 +22,7 @@ export const NotCollapsable = () => ({
   template: `
       <MucCheckboxGroup heading="Collapsable checkbox group ">
          <template #checkboxes>
-           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" :id="index"/>
+           <MucCheckbox v-for="index in 4" :key="index" :label="'not-collapsed-' + index" hint="This is a hint for this checkbox" :id="index"/>
          </template>
       </MucCheckboxGroup>
   `,

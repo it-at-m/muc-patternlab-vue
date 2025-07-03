@@ -22,5 +22,6 @@ export const Default = {
   args: {
     id: "default",
     label: "This is a checkbox - click me",
+    hint: "This is a hint",
   },
 };
