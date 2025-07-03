@@ -16,6 +16,12 @@
       :for="'checkbox-' + id"
     >
       {{ label }}
+      <span
+        :id="'checkbox-hint-' + id"
+        class="m-hint"
+      >
+        {{ hint }}
+      </span>
     </label>
   </div>
 </template>
@@ -35,6 +41,10 @@ const { label } = defineProps<{
    * Label is displayed to the right of the checkbox as information for the user.
    */
   label: string;
+  /**
+   * Optional hint shown beneath the checkbox
+   */
+  hint?: string;
 }>();
 
 const emit = defineEmits<
