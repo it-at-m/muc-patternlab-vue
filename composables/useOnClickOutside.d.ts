@@ -1,3 +1,3 @@
-export default function useOnClickOutside(component: any, callback: any): {
-    listener: (event: any) => void;
+export default function useOnClickOutside(component: any, callback: unknown): {
+    listener: (event: Event) => void;
 } | undefined;

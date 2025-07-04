@@ -14,20 +14,20 @@ declare function __VLS_template(): {
         /**
          * Icon shown above the callout. Defaults to icons matching the type.
          */
-        headerPrefix(): any;
+        headerPrefix(): unknown;
         /**
          * Content beneath the heading shown as text.
          */
-        content(): any;
+        content(): unknown;
     }> & {
         /**
          * Icon shown above the callout. Defaults to icons matching the type.
          */
-        headerPrefix(): any;
+        headerPrefix(): unknown;
         /**
          * Content beneath the heading shown as text.
          */
-        content(): any;
+        content(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

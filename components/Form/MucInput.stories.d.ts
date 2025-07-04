@@ -69,9 +69,9 @@ declare const _default: {
         suffixClick: () => any;
     }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            prefix(): any;
+            prefix(): unknown;
         }> & {
-            prefix(): any;
+            prefix(): unknown;
         };
     });
     title: string;

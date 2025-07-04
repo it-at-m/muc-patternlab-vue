@@ -8,9 +8,13 @@ type __VLS_Props = {
      */
     href?: string;
     /**
+     * Optional icon displayed before the text
+     */
+    prependIcon?: string;
+    /**
      * Optional icon displayed behind the text
      */
-    icon?: string;
+    appendIcon?: string;
     /**
      * Target on the link
      */
@@ -19,21 +23,31 @@ type __VLS_Props = {
      * Removes the underline from the label text
      */
     noUnderline?: boolean;
+    /**
+     * Disables the link
+     */
+    disabled?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: Readonly<{
         /**
-         * Icon slots overrides chosen prop icon.
-         * The icon can be displayed infront or behind the label with these classes: icon--after | icon--before
+         * This slot allows you to inject custom content before the link label.
          */
-        icon(): void;
+        prepend(): void;
+        /**
+         * This slot allows you to inject custom content behind the link label.
+         */
+        append(): void;
     }> & {
         /**
-         * Icon slots overrides chosen prop icon.
-         * The icon can be displayed infront or behind the label with these classes: icon--after | icon--before
+         * This slot allows you to inject custom content before the link label.
          */
-        icon(): void;
+        prepend(): void;
+        /**
+         * This slot allows you to inject custom content behind the link label.
+         */
+        append(): void;
     };
     refs: {};
     rootEl: HTMLAnchorElement;

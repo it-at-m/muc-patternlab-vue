@@ -25,9 +25,9 @@ declare const _default: {
         icon?: string;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            hint(): any;
+            hint(): unknown;
         }> & {
-            hint(): any;
+            hint(): unknown;
         };
     });
     title: string;

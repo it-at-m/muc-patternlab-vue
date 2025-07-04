@@ -17,52 +17,52 @@ declare function __VLS_template(): {
         /**
          * Slot for the commenter's initials or avatar.
          */
-        initials(): any;
+        initials(): unknown;
         /**
          * Slot for the author's name or username.
          */
-        author(): any;
+        author(): unknown;
         /**
          * Prefix for the date (e.g., "am").
          */
-        datePrefix(): any;
+        datePrefix(): unknown;
         /**
          * Slot for the comment's date.
          */
-        date(): any;
+        date(): unknown;
         /**
          * Slot for the comment's headline or title.
          */
-        headline(): any;
+        headline(): unknown;
         /**
          * Slot for the main text content of the comment.
          */
-        text(): any;
+        text(): unknown;
     }> & {
         /**
          * Slot for the commenter's initials or avatar.
          */
-        initials(): any;
+        initials(): unknown;
         /**
          * Slot for the author's name or username.
          */
-        author(): any;
+        author(): unknown;
         /**
          * Prefix for the date (e.g., "am").
          */
-        datePrefix(): any;
+        datePrefix(): unknown;
         /**
          * Slot for the comment's date.
          */
-        date(): any;
+        date(): unknown;
         /**
          * Slot for the comment's headline or title.
          */
-        headline(): any;
+        headline(): unknown;
         /**
          * Slot for the main text content of the comment.
          */
-        text(): any;
+        text(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

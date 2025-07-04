@@ -53,12 +53,12 @@ declare function __VLS_template(): {
         /**
          * Slot in front of the user input with divider.
          */
-        prefix(): any;
+        prefix(): unknown;
     }> & {
         /**
          * Slot in front of the user input with divider.
          */
-        prefix(): any;
+        prefix(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

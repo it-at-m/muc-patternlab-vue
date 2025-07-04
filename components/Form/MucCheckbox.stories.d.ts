@@ -4,6 +4,7 @@ declare const _default: {
     } & {
         id: string;
         label: string;
+        hint?: string;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: boolean) => any;
     } & {
@@ -13,6 +14,7 @@ declare const _default: {
     } & {
         id: string;
         label: string;
+        hint?: string;
     }> & Readonly<{
         onClick?: (() => any) | undefined;
         "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
@@ -32,5 +34,6 @@ export declare const Default: {
     args: {
         id: string;
         label: string;
+        hint: string;
     };
 };

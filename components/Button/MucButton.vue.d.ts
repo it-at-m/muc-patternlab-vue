@@ -33,12 +33,12 @@ declare function __VLS_template(): {
         /**
          * Display content inside the button.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * Display content inside the button.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {};
     rootEl: HTMLButtonElement;

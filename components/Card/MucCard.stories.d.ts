@@ -32,11 +32,11 @@ declare const _default: {
         click: (click: Event) => any;
     }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            headerPrefix(): any;
-            content(): any;
+            headerPrefix(): unknown;
+            content(): unknown;
         }> & {
-            headerPrefix(): any;
-            content(): any;
+            headerPrefix(): unknown;
+            content(): unknown;
         };
     });
     title: string;
@@ -95,11 +95,11 @@ export declare const WithHeaderPrefix: () => {
             click: (click: Event) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                headerPrefix(): any;
-                content(): any;
+                headerPrefix(): unknown;
+                content(): unknown;
             }> & {
-                headerPrefix(): any;
-                content(): any;
+                headerPrefix(): unknown;
+                content(): unknown;
             };
         });
     };

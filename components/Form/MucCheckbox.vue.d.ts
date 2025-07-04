@@ -7,6 +7,10 @@ type __VLS_Props = {
      * Label is displayed to the right of the checkbox as information for the user.
      */
     label: string;
+    /**
+     * Optional hint shown beneath the checkbox
+     */
+    hint?: string;
 };
 type __VLS_PublicProps = {
     modelValue?: boolean;

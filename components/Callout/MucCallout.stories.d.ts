@@ -19,13 +19,13 @@ declare const _default: {
         type?: "error" | "info" | "success" | "warning";
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            icon(): any;
-            header(): any;
-            content(): any;
+            icon(): unknown;
+            header(): unknown;
+            content(): unknown;
         }> & {
-            icon(): any;
-            header(): any;
-            content(): any;
+            icon(): unknown;
+            header(): unknown;
+            content(): unknown;
         };
     });
     title: string;

@@ -4,12 +4,12 @@ declare function __VLS_template(): {
         /**
          * MucCards can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * MucCards can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

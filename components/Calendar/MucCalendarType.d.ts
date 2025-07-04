@@ -22,7 +22,7 @@ type MucCalendarSelected = null | Date | Date[] | MucDateRange;
 /**
  * Injection type for date selection component
  */
-type MucCalendarInjection = {
+interface MucCalendarInjection {
     viewDate: Readonly<Ref<Date>>;
     minDate: ComputedRef<Date | undefined>;
     maxDate: ComputedRef<Date | undefined>;
@@ -30,7 +30,7 @@ type MucCalendarInjection = {
     variant: Readonly<Ref<CalendarTypes>>;
     showAdjacentMonths: Readonly<Ref<boolean>>;
     allowedDates: AllowedDateFunction;
-};
+}
 export type { AllowedDateFunction, MucDateRange, MucCalendarSelected, CalendarTypes, MucCalendarInjection, ViewType, };
 /**
  * Locales for date output

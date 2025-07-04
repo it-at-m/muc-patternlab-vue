@@ -22,19 +22,19 @@ declare const _default: {
         variant?: import('./CommentType').default;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            initials(): any;
-            author(): any;
-            datePrefix(): any;
-            date(): any;
-            headline(): any;
-            text(): any;
+            initials(): unknown;
+            author(): unknown;
+            datePrefix(): unknown;
+            date(): unknown;
+            headline(): unknown;
+            text(): unknown;
         }> & {
-            initials(): any;
-            author(): any;
-            datePrefix(): any;
-            date(): any;
-            headline(): any;
-            text(): any;
+            initials(): unknown;
+            author(): unknown;
+            datePrefix(): unknown;
+            date(): unknown;
+            headline(): unknown;
+            text(): unknown;
         };
     });
     title: string;

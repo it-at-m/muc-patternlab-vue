@@ -20,12 +20,12 @@ declare function __VLS_template(): {
         /**
          * Display a hint beneath all the opening hours.
          */
-        hint(): any;
+        hint(): unknown;
     }> & {
         /**
          * Display a hint beneath all the opening hours.
          */
-        hint(): any;
+        hint(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

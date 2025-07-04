@@ -3,9 +3,11 @@ declare const _default: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             label: string;
             href?: string;
-            icon?: string;
+            prependIcon?: string;
+            appendIcon?: string;
             target?: string;
             noUnderline?: boolean;
+            disabled?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLAnchorElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -16,9 +18,11 @@ declare const _default: {
         }, Readonly<{
             label: string;
             href?: string;
-            icon?: string;
+            prependIcon?: string;
+            appendIcon?: string;
             target?: string;
             noUnderline?: boolean;
+            disabled?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -26,14 +30,18 @@ declare const _default: {
     } & import('vue').ComponentOptionsBase<Readonly<{
         label: string;
         href?: string;
-        icon?: string;
+        prependIcon?: string;
+        appendIcon?: string;
         target?: string;
         noUnderline?: boolean;
+        disabled?: boolean;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            icon(): void;
+            prepend(): void;
+            append(): void;
         }> & {
-            icon(): void;
+            prepend(): void;
+            append(): void;
         };
     });
     title: string;
@@ -50,16 +58,35 @@ declare const _default: {
     };
 };
 export default _default;
-export declare const Weather: {
+export declare const GenericLink: {
     args: {
         label: string;
     };
 };
-export declare const LinkWithIcon: {
+export declare const DisabledLink: {
     args: {
-        icon: string;
+        label: string;
+        disabled: boolean;
+    };
+};
+export declare const LinkWithoutUnderlinedLabel: {
+    args: {
         label: string;
         href: string;
         noUnderline: boolean;
+    };
+};
+export declare const LinkWithIcon: {
+    args: {
+        appendIcon: string;
+        label: string;
+        href: string;
+    };
+};
+export declare const LinkWithPrependIcon: {
+    args: {
+        prependIcon: string;
+        label: string;
+        href: string;
     };
 };

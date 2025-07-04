@@ -25,9 +25,9 @@ declare const _default: {
         divider: boolean;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            default(): any;
+            default(): unknown;
         }> & {
-            default(): any;
+            default(): unknown;
         };
     });
     title: string;

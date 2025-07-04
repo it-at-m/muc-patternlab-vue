@@ -11,12 +11,12 @@ declare function __VLS_template(): {
         /**
          * Text-content of the banner.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * Text-content of the banner.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

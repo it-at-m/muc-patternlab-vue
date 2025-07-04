@@ -18,12 +18,12 @@ declare function __VLS_template(): {
         /**
          * Body of the Intro.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * Body of the Intro.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

@@ -10,20 +10,20 @@ declare function __VLS_template(): {
         /**
          * Slot directly beneath the heading which will be displayed at all times.
          */
-        checkboxes: any;
+        checkboxes: unknown;
         /**
          * Slot beneath the regular checkbox slot which will be collapsed at first.
          */
-        collapsableCheckboxes: any;
+        collapsableCheckboxes: unknown;
     }> & {
         /**
          * Slot directly beneath the heading which will be displayed at all times.
          */
-        checkboxes: any;
+        checkboxes: unknown;
         /**
          * Slot beneath the regular checkbox slot which will be collapsed at first.
          */
-        collapsableCheckboxes: any;
+        collapsableCheckboxes: unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

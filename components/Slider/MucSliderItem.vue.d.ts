@@ -4,12 +4,12 @@ declare function __VLS_template(): {
         /**
          * Elements can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * Elements can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {};
     rootEl: any;

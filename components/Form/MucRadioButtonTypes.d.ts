@@ -8,7 +8,7 @@ export declare const RadioButtonGroupKey: InjectionKey<RadioButtonGroupInjection
 /**
  * Type getting injected / provided
  */
-export type RadioButtonGroupInjection = {
+export interface RadioButtonGroupInjection {
     /**
      * Function for setting the value of the current selected radiobutton
      * @param {RadioButtonValueTypes} value - Value being set as the new current selected radiobutton
@@ -22,7 +22,7 @@ export type RadioButtonGroupInjection = {
      * Deactivate all child radiobuttons
      */
     disabled: Readonly<Ref<boolean>>;
-};
+}
 /**
  * Different possible types used as value for a radiobutton-values
  */

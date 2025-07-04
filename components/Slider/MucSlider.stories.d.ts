@@ -14,9 +14,9 @@ declare const _default: {
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): any;
+                default(): unknown;
             }> & {
-                default(): any;
+                default(): unknown;
             };
         });
         MucSlider: {
@@ -110,9 +110,9 @@ declare const _default: {
             changeSlide: (index: number) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): any;
+                default(): unknown;
             }> & {
-                default(): any;
+                default(): unknown;
             };
         });
     };
@@ -207,9 +207,9 @@ declare const _default: {
         changeSlide: (index: number) => any;
     }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            default(): any;
+            default(): unknown;
         }> & {
-            default(): any;
+            default(): unknown;
         };
     });
     title: string;
@@ -258,11 +258,11 @@ export declare const Template: () => {
             click: (click: Event) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                headerPrefix(): any;
-                content(): any;
+                headerPrefix(): unknown;
+                content(): unknown;
             }> & {
-                headerPrefix(): any;
-                content(): any;
+                headerPrefix(): unknown;
+                content(): unknown;
             };
         });
         MucSlider: {
@@ -356,9 +356,9 @@ export declare const Template: () => {
             changeSlide: (index: number) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): any;
+                default(): unknown;
             }> & {
-                default(): any;
+                default(): unknown;
             };
         });
         MucSliderItem: {
@@ -375,9 +375,9 @@ export declare const Template: () => {
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{}> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): any;
+                default(): unknown;
             }> & {
-                default(): any;
+                default(): unknown;
             };
         });
     };

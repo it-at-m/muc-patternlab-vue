@@ -4,12 +4,12 @@ declare function __VLS_template(): {
         /**
          * MucSliderItems can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     }> & {
         /**
          * MucSliderItems can be put into this slot.
          */
-        default(): any;
+        default(): unknown;
     };
     refs: {
         splide: import('vue').CreateComponentPublicInstanceWithMixins<Readonly<import('vue').ExtractPropTypes<{
