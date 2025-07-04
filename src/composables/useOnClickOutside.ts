@@ -1,8 +1,9 @@
 import { onBeforeUnmount, onMounted } from "vue";
 
-export default function useOnClickOutside(component: any, callback: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function useOnClickOutside(component: any, callback: unknown) {
   if (!component) return;
-  const listener = (event: any) => {
+  const listener = (event: Event) => {
     if (
       event.target !== component.value &&
       event.composedPath().includes(component.value)

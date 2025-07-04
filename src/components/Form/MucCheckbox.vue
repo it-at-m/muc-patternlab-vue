@@ -16,6 +16,12 @@
       :for="'checkbox-' + id"
     >
       {{ label }}
+      <span
+        :id="'checkbox-hint-' + id"
+        class="m-hint"
+      >
+        {{ hint }}
+      </span>
     </label>
   </div>
 </template>
@@ -35,15 +41,19 @@ const { label } = defineProps<{
    * Label is displayed to the right of the checkbox as information for the user.
    */
   label: string;
+  /**
+   * Optional hint shown beneath the checkbox
+   */
+  hint?: string;
 }>();
 
-const emit = defineEmits<{
+const emit = defineEmits<
   /**
    * Emits every time the checkbox or the label is clicked - thus switching the state.
    * @param e emits the click event.
    */
-  (e: "click"): void;
-}>();
+  (e: "click") => void
+>();
 
 /**
  * Called upon clicking the checkbox or label, switches the state of the checkbox and emits the event.

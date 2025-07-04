@@ -1,0 +1,8 @@
+# These owners will be the default owners for everything in the repo.
+* @it-at-m/itm-maintainer
+
+# Protect CODEOWNERS file itself against modification
+/.github/CODEOWNERS @it-at-m/itm-admin
+
+# CI/CD
+/.github/workflows @it-at-m/itm-maintainer

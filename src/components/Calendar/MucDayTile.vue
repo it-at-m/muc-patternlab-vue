@@ -73,8 +73,11 @@ const isSelected = computed(() => {
   }
 
   //variant range
-  if (isMucDateRange(mucCalData!.selectedDate.value)) {
-    const { from, to } = mucCalData!.selectedDate.value;
+  if (
+    mucCalData?.selectedDate?.value &&
+    isMucDateRange(mucCalData.selectedDate.value)
+  ) {
+    const { from, to } = mucCalData.selectedDate.value;
     return (from && isEqualDates(from, date)) || (to && isEqualDates(to, date));
   }
 });
@@ -85,13 +88,13 @@ const isSelected = computed(() => {
 const isInRange = computed(() => {
   if (
     mucCalData?.variant.value === "range" &&
-    isMucDateRange(mucCalData!.selectedDate.value)
+    isMucDateRange(mucCalData.selectedDate.value)
   ) {
     return (
       mucCalData?.selectedDate.value.from !== null &&
       mucCalData?.selectedDate.value.to !== null &&
-      isDateAfterOther(date, mucCalData!.selectedDate.value.from) &&
-      isDateAfterOther(mucCalData!.selectedDate.value.to, date)
+      isDateAfterOther(date, mucCalData.selectedDate.value.from) &&
+      isDateAfterOther(mucCalData.selectedDate.value.to, date)
     );
   }
 

@@ -9,7 +9,7 @@ defineSlots<{
   /**
    * MucCards can be put into this slot.
    */
-  default(): any;
+  default(): unknown;
 }>();
 </script>
 

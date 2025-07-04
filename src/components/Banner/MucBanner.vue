@@ -16,7 +16,7 @@ defineSlots<{
   /**
    * Text-content of the banner.
    */
-  default(): any;
+  default(): unknown;
 }>();
 
 const typeClass = computed(() => {

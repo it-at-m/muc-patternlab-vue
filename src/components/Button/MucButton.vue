@@ -66,16 +66,16 @@ defineSlots<{
   /**
    * Display content inside the button.
    */
-  default(): any;
+  default(): unknown;
 }>();
 
-const emit = defineEmits<{
+const emit = defineEmits<
   /**
    * Triggered when button is clicked.
    * @param e Click-Event
    */
-  (e: "click"): void;
-}>();
+  (e: "click") => void
+>();
 
 const buttonVariantClass = computed(() => {
   switch (variant) {

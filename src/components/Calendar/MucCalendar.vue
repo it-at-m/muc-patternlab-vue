@@ -32,7 +32,7 @@
         />
       </div>
       <div class="container-view-size">
-        <Transition
+        <transition
           class="transition"
           :css="!noAnimation"
           :name="viewTransition"
@@ -42,8 +42,8 @@
             :view-date="viewDate"
             @clicked="clickedBroaderSelection"
           />
-        </Transition>
-        <Transition
+        </transition>
+        <transition
           class="transition"
           :css="!noAnimation"
           :name="viewTransition"
@@ -53,8 +53,8 @@
             :view-date="viewDate"
             @clicked="clickedBroaderSelection"
           />
-        </Transition>
-        <Transition
+        </transition>
+        <transition
           class="transition"
           :css="!noAnimation"
           :name="viewTransition"
@@ -68,7 +68,7 @@
             :view-date="viewDate"
             @clicked="clickedDate"
           />
-        </Transition>
+        </transition>
       </div>
     </div>
   </div>
@@ -369,7 +369,7 @@ const disableNext = computed(() => {
  * @param newValue is the newly selected date.
  */
 const updateMVSingle = (newValue: Date) => {
-  console.log(isMucDateRange(selectedDate.value));
+  console.debug(isMucDateRange(selectedDate.value));
   if (Array.isArray(selectedDate.value) || isMucDateRange(selectedDate.value)) {
     selectedDate.value = Object.values(selectedDate.value)[0];
   }
