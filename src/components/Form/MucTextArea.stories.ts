@@ -49,3 +49,12 @@ export const BigTextArea = {
     hint: "Write a lot of text",
   },
 };
+
+export const CountTextArea = {
+  args: {
+    ...Default.args,
+    id: "count-text-area",
+    label: "Count textarea",
+    maxlength: 50,
+  },
+};
