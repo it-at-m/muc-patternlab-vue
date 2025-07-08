@@ -18,15 +18,46 @@
     >
       {{ hint }}
     </p>
-    <div class="m-input-wrapper">
+    <div
+      class="m-input-wrapper"
+      :class="{ 'm-input-wrapper--character-count': maxlength }"
+    >
       <textarea
         :id="'textarea-' + id"
         class="m-textarea"
-        :aria-describedby="hint ? 'textarea-hint-' + id : undefined"
+        :aria-describedby="
+          (hint ? 'textarea-hint-' + id : '') +
+          ' ' +
+          (maxlength ? 'textarea-count-' + id : '')
+        "
         :rows="rows"
         :placeholder="placeholder"
+        :maxlength="maxlength"
         v-model="modelValue"
+        @blur="currentCount = modelValue.length"
       />
+      <div
+        v-if="maxlength"
+        class="m-character-count"
+      >
+        <span
+          :id="'textarea-count-' + id"
+          class="m-character-count__message visually-hidden"
+          >Sie können bis zu {{ maxlength }} Zeichen eingeben.</span
+        >
+        <span
+          class="m-character-count__status"
+          aria-hidden="true"
+        >
+          {{ modelValue.length }}/{{ maxlength }}
+        </span>
+        <div
+          class="m-character-count__sr-status visually-hidden"
+          aria-live="polite"
+        >
+          {{ currentCount }}/{{ maxlength }}
+        </div>
+      </div>
     </div>
     <form-error-message
       v-if="errorMsg"
@@ -40,12 +71,19 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
 import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
  * Input value from the form component.
  */
 const modelValue = defineModel<string>({ default: "" });
+
+/**
+ * Current number of characters output by the screen reader when the field is exited.
+ */
+const currentCount = ref<number>(modelValue.value.length);
 
 const {
   errorMsg,
@@ -85,5 +123,10 @@ const {
    * Sets this input form as required. Default is false.
    */
   required?: boolean;
+
+  /**
+   * Restricts character input to the specified number
+   */
+  maxlength?: number;
 }>();
 </script>
