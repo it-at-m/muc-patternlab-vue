@@ -9,6 +9,7 @@ declare const _default: {
         label?: string;
         hint?: string;
         required?: boolean;
+        maxlength?: number;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
         "update:modelValue": (value: string) => any;
     }, string, import('vue').PublicProps, Readonly<{
@@ -21,6 +22,7 @@ declare const _default: {
         label?: string;
         hint?: string;
         required?: boolean;
+        maxlength?: number;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: string) => any) | undefined;
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
@@ -62,6 +64,14 @@ export declare const BigTextArea: {
         rows: number;
         label: string;
         hint: string;
+        placeholder: string;
+    };
+};
+export declare const CountTextArea: {
+    args: {
+        id: string;
+        label: string;
+        maxlength: number;
         placeholder: string;
     };
 };

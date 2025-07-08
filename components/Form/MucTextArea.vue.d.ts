@@ -27,6 +27,10 @@ type __VLS_Props = {
      * Sets this input form as required. Default is false.
      */
     required?: boolean;
+    /**
+     * Restricts character input to the specified number
+     */
+    maxlength?: number;
 };
 type __VLS_PublicProps = {
     modelValue?: string;
