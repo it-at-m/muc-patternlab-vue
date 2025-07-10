@@ -33,7 +33,7 @@ export const Icon = {
     tagline: "Tagline",
     title: "Intro with Icon",
     img: "docs/images/muc-patternlab.png",
-    default: Default.args.default
+    default: Default.args.default,
   },
 };
 
@@ -44,4 +44,3 @@ export const Minimal = {
     default: Default.args.default,
   },
 };
-

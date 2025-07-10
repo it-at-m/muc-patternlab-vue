@@ -1,38 +1,39 @@
 <script setup lang="ts">
 import { MucDivider } from "../Divider";
 
+withDefaults(
+  defineProps<{
+    /**
+     * Title of the Intro
+     */
+    title: string;
+    /**
+     * Tagline of the Intro (above the title)
+     */
+    tagline?: string;
+    /**
+     * Toggle to show a divider between title and body
+     */
+    divider?: boolean;
+    /**
+     * Img to show next to title and tagline
+     */
+    img?: string;
 
-withDefaults(defineProps<{
-  /**
-   * Title of the Intro
-   */
-  title: string;
-  /**
-   * Tagline of the Intro (above the title)
-   */
-  tagline?: string;
-  /**
-   * Toggle to show a divider between title and body
-   */
-  divider?: boolean;
-  /**
-   * Img to show next to title and tagline
-   */
-  img?: string;
-
-  /**
-   * ImgAlt useful for screen readers
-   */
-  imgAlt?: string;
-  /**
-   * Size of the image
-   */
-  size?: number
-}>(), {
-  divider: true,
-  size: 72
-});
-
+    /**
+     * ImgAlt useful for screen readers
+     */
+    imgAlt?: string;
+    /**
+     * Size of the image
+     */
+    size?: number;
+  }>(),
+  {
+    divider: true,
+    size: 72,
+  }
+);
 
 defineSlots<{
   /**
@@ -94,5 +95,4 @@ defineSlots<{
   margin-top: 8px;
   margin-bottom: 16px;
 }
-
 </style>
