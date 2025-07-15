@@ -63,7 +63,7 @@ defineSlots<{
               :height="size"
             />
           </div>
-          <div class="m-intro-vertical__grid-inner  muc-intro-content">
+          <div class="m-intro-vertical__grid-inner">
             <div>
               <p
                 v-if="tagline"
@@ -91,12 +91,6 @@ defineSlots<{
 </template>
 
 <style scoped>
-@media screen and (width >992px) {
-  .muc-intro-content {
-    width: 66.6%;
-    margin-left: 1px;
-  }
-}
 .muc-divider {
   margin-top: 8px;
   margin-bottom: 16px;
