@@ -41,3 +41,22 @@ export const Collapsable = () => ({
       </MucCheckboxGroup>
   `,
 });
+
+export const Error = () => ({
+  components: { MucCheckbox, MucCheckboxGroup },
+  template: `
+    <MucCheckboxGroup
+      heading="Checkbox group with error"
+      errorMsg="Please select at least one option"
+    >
+      <template #checkboxes>
+        <MucCheckbox
+          v-for="index in 3"
+          :key="'error-checkbox-' + index"
+          :label="'Option ' + index"
+          :id="'error-checkbox-' + index"
+        />
+      </template>
+    </MucCheckboxGroup>
+  `,
+});
