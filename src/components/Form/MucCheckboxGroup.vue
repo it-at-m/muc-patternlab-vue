@@ -1,7 +1,7 @@
 <template>
-  <div 
+  <div
     class="m-form-group"
-    :class="{ 'has-error': props.errorMsg} "
+    :class="{ 'has-error': props.errorMsg }"
   >
     <fieldset class="m-checkbox-group">
       <legend class="m-checkbox-group__legend">
@@ -50,7 +50,6 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
-
 import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**

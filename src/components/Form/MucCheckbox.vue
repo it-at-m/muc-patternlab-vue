@@ -38,6 +38,7 @@
 
 <script setup lang="ts">
 import FormErrorMessage from "./FormErrorMessage.vue";
+
 /**
  * Input value from the checkbox component.
  */
