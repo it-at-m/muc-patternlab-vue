@@ -1,12 +1,12 @@
 <template>
   <div
     class="m-form-group"
-    :class="{ 'has-error': props.errorMsg }"
+    :class="{ 'has-error': errorMsg }"
   >
     <fieldset class="m-checkbox-group">
       <legend class="m-checkbox-group__legend">
         <h3 class="m-checkbox-group__heading">
-          {{ props.heading }}
+          {{ heading }}
         </h3>
       </legend>
       <div class="m-checkboxes m-checkboxes--collapse">
@@ -35,12 +35,12 @@
       </div>
       <form-error-message
         id="checkbox-group-error"
-        v-if="props.errorMsg"
+        v-if="errorMsg"
         tabindex="0"
         role="alert"
         aria-live="polite"
       >
-        {{ props.errorMsg }}
+        {{ errorMsg }}
       </form-error-message>
     </fieldset>
   </div>
@@ -57,7 +57,7 @@ import FormErrorMessage from "./FormErrorMessage.vue";
  */
 const collapsed = ref(true);
 
-const props = defineProps<{
+defineProps<{
   /**
    * Display a heading above the slots.
    */
