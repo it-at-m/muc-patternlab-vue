@@ -25,12 +25,3 @@ export const Default = {
     hint: "This is a hint",
   },
 };
-
-export const Error = {
-  args: {
-    ...Default.args,
-    id: "error",
-    errorMsg: "Oops, an error occurred",
-    hint: "An error message triggers the error state",
-  },
-};
