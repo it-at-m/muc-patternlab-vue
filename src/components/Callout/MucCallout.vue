@@ -13,9 +13,9 @@
       </div>
       <div class="m-callout__body">
         <div class="m-callout__body__inner">
-          <div class="m-callout__headline">
+          <h2 class="m-callout__headline">
             <slot name="header" />
-          </div>
+          </h2>
           <div class="m-callout__content">
             <p>
               <slot
