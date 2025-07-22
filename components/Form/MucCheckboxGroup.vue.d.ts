@@ -3,6 +3,10 @@ type __VLS_Props = {
      * Display a heading above the slots.
      */
     heading?: string;
+    /**
+     * Optional error message displayed below the group.
+     */
+    errorMsg?: string;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
