@@ -1,5 +1,8 @@
 <template>
-  <div class="m-form-group">
+  <div
+    class="m-form-group"
+    :class="{ 'has-error': errorMsg }"
+  >
     <fieldset class="m-checkbox-group">
       <legend class="m-checkbox-group__legend">
         <h3 class="m-checkbox-group__heading">
@@ -30,6 +33,15 @@
           </svg>
         </muc-button>
       </div>
+      <form-error-message
+        id="checkbox-group-error"
+        v-if="errorMsg"
+        tabindex="0"
+        role="alert"
+        aria-live="polite"
+      >
+        {{ errorMsg }}
+      </form-error-message>
     </fieldset>
   </div>
 </template>
@@ -38,6 +50,7 @@
 import { computed, ref } from "vue";
 
 import { MucButton } from "../Button";
+import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
  * Internal state for the collapsed section
@@ -49,6 +62,10 @@ defineProps<{
    * Display a heading above the slots.
    */
   heading?: string;
+  /**
+   * Optional error message displayed below the group.
+   */
+  errorMsg?: string;
 }>();
 
 defineSlots<{
