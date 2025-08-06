@@ -21,14 +21,15 @@
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
             </button>
-            <splide
+            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
+            <Splide
               :options="mucSliderOptions"
               aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
               die Pfeiltaste links und rechts oder die Buttons um zu navigieren."
               ref="splide"
             >
               <slot />
-            </splide>
+            </Splide>
             <button
               v-if="showNextArrow"
               aria-label="Nächstes Element"
@@ -47,7 +48,6 @@
 </template>
 
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 
