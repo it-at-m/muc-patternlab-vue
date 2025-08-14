@@ -43,6 +43,7 @@ import { ChoiceType, ItemAsObject, MucSelectItemTypes } from "./MucSelectTypes";
 const selectComponentWrapper = ref<HTMLDivElement>();
 const elementRef = ref<HTMLSelectElement>();
 const choicesInstance = ref<Choices>();
+const dropdownIsOpen = ref<boolean>(false);
 
 /**
  * Exposed selected value / values
@@ -260,12 +261,21 @@ const openDropdown = (event: Event) => {
       ".choices__input.choices__input--cloned"
     );
 
-  if (dropdown && !dropdown.classList.contains("is-active")) {
-    dropdown.classList.add("is-active");
-    dropdown.setAttribute("aria-expanded", "true");
+  if (dropdownIsOpen.value) {
+    if (dropdown && dropdown.classList.contains("is-active")) {
+      dropdown.classList.remove("is-active");
+      dropdown.setAttribute("aria-expanded", "false");
+      dropdownIsOpen.value = false;
+    }
+  } else {
+    if (dropdown && !dropdown.classList.contains("is-active")) {
+      dropdown.classList.add("is-active");
+      dropdown.setAttribute("aria-expanded", "true");
 
-    if (dropdown_input) {
-      dropdown_input.focus();
+      if (dropdown_input) {
+        dropdown_input.focus();
+      }
+      dropdownIsOpen.value = true;
     }
   }
 };
