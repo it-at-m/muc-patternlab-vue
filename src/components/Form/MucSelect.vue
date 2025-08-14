@@ -248,7 +248,7 @@ const setDefaultSelectedValue = () => {
 };
 
 /**
- * Workaround to open dropdown after click
+ * Workaround to open/close dropdown after click
  */
 const openDropdown = (event: Event) => {
   event.stopPropagation();
