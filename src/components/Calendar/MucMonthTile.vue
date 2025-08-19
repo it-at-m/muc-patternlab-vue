@@ -11,6 +11,7 @@
     :tabindex="!isDisabled ? '0' : '-1'"
     role="button"
     :aria-label="`${date.toLocaleDateString(LOCALES, { month: 'long' })} auswählen`"
+    :aria-disabled="isDisabled"
   >
     <p>{{ monthDisplayment(date) }}</p>
   </div>
