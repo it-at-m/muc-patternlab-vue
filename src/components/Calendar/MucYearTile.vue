@@ -10,6 +10,7 @@
     :tabindex="!isDisabled ? '0' : '-1'"
     role="button"
     :aria-label="`${date.toLocaleDateString(LOCALES, { year: YEAR_NOTATION })} auswählen`"
+    :aria-disabled="isDisabled"
   >
     <p>{{ yearDisplayment(date) }}</p>
   </div>
