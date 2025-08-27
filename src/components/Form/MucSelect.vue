@@ -247,7 +247,7 @@ const setDefaultSelectedValue = () => {
 };
 
 /**
- * Workaround to open dropdown after click
+ * Workaround to open/close dropdown after click
  */
 const openDropdown = (event: Event) => {
   event.stopPropagation();
@@ -260,12 +260,22 @@ const openDropdown = (event: Event) => {
       ".choices__input.choices__input--cloned"
     );
 
-  if (dropdown && !dropdown.classList.contains("is-active")) {
-    dropdown.classList.add("is-active");
-    dropdown.setAttribute("aria-expanded", "true");
+  if (dropdown) {
+    const expanded = dropdown.getAttribute("aria-expanded");
+    if (expanded && expanded == "true") {
+      if (dropdown.classList.contains("is-active")) {
+        dropdown.classList.remove("is-active");
+        dropdown.setAttribute("aria-expanded", "false");
+      }
+    } else {
+      if (!dropdown.classList.contains("is-active")) {
+        dropdown.classList.add("is-active");
+        dropdown.setAttribute("aria-expanded", "true");
 
-    if (dropdown_input) {
-      dropdown_input.focus();
+        if (dropdown_input) {
+          dropdown_input.focus();
+        }
+      }
     }
   }
 };

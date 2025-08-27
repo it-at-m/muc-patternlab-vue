@@ -12,6 +12,7 @@
     :tabindex="!isDisabled ? '0' : '-1'"
     role="button"
     :aria-label="`${date.getDate()} auswählen`"
+    :aria-disabled="isDisabled"
   >
     {{ date.getDate() }}
   </div>
