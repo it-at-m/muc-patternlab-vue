@@ -68,10 +68,14 @@ defineSlots<{
               <p
                 v-if="tagline"
                 class="m-intro-vertical__tagline"
+                tabindex="0"
               >
                 {{ tagline }}
               </p>
-              <h1 class="m-intro-vertical__title">
+              <h1
+                class="m-intro-vertical__title"
+                tabindex="0"
+              >
                 {{ title }}
               </h1>
             </div>
@@ -79,7 +83,7 @@ defineSlots<{
             <muc-divider v-if="divider" />
 
             <div class="m-intro-vertical__content">
-              <p style="padding-bottom: 32px">
+              <p tabindex="0">
                 <slot />
               </p>
             </div>
