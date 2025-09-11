@@ -34,7 +34,7 @@
 
         <div class="modal-footer">
           <div class="m-button-group">
-            <slot name="actions"></slot>
+            <slot name="buttons"></slot>
           </div>
         </div>
       </div>
@@ -64,9 +64,9 @@ defineSlots<{
    */
   body(): unknown;
   /**
-   * Row beneath the body to house all actionable items (buttons).
+   * Row beneath the body to house muc-buttons.
    */
-  actions(): unknown;
+  buttons(): unknown;
 }>();
 
 onMounted(() => {
