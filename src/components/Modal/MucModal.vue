@@ -1,7 +1,7 @@
 <template>
   <dialog
-    id="resetPassDialog"
-    ref="resetPassDialog"
+    id="dialogRef"
+    ref="dialogRef"
     style="max-width: 37rem"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
@@ -71,28 +71,28 @@ defineSlots<{
 
 onMounted(() => {
   if (props.open) {
-    resetPassDialog.value?.showModal();
+    dialogRef.value?.showModal();
   }
 });
 
 const emit = defineEmits(["close"]);
 
-const resetPassDialog = ref<HTMLDialogElement>();
+const dialogRef = ref<HTMLDialogElement>();
 
 watch(
   () => props.open,
   (value) => {
     if (value) {
-      resetPassDialog.value?.showModal();
+      dialogRef.value?.showModal();
     } else {
-      resetPassDialog.value?.close();
+      dialogRef.value?.close();
     }
   }
 );
 </script>
 
 <style>
-#resetPassDialog .m-banner {
+#dialogRef .m-banner {
   padding: 16px;
 }
 </style>
