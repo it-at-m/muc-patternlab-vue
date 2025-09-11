@@ -6,15 +6,12 @@
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
   >
-    <div
-      tabindex="1"
-    >
+    <div tabindex="1">
       <div class="modal-content">
-
         <div class="modal-header">
           <h5
-              class="modal-title"
-              id="exampleModalLabel"
+            class="modal-title"
+            id="exampleModalLabel"
           >
             <slot name="title"></slot>
           </h5>
@@ -40,22 +37,21 @@
             <slot name="actions"></slot>
           </div>
         </div>
-
       </div>
     </div>
   </dialog>
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref, watch} from "vue";
+import { onMounted, ref, watch } from "vue";
 
-import {MucIcon} from "../Icon";
+import { MucIcon } from "../Icon";
 
 const props = defineProps({
   open: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 defineSlots<{
@@ -74,10 +70,10 @@ defineSlots<{
 }>();
 
 onMounted(() => {
-  if(props.open) {
+  if (props.open) {
     resetPassDialog.value?.showModal();
   }
-})
+});
 
 const emit = defineEmits(["close"]);
 
@@ -93,7 +89,6 @@ watch(
     }
   }
 );
-
 </script>
 
 <style>
@@ -116,7 +111,6 @@ dialog::backdrop {
   background-color: var(--color-neutrals-grey);
   opacity: 70%;
 }
-
 
 @media all and (max-width: 576px) {
   dialog {
