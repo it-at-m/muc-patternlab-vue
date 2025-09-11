@@ -1,6 +1,5 @@
 <template>
   <dialog
-    id="dialogRef"
     ref="dialogRef"
     style="max-width: 37rem"
     tabindex="-1"
