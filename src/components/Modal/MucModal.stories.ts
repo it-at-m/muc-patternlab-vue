@@ -10,7 +10,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-modal\` component //TODO
+        component: `The \`muc-modal\` component can be used to display a modal dialog which overlay the user interface.
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=components-modal-dialog)
 `,
