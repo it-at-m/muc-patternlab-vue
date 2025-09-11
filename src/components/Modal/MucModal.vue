@@ -4,14 +4,14 @@
     ref="dialogRef"
     style="max-width: 37rem"
     tabindex="-1"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="modalLabel"
   >
     <div tabindex="1">
       <div class="modal-content">
         <div class="modal-header">
           <h5
             class="modal-title"
-            id="exampleModalLabel"
+            id="modalLabel"
           >
             <slot name="title"></slot>
           </h5>
