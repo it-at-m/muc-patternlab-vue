@@ -26,7 +26,7 @@
 
         <div
           class="modal-body"
-          style="padding-top: 16px; padding-bottom: 36px"
+          style="padding-bottom: 32px"
         >
           <slot name="body"></slot>
         </div>
