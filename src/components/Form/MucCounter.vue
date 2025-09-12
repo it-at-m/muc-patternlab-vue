@@ -6,11 +6,20 @@
           v-on:click="clickedMinus"
           variant="secondary"
           :disabled="disableMinus"
-          :aria-label="'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)"
-          :style="disableMinus ? { backgroundColor:'transparent', border:'1px solid #7A8D9F' } : null"
+          :aria-label="
+            'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)
+          "
+          :style="
+            disableMinus
+              ? { backgroundColor: 'transparent', border: '1px solid #7A8D9F' }
+              : null
+          "
         >
           <template #default>
-            <muc-icon icon="minus" :style="disableMinus ? { color:'#7A8D9F' } : null" />
+            <muc-icon
+              icon="minus"
+              :style="disableMinus ? { color: '#7A8D9F' } : null"
+            />
           </template>
         </muc-button>
       </div>
@@ -31,10 +40,17 @@
           variant="secondary"
           :disabled="disablePlus"
           :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
-          :style="disablePlus ? { backgroundColor:'transparent', border:'1px solid #7A8D9F' } : null"
+          :style="
+            disablePlus
+              ? { backgroundColor: 'transparent', border: '1px solid #7A8D9F' }
+              : null
+          "
         >
           <template #default>
-            <muc-icon icon="plus" :style="disablePlus ? { color:'#7A8D9F' } : null" />
+            <muc-icon
+              icon="plus"
+              :style="disablePlus ? { color: '#7A8D9F' } : null"
+            />
           </template>
         </muc-button>
       </div>
