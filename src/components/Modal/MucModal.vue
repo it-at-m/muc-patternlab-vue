@@ -32,8 +32,8 @@
         </div>
 
         <div
-            class="modal-footer"
-            v-if="!!slots.buttons"
+          class="modal-footer"
+          v-if="!!slots.buttons"
         >
           <div class="m-button-group">
             <slot name="buttons"></slot>
@@ -41,8 +41,8 @@
         </div>
 
         <div
-            class="muc-dialog-actions"
-            v-if="!!slots.actions"
+          class="muc-dialog-actions"
+          v-if="!!slots.actions"
         >
           <slot name="actions"></slot>
         </div>

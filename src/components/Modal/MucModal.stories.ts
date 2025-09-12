@@ -63,7 +63,6 @@ export const Default = defaultTemplate.bind({
   },
 });
 
-
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 const minimalTemplate = (args: any) => ({
   components: { MucModal, MucButton },
