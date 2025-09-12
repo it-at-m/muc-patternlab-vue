@@ -31,13 +31,19 @@
           <slot name="body"></slot>
         </div>
 
-        <div class="modal-footer">
+        <div
+            class="modal-footer"
+            v-if="!!slots.buttons"
+        >
           <div class="m-button-group">
             <slot name="buttons"></slot>
           </div>
         </div>
 
-        <div class="muc-dialog-actions">
+        <div
+            class="muc-dialog-actions"
+            v-if="!!slots.actions"
+        >
           <slot name="actions"></slot>
         </div>
       </div>
@@ -57,7 +63,7 @@ const props = defineProps({
   },
 });
 
-defineSlots<{
+const slots = defineSlots<{
   /**
    * Title slot of the Dialog
    */

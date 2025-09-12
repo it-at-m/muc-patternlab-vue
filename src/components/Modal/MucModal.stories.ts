@@ -20,7 +20,7 @@ export default {
 };
 
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Template = (args: any) => ({
+const defaultTemplate = (args: any) => ({
   components: { MucModal, MucButton },
   setup() {
     const openState = ref(args.open);
@@ -57,7 +57,44 @@ const Template = (args: any) => ({
   `,
 });
 
-export const Default = Template.bind({
+export const Default = defaultTemplate.bind({
+  args: {
+    open: false,
+  },
+});
+
+
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
+const minimalTemplate = (args: any) => ({
+  components: { MucModal, MucButton },
+  setup() {
+    const openState = ref(args.open);
+    const closeDialog = () => (args.open = false);
+
+    return { args, openState, closeDialog };
+  },
+  template: `
+    <muc-button
+        @click="args.open = true"
+    >
+      Open Dialog
+    </muc-button>
+    
+    <muc-modal 
+        :open="args.open" 
+        @close="closeDialog" 
+    >
+      <template #title>
+        Standard Modal Dialog
+      </template>
+      <template #body>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.
+      </template>
+    </muc-modal>
+  `,
+});
+
+export const Minimal = minimalTemplate.bind({
   args: {
     open: false,
   },
