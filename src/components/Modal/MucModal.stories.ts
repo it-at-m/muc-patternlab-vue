@@ -49,6 +49,10 @@ const Template = (args: any) => ({
         <muc-button icon="arrow-right" icon-animated>Primary Button</muc-button>
         <muc-button variant="secondary">Secondary Button</muc-button>
       </template>
+      <template #actions>
+        <muc-button variant="ghost" icon="trash">Action 1</muc-button>
+        <muc-button variant="ghost" icon="check">Action 2</muc-button>
+      </template>
     </muc-modal>
   `,
 });

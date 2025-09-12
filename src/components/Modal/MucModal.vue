@@ -36,6 +36,10 @@
             <slot name="buttons"></slot>
           </div>
         </div>
+
+        <div class="muc-dialog-actions">
+          <slot name="actions"></slot>
+        </div>
       </div>
     </div>
   </dialog>
@@ -66,6 +70,10 @@ defineSlots<{
    * Row beneath the body to house muc-buttons.
    */
   buttons(): unknown;
+  /**
+   * Lowest row in the modal, color seperated section to have actions for the user displayed.
+   */
+  actions(): unknown;
 }>();
 
 onMounted(() => {
@@ -109,6 +117,17 @@ dialog {
 dialog::backdrop {
   background-color: var(--color-neutrals-grey);
   opacity: 70%;
+}
+
+.muc-dialog-actions {
+  height: 69px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  align-items: center;
+  align-self: stretch;
+  border-top: 1px solid var(--color-neutrals-blue);
+  background: var(--color-neutrals-blue-xlight);
 }
 
 @media all and (max-width: 576px) {
