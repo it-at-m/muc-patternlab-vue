@@ -9,17 +9,10 @@
           :aria-label="
             'Anzahl ' + label + ' reduzieren auf ' + (modelValue - 1)
           "
-          :style="
-            disableMinus
-              ? { backgroundColor: 'transparent', border: '1px solid #7A8D9F' }
-              : null
-          "
+          :class="{ 'counter-btn--disabled': disableMinus }"
         >
           <template #default>
-            <muc-icon
-              icon="minus"
-              :style="disableMinus ? { color: '#7A8D9F' } : null"
-            />
+            <muc-icon icon="minus" />
           </template>
         </muc-button>
       </div>
@@ -40,17 +33,10 @@
           variant="secondary"
           :disabled="disablePlus"
           :aria-label="'Anzahl ' + label + ' erhöhen auf ' + (modelValue + 1)"
-          :style="
-            disablePlus
-              ? { backgroundColor: 'transparent', border: '1px solid #7A8D9F' }
-              : null
-          "
+          :class="{ 'counter-btn--disabled': disablePlus }"
         >
           <template #default>
-            <muc-icon
-              icon="plus"
-              :style="disablePlus ? { color: '#7A8D9F' } : null"
-            />
+            <muc-icon icon="plus" />
           </template>
         </muc-button>
       </div>
@@ -161,6 +147,12 @@ const disableMinus = computed(
 </script>
 
 <style scoped>
+:deep(.counter-btn--disabled) {
+  background-color: transparent;
+  border-color: #7a8d9f;
+  color: #7a8d9f;
+}
+
 .content-centered {
   display: flex;
   justify-content: center;
