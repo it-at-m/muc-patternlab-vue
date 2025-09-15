@@ -147,12 +147,6 @@ const disableMinus = computed(
 </script>
 
 <style scoped>
-:deep(.counter-btn--disabled) {
-  background-color: transparent;
-  border-color: #7a8d9f;
-  color: #7a8d9f;
-}
-
 .content-centered {
   display: flex;
   justify-content: center;
@@ -165,6 +159,12 @@ const disableMinus = computed(
   justify-content: left;
   align-items: center;
   height: 100%;
+}
+
+.counter-btn--disabled {
+  background-color: transparent;
+  border-color: #7a8d9f;
+  color: #7a8d9f;
 }
 
 .grid {
