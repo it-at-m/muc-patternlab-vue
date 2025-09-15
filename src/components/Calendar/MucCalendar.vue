@@ -3,6 +3,7 @@
     <div class="container-wrapper">
       <div class="calendar-caption">
         <muc-button
+          class="nav-btn"
           @click="clickedPrev"
           :aria-label="ariaLabelPrev"
           :disabled="disablePrev"
@@ -24,6 +25,7 @@
           <h3>{{ computedCaption }}</h3>
         </div>
         <muc-button
+          class="nav-btn"
           @click="clickedNext"
           :aria-label="ariaLabelNext"
           :disabled="disableNext"
@@ -583,8 +585,21 @@ provide(MucCalendarKey, {
   border-bottom: 1px solid var(--color-neutrals-blue);
   background-color: var(--color-neutrals-blue-xlight);
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: var(--cal-nav-box, 3rem) 1fr var(--cal-nav-box, 3rem);
   align-items: center;
+}
+
+.calendar-caption button.m-button.nav-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+:deep(.calendar-caption button.m-button.nav-btn .m-button__icon) {
+  display: inline-flex;
+  margin: 0;
 }
 
 .header {
