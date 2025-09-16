@@ -29,6 +29,7 @@
           :disabled="disableNext"
           variant="ghost"
           icon="chevron-right"
+          icon-shown-left
         />
       </div>
       <div class="container-view-size">
@@ -582,8 +583,8 @@ provide(MucCalendarKey, {
   padding: 5px;
   border-bottom: 1px solid var(--color-neutrals-blue);
   background-color: var(--color-neutrals-blue-xlight);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
