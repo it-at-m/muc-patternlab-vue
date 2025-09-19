@@ -74,7 +74,7 @@ defineSlots<{
 }
 
 .card-content {
-  padding: 32px 24px;
+  padding: 24px 16px;
 }
 
 .card-header {
@@ -97,5 +97,12 @@ defineSlots<{
 .muc-divider {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+/* CSS for desktop */
+@media (min-width: 768px) {
+  .card-content {
+    padding: 32px 24px;
+  }
 }
 </style>

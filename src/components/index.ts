@@ -20,6 +20,7 @@ import {
 import { MucIcon } from "./Icon";
 import { MucIntro } from "./Intro";
 import { MucLink } from "./Link";
+import { MucModal } from "./Modal";
 import { MucPercentageSpinner } from "./PercentageSpinner";
 import { MucSlider, MucSliderItem } from "./Slider";
 import { MucStepper } from "./Stepper";
@@ -44,6 +45,7 @@ export {
   MucIcon,
   MucDivider,
   MucLink,
+  MucModal,
   MucFileDropzone,
   MucCounter,
   MucPercentageSpinner,

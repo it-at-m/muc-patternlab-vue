@@ -31,7 +31,7 @@ defineSlots<{
     padding-right: 0;
     display: inline-grid;
     grid-template-columns: 1fr;
-    grid-row-gap: 32px;
+    grid-row-gap: 24px;
   }
 }
 </style>
