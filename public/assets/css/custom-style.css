@@ -3,11 +3,37 @@
  * behaviour inside of a webcomponent.
  */
 :host, :root {
-    --color-brand-main-blue: #005A9F;
-    --color-neutrals-blue: #BDD4EA;
-    --color-neutrals-blue-xlight: #F2F6FA;
-    --color-neutrals-grey: #3A5368;
-    color: var(--color-neutrals-grey);
+    /** Brand Colors */
+    --mde-color-brand-mde-blue: #005A9F;
+    --mde-color-brand-mde-blue-light: #337BB2;
+    --mde-color-brand-mde-blue-dark: #004376;
+    --mde-color-brand-mde-blue-x-dark: #002D4F;
+    --mde-color-brand-mde-cyan: #1B98D5;
+    --mde-color-brand-mde-yellow: #FFE400;
+    /** Neutral Colors */
+    --mde-color-neutral-grey: #3A5368;
+    --mde-color-neutral-grey-light: #617586;
+    --mde-color-neutral-grey-x-light: #9CA8B3;
+    --mde-color-neutral-beau-blue: #BDD4EA;
+    --mde-color-neutral-beau-blue-light: #E5EEF5;
+    --mde-color-neutral-beau-blue-x-light: #F2F6FA;
+    /** Status Colors */
+    --mde-color-status-success: #3A7F53;
+    --mde-color-status-success-light: #95B9A2;
+    --mde-color-status-success-x-light: #F1F6F3;
+    --mde-color-status-warning: #FCAA67;
+    --mde-color-status-warning-light: #FDD1AC;
+    --mde-color-status-warning-x-light: #FFF9F4;
+    --mde-color-status-error: #984447;
+    --mde-color-status-error-light: #C79A9B;
+    --mde-color-status-error-x-light: #F8F2F2;
+    /** Stay backwards compatible */
+    --color-brand-main-blue: var(--mde-color-brand-mde-blue);
+    --color-neutrals-blue: var(--mde-color-neutral-beau-blue);
+    --color-neutrals-blue-xlight: var(--mde-color-neutral-beau-blue-x-light);
+    --color-neutrals-grey: var(--mde-color-neutral-grey);
+
+    color: var(--mde-color-neutral-grey);
     font-family: Open Sans, Arial, sans-serif;
     font-size: 1rem;
     font-weight: 400;
