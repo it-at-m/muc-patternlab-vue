@@ -163,8 +163,8 @@ const disableMinus = computed(
 
 .counter-btn--disabled {
   background-color: transparent;
-  border-color: #7a8d9f;
-  color: #7a8d9f;
+  border-color: var(--mde-color-neutral-grey-x-light);;
+  color: var(--mde-color-neutral-grey-x-light);;
 }
 
 .grid {
