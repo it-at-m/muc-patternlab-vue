@@ -1,3 +1,4 @@
+import { MucButton } from "../Button";
 import MucCallout from "./MucCallout.vue";
 
 export default {
@@ -47,3 +48,23 @@ export const Error = {
     type: "error",
   },
 };
+
+export const WithButton = () => ({
+  components: { MucCallout, MucButton },
+  template: `
+      <MucCallout
+          type="info"
+      >
+        <template #header>
+         Button
+        </template>
+        <template #content>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua.
+        </template>
+        <template #button>
+          <muc-button icon="arrow-right" icon-animated> Button</muc-button>
+        </template>
+      </MucCallout>
+    `,
+});

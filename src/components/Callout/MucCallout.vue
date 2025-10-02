@@ -23,6 +23,7 @@
                 class="m-callout__content"
               />
             </p>
+            <slot name="button" />
           </div>
         </div>
       </div>
@@ -59,6 +60,10 @@ defineSlots<{
    * Content beneath the heading shown as text.
    */
   content(): unknown;
+  /**
+   * Button beneath the content.
+   */
+  button(): unknown;
 }>();
 
 /*
