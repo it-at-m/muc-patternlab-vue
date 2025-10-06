@@ -23,7 +23,7 @@
                 class="m-callout__content"
               />
             </p>
-            <slot name="button" />
+            <slot name="buttons" />
           </div>
         </div>
       </div>
