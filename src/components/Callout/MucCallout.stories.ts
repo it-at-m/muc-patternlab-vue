@@ -62,7 +62,7 @@ export const WithButton = () => ({
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua.
         </template>
-        <template #button>
+        <template #buttons>
           <muc-button icon="arrow-right" icon-animated> Button</muc-button>
         </template>
       </MucCallout>
