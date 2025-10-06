@@ -63,7 +63,7 @@ defineSlots<{
   /**
    * Buttons beneath the content.
    */
-  button(): unknown;
+  buttons(): unknown;
 }>();
 
 /*
