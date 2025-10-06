@@ -61,7 +61,7 @@ defineSlots<{
    */
   content(): unknown;
   /**
-   * Button beneath the content.
+   * Buttons beneath the content.
    */
   button(): unknown;
 }>();
