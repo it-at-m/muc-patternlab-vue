@@ -20,7 +20,7 @@ const props = withDefaults(
     divider?: boolean;
     /**
      * Img to show next to title and tagline.
-     * Only works with variant='vertical'
+     * Only works with variant='detail'
      */
     img?: string;
 
