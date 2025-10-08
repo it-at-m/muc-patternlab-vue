@@ -16,7 +16,7 @@
           </template>
         </muc-button>
       </div>
-      <p tabindex="0">
+      <p>
         <strong
           class="content-centered"
           style="color: var(--color-brand-main-blue)"
