@@ -47,8 +47,8 @@ const props = withDefaults(
   }
 );
 
-const isVertical = computed(() => (props.variant == 'detail'));
-const isHorizontal = computed(() => (props.variant == 'overview'))
+const isDetail = computed(() => (props.variant == 'detail'));
+const isOverview = computed(() => (props.variant == 'overview'))
 
 defineSlots<{
   /**
@@ -60,44 +60,38 @@ defineSlots<{
 
 <template>
   <div
-    v-if="isHorizontal"
+      v-if="isOverview"
+      class="m-intro m-intro-summary-text"
   >
-    <div class="m-intro m-intro-summary-text">
-      <div class="container">
-        <div class="m-intro-summary-text__body">
-          <div class="m-intro-summary-text__grid">
-            <div class="m-intro-summary-text__content">
-              <p
-                  v-if="tagline"
-                  class="m-intro-vertical__tagline"
-                  tabindex="0"
-              >
-                {{ tagline }}
+    <div class="container">
+      <div class="m-intro-summary-text__body">
+        <div class="m-intro-summary-text__grid">
+          <div class="m-intro-summary-text__content">
+            <p
+              v-if="tagline"
+              class="m-intro-vertical__tagline"
+            >
+              {{ tagline }}
+            </p>
+            <h1 class="m-intro-summary-text__title">{{ title }}</h1>
+
+            <muc-divider v-if="divider" />
+
+            <div class="m-intro-summary-text__text">
+              <p>
+                <slot />
               </p>
-              <h1 class="m-intro-summary-text__title">{{ title }}</h1>
-
-              <muc-divider v-if="divider" />
-
-              <div class="m-intro-summary-text__text">
-                <p tabindex="0">
-                  <slot />
-                </p>
-              </div>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </div>
-
   </div>
+
   <div
-    v-if="isVertical"
+    v-if="isDetail"
     class="m-intro m-intro-vertical"
     :class="{ 'm-intro-vertical--with-pictogram': img }"
-    style="background-color: var(--color-neutrals-blue-xlight)"
   >
     <div class="m-intro-vertical__body">
       <div class="container">
@@ -118,13 +112,11 @@ defineSlots<{
               <p
                 v-if="tagline"
                 class="m-intro-vertical__tagline"
-                tabindex="0"
               >
                 {{ tagline }}
               </p>
               <h1
                 class="m-intro-vertical__title"
-                tabindex="0"
               >
                 {{ title }}
               </h1>
@@ -133,7 +125,7 @@ defineSlots<{
             <muc-divider v-if="divider" />
 
             <div class="m-intro-vertical__content">
-              <p tabindex="0">
+              <p>
                 <slot />
               </p>
             </div>
