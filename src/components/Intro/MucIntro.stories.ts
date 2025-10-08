@@ -23,7 +23,7 @@ export const Default = {
   args: {
     tagline: "Tagline",
     title: "Intro with Title",
-    variant: 'overview',
+    variant: "overview",
     default:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
       "    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
@@ -34,7 +34,7 @@ export const Icon = {
   args: {
     tagline: "Tagline",
     title: "Intro with Icon",
-    variant: 'detail',
+    variant: "detail",
     img: "docs/images/muc-patternlab.png",
     default: Default.args.default,
   },

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { MucDivider } from "../Divider";
-import {computed} from "vue";
 
 type IntroType = "detail" | "overview";
 
@@ -43,12 +44,12 @@ const props = withDefaults(
   {
     divider: true,
     size: 64,
-    variant: "overview"
+    variant: "overview",
   }
 );
 
-const isDetail = computed(() => (props.variant == 'detail'));
-const isOverview = computed(() => (props.variant == 'overview'))
+const isDetail = computed(() => props.variant == "detail");
+const isOverview = computed(() => props.variant == "overview");
 
 defineSlots<{
   /**
@@ -60,8 +61,8 @@ defineSlots<{
 
 <template>
   <div
-      v-if="isOverview"
-      class="m-intro m-intro-summary-text"
+    v-if="isOverview"
+    class="m-intro m-intro-summary-text"
   >
     <div class="container">
       <div class="m-intro-summary-text__body">
@@ -115,9 +116,7 @@ defineSlots<{
               >
                 {{ tagline }}
               </p>
-              <h1
-                class="m-intro-vertical__title"
-              >
+              <h1 class="m-intro-vertical__title">
                 {{ title }}
               </h1>
             </div>
