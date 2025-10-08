@@ -54,6 +54,15 @@ export const IconOnly = {
   },
 };
 
+export const CopyButton = {
+  args: {
+    default: "Copy",
+    icon: "copy-link",
+    variant: "secondary",
+    spinIconOnClick: true,
+  },
+};
+
 export const IconAnimated = {
   args: {
     default: "With Icon",
