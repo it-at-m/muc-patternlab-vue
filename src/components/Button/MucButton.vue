@@ -10,7 +10,7 @@
       'm-button--animated-right': iconAnimated,
       'm-button--animated-left': iconAnimated && iconShownLeft,
       disabled: disabled,
-      copied: spinIconOnClick && animateIconSpin,
+      copied: animateIconSpin,
     }"
   >
     <span>
@@ -98,13 +98,13 @@ const animateIconSpin = ref(false);
  * Emit a click event if not in disabled state.
  */
 const handleClick = () => {
-  animateIconSpin.value = true;
-
+  if (spinIconOnClick) {
+    animateIconSpin.value = true;
+    setTimeout(() => {
+      animateIconSpin.value = false;
+    }, 1000);
+  }
   if (!disabled) emit("click");
-
-  setTimeout(() => {
-    animateIconSpin.value = false;
-  }, 1000);
 };
 </script>
 
