@@ -2,11 +2,7 @@
 import { MucDivider } from "../Divider";
 import {computed} from "vue";
 
-//vertical = narrow = detail;
-//horizontal = wide = overview;
 type IntroType = "detail" | "overview";
-//type IntroType = "narrow" | "wide";
-//type IntroType = "vertical" | "horizontal";
 
 const props = withDefaults(
   defineProps<{
@@ -51,8 +47,8 @@ const props = withDefaults(
   }
 );
 
-const isVertical = computed(() => (props.variant == 'vertical'));
-const isHorizontal = computed(() => (props.variant == 'horizontal'))
+const isVertical = computed(() => (props.variant == 'detail'));
+const isHorizontal = computed(() => (props.variant == 'overview'))
 
 defineSlots<{
   /**
