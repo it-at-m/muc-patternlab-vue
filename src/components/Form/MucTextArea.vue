@@ -34,6 +34,8 @@
         :placeholder="placeholder"
         :maxlength="maxlength"
         v-model="modelValue"
+        :required="required"
+        :aria-required="ariaRequired"
         @blur="currentCount = modelValue.length"
       />
       <div
@@ -89,6 +91,7 @@ const {
   errorMsg,
   rows = 3,
   required = false,
+  ariaRequired,
 } = defineProps<{
   /**
    * Unique identifier for the textarea. Required property used  to associate the textarea with its label and hint text for accessibility.
@@ -128,5 +131,10 @@ const {
    * Restricts character input to the specified number
    */
   maxlength?: number;
+
+  /**
+   * Sets this input form as required.
+   */
+  ariaRequired?: boolean;
 }>();
 </script>
