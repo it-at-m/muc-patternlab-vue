@@ -70,7 +70,7 @@ defineSlots<{
 }
 
 .card:hover {
-  background-color: #f1f1f1;
+  background-color: var(--mde-color-neutral-beau-blue-x-light);
 }
 
 .card-content {
@@ -86,7 +86,7 @@ defineSlots<{
   font-family:
     Open Sans,
     sans-serif;
-  color: #005a9f;
+  color: var(--mde-color-brand-mde-blue);
   font-weight: 700;
   line-height: 24px;
   word-wrap: break-word;
