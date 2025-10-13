@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@muenchen/prettier-codeformat": "1.0.2",
-    "@rushstack/eslint-patch": "1.12.0",
+    "@rushstack/eslint-patch": "1.13.0",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "11.0.6",
     "@storybook/addon-a11y": "9.1.10",
@@ -59,7 +59,7 @@
     "@vue/eslint-config-typescript": "14.6.0",
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.8.1",
-    "eslint": "9.36.0",
+    "eslint": "9.37.0",
     "eslint-plugin-storybook": "9.1.10",
     "eslint-plugin-vue": "10.5.0",
     "jsdom": "27.0.0",
@@ -72,11 +72,11 @@
     "vite": "7.1.9",
     "vite-plugin-dts": "4.5.4",
     "vitest": "3.2.4",
-    "vue-tsc": "3.1.0"
+    "vue-tsc": "3.1.1"
   },
   "dependencies": {
     "@eslint/compat": "1.4.0",
-    "@eslint/js": "9.36.0",
+    "@eslint/js": "9.37.0",
     "@splidejs/vue-splide": "0.6.12",
     "choices.js": "11.1.0",
     "patch-package": "8.0.1"

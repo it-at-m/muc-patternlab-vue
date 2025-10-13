@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="handleClick"
+    @click="handleClick($event)"
     :aria-disabled="disabled"
     class="m-button"
     :class="{
@@ -22,6 +22,7 @@
         :class="{
           'm-button__icon--after': !iconShownLeft && variant != 'icon',
           'm-button__icon--before': iconShownLeft && variant != 'icon',
+          'no-left-margin': variant == 'icon',
         }"
       />
       <slot v-if="iconShownLeft" />
@@ -89,7 +90,7 @@ const emit = defineEmits<
    * Triggered when button is clicked.
    * @param e Click-Event
    */
-  (e: "click") => void
+  (e: "click", value: Event) => void
 >();
 
 const animateIconSpin = ref(false);
@@ -97,14 +98,14 @@ const animateIconSpin = ref(false);
 /**
  * Emit a click event if not in disabled state.
  */
-const handleClick = () => {
+const handleClick = (event: Event) => {
   if (spinIconOnClick) {
     animateIconSpin.value = true;
     setTimeout(() => {
       animateIconSpin.value = false;
     }, 1000);
   }
-  if (!disabled) emit("click");
+  if (!disabled) emit("click", event);
 };
 </script>
 
