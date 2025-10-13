@@ -35,8 +35,8 @@
         :aria-describedby="hint ? 'input-hint-' + id : undefined"
         :placeholder="placeholder"
         :required="required"
+        :aria-required="required"
         :maxlength="max"
-        :aria-required="ariaRequired"
       />
       <ul
         v-if="isSearch && currentAvalOptions.length !== 0"
@@ -102,7 +102,6 @@ const {
   required = false,
   type = "text",
   dataList = [] as string[],
-  ariaRequired,
 } = defineProps<{
   /**
    *  Unique identifier for the input. Required property used to associate the input with its label and hint text for accessibility.
@@ -152,11 +151,6 @@ const {
    * Restricts character input to the specified number
    */
   max?: number;
-
-  /**
-   * Sets this input form as required.
-   */
-  ariaRequired?: boolean;
 }>();
 
 const slots = defineSlots<{
