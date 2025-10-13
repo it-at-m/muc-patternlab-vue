@@ -22,6 +22,7 @@
         :class="{
           'm-button__icon--after': !iconShownLeft && variant != 'icon',
           'm-button__icon--before': iconShownLeft && variant != 'icon',
+          'no-left-margin': variant == 'icon',
         }"
       />
       <slot v-if="iconShownLeft" />
