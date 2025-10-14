@@ -21,6 +21,12 @@ type __VLS_Props = {
      */
     iconAnimated?: boolean;
     /**
+     * Wether the Icon should spin when the button is clicked (used e.g. when building a "copy"-Button)
+     *
+     * Default is 'false';
+     */
+    spinIconOnClick?: boolean;
+    /**
      * Whether the Icon should be shown on the left side of the button (slide-right) or not.
      *
      * Default is `false`
@@ -45,9 +51,9 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-    click: () => any;
+    click: (value: Event) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
-    onClick?: (() => any) | undefined;
+    onClick?: ((value: Event) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;

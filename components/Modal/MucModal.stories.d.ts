@@ -134,11 +134,12 @@ export declare const Default: (args: any) => {
                 disabled?: boolean;
                 icon?: string;
                 iconAnimated?: boolean;
+                spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
             }> & Readonly<{
-                onClick?: (() => any) | undefined;
+                onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-                click: () => any;
+                click: (value: Event) => any;
             }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
@@ -151,9 +152,10 @@ export declare const Default: (args: any) => {
                 disabled?: boolean;
                 icon?: string;
                 iconAnimated?: boolean;
+                spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
             }> & Readonly<{
-                onClick?: (() => any) | undefined;
+                onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -163,11 +165,12 @@ export declare const Default: (args: any) => {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
         }> & Readonly<{
-            onClick?: (() => any) | undefined;
+            onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-            click: () => any;
+            click: (value: Event) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): unknown;
@@ -249,11 +252,12 @@ export declare const Minimal: (args: any) => {
                 disabled?: boolean;
                 icon?: string;
                 iconAnimated?: boolean;
+                spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
             }> & Readonly<{
-                onClick?: (() => any) | undefined;
+                onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-                click: () => any;
+                click: (value: Event) => any;
             }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
@@ -266,9 +270,10 @@ export declare const Minimal: (args: any) => {
                 disabled?: boolean;
                 icon?: string;
                 iconAnimated?: boolean;
+                spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
             }> & Readonly<{
-                onClick?: (() => any) | undefined;
+                onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -278,11 +283,12 @@ export declare const Minimal: (args: any) => {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
         }> & Readonly<{
-            onClick?: (() => any) | undefined;
+            onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-            click: () => any;
+            click: (value: Event) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): unknown;

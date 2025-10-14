@@ -7,10 +7,12 @@ declare const _default: {
             img?: string;
             imgAlt?: string;
             size?: number;
+            variant?: "detail" | "overview";
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
+            variant: "detail" | "overview";
             size: number;
             divider: boolean;
-        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
+        }, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, any, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
             D: {};
@@ -24,7 +26,9 @@ declare const _default: {
             img?: string;
             imgAlt?: string;
             size?: number;
+            variant?: "detail" | "overview";
         }> & Readonly<{}>, {}, {}, {}, {}, {
+            variant: "detail" | "overview";
             size: number;
             divider: boolean;
         }>;
@@ -38,7 +42,9 @@ declare const _default: {
         img?: string;
         imgAlt?: string;
         size?: number;
+        variant?: "detail" | "overview";
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
+        variant: "detail" | "overview";
         size: number;
         divider: boolean;
     }, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
@@ -63,6 +69,7 @@ export declare const Default: {
     args: {
         tagline: string;
         title: string;
+        variant: string;
         default: string;
     };
 };
@@ -70,14 +77,24 @@ export declare const Icon: {
     args: {
         tagline: string;
         title: string;
+        variant: string;
         img: string;
         default: string;
     };
 };
-export declare const Minimal: {
+export declare const MinimalDetail: {
     args: {
         title: string;
         divider: boolean;
+        variant: string;
+        default: string;
+    };
+};
+export declare const MinimalOverview: {
+    args: {
+        title: string;
+        divider: boolean;
+        variant: string;
         default: string;
     };
 };

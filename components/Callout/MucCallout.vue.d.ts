@@ -22,6 +22,10 @@ declare function __VLS_template(): {
          * Content beneath the heading shown as text.
          */
         content(): unknown;
+        /**
+         * Buttons beneath the content.
+         */
+        buttons(): unknown;
     }> & {
         /**
          * Icon shown above the callout. Defaults to icons matching the type.
@@ -35,6 +39,10 @@ declare function __VLS_template(): {
          * Content beneath the heading shown as text.
          */
         content(): unknown;
+        /**
+         * Buttons beneath the content.
+         */
+        buttons(): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;

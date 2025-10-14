@@ -5,11 +5,12 @@ declare const _default: {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
         }> & Readonly<{
-            onClick?: (() => any) | undefined;
+            onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-            click: () => any;
+            click: (value: Event) => any;
         }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLButtonElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -22,9 +23,10 @@ declare const _default: {
             disabled?: boolean;
             icon?: string;
             iconAnimated?: boolean;
+            spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
         }> & Readonly<{
-            onClick?: (() => any) | undefined;
+            onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -34,11 +36,12 @@ declare const _default: {
         disabled?: boolean;
         icon?: string;
         iconAnimated?: boolean;
+        spinIconOnClick?: boolean;
         iconShownLeft?: boolean;
     }> & Readonly<{
-        onClick?: (() => any) | undefined;
+        onClick?: ((value: Event) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
-        click: () => any;
+        click: (value: Event) => any;
     }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): unknown;
@@ -87,6 +90,14 @@ export declare const IconOnly: {
     args: {
         icon: string;
         variant: string;
+    };
+};
+export declare const CopyButton: {
+    args: {
+        default: string;
+        icon: string;
+        variant: string;
+        spinIconOnClick: boolean;
     };
 };
 export declare const IconAnimated: {
