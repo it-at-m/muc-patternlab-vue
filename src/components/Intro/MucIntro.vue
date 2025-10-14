@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { MucDivider } from "../Divider";
 
-withDefaults(
+type IntroType = "detail" | "overview";
+
+const props = withDefaults(
   defineProps<{
     /**
      * Title of the Intro
@@ -16,7 +20,8 @@ withDefaults(
      */
     divider?: boolean;
     /**
-     * Img to show next to title and tagline
+     * Img to show next to title and tagline.
+     * Only works with variant='detail'
      */
     img?: string;
 
@@ -28,12 +33,23 @@ withDefaults(
      * Size of the image
      */
     size?: number;
+    /**
+     * Variant of the Intro -
+     * detail (https://patternlab.muenchen.space/?p=components-intro-vertical-article)
+     * or
+     * overview (default - https://patternlab.muenchen.space/?p=components-intro-summary-text).
+     */
+    variant?: IntroType;
   }>(),
   {
     divider: true,
     size: 64,
+    variant: "overview",
   }
 );
+
+const isDetail = computed(() => props.variant == "detail");
+const isOverview = computed(() => props.variant == "overview");
 
 defineSlots<{
   /**
@@ -45,9 +61,38 @@ defineSlots<{
 
 <template>
   <div
+    v-if="isOverview"
+    class="m-intro m-intro-summary-text"
+  >
+    <div class="container">
+      <div class="m-intro-summary-text__body">
+        <div class="m-intro-summary-text__grid">
+          <div class="m-intro-summary-text__content">
+            <p
+              v-if="tagline"
+              class="m-intro-vertical__tagline"
+            >
+              {{ tagline }}
+            </p>
+            <h1 class="m-intro-summary-text__title">{{ title }}</h1>
+
+            <muc-divider v-if="divider" />
+
+            <div class="m-intro-summary-text__text">
+              <p>
+                <slot />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-if="isDetail"
     class="m-intro m-intro-vertical"
     :class="{ 'm-intro-vertical--with-pictogram': img }"
-    style="background-color: var(--color-neutrals-blue-xlight)"
   >
     <div class="m-intro-vertical__body">
       <div class="container">
@@ -68,14 +113,10 @@ defineSlots<{
               <p
                 v-if="tagline"
                 class="m-intro-vertical__tagline"
-                tabindex="0"
               >
                 {{ tagline }}
               </p>
-              <h1
-                class="m-intro-vertical__title"
-                tabindex="0"
-              >
+              <h1 class="m-intro-vertical__title">
                 {{ title }}
               </h1>
             </div>
@@ -83,7 +124,7 @@ defineSlots<{
             <muc-divider v-if="divider" />
 
             <div class="m-intro-vertical__content">
-              <p tabindex="0">
+              <p>
                 <slot />
               </p>
             </div>
@@ -97,6 +138,6 @@ defineSlots<{
 <style scoped>
 .muc-divider {
   margin-top: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 </style>

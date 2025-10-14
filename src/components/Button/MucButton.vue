@@ -1,9 +1,17 @@
 <template>
   <button
-    @click="handleClick"
+    @click="handleClick($event)"
     :aria-disabled="disabled"
     class="m-button"
-    :class="[buttonVariantClass, iconAnimatedClass, disabledClass]"
+    :class="{
+      'm-button--secondary': variant === 'secondary',
+      'm-button--ghost': variant === 'ghost',
+      'm-button--primary': variant !== 'secondary' && variant !== 'ghost',
+      'm-button--animated-right': iconAnimated,
+      'm-button--animated-left': iconAnimated && iconShownLeft,
+      disabled: disabled,
+      copied: animateIconSpin,
+    }"
   >
     <span>
       <slot v-if="!iconShownLeft" />
@@ -14,6 +22,7 @@
         :class="{
           'm-button__icon--after': !iconShownLeft && variant != 'icon',
           'm-button__icon--before': iconShownLeft && variant != 'icon',
+          'no-left-margin': variant == 'icon',
         }"
       />
       <slot v-if="iconShownLeft" />
@@ -22,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref } from "vue";
 
 import { MucIcon } from "../Icon";
 
@@ -33,6 +42,7 @@ const {
   disabled = false,
   iconAnimated = false,
   iconShownLeft = false,
+  spinIconOnClick = false,
 } = defineProps<{
   /**
    * The variant prop gives you easy access to several different button styles.
@@ -55,6 +65,12 @@ const {
    */
   iconAnimated?: boolean;
   /**
+   * Wether the Icon should spin when the button is clicked (used e.g. when building a "copy"-Button)
+   *
+   * Default is 'false';
+   */
+  spinIconOnClick?: boolean;
+  /**
    * Whether the Icon should be shown on the left side of the button (slide-right) or not.
    *
    * Default is `false`
@@ -74,41 +90,23 @@ const emit = defineEmits<
    * Triggered when button is clicked.
    * @param e Click-Event
    */
-  (e: "click") => void
+  (e: "click", value: Event) => void
 >();
 
-const buttonVariantClass = computed(() => {
-  switch (variant) {
-    case "secondary":
-      return "m-button--secondary";
-    case "ghost":
-      return "m-button--ghost";
-    default:
-      return "m-button--primary";
-  }
-});
-
-const iconAnimatedClass = computed(() => {
-  if (iconAnimated && iconShownLeft) {
-    return "m-button--animated-left";
-  } else if (iconAnimated) {
-    return "m-button--animated-right";
-  } else {
-    return "";
-  }
-});
+const animateIconSpin = ref(false);
 
 /**
  * Emit a click event if not in disabled state.
  */
-const handleClick = () => {
-  if (!disabled) emit("click");
+const handleClick = (event: Event) => {
+  if (spinIconOnClick) {
+    animateIconSpin.value = true;
+    setTimeout(() => {
+      animateIconSpin.value = false;
+    }, 1000);
+  }
+  if (!disabled) emit("click", event);
 };
-
-/**
- * Ensure that the disabled button style is applied when it is in the 'disabled' state.
- */
-const disabledClass = computed(() => (disabled ? "disabled" : ""));
 </script>
 
 <style scoped>
@@ -122,6 +120,10 @@ const disabledClass = computed(() => (disabled ? "disabled" : ""));
 
 .set-left-margin {
   margin-left: 0.75rem;
+}
+
+.copied .m-button__icon {
+  animation: rotate 1s ease-in-out;
 }
 
 .m-button--ghost {

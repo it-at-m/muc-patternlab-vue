@@ -262,7 +262,7 @@ defineExpose({
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px dashed #337bb2;
+  border: 1px dashed var(--mde-color-brand-mde-blue-light);
   display: flex;
   flex-direction: column;
   justify-content: center;

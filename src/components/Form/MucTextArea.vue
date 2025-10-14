@@ -34,6 +34,8 @@
         :placeholder="placeholder"
         :maxlength="maxlength"
         v-model="modelValue"
+        :required="required"
+        :aria-required="required"
         @blur="currentCount = modelValue.length"
       />
       <div
