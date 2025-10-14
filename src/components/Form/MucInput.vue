@@ -35,6 +35,7 @@
         :aria-describedby="hint ? 'input-hint-' + id : undefined"
         :placeholder="placeholder"
         :required="required"
+        :aria-required="required"
         :maxlength="max"
       />
       <ul
