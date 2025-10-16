@@ -117,7 +117,6 @@ dialog {
   padding: 0;
   margin-top: 1.75rem;
   --mde-gutter-x: 0;
-  min-width: 592px;
 }
 
 dialog::backdrop {
