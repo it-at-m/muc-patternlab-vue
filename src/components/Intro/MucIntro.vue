@@ -24,11 +24,6 @@ const props = withDefaults(
      * Only works with variant='detail'
      */
     img?: string;
-
-    /**
-     * ImgAlt useful for screen readers
-     */
-    imgAlt?: string;
     /**
      * Size of the image
      */
@@ -104,7 +99,7 @@ defineSlots<{
           >
             <img
               :src="img"
-              :alt="imgAlt"
+              alt=""
               :width="size"
               :height="size"
             />
