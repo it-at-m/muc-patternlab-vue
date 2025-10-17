@@ -45,7 +45,7 @@ const props = withDefaults(
     divider: true,
     size: 64,
     variant: "overview",
-    imgAlt: ""
+    imgAlt: "",
   }
 );
 
