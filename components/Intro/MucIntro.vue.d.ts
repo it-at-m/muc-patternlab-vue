@@ -18,10 +18,6 @@ type __VLS_Props = {
      */
     img?: string;
     /**
-     * ImgAlt useful for screen readers
-     */
-    imgAlt?: string;
-    /**
      * Size of the image
      */
     size?: number;

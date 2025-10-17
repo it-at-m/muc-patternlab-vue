@@ -5,7 +5,6 @@ declare const _default: {
             tagline?: string;
             divider?: boolean;
             img?: string;
-            imgAlt?: string;
             size?: number;
             variant?: "detail" | "overview";
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
@@ -24,7 +23,6 @@ declare const _default: {
             tagline?: string;
             divider?: boolean;
             img?: string;
-            imgAlt?: string;
             size?: number;
             variant?: "detail" | "overview";
         }> & Readonly<{}>, {}, {}, {}, {}, {
@@ -40,7 +38,6 @@ declare const _default: {
         tagline?: string;
         divider?: boolean;
         img?: string;
-        imgAlt?: string;
         size?: number;
         variant?: "detail" | "overview";
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
