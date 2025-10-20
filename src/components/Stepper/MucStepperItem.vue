@@ -116,13 +116,6 @@ const getAriaLabel = computed(() =>
 );
 
 /**
- * Build a sanitized base token from item.id to ensure valid, stable HTML IDs
- */
-const safeBaseId = computed(() =>
-  String(item.id).replace(/[^A-Za-z0-9\-_:.]/g, "_")
-);
-
-/**
  * Stable element IDs used to compose the accessible name via aria-labelledby
  */
 const labelId = computed(() => `m-step-label-${item.id}`);
