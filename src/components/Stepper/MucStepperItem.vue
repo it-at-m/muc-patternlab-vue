@@ -15,7 +15,7 @@
       :aria-label="getAriaLabel"
       :aria-setsize="total"
       :aria-posinset="position"
-      :aria-current="isActive ? 'step' : null"
+      :aria-current="isActive ? 'step' : false"
     >
       <muc-icon :icon="getIcon" />
     </div>
