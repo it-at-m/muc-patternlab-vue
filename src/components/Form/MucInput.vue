@@ -37,6 +37,8 @@
         :required="required"
         :aria-required="required"
         :maxlength="max"
+        :autocomplete="autocomplete"
+        :name="name"
       />
       <ul
         v-if="isSearch && currentAvalOptions.length !== 0"
@@ -151,6 +153,16 @@ const {
    * Restricts character input to the specified number
    */
   max?: number;
+
+  /**
+   * Makes autocomplete proerty for input available
+   */
+  autocomplete?: string;
+
+  /**
+   * Defines a default name for autocomplete
+   */
+  name?: string;
 }>();
 
 const slots = defineSlots<{
