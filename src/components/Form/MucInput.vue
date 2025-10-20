@@ -37,7 +37,7 @@
         :required="required"
         :aria-required="required"
         :maxlength="max"
-        :autocomplete="autocomplete" 
+        :autocomplete="autocomplete"
         :name="name"
       />
       <ul
@@ -79,10 +79,11 @@
   </div>
 </template>
 <script setup lang="ts">
+import { getDefaultAutoSelectFamilyAttemptTimeout } from "net";
+
 import { computed } from "vue";
 
 import FormErrorMessage from "./FormErrorMessage.vue";
-import { getDefaultAutoSelectFamilyAttemptTimeout } from "net";
 
 /**
  * Type includes all possible input types possible.
