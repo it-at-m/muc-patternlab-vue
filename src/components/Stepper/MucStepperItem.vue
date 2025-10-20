@@ -11,7 +11,11 @@
       class="m-form-step__icon"
       :class="{ disabled: disabled }"
       :tabindex="getTabindex"
+      :aria-labelledby="ariaLabelledby"
       :aria-label="getAriaLabel"
+      :aria-setsize="total"
+      :aria-posinset="position"
+      :aria-current="isActive ? 'step' : null"
     >
       <muc-icon :icon="getIcon" />
     </div>
@@ -19,7 +23,27 @@
       class="m-form-step__title"
       :class="{ disabled: disabled }"
     >
-      <span aria-disabled="true"> {{ item.label }}</span>
+      <span
+        :id="labelId"
+        aria-disabled="true"
+      >
+        {{ item.label }}</span
+      >
+
+      <span
+        class="visually-hidden"
+        :id="prefixId"
+      >
+        Schritt {{ position }} von {{ total }}:
+      </span>
+
+      <span
+        v-if="isDone"
+        class="visually-hidden"
+        :id="statusId"
+      >
+        – erledigt
+      </span>
     </div>
   </li>
 </template>
@@ -30,7 +54,7 @@ import { computed } from "vue";
 import { MucIcon } from "../Icon";
 import { StepperItem } from "./MucStepperTypes";
 
-const { item, isActive, isDone, disabled } = defineProps<{
+const { item, isActive, isDone, disabled, position, total } = defineProps<{
   /**
    * Individual item to display inside the MucStepper component
    */
@@ -50,6 +74,16 @@ const { item, isActive, isDone, disabled } = defineProps<{
    * Disabled stepper
    */
   disabled: boolean;
+
+  /**
+   * position of the item in the step sequence
+   */
+  position: number;
+
+  /**
+   * total number of steps
+   */
+  total: number;
 }>();
 
 const emit = defineEmits<{
@@ -81,6 +115,29 @@ const getAriaLabel = computed(() =>
     : "Zurück zu Schritt: " + item.label
 );
 
+/**
+ * Build a sanitized base token from item.id to ensure valid, stable HTML IDs
+ */
+const safeBaseId = computed(() =>
+  String(item.id).replace(/[^A-Za-z0-9\-_:.]/g, "_")
+);
+
+/**
+ * Stable element IDs used to compose the accessible name via aria-labelledby
+ */
+const labelId = computed(() => `m-step-label-${item.id}`);
+const prefixId = computed(() => `m-step-prefix-${item.id}`);
+const statusId = computed(() => `m-step-status-${item.id}`);
+
+/**
+ * Compose the accessible name in order: prefix -> visible label -> optional status
+ */
+const ariaLabelledby = computed(() => {
+  const ids = [prefixId.value, labelId.value];
+  if (isDone) ids.push(statusId.value);
+  return ids.join(" ");
+});
+
 const handleClick = () => {
   if (isDone && !disabled) {
     emit("click", item.id);
@@ -94,7 +151,19 @@ const handleClick = () => {
 }
 
 .disabled {
-  color: var(--mde-color-neutral-grey-x-light);
-  border-color: var(--mde-color-neutral-grey-x-light);
+  color: #9ca8b3;
+  border-color: #9ca8b3;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap ;
+  border: 0;
 }
 </style>
