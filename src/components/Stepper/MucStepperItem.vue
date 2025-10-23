@@ -45,6 +45,15 @@
         – erledigt
       </span>
     </div>
+    <span
+      v-if="isActive"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      :aria-labelledby="ariaLabelledby"
+    >
+    </span>
   </li>
 </template>
 
