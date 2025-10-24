@@ -75,7 +75,11 @@
           v-for="(line, i) in lines"
           :key="i"
           x="100"
-          :dy="i === 0 ? `-${((lines.length - 1) / 2) * lineHeightEm}em` : `${lineHeightEm}em`"
+          :dy="
+            i === 0
+              ? `-${((lines.length - 1) / 2) * lineHeightEm}em`
+              : `${lineHeightEm}em`
+          "
         >
           {{ line }}
         </tspan>
@@ -85,7 +89,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ComputedRef, onMounted, onUnmounted, ref, nextTick } from "vue";
+import {
+  computed,
+  ComputedRef,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  ref,
+} from "vue";
 
 const { size = "300", text } = defineProps<{
   /**
@@ -99,7 +110,6 @@ const { size = "300", text } = defineProps<{
    */
   text?: string;
 }>();
-
 
 const MAX_TOTAL = 80;
 const MAX_PER_LINE = 14;
@@ -119,7 +129,12 @@ function wrapText(s: string, maxPerLine: number): string[] {
   const out: string[] = [];
   let line = "";
 
-  const flush = () => { if (line) { out.push(line); line = ""; } };
+  const flush = () => {
+    if (line) {
+      out.push(line);
+      line = "";
+    }
+  };
 
   for (const w of words) {
     if (w.length > maxPerLine) {
@@ -143,16 +158,22 @@ function wrapText(s: string, maxPerLine: number): string[] {
   return out;
 }
 
-const lines: ComputedRef<string[]> = computed(() => wrapText(displayText.value, MAX_PER_LINE));
+const lines: ComputedRef<string[]> = computed(() =>
+  wrapText(displayText.value, MAX_PER_LINE)
+);
 
 const liveRegionEl = ref<HTMLElement | null>(null);
 const announcement = ref<string>("");
 let previouslyFocusedEl: HTMLElement | null = null;
 let lastHeadingBefore: HTMLElement | null = null;
 
-function findNearestPrecedingHeading(anchor: HTMLElement | null): HTMLElement | null {
+function findNearestPrecedingHeading(
+  anchor: HTMLElement | null
+): HTMLElement | null {
   if (!anchor) return null;
-  const headings = Array.from(document.querySelectorAll<HTMLElement>("h1, h2, h3, h4, h5, h6"));
+  const headings = Array.from(
+    document.querySelectorAll<HTMLElement>("h1, h2, h3, h4, h5, h6")
+  );
   let candidate: HTMLElement | null = null;
   for (const h of headings) {
     const pos = h.compareDocumentPosition(anchor);
