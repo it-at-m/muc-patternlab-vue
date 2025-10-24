@@ -119,7 +119,7 @@ const lineHeightEm = 1.2;
 const displayText: ComputedRef<string> = computed(() => {
   const raw = text ? String(text) : "";
   if (raw.length <= MAX_TOTAL) return raw;
-  return raw.slice(0, MAX_TOTAL - 1) + "…"; // insgesamt 60 Zeichen
+  return raw.slice(0, MAX_TOTAL - 1) + "…";
 });
 
 /** Break at spaces with fallback to hard break for long words */
