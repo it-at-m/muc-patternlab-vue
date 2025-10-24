@@ -153,8 +153,8 @@ const handleClick = () => {
 }
 
 .disabled {
-  color: #9ca8b3;
-  border-color: #9ca8b3;
+  color: var(--mde-color-neutral-grey-x-light);
+  border-color: var(--mde-color-neutral-grey-x-light);
 }
 
 .visually-hidden {
