@@ -3,9 +3,13 @@
     <div class="container">
       <div class="m-component__grid">
         <div class="m-component__column">
-          <ol class="m-form-steps">
+          <ol
+            class="m-form-steps"
+            role="list"
+            aria-label="Formularfortschritt"
+          >
             <template
-              v-for="item in stepItems"
+              v-for="(item, index) in stepItems"
               :key="item.id"
             >
               <muc-stepper-item
@@ -13,6 +17,8 @@
                 :is-active="isActive(item.id)"
                 :is-done="isDone(item.id)"
                 :disabled="disabled(item.id)"
+                :position="index + 1"
+                :total="stepItems.length"
                 @click="handleChange"
               />
             </template>
