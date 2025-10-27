@@ -17,7 +17,7 @@ export default {
 export const Relative = {
   args: {
     size: "40%",
-    text: "Hier könnte ihr Text stehen",
+    text: "Hier könnte Ihr Text stehen ...",
   },
 };
 
