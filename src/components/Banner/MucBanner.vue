@@ -5,11 +5,13 @@ import { MucIcon } from "../Icon";
 
 type bannerType = "info" | "success" | "warning" | "emergency";
 
-const { type = "info" } = defineProps<{
+const { type = "info", noIcon = false } = defineProps<{
   /**
    * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
    */
   type?: bannerType;
+
+  noIcon?: boolean;
 }>();
 
 defineSlots<{
@@ -87,8 +89,11 @@ const typeIcon = computed(() => {
         :role="typeRole"
         :aria-label="typeAriaLabel"
       >
-        <div class="container-fluid">
-          <muc-icon :icon="typeIcon" />
+        <div>
+          <muc-icon
+            v-if="!noIcon"
+            :icon="typeIcon"
+          />
           <slot />
         </div>
       </div>
