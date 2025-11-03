@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@muenchen/prettier-codeformat": "1.0.2",
-    "@rushstack/eslint-patch": "1.13.0",
+    "@rushstack/eslint-patch": "1.14.1",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "11.0.6",
     "@storybook/addon-a11y": "9.1.16",
