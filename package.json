@@ -75,7 +75,7 @@
     "vue-tsc": "3.1.1"
   },
   "dependencies": {
-    "@eslint/compat": "1.4.0",
+    "@eslint/compat": "1.4.1",
     "@eslint/js": "9.37.0",
     "@splidejs/vue-splide": "0.6.12",
     "choices.js": "11.1.0",
