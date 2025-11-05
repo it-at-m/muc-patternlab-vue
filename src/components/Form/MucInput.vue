@@ -160,7 +160,7 @@ const {
   autocomplete?: string;
 
   /**
-   * Defines a default name for autocomplete
+   * Specifies the name of the input
    */
   name?: string;
 }>();
