@@ -155,7 +155,7 @@ const {
   max?: number;
 
   /**
-   * Makes autocomplete proerty for input available
+   * Enables autocomplete for the input
    */
   autocomplete?: string;
 
