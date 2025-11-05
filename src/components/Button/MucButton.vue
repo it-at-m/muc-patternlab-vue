@@ -13,20 +13,18 @@
       copied: animateIconSpin,
     }"
   >
-    <span>
-      <slot v-if="!iconShownLeft" />
-      <muc-icon
-        v-if="icon"
-        :icon="icon"
-        class="m-button__icon"
-        :class="{
-          'm-button__icon--after': !iconShownLeft && variant != 'icon',
-          'm-button__icon--before': iconShownLeft && variant != 'icon',
-          'no-left-margin': variant == 'icon',
-        }"
-      />
-      <slot v-if="iconShownLeft" />
-    </span>
+    <slot v-if="!iconShownLeft" />
+    <muc-icon
+      v-if="icon"
+      :icon="icon"
+      class="m-button__icon"
+      :class="{
+        'm-button__icon--after': !iconShownLeft && variant != 'icon',
+        'm-button__icon--before': iconShownLeft && variant != 'icon',
+        'no-left-margin': variant == 'icon',
+      }"
+    />
+    <slot v-if="iconShownLeft" />
   </button>
 </template>
 
