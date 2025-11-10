@@ -1,3 +1,1 @@
-import MucPercentageSpinner from "./MucPercentageSpinner.vue";
-
-export { MucPercentageSpinner };
+export { MucSpinner as MucPercentageSpinner } from "../Spinner";

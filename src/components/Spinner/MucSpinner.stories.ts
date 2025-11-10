@@ -8,21 +8,40 @@ export default {
     docs: {
       description: {
         component: `The \`muc-spinner\` is a spinner represents a loading progress.
-`,
+        `,
       },
     },
   },
 };
 
-export const Relative = {
-  args: {
-    size: "40%",
-    text: "Hier könnte Ihr Text stehen ...",
-  },
-};
-
 export const Default = {
   args: {
-    size: "300",
+    size: "40%",
+    percentage: 42,
+    text: "Hier könnte Ihr Text stehen ...",
   },
+  render: (args: any) => ({
+    components: { MucSpinner },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <section>
+          <h3>Percentage</h3>
+          <MucSpinner :size="args.size" :percentage="args.percentage" />
+        </section>
+
+        <section>
+          <h3>Text</h3>
+          <MucSpinner :size="args.size" :text="args.text" />
+        </section>
+
+        <section>
+          <h3>Default</h3>
+          <MucSpinner :size="args.size" />
+        </section>
+      </div>
+    `,
+  }),
 };
