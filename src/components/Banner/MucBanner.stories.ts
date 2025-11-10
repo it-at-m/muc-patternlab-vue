@@ -45,3 +45,11 @@ export const Emergency = {
     type: "emergency",
   },
 };
+
+export const NoIcon = {
+  args: {
+    default: "Hi, I'm an Emergency-Banner!",
+    type: "warning",
+    noIcon: true,
+  },
+};
