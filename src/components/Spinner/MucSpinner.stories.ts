@@ -1,5 +1,11 @@
 import MucSpinner from "./MucSpinner.vue";
 
+type SpinnerArgs = {
+  size?: string;
+  text?: string;
+  percentage?: number;
+};
+
 export default {
   component: MucSpinner,
   title: "MucSpinner",
@@ -7,8 +13,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-spinner\` is a spinner represents a loading progress.
-        `,
+        component: `The \`muc-spinner\` is a spinner represents a loading progress.`,
       },
     },
   },
@@ -20,7 +25,7 @@ export const Default = {
     percentage: 42,
     text: "Hier könnte Ihr Text stehen ...",
   },
-  render: (args: any) => ({
+  render: (args: SpinnerArgs) => ({
     components: { MucSpinner },
     setup() {
       return { args };
