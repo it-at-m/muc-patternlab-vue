@@ -13,14 +13,14 @@ export default {
   },
 };
 
-export const Percentage= {
+export const Percentage = {
   args: {
     size: "40%",
     percentage: 42,
   },
 };
 
-export const Text= {
+export const Text = {
   args: {
     size: "40%",
     text: "This could be your text...",
