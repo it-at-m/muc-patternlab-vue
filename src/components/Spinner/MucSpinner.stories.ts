@@ -19,34 +19,22 @@ export default {
   },
 };
 
-export const Default = {
+export const Percentage= {
   args: {
     size: "40%",
     percentage: 42,
-    text: "Hier könnte Ihr Text stehen ...",
   },
-  render: (args: SpinnerArgs) => ({
-    components: { MucSpinner },
-    setup() {
-      return { args };
-    },
-    template: `
-      <div style="display:flex; flex-direction:column; gap:24px;">
-        <section>
-          <h3>Percentage</h3>
-          <MucSpinner :size="args.size" :percentage="args.percentage" />
-        </section>
+};
 
-        <section>
-          <h3>Text</h3>
-          <MucSpinner :size="args.size" :text="args.text" />
-        </section>
+export const Text= {
+  args: {
+    size: "40%",
+    text: "This could be your text...",
+  },
+};
 
-        <section>
-          <h3>Default</h3>
-          <MucSpinner :size="args.size" />
-        </section>
-      </div>
-    `,
-  }),
+export const Default = {
+  args: {
+    size: "40%",
+  },
 };
