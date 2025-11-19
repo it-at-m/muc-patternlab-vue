@@ -1,11 +1,5 @@
 import MucSpinner from "./MucSpinner.vue";
 
-interface SpinnerArgs {
-  size?: string;
-  text?: string;
-  percentage?: number;
-}
-
 export default {
   component: MucSpinner,
   title: "MucSpinner",
