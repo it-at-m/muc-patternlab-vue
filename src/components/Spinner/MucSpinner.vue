@@ -124,7 +124,7 @@ const hasPercentage = percentage || percentage === 0;
 /** Runtime protection against simultaneous use */
 if (hasText && hasPercentage) {
   const msg =
-    "MucSpinner: Die Props 'text' und 'percentage' dürfen nicht gleichzeitig verwendet werden.";
+    "MucSpinner: The properties 'text' and 'percentage' can't be used simultaneously.";
   if (
     typeof import.meta !== "undefined" &&
     import.meta.env &&
