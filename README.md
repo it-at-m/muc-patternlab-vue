@@ -37,13 +37,14 @@ on [munich.de's MDE5 Patternlab](https://patternlab.muenchen.space/).
 
 The supported MDE-Version can be taken out of the following table:
 
-| muc-patternlab-vue | MDE Version |
-| --- | --- |
-| >= 6.x | [1.1.6](https://patternlab.muenchen.space/?p=documentation-changelog) |
-| >= 5.x | [1.0.10](https://patternlab.muenchen.space/?p=documentation-changelog) |
-| >= 4.x | [1.0.7](https://patternlab.muenchen.space/?p=documentation-changelog) |
-| >= 3.x | [1.0.6](https://patternlab.muenchen.space/?p=documentation-changelog) |
-| < 3.x | [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog) |
+| muc-patternlab-vue | MDE Version                                                            |
+|--------------------|------------------------------------------------------------------------|
+| >= 7.x             | [1.1.15](https://patternlab.muenchen.space/?p=documentation-changelog) |
+| >= 6.x             | [1.1.6](https://patternlab.muenchen.space/?p=documentation-changelog)  |
+| >= 5.x             | [1.0.10](https://patternlab.muenchen.space/?p=documentation-changelog) |
+| >= 4.x             | [1.0.7](https://patternlab.muenchen.space/?p=documentation-changelog)  |
+| >= 3.x             | [1.0.6](https://patternlab.muenchen.space/?p=documentation-changelog)  |
+| < 3.x              | [1.0.4](https://patternlab.muenchen.space/?p=documentation-changelog)  |
 
 In its current state only some components exist. The library will continually grow as the need for new components grows.
 
