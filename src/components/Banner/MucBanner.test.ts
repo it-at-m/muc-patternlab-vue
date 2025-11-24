@@ -6,6 +6,7 @@ import MucBanner from "./MucBanner.vue";
 describe("MucBanner.vue", () => {
   it("renders with default type", () => {
     const wrapper = mount(MucBanner, {
+      props: { variant: "content" },
       slots: {
         default: "This is an info message",
       },
@@ -20,7 +21,7 @@ describe("MucBanner.vue", () => {
 
   it("renders with success type", () => {
     const wrapper = mount(MucBanner, {
-      props: { type: "success" },
+      props: { variant: "content", type: "success" },
       slots: {
         default: "This is a success message",
       },
@@ -35,7 +36,7 @@ describe("MucBanner.vue", () => {
 
   it("renders with warning type", () => {
     const wrapper = mount(MucBanner, {
-      props: { type: "warning" },
+      props: { variant: "content", type: "warning" },
       slots: {
         default: "This is a warning message",
       },
@@ -50,7 +51,7 @@ describe("MucBanner.vue", () => {
 
   it("renders with emergency type", () => {
     const wrapper = mount(MucBanner, {
-      props: { type: "emergency" },
+      props: { variant: "content", type: "emergency" },
       slots: {
         default: "This is an emergency message",
       },
