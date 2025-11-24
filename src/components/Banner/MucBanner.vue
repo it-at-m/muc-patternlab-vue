@@ -91,35 +91,31 @@ const typeIcon = computed(() => {
 </script>
 
 <template>
-  <div>
-    <div>
-      <div
-        class="m-banner"
-        :class="typeClass"
-        :role="typeRole"
-        :aria-label="typeAriaLabel"
-      >
-        <template v-if="variant === 'content'">
-          <muc-icon
-            v-if="!noIcon"
-            :icon="typeIcon"
-          />
-          <p>
-            <slot />
-          </p>
-        </template>
-        <template v-else>
-          <div class="container-fluid">
-            <muc-icon
-              v-if="!noIcon"
-              :icon="typeIcon"
-            />
-            <p>
-              <slot />
-            </p>
-          </div>
-        </template>
+  <div
+    class="m-banner"
+    :class="typeClass"
+    :role="typeRole"
+    :aria-label="typeAriaLabel"
+  >
+    <template v-if="variant === 'content'">
+      <muc-icon
+        v-if="!noIcon"
+        :icon="typeIcon"
+      />
+      <p>
+        <slot />
+      </p>
+    </template>
+    <template v-else>
+      <div class="container-fluid">
+        <muc-icon
+          v-if="!noIcon"
+          :icon="typeIcon"
+        />
+        <p>
+          <slot />
+        </p>
       </div>
-    </div>
+    </template>
   </div>
 </template>
