@@ -21,6 +21,7 @@ export default {
 export const Default = {
   args: {
     default: "Hi, I'm an Info-Banner!",
+    variant: "content",
     type: "info",
   },
 };
@@ -28,6 +29,7 @@ export const Default = {
 export const Success = {
   args: {
     default: "Hi, I'm a Success-Banner!",
+    variant: "content",
     type: "success",
   },
 };
@@ -35,6 +37,7 @@ export const Success = {
 export const Warning = {
   args: {
     default: "Hi, I'm a Warning-Banner!",
+    variant: "content",
     type: "warning",
   },
 };
@@ -42,6 +45,24 @@ export const Warning = {
 export const Emergency = {
   args: {
     default: "Hi, I'm an Emergency-Banner!",
+    variant: "content",
     type: "emergency",
+  },
+};
+
+export const Header = {
+  args: {
+    default: "Hi, I'm an Info-Banner!",
+    variant: "header",
+    type: "info",
+  },
+};
+
+export const NoIcon = {
+  args: {
+    default: "Hi, I'm a Warning-Banner!",
+    variant: "content",
+    type: "warning",
+    noIcon: true,
   },
 };
