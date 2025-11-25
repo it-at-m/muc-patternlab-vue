@@ -1,9 +1,15 @@
 type bannerType = "info" | "success" | "warning" | "emergency";
+type bannerVariant = "content" | "header";
 type __VLS_Props = {
     /**
-     * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+     * Changes the style of the banner. Available types are `content` and `header`. `content` is used in the content area. `header` is used directly below the header and has more padding.
+     */
+    variant: bannerVariant;
+    /**
+     * Changes the style of the banner. Available types are `info`, `success`, `warning` and `emergency`.
      */
     type?: bannerType;
+    noIcon?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

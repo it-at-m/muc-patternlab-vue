@@ -43,6 +43,14 @@ type __VLS_Props = {
      * Restricts character input to the specified number
      */
     max?: number;
+    /**
+     * Enables autocomplete for the input
+     */
+    autocomplete?: string;
+    /**
+     * Specifies the name of the input
+     */
+    name?: string;
 };
 type __VLS_PublicProps = {
     modelValue?: string;

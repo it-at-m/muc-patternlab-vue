@@ -16,6 +16,14 @@ type __VLS_Props = {
      * Disabled stepper
      */
     disabled: boolean;
+    /**
+     * position of the item in the step sequence
+     */
+    position: number;
+    /**
+     * total number of steps
+     */
+    total: number;
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     click: (id: string) => any;

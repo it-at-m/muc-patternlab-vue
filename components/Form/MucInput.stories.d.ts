@@ -13,6 +13,8 @@ declare const _default: {
             dataList?: string[];
             suffixIcon?: string;
             max?: number;
+            autocomplete?: string;
+            name?: string;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
@@ -40,6 +42,8 @@ declare const _default: {
             dataList?: string[];
             suffixIcon?: string;
             max?: number;
+            autocomplete?: string;
+            name?: string;
         }> & Readonly<{
             "onUpdate:modelValue"?: ((value: string) => any) | undefined;
             onSuffixClick?: (() => any) | undefined;
@@ -60,6 +64,8 @@ declare const _default: {
         dataList?: string[];
         suffixIcon?: string;
         max?: number;
+        autocomplete?: string;
+        name?: string;
     }> & Readonly<{
         "onUpdate:modelValue"?: ((value: string) => any) | undefined;
         onSuffixClick?: (() => any) | undefined;
