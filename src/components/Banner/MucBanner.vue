@@ -4,10 +4,20 @@ import { computed } from "vue";
 import { MucIcon } from "../Icon";
 
 type bannerType = "info" | "success" | "warning" | "emergency";
+type bannerVariant = "content" | "header";
 
-const { type = "info", noIcon = false } = defineProps<{
+const {
+  type = "info",
+  variant,
+  noIcon = false,
+} = defineProps<{
   /**
-   * Changes the style of the banner. Available types are `info`, `warning` and `emergency`.
+   * Changes the style of the banner. Available types are `content` and `header`. `content` is used in the content area. `header` is used directly below the header and has more padding.
+   */
+  variant: bannerVariant;
+
+  /**
+   * Changes the style of the banner. Available types are `info`, `success`, `warning` and `emergency`.
    */
   type?: bannerType;
 
@@ -81,22 +91,31 @@ const typeIcon = computed(() => {
 </script>
 
 <template>
-  <div>
-    <div>
-      <div
-        class="m-banner"
-        :class="typeClass"
-        :role="typeRole"
-        :aria-label="typeAriaLabel"
-      >
-        <div>
-          <muc-icon
-            v-if="!noIcon"
-            :icon="typeIcon"
-          />
+  <div
+    class="m-banner"
+    :class="typeClass"
+    :role="typeRole"
+    :aria-label="typeAriaLabel"
+  >
+    <template v-if="variant === 'content'">
+      <muc-icon
+        v-if="!noIcon"
+        :icon="typeIcon"
+      />
+      <p>
+        <slot />
+      </p>
+    </template>
+    <template v-else>
+      <div class="container-fluid">
+        <muc-icon
+          v-if="!noIcon"
+          :icon="typeIcon"
+        />
+        <p>
           <slot />
-        </div>
+        </p>
       </div>
-    </div>
+    </template>
   </div>
 </template>
