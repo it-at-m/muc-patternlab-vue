@@ -47,7 +47,7 @@ const {
    */
   multiple?: boolean;
   /**
-   * Id of default activ item
+   * Id of default active item
    */
   defaultItem?: string;
 }>();
