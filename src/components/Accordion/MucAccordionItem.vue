@@ -105,12 +105,14 @@ const collapsing = ref<boolean>(false);
 watch(
   () => activeItems,
   () => {
-    if (!activeItems.includes(id) && !collapsed.value) {
+    if (!activeItems.includes(id) && !collapsed.value && section.value) {
       collapsed.value = true;
       section.value.style.height = section.value.scrollHeight + "px";
       collapsing.value = true;
       setTimeout(() => {
-        section.value.style.height = "0";
+        if (section.value) {
+          section.value.style.height = "0";
+        }
       }, 0);
     }
   }
@@ -127,14 +129,18 @@ const toggleCollapsable = () => {
       collapsing.value = true;
       emit("close", id);
       setTimeout(() => {
-        section.value.style.height = "0";
+        if (section.value) {
+          section.value.style.height = "0";
+        }
       }, 0);
     } else {
       section.value.style.height = "0";
       collapsing.value = true;
       emit("open", id);
       setTimeout(() => {
-        section.value.style.height = section.value.scrollHeight + "px";
+        if (section.value) {
+          section.value.style.height = section.value.scrollHeight + "px";
+        }
       }, 0);
     }
   }
@@ -145,7 +151,9 @@ const toggleCollapsable = () => {
  */
 const handleTransitionEnd = () => {
   collapsing.value = false;
-  section.value.style.height = "";
+  if (section.value) {
+    section.value.style.height = "";
+  }
 };
 
 onMounted(() => {
