@@ -3,7 +3,10 @@
     <div class="container">
       <div class="m-component__grid">
         <div class="m-component__column">
-          <div class="m-component__head">
+          <div
+            v-if="header"
+            class="m-component__head"
+          >
             <h2 class="m-component__heading">{{ header }}</h2>
             <p class="m-component__summary"></p>
           </div>
@@ -41,7 +44,7 @@ const {
   /**
    * Heading of accordion
    */
-  header: string;
+  header?: string;
   /**
    * Multiple MucAccordionItems can be active at the same time
    */

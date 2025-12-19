@@ -13,20 +13,15 @@
         :aria-controls="'content-' + id"
       >
         {{ header }}
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          class="icon"
-        >
-          <use
-            v-if="collapsed"
-            xlink:href="#icon-chevron-down"
-          ></use>
-          <use
-            v-else
-            xlink:href="#icon-chevron-up"
-          ></use>
-        </svg>
+
+        <muc-icon
+          v-if="collapsed"
+          icon="chevron-down"
+        />
+        <muc-icon
+          v-else
+          icon="chevron-up"
+        />
       </button>
     </h3>
     <section
@@ -51,6 +46,8 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+
+import { MucIcon } from "../Icon";
 
 const { id, activeItems = [] } = defineProps<{
   /**
@@ -107,7 +104,8 @@ watch(
   () => {
     if (!activeItems.includes(id) && !collapsed.value && section.value) {
       collapsed.value = true;
-      section.value.style.height = section.value.scrollHeight + "px";
+      section.value.style.height =
+        section.value.scrollHeight + calculateMargin() + "px";
       collapsing.value = true;
       setTimeout(() => {
         if (section.value) {
@@ -125,7 +123,8 @@ const toggleCollapsable = () => {
   if (section.value) {
     collapsed.value = !collapsed.value;
     if (collapsed.value) {
-      section.value.style.height = section.value.scrollHeight + "px";
+      section.value.style.height =
+        section.value.scrollHeight + calculateMargin() + "px";
       collapsing.value = true;
       emit("close", id);
       setTimeout(() => {
@@ -143,6 +142,19 @@ const toggleCollapsable = () => {
         }
       }, 0);
     }
+  }
+};
+
+/**
+ * Calculation of the margin of 1.5em to improve the animation
+ */
+const calculateMargin = () => {
+  if (section.value) {
+    const computedStyle = window.getComputedStyle(section.value);
+    const fontSize = parseFloat(computedStyle.fontSize);
+    return 1.5 * fontSize;
+  } else {
+    return 0;
   }
 };
 
