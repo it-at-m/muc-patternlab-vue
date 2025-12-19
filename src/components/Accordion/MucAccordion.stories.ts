@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-accordion\` component offers the option of displaying content clearly in an accordion format. <br> A template with the following v-slot must be placed around the MucAccordionItems \`v-slot:default=“{onOpen, onClose, activeItems}”\`. <br> Each MucAccordionItem must be passed the following parameters with exactly this values: \`:active-items="activeItems"\` \`@open="onOpen"\` \`@close="onClose"\` . <br> For example:
+        component: `The \`muc-accordion\` component offers the option of displaying content clearly in an accordion format. <br> A template with the following v-slot must be placed around the MucAccordionItems \`v-slot:default=“{onOpen, onClose, activeItems}”\`. <br> Each MucAccordionItem must be passed the following parameters with exactly these values: \`:active-items="activeItems"\` \`@open="onOpen"\` \`@close="onClose"\` . <br> For example:
         <template v-slot:default="{onOpen, onClose, activeItems}">
       <MucAccordionItem
           id="accordion-item-1"
