@@ -1,7 +1,8 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
 import { createRequire } from "node:module";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { StorybookConfig } from "@storybook/vue3-vite";
 
 const __filename = fileURLToPath(import.meta.url);
