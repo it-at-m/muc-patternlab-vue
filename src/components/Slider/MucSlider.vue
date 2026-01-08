@@ -48,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-expect-error vue-splide is not maintained anymore
 import { Splide } from "@splidejs/vue-splide";
 import { computed, onMounted, ref, useTemplateRef } from "vue";
 
