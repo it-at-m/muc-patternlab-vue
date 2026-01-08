@@ -122,11 +122,11 @@ export declare const Template: () => {
                 header: string;
                 activeItems?: string[];
             }> & Readonly<{
-                onClose?: ((id: string) => any) | undefined;
                 onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-                close: (id: string) => any;
                 open: (id: string) => any;
+                close: (id: string) => any;
             }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {
                 section: HTMLElement;
             }, HTMLDivElement, import('vue').ComponentProvideOptions, {
@@ -141,8 +141,8 @@ export declare const Template: () => {
                 header: string;
                 activeItems?: string[];
             }> & Readonly<{
-                onClose?: ((id: string) => any) | undefined;
                 onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -152,11 +152,11 @@ export declare const Template: () => {
             header: string;
             activeItems?: string[];
         }> & Readonly<{
-            onClose?: ((id: string) => any) | undefined;
             onOpen?: ((id: string) => any) | undefined;
+            onClose?: ((id: string) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            close: (id: string) => any;
             open: (id: string) => any;
+            close: (id: string) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 text(): unknown;
@@ -209,11 +209,11 @@ export declare const Multiple: () => {
                 header: string;
                 activeItems?: string[];
             }> & Readonly<{
-                onClose?: ((id: string) => any) | undefined;
                 onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-                close: (id: string) => any;
                 open: (id: string) => any;
+                close: (id: string) => any;
             }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {
                 section: HTMLElement;
             }, HTMLDivElement, import('vue').ComponentProvideOptions, {
@@ -228,8 +228,8 @@ export declare const Multiple: () => {
                 header: string;
                 activeItems?: string[];
             }> & Readonly<{
-                onClose?: ((id: string) => any) | undefined;
                 onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -239,11 +239,11 @@ export declare const Multiple: () => {
             header: string;
             activeItems?: string[];
         }> & Readonly<{
-            onClose?: ((id: string) => any) | undefined;
             onOpen?: ((id: string) => any) | undefined;
+            onClose?: ((id: string) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-            close: (id: string) => any;
             open: (id: string) => any;
+            close: (id: string) => any;
         }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 text(): unknown;

@@ -32,11 +32,11 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    close: (id: string) => any;
     open: (id: string) => any;
+    close: (id: string) => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
-    onClose?: ((id: string) => any) | undefined;
     onOpen?: ((id: string) => any) | undefined;
+    onClose?: ((id: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
     section: HTMLElement;
 }, HTMLDivElement>;

@@ -42,7 +42,7 @@ declare const _default: {
     title: string;
     tags: string[];
     args: {
-        onClick: import('@vitest/spy').Mock<(...args: any[]) => any>;
+        onClick: import('vitest').Mock<(...args: any[]) => any>;
     };
     parameters: {
         docs: {
