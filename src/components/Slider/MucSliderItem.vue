@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-expect-error vue-splide is not maintained anymore
 import { SplideSlide } from "@splidejs/vue-splide";
 
 defineSlots<{
