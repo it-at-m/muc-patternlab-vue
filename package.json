@@ -28,6 +28,9 @@
     "./assets/icons/muc-icons.svg": "./assets/icons/muc-icons.svg",
     "./assets/icons/custom-icons.svg": "./assets/icons/custom-icons.svg"
   },
+  "engines": {
+    "node": ">=22.14"
+  },
   "scripts": {
     "postinstall": "patch-package",
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
