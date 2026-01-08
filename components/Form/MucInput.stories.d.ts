@@ -9,7 +9,7 @@ declare const _default: {
             required?: boolean;
             label?: string;
             hint?: string;
-            type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
+            type?: "text" | "color" | "date" | "search" | "datetime-local" | "password";
             dataList?: string[];
             suffixIcon?: string;
             max?: number;
@@ -38,7 +38,7 @@ declare const _default: {
             required?: boolean;
             label?: string;
             hint?: string;
-            type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
+            type?: "text" | "color" | "date" | "search" | "datetime-local" | "password";
             dataList?: string[];
             suffixIcon?: string;
             max?: number;
@@ -60,7 +60,7 @@ declare const _default: {
         required?: boolean;
         label?: string;
         hint?: string;
-        type?: "color" | "text" | "date" | "search" | "datetime-local" | "password";
+        type?: "text" | "color" | "date" | "search" | "datetime-local" | "password";
         dataList?: string[];
         suffixIcon?: string;
         max?: number;
