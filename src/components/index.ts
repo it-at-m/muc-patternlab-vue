@@ -1,3 +1,4 @@
+import { MucAccordion, MucAccordionItem } from "./Accordion";
 import { MucBanner } from "./Banner";
 import { MucButton } from "./Button";
 import { MucCalendar } from "./Calendar";
@@ -27,6 +28,8 @@ import { MucSpinner } from "./Spinner";
 import { MucStepper } from "./Stepper";
 
 export {
+  MucAccordion,
+  MucAccordionItem,
   MucButton,
   MucBanner,
   MucIntro,
