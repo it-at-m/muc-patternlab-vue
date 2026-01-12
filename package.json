@@ -85,8 +85,8 @@
   "overrides": {
     "semantic-release-gitmoji": {
       "semantic-release": "<26",
-      "@semantic-release/github": "12.0.1",
-      "@semantic-release/npm": "13.1.1"
+      "@semantic-release/github": "12.0.2",
+      "@semantic-release/npm": "13.1.3"
     }
   }
 }
