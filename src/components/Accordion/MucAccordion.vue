@@ -1,8 +1,8 @@
 <template>
   <div class="m-component m-component-accordion">
     <div class="container">
-      <div class="m-component__grid">
-        <div class="m-component__column">
+      <div :class="{ 'm-component__grid': detailPageMargin }">
+        <div :class="{ 'm-component__column': detailPageMargin }">
           <div
             v-if="header"
             class="m-component__head"
@@ -53,6 +53,10 @@ const {
    * Id of default active item
    */
   defaultItem?: string;
+  /**
+   * Use margins of detail pages
+   */
+  detailPageMargin?: boolean;
 }>();
 
 defineSlots<{
