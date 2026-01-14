@@ -29,7 +29,7 @@ export const Template = () => ({
         @close="onClose"
     >
       <template #text>
-        Text of   Accordion item 1
+        Text of Accordion item 1
       </template>
     </MucAccordionItem>
 

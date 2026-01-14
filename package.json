@@ -48,10 +48,10 @@
   "devDependencies": {
     "@muenchen/prettier-codeformat": "1.0.2",
     "@rushstack/eslint-patch": "1.15.0",
-    "@storybook/addon-a11y": "10.1.10",
-    "@storybook/addon-docs": "10.1.10",
-    "@storybook/addon-links": "10.1.10",
-    "@storybook/vue3-vite": "10.1.10",
+    "@storybook/addon-a11y": "10.1.11",
+    "@storybook/addon-docs": "10.1.11",
+    "@storybook/addon-links": "10.1.11",
+    "@storybook/vue3-vite": "10.1.11",
     "@tsconfig/node24": "24.0.3",
     "@types/jsdom": "21.1.7",
     "@types/node": "22.19.0",
@@ -61,19 +61,19 @@
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.8.1",
     "eslint": "9.39.2",
-    "eslint-plugin-storybook": "10.1.10",
+    "eslint-plugin-storybook": "10.1.11",
     "eslint-plugin-vue": "10.6.2",
     "jsdom": "27.0.0",
     "prettier": "3.7.4",
     "rimraf": "6.1.2",
     "semantic-release": "25.0.2",
     "semantic-release-gitmoji": "1.6.8",
-    "storybook": "10.1.10",
+    "storybook": "10.1.11",
     "typescript": "5.9.3",
-    "vite": "7.3.0",
+    "vite": "7.3.1",
     "vite-plugin-dts": "4.5.4",
     "vitest": "3.2.4",
-    "vue-tsc": "3.2.1"
+    "vue-tsc": "3.2.2"
   },
   "dependencies": {
     "@eslint/compat": "1.4.1",
@@ -85,8 +85,8 @@
   "overrides": {
     "semantic-release-gitmoji": {
       "semantic-release": "<26",
-      "@semantic-release/github": "12.0.1",
-      "@semantic-release/npm": "13.1.1"
+      "@semantic-release/github": "12.0.2",
+      "@semantic-release/npm": "13.1.3"
     }
   }
 }
