@@ -15,6 +15,10 @@ type __VLS_Props = {
      * Id of default active item
      */
     defaultItem?: string;
+    /**
+     * Use margins of detail pages
+     */
+    detailPageMargin?: boolean;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

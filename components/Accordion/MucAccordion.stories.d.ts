@@ -6,6 +6,7 @@ declare const _default: {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
@@ -18,6 +19,7 @@ declare const _default: {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -27,6 +29,7 @@ declare const _default: {
             header?: string;
             multiple?: boolean;
             defaultItem?: string;
+            detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): unknown;
@@ -41,6 +44,7 @@ declare const _default: {
             header?: string;
             multiple?: boolean;
             defaultItem?: string;
+            detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
             B: {};
@@ -53,6 +57,7 @@ declare const _default: {
             header?: string;
             multiple?: boolean;
             defaultItem?: string;
+            detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
         __isTeleport?: never;
@@ -62,6 +67,7 @@ declare const _default: {
         header?: string;
         multiple?: boolean;
         defaultItem?: string;
+        detailPageMargin?: boolean;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
             default(): unknown;
@@ -88,6 +94,7 @@ export declare const Template: () => {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
@@ -100,6 +107,7 @@ export declare const Template: () => {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -109,6 +117,7 @@ export declare const Template: () => {
             header?: string;
             multiple?: boolean;
             defaultItem?: string;
+            detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): unknown;
@@ -175,6 +184,7 @@ export declare const Multiple: () => {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
                 P: {};
                 B: {};
@@ -187,6 +197,7 @@ export declare const Multiple: () => {
                 header?: string;
                 multiple?: boolean;
                 defaultItem?: string;
+                detailPageMargin?: boolean;
             }> & Readonly<{}>, {}, {}, {}, {}, {}>;
             __isFragment?: never;
             __isTeleport?: never;
@@ -196,6 +207,97 @@ export declare const Multiple: () => {
             header?: string;
             multiple?: boolean;
             defaultItem?: string;
+            detailPageMargin?: boolean;
+        }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+            $slots: Readonly<{
+                default(): unknown;
+            }> & {
+                default(): unknown;
+            };
+        });
+        MucAccordionItem: {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                id: string;
+                header: string;
+                activeItems?: string[];
+            }> & Readonly<{
+                onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
+            }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+                open: (id: string) => any;
+                close: (id: string) => any;
+            }, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {
+                section: HTMLElement;
+            }, HTMLDivElement, import('vue').ComponentProvideOptions, {
+                P: {};
+                B: {};
+                D: {};
+                C: {};
+                M: {};
+                Defaults: {};
+            }, Readonly<{
+                id: string;
+                header: string;
+                activeItems?: string[];
+            }> & Readonly<{
+                onOpen?: ((id: string) => any) | undefined;
+                onClose?: ((id: string) => any) | undefined;
+            }>, {}, {}, {}, {}, {}>;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            id: string;
+            header: string;
+            activeItems?: string[];
+        }> & Readonly<{
+            onOpen?: ((id: string) => any) | undefined;
+            onClose?: ((id: string) => any) | undefined;
+        }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+            open: (id: string) => any;
+            close: (id: string) => any;
+        }, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
+            $slots: Readonly<{
+                text(): unknown;
+            }> & {
+                text(): unknown;
+            };
+        });
+    };
+    template: string;
+};
+export declare const DetailPageMargin: () => {
+    components: {
+        MucAccordion: {
+            new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
+                id: string;
+                header?: string;
+                multiple?: boolean;
+                defaultItem?: string;
+                detailPageMargin?: boolean;
+            }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
+                P: {};
+                B: {};
+                D: {};
+                C: {};
+                M: {};
+                Defaults: {};
+            }, Readonly<{
+                id: string;
+                header?: string;
+                multiple?: boolean;
+                defaultItem?: string;
+                detailPageMargin?: boolean;
+            }> & Readonly<{}>, {}, {}, {}, {}, {}>;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
+        } & import('vue').ComponentOptionsBase<Readonly<{
+            id: string;
+            header?: string;
+            multiple?: boolean;
+            defaultItem?: string;
+            detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
                 default(): unknown;
