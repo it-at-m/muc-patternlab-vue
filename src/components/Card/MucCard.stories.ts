@@ -54,7 +54,7 @@ export const WithHeaderPrefix = () => ({
     `,
 });
 
-export const WithLink = {
+export const WithHref = {
   args: {
     title: "Lorem Ipsum",
     tagline: "Dolor",

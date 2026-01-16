@@ -55,7 +55,7 @@ const props = defineProps<{
   tagline?: string;
 
   /**
-   * Optional link to link to another page
+   * Optional href to link to another page
    */
   href?: string;
 }>();
