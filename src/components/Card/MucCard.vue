@@ -1,28 +1,34 @@
 <template>
   <div
     class="card"
-    @click="emit('click', $event)"
+    @click="handleClick($event)"
   >
-    <div class="card-content">
-      <div class="card-header">
-        <slot name="headerPrefix" />
-        <div>
-          <div
-            v-if="tagline"
-            class="card-tagline"
-          >
-            {{ tagline }}
-          </div>
+    <a
+      :href="href"
+      :target="target"
+      class="no-link-style"
+    >
+      <div class="card-content">
+        <div class="card-header">
+          <slot name="headerPrefix" />
           <div>
-            <h3>{{ title }}</h3>
+            <div
+              v-if="tagline"
+              class="card-tagline"
+            >
+              {{ tagline }}
+            </div>
+            <div>
+              <h3>{{ title }}</h3>
+            </div>
           </div>
         </div>
+
+        <muc-divider />
+
+        <slot name="content" />
       </div>
-
-      <muc-divider />
-
-      <slot name="content" />
-    </div>
+    </a>
   </div>
 </template>
 
@@ -31,13 +37,14 @@ import { MucDivider } from "../Divider";
 
 const emit = defineEmits<
   /**
+   * Triggered when card is clicked and href is undefined.
    * @param e eventname
    * @param click click event itself
    */
   (e: "click", click: Event) => void
 >();
 
-defineProps<{
+const props = defineProps<{
   /**
    * Title the card displays at the top
    */
@@ -47,6 +54,16 @@ defineProps<{
    * Optional tagline the card displays above the title
    */
   tagline?: string;
+
+  /**
+   * Optional href to link to another page
+   */
+  href?: string;
+
+  /**
+   * Optional target on the link
+   */
+  target?: string;
 }>();
 
 defineSlots<{
@@ -59,6 +76,13 @@ defineSlots<{
    */
   content(): unknown;
 }>();
+
+/**
+ * Emit a click event if href is undefined.
+ */
+const handleClick = (event: Event) => {
+  if (!props.href) emit("click", event);
+};
 </script>
 
 <style scoped>
@@ -97,6 +121,11 @@ defineSlots<{
 .muc-divider {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.no-link-style {
+  text-decoration: none !important;
+  color: var(--mde-color-neutral-grey) !important;
 }
 
 /* CSS for desktop */
