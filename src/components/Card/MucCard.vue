@@ -5,6 +5,7 @@
   >
     <a
       :href="href"
+      :target="target"
       class="no-link-style"
     >
       <div class="card-content">
@@ -58,6 +59,11 @@ const props = defineProps<{
    * Optional href to link to another page
    */
   href?: string;
+
+  /**
+   * Optional target on the link
+   */
+  target?: string;
 }>();
 
 defineSlots<{
