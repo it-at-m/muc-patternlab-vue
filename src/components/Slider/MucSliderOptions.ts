@@ -2,8 +2,8 @@ import type { Options } from "@splidejs/splide";
 
 export const mucSliderOptions: Options = {
   autoplay: false,
-  keyboard: true,
-  slideFocus: true,
+  keyboard: false,
+  slideFocus: false,
   lazyLoad: false,
   arrows: false,
   perMove: 1,
