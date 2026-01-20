@@ -93,6 +93,13 @@ const handleClick = (event: Event) => {
   transition: background-color ease-in 150ms;
 }
 
+.card a {
+  text-decoration: none !important;
+  color: var(--mde-color-neutral-grey) !important;
+  display: block;
+  height: 100%;
+}
+
 .card:hover {
   background-color: var(--mde-color-neutral-beau-blue-x-light);
 }
@@ -121,11 +128,6 @@ const handleClick = (event: Event) => {
 .muc-divider {
   margin-top: 16px;
   margin-bottom: 16px;
-}
-
-.no-link-style {
-  text-decoration: none !important;
-  color: var(--mde-color-neutral-grey) !important;
 }
 
 /* CSS for desktop */
