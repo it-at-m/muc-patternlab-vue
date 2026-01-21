@@ -99,6 +99,8 @@ export declare const Template: () => {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 title: string;
                 tagline?: string;
+                href?: string;
+                target?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -113,6 +115,8 @@ export declare const Template: () => {
             }, Readonly<{
                 title: string;
                 tagline?: string;
+                href?: string;
+                target?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
@@ -122,6 +126,8 @@ export declare const Template: () => {
         } & import('vue').ComponentOptionsBase<Readonly<{
             title: string;
             tagline?: string;
+            href?: string;
+            target?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {

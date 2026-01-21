@@ -3,6 +3,8 @@ declare const _default: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             title: string;
             tagline?: string;
+            href?: string;
+            target?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -17,6 +19,8 @@ declare const _default: {
         }, Readonly<{
             title: string;
             tagline?: string;
+            href?: string;
+            target?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
@@ -26,6 +30,8 @@ declare const _default: {
     } & import('vue').ComponentOptionsBase<Readonly<{
         title: string;
         tagline?: string;
+        href?: string;
+        target?: string;
     }> & Readonly<{
         onClick?: ((click: Event) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -66,6 +72,8 @@ export declare const WithHeaderPrefix: () => {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 title: string;
                 tagline?: string;
+                href?: string;
+                target?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -80,6 +88,8 @@ export declare const WithHeaderPrefix: () => {
             }, Readonly<{
                 title: string;
                 tagline?: string;
+                href?: string;
+                target?: string;
             }> & Readonly<{
                 onClick?: ((click: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
@@ -89,6 +99,8 @@ export declare const WithHeaderPrefix: () => {
         } & import('vue').ComponentOptionsBase<Readonly<{
             title: string;
             tagline?: string;
+            href?: string;
+            target?: string;
         }> & Readonly<{
             onClick?: ((click: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -104,4 +116,12 @@ export declare const WithHeaderPrefix: () => {
         });
     };
     template: string;
+};
+export declare const WithHref: {
+    args: {
+        title: string;
+        tagline: string;
+        content: string;
+        href: string;
+    };
 };

@@ -7,6 +7,14 @@ type __VLS_Props = {
      * Optional tagline the card displays above the title
      */
     tagline?: string;
+    /**
+     * Optional href to link to another page
+     */
+    href?: string;
+    /**
+     * Optional target on the link
+     */
+    target?: string;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
