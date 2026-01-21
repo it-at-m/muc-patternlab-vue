@@ -24,8 +24,7 @@
             <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <Splide
               :options="mucSliderOptions"
-              aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie
-              die Pfeiltaste links und rechts oder die Buttons um zu navigieren."
+              aria-label="Dies ist ein Karussell mit rotierenden Elementen. Verwenden Sie die Buttons um nach vorne oder zurück zu navigieren."
               ref="splide"
             >
               <slot />
@@ -63,7 +62,7 @@ defineSlots<{
 
 const emit = defineEmits<{
   /**
-   * Triggered when an item is clicked.
+   * Triggered when the active item changed.
    * @param id of the clicked item
    */
   changeSlide: [index: number];
