@@ -14,7 +14,7 @@
           <div>
             <div
               v-if="tagline"
-              class="card-tagline"
+              class="mde-b2 mde-bold card-tagline"
             >
               {{ tagline }}
             </div>
@@ -113,15 +113,9 @@ const handleClick = (event: Event) => {
 }
 
 .card-tagline {
-  font-size: 16px;
-  font-family:
-    Open Sans,
-    sans-serif;
   color: var(--mde-color-brand-mde-blue);
-  font-weight: 700;
   line-height: 24px;
   word-wrap: break-word;
-
   padding-bottom: 4px;
 }
 
