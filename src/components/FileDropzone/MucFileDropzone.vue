@@ -279,5 +279,4 @@ defineExpose({
 .drop-zone.is-not-disabled {
   cursor: pointer;
 }
-
 </style>
