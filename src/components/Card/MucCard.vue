@@ -114,7 +114,6 @@ const handleClick = (event: Event) => {
 
 .card-tagline {
   color: var(--mde-color-brand-mde-blue);
-  line-height: 24px;
   word-wrap: break-word;
   padding-bottom: 4px;
 }
