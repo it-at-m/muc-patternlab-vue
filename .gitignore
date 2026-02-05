@@ -30,4 +30,3 @@ coverage
 *.tsbuildinfo
 
 storybook-static
-build
