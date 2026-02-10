@@ -8,7 +8,6 @@
             class="m-component__head"
           >
             <h2 class="m-component__heading">{{ header }}</h2>
-            <p class="m-component__summary"></p>
           </div>
           <div class="m-component__body">
             <div
