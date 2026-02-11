@@ -18,7 +18,7 @@
     >
       {{ buttonText }}
     </muc-button>
-    <span class="drop-zone-additional-information">
+    <span class="mde-b3">
       {{ additionalInformation }}
     </span>
   </div>
@@ -278,9 +278,5 @@ defineExpose({
 
 .drop-zone.is-not-disabled {
   cursor: pointer;
-}
-
-.drop-zone-additional-information {
-  font-size: 14px;
 }
 </style>

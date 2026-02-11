@@ -2,3 +2,19 @@
   rel="shortcut icon"
   href="/favicon.ico"
 />
+
+<!--
+Override style for Firefox 140.7.0esr (64-Bit)
+
+- https://github.com/it-at-m/muc-patternlab-vue/issues/675
+- https://github.com/storybookjs/storybook/issues/33769
+-->
+<style>
+  @-moz-document url-prefix() {
+    iframe[title="storybook-preview-iframe"] {
+      position: static !important;
+      width: 100% !important;
+      height: 100vh !important;
+    }
+  }
+</style>
