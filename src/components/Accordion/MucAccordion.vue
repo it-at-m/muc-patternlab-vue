@@ -2,7 +2,10 @@
   <div class="m-component m-component-accordion">
     <div class="container">
       <div :class="{ 'm-component__grid': detailPageMargin }">
-        <div :class="{ 'm-component__column': detailPageMargin }">
+        <!-- A general CSS class should be provided for the narrower content width. Until then, content-width is used. -->
+        <div
+          :class="detailPageMargin ? 'm-component__column' : 'content-width'"
+        >
           <div
             v-if="header"
             class="m-component__head"
@@ -88,3 +91,11 @@ const onClose = (id: string) => {
   activeItems.value = activeItems.value.filter((item) => item !== id);
 };
 </script>
+<style scoped>
+/* CSS for desktop */
+@media (min-width: 768px) {
+  .content-width {
+    width: 66.67% !important;
+  }
+}
+</style>
