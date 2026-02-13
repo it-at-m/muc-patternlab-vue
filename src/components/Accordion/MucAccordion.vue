@@ -95,7 +95,7 @@ const onClose = (id: string) => {
 /* CSS for desktop */
 @media (min-width: 768px) {
   .content-width {
-    width: 66.67% !important;
+    width: 66.67%;
   }
 }
 </style>
