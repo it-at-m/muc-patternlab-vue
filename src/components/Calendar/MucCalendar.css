@@ -21,14 +21,22 @@
   transition: border-color 0.3s ease-in;
 }
 
-.muc-calendar-item:hover,
-.muc-calendar-item:focus {
+.muc-calendar-item[aria-disabled="false"]:hover,
+.muc-calendar-item[aria-disabled="false"]:focus {
   outline: none;
   border: 1px solid var(--mde-color-brand-mde-blue);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: border-color 0.1s ease-out;
   cursor: pointer;
+}
+
+.muc-calendar-item[aria-disabled="true"]:hover,
+.muc-calendar-item[aria-disabled="true"]:focus {
+  outline: none;
+  border: 1px solid white;
+  text-decoration: none;
+  cursor: default !important;
 }
 
 .muc-calendar-view-full-size {
@@ -44,4 +52,5 @@
   filter: grayscale(80%);
   color: lightgray;
   cursor: default !important;
+  pointer-events: none;
 }
