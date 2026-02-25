@@ -17,12 +17,10 @@
             <slot name="header" />
           </h2>
           <div class="m-callout__content">
-            <p>
-              <slot
-                name="content"
-                class="m-callout__content"
-              />
-            </p>
+            <slot
+              name="content"
+              class="m-callout__content"
+            />
             <slot name="buttons" />
           </div>
         </div>
