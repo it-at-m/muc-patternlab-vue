@@ -19,7 +19,6 @@
           <div class="m-callout__content">
             <slot
               name="content"
-              class="m-callout__content"
             />
             <slot name="buttons" />
           </div>
