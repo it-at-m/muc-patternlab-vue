@@ -62,7 +62,7 @@
     "@vue/tsconfig": "0.8.1",
     "eslint": "9.39.2",
     "eslint-plugin-storybook": "10.2.9",
-    "eslint-plugin-vue": "10.7.0",
+    "eslint-plugin-vue": "10.8.0",
     "jsdom": "27.0.0",
     "prettier": "3.8.1",
     "rimraf": "6.1.2",
