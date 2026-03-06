@@ -15,12 +15,8 @@
         {{ header }}
 
         <muc-icon
-          v-if="collapsed"
+          class="m-accordion__indicator"
           icon="chevron-down"
-        />
-        <muc-icon
-          v-else
-          icon="chevron-up"
         />
       </button>
     </h3>
