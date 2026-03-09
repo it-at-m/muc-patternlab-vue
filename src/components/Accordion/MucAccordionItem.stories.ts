@@ -1,3 +1,4 @@
+import MucIcon from "../Icon/MucIcon.vue";
 import MucAccordionItem from "./MucAccordionItem.vue";
 
 export default {
@@ -28,6 +29,54 @@ export const Template = () => ({
         @open="onOpen"
         @close="onClose"
     >
+      <template #text>
+        Text of Accordion item 1
+      </template>
+    </MucAccordionItem>
+
+  `,
+});
+
+export const WithMetaText = () => ({
+  components: { MucAccordionItem, MucIcon },
+  template: `
+
+    <MucAccordionItem
+        id="accordion-item-1"
+        header="Accordion item 1"
+        :active-items="activeItems"
+        @open="onOpen"
+        @close="onClose"
+    >
+      <template #headerMetaText>
+        <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
+      </template>
+      <template #text>
+        Text of Accordion item 1
+      </template>
+    </MucAccordionItem>
+
+  `,
+});
+
+export const WithMetaTextAndIcon = () => ({
+  components: { MucAccordionItem, MucIcon },
+  template: `
+
+    <MucAccordionItem
+        id="accordion-item-1"
+        header="Accordion item 1"
+        :active-items="activeItems"
+        @open="onOpen"
+        @close="onClose"
+    >
+      <template #headerMetaIcon>
+        <muc-icon icon="paperclip" />
+        <span class="visually-hidden">Mit Anhang</span>
+      </template>
+      <template #headerMetaText>
+        <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
+      </template>
       <template #text>
         Text of Accordion item 1
       </template>

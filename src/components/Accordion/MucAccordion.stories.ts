@@ -1,3 +1,4 @@
+import MucIcon from "../Icon/MucIcon.vue";
 import MucAccordion from "./MucAccordion.vue";
 import MucAccordionItem from "./MucAccordionItem.vue";
 
@@ -210,6 +211,84 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
+          <template #text>
+            Text of Accordion item 4
+          </template>
+        </MucAccordionItem>
+      </template>
+    </MucAccordion>
+    `,
+});
+
+export const WithMetadataHeader = () => ({
+  components: { MucAccordion, MucAccordionItem, MucIcon },
+  template: `
+    <MucAccordion
+        id="accordion"
+        header="Lorem ipsum dolor"
+        defaultItem="accordion-item-1"
+    >
+      <template v-slot:default="{onOpen, onClose, activeItems}">
+        <MucAccordionItem
+            id="accordion-item-1"
+            header="Accordion item 1"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #headerMetaIcon>
+            <muc-icon icon="paperclip" />
+            <span class="visually-hidden">Mit Anhang</span>
+          </template>
+          <template #headerMetaText>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
+          </template>
+          <template #text>
+            Text of Accordion item 1
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-2"
+            header="Accordion item 2"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #headerMetaText>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 09:37 Uhr
+          </template>
+          <template #text>
+            Text of Accordion item 2
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-3"
+            header="Accordion item 3"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #headerMetaText>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 17:12 Uhr
+          </template>
+          <template #text>
+            Text of Accordion item 3
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-4"
+            header="Accordion item 4"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #headerMetaIcon>
+            <muc-icon icon="paperclip" />
+            <span class="visually-hidden">Mit Anhang</span>
+          </template>
+          <template #headerMetaText>
+            <span class="visually-hidden">Nachricht vom</span>18.10.2023, 10:01 Uhr
+          </template>
           <template #text>
             Text of Accordion item 4
           </template>

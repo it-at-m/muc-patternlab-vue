@@ -13,7 +13,18 @@
         :aria-controls="'content-' + id"
       >
         {{ header }}
-
+        <span
+          v-if="showHeaderMetaIcon || showHeaderMetaText"
+          class="m-accordion__section-meta"
+        >
+          <span
+            v-if="showHeaderMetaIcon"
+            class="m-accordion__meta-icon"
+          >
+            <slot name="headerMetaIcon" />
+          </span>
+          <slot name="headerMetaText" />
+        </span>
         <muc-icon
           class="m-accordion__indicator"
           icon="chevron-down"
@@ -41,7 +52,15 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  ComputedRef,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  useSlots,
+  watch,
+} from "vue";
 
 import { MucIcon } from "../Icon";
 
@@ -63,6 +82,16 @@ const { id, activeItems = [] } = defineProps<{
 
 defineSlots<{
   /**
+   * Icon shown in the header meta section.
+   */
+  headerMetaIcon(): unknown;
+
+  /**
+   * Text shown in the header meta section.
+   */
+  headerMetaText(): unknown;
+
+  /**
    * Formatted text can be put into this slot.
    */
   text(): unknown;
@@ -79,6 +108,8 @@ const emit = defineEmits<{
    */
   close: [id: string];
 }>();
+
+const slots = useSlots();
 
 /**
  * HTMLElement of section.
@@ -163,6 +194,14 @@ const handleTransitionEnd = () => {
     section.value.style.height = "";
   }
 };
+
+const showHeaderMetaIcon: ComputedRef<boolean> = computed(
+  () => !!slots["headerMetaIcon"]
+);
+
+const showHeaderMetaText: ComputedRef<boolean> = computed(
+  () => !!slots["headerMetaText"]
+);
 
 onMounted(() => {
   if (section.value) {
