@@ -43,9 +43,7 @@
       :aria-labelledby="'heading-' + id"
     >
       <div class="m-textplus__content m-content">
-        <p>
-          <slot name="text" />
-        </p>
+        <slot name="text" />
       </div>
     </section>
   </div>
