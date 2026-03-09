@@ -49,7 +49,7 @@ export const WithMetaText = () => ({
         @open="onOpen"
         @close="onClose"
     >
-      <template #headerMetaText>
+      <template #subtitle>
         <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
       </template>
       <template #content>
@@ -72,11 +72,11 @@ export const WithMetaTextAndIcon = () => ({
         @open="onOpen"
         @close="onClose"
     >
-      <template #headerMetaIcon>
+      <template #subtitleIcon>
         <muc-icon icon="paperclip" />
         <span class="visually-hidden">Mit Anhang</span>
       </template>
-      <template #headerMetaText>
+      <template #subtitle>
         <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
       </template>
       <template #content>

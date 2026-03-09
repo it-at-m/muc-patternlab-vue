@@ -14,16 +14,16 @@
       >
         {{ header }}
         <span
-          v-if="showHeaderMetaIcon || showHeaderMetaText"
+          v-if="showSubtitleIcon || showSubtitle"
           class="m-accordion__section-meta"
         >
           <span
-            v-if="showHeaderMetaIcon"
+            v-if="showSubtitleIcon"
             class="m-accordion__meta-icon"
           >
-            <slot name="headerMetaIcon" />
+            <slot name="subtitleIcon" />
           </span>
-          <slot name="headerMetaText" />
+          <slot name="subtitle" />
         </span>
         <muc-icon
           class="m-accordion__indicator"
@@ -82,12 +82,12 @@ defineSlots<{
   /**
    * Icon shown in the header meta section.
    */
-  headerMetaIcon(): unknown;
+  subtitleIcon(): unknown;
 
   /**
    * Text shown in the header meta section.
    */
-  headerMetaText(): unknown;
+  subtitle(): unknown;
 
   /**
    * Formatted text can be put into this slot.
@@ -193,13 +193,11 @@ const handleTransitionEnd = () => {
   }
 };
 
-const showHeaderMetaIcon: ComputedRef<boolean> = computed(
-  () => !!slots["headerMetaIcon"]
+const showSubtitleIcon: ComputedRef<boolean> = computed(
+  () => !!slots["subtitleIcon"]
 );
 
-const showHeaderMetaText: ComputedRef<boolean> = computed(
-  () => !!slots["headerMetaText"]
-);
+const showSubtitle: ComputedRef<boolean> = computed(() => !!slots["subtitle"]);
 
 onMounted(() => {
   if (section.value) {
