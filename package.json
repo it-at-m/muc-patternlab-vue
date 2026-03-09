@@ -54,7 +54,7 @@
     "@storybook/vue3-vite": "10.2.13",
     "@tsconfig/node24": "24.0.4",
     "@types/jsdom": "21.1.7",
-    "@types/node": "22.19.13",
+    "@types/node": "22.19.15",
     "@vitejs/plugin-vue": "6.0.4",
     "@vue/eslint-config-prettier": "10.2.0",
     "@vue/eslint-config-typescript": "14.7.0",
