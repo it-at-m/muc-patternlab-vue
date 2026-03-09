@@ -43,7 +43,7 @@
       :aria-labelledby="'heading-' + id"
     >
       <div class="m-textplus__content m-content">
-        <slot name="text" />
+        <slot name="content" />
       </div>
     </section>
   </div>
@@ -92,7 +92,7 @@ defineSlots<{
   /**
    * Formatted text can be put into this slot.
    */
-  text(): unknown;
+  content(): unknown;
 }>();
 
 const emit = defineEmits<{

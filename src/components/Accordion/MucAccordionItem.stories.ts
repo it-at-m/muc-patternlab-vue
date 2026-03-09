@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The \`muc-accordion-item\` component represents an item of an \`muc-accordion\` <br> Each MucAccordionItem must be passed the following parameters with exactly this values: \`:active-items="activeItems"\` \`@open="onOpen"\` \`@close="onClose"\` <br> The text within the text slot can be structured using paragraphs and bullet points. Plain text must be enclosed in a \`<p>\` tag.
+        component: `The \`muc-accordion-item\` component represents an item of an \`muc-accordion\` <br> Each MucAccordionItem must be passed the following parameters with exactly this values: \`:active-items="activeItems"\` \`@open="onOpen"\` \`@close="onClose"\` <br> The text within the content slot can be structured using paragraphs and bullet points. Plain text must be enclosed in a \`<p>\` tag.
              
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-components-accordion)
 `,
@@ -29,7 +29,7 @@ export const Template = () => ({
         @open="onOpen"
         @close="onClose"
     >
-      <template #text>
+      <template #content>
         <p>
           Text of Accordion item 1
         </p>
@@ -52,7 +52,7 @@ export const WithMetaText = () => ({
       <template #headerMetaText>
         <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
       </template>
-      <template #text>
+      <template #content>
         <p>
           Text of Accordion item 1
         </p>
@@ -79,7 +79,7 @@ export const WithMetaTextAndIcon = () => ({
       <template #headerMetaText>
         <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
       </template>
-      <template #text>
+      <template #content>
         <p>
           Text of Accordion item 1
         </p>
@@ -99,7 +99,7 @@ export const TextWithMultiplePTags = () => ({
         @open="onOpen"
         @close="onClose"
     >
-      <template #text>
+      <template #content>
         <p>
           Text of Accordion item 1
         </p>

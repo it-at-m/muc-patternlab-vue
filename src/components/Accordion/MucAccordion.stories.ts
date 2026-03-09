@@ -19,7 +19,7 @@ export default {
           @open="onOpen"
           @close="onClose"
       >
-        <template #text>
+        <template #content>
           <p>
             Text of Accordion item 1
           </p>
@@ -32,7 +32,7 @@ export default {
       @open="onOpen"
       @close="onClose"
       >
-        <template #text>
+        <template #content>
           <p>
             Text of Accordion item 2
           </p>
@@ -65,7 +65,7 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 1
             </p>
@@ -78,7 +78,7 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 2
             </p>
@@ -91,7 +91,7 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 3
             </p>
@@ -104,7 +104,7 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 4
             </p>
@@ -131,7 +131,7 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 1
             </p>
@@ -144,7 +144,7 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 2
             </p>
@@ -157,7 +157,7 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 3
             </p>
@@ -170,7 +170,7 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 4
             </p>
@@ -198,7 +198,7 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 1
             </p>
@@ -211,7 +211,7 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 2
             </p>
@@ -224,7 +224,7 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 3
             </p>
@@ -237,7 +237,7 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 4
             </p>
@@ -271,7 +271,7 @@ export const WithMetadataHeader = () => ({
           <template #headerMetaText>
             <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
           </template>
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 1
             </p>
@@ -287,7 +287,7 @@ export const WithMetadataHeader = () => ({
           <template #headerMetaText>
             <span class="visually-hidden">Nachricht vom</span>17.10.2023, 09:37 Uhr
           </template>
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 2
             </p>
@@ -303,7 +303,7 @@ export const WithMetadataHeader = () => ({
           <template #headerMetaText>
             <span class="visually-hidden">Nachricht vom</span>17.10.2023, 17:12 Uhr
           </template>
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 3
             </p>
@@ -323,7 +323,7 @@ export const WithMetadataHeader = () => ({
           <template #headerMetaText>
             <span class="visually-hidden">Nachricht vom</span>18.10.2023, 10:01 Uhr
           </template>
-          <template #text>
+          <template #content>
             <p>
               Text of Accordion item 4
             </p>
