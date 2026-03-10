@@ -1,3 +1,4 @@
+import MucIcon from "../Icon/MucIcon.vue";
 import MucAccordion from "./MucAccordion.vue";
 import MucAccordionItem from "./MucAccordionItem.vue";
 
@@ -18,8 +19,10 @@ export default {
           @open="onOpen"
           @close="onClose"
       >
-        <template #text>
-          Text of Accordion item 1
+        <template #content>
+          <p>
+            Text of Accordion item 1
+          </p>
         </template>
       </MucAccordionItem>
       <MucAccordionItem
@@ -29,8 +32,10 @@ export default {
       @open="onOpen"
       @close="onClose"
       >
-        <template #text>
-          Text of Accordion item 2
+        <template #content>
+          <p>
+            Text of Accordion item 2
+          </p>
         </template>
       </MucAccordionItem>
     </template>
@@ -60,8 +65,10 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 1
+          <template #content>
+            <p>
+              Text of Accordion item 1
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -71,8 +78,10 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 2
+          <template #content>
+            <p>
+              Text of Accordion item 2
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -82,8 +91,10 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 3
+          <template #content>
+            <p>
+              Text of Accordion item 3
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -93,8 +104,10 @@ export const Template = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 4
+          <template #content>
+            <p>
+              Text of Accordion item 4
+            </p>
           </template>
         </MucAccordionItem>
       </template>
@@ -118,8 +131,10 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 1
+          <template #content>
+            <p>
+              Text of Accordion item 1
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -129,8 +144,10 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 2
+          <template #content>
+            <p>
+              Text of Accordion item 2
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -140,8 +157,10 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 3
+          <template #content>
+            <p>
+              Text of Accordion item 3
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -151,8 +170,10 @@ export const Multiple = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 4
+          <template #content>
+            <p>
+              Text of Accordion item 4
+            </p>
           </template>
         </MucAccordionItem>
       </template>
@@ -177,8 +198,10 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 1
+          <template #content>
+            <p>
+              Text of Accordion item 1
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -188,8 +211,10 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 2
+          <template #content>
+            <p>
+              Text of Accordion item 2
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -199,8 +224,10 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 3
+          <template #content>
+            <p>
+              Text of Accordion item 3
+            </p>
           </template>
         </MucAccordionItem>
         <MucAccordionItem
@@ -210,8 +237,96 @@ export const DetailPageMargin = () => ({
             @open="onOpen"
             @close="onClose"
         >
-          <template #text>
-            Text of Accordion item 4
+          <template #content>
+            <p>
+              Text of Accordion item 4
+            </p>
+          </template>
+        </MucAccordionItem>
+      </template>
+    </MucAccordion>
+    `,
+});
+
+export const WithMetadataHeader = () => ({
+  components: { MucAccordion, MucAccordionItem, MucIcon },
+  template: `
+    <MucAccordion
+        id="accordion"
+        header="Lorem ipsum dolor"
+        defaultItem="accordion-item-1"
+    >
+      <template v-slot:default="{onOpen, onClose, activeItems}">
+        <MucAccordionItem
+            id="accordion-item-1"
+            header="Accordion item 1"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #subtitleIcon>
+            <muc-icon icon="paperclip" />
+            <span class="visually-hidden">Mit Anhang</span>
+          </template>
+          <template #subtitle>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 08:52 Uhr
+          </template>
+          <template #content>
+            <p>
+              Text of Accordion item 1
+            </p>
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-2"
+            header="Accordion item 2"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #subtitle>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 09:37 Uhr
+          </template>
+          <template #content>
+            <p>
+              Text of Accordion item 2
+            </p>
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-3"
+            header="Accordion item 3"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #subtitle>
+            <span class="visually-hidden">Nachricht vom</span>17.10.2023, 17:12 Uhr
+          </template>
+          <template #content>
+            <p>
+              Text of Accordion item 3
+            </p>
+          </template>
+        </MucAccordionItem>
+        <MucAccordionItem
+            id="accordion-item-4"
+            header="Accordion item 4"
+            :active-items="activeItems"
+            @open="onOpen"
+            @close="onClose"
+        >
+          <template #subtitleIcon>
+            <muc-icon icon="paperclip" />
+            <span class="visually-hidden">Mit Anhang</span>
+          </template>
+          <template #subtitle>
+            <span class="visually-hidden">Nachricht vom</span>18.10.2023, 10:01 Uhr
+          </template>
+          <template #content>
+            <p>
+              Text of Accordion item 4
+            </p>
           </template>
         </MucAccordionItem>
       </template>

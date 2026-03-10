@@ -13,14 +13,21 @@
         :aria-controls="'content-' + id"
       >
         {{ header }}
-
+        <span
+          v-if="showSubtitleIcon || showSubtitle"
+          class="m-accordion__section-meta"
+        >
+          <span
+            v-if="showSubtitleIcon"
+            class="m-accordion__meta-icon"
+          >
+            <slot name="subtitleIcon" />
+          </span>
+          <slot name="subtitle" />
+        </span>
         <muc-icon
-          v-if="collapsed"
+          class="m-accordion__indicator"
           icon="chevron-down"
-        />
-        <muc-icon
-          v-else
-          icon="chevron-up"
         />
       </button>
     </h3>
@@ -36,16 +43,22 @@
       :aria-labelledby="'heading-' + id"
     >
       <div class="m-textplus__content m-content">
-        <p>
-          <slot name="text" />
-        </p>
+        <slot name="content" />
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  ComputedRef,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  useSlots,
+  watch,
+} from "vue";
 
 import { MucIcon } from "../Icon";
 
@@ -67,9 +80,19 @@ const { id, activeItems = [] } = defineProps<{
 
 defineSlots<{
   /**
+   * Icon shown in the header meta section.
+   */
+  subtitleIcon(): unknown;
+
+  /**
+   * Text shown in the header meta section.
+   */
+  subtitle(): unknown;
+
+  /**
    * Formatted text can be put into this slot.
    */
-  text(): unknown;
+  content(): unknown;
 }>();
 
 const emit = defineEmits<{
@@ -83,6 +106,8 @@ const emit = defineEmits<{
    */
   close: [id: string];
 }>();
+
+const slots = useSlots();
 
 /**
  * HTMLElement of section.
@@ -167,6 +192,12 @@ const handleTransitionEnd = () => {
     section.value.style.height = "";
   }
 };
+
+const showSubtitleIcon: ComputedRef<boolean> = computed(
+  () => !!slots["subtitleIcon"]
+);
+
+const showSubtitle: ComputedRef<boolean> = computed(() => !!slots["subtitle"]);
 
 onMounted(() => {
   if (section.value) {
