@@ -16,14 +16,30 @@ declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: Readonly<{
         /**
-         * Formatted text can be put into this slot.
+         * Icon shown in the header meta section.
          */
-        text(): unknown;
-    }> & {
+        subtitleIcon(): unknown;
+        /**
+         * Text shown in the header meta section.
+         */
+        subtitle(): unknown;
         /**
          * Formatted text can be put into this slot.
          */
-        text(): unknown;
+        content(): unknown;
+    }> & {
+        /**
+         * Icon shown in the header meta section.
+         */
+        subtitleIcon(): unknown;
+        /**
+         * Text shown in the header meta section.
+         */
+        subtitle(): unknown;
+        /**
+         * Formatted text can be put into this slot.
+         */
+        content(): unknown;
     };
     refs: {
         section: HTMLElement;
