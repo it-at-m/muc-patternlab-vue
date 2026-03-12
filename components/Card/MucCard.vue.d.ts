@@ -8,6 +8,10 @@ type __VLS_Props = {
      */
     tagline?: string;
     /**
+     * Disables all click listeners and links and changes the color of the card.
+     */
+    disabled: boolean;
+    /**
      * Optional href to link to another page
      */
     href?: string;

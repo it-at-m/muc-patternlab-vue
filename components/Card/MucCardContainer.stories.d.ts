@@ -78,6 +78,7 @@ export declare const Template: () => {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 title: string;
                 tagline?: string;
+                disabled: boolean;
                 href?: string;
                 target?: string;
             }> & Readonly<{
@@ -94,6 +95,7 @@ export declare const Template: () => {
             }, Readonly<{
                 title: string;
                 tagline?: string;
+                disabled: boolean;
                 href?: string;
                 target?: string;
             }> & Readonly<{
@@ -105,6 +107,7 @@ export declare const Template: () => {
         } & import('vue').ComponentOptionsBase<Readonly<{
             title: string;
             tagline?: string;
+            disabled: boolean;
             href?: string;
             target?: string;
         }> & Readonly<{

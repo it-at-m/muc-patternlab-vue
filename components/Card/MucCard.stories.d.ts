@@ -3,6 +3,7 @@ declare const _default: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             title: string;
             tagline?: string;
+            disabled: boolean;
             href?: string;
             target?: string;
         }> & Readonly<{
@@ -19,6 +20,7 @@ declare const _default: {
         }, Readonly<{
             title: string;
             tagline?: string;
+            disabled: boolean;
             href?: string;
             target?: string;
         }> & Readonly<{
@@ -30,6 +32,7 @@ declare const _default: {
     } & import('vue').ComponentOptionsBase<Readonly<{
         title: string;
         tagline?: string;
+        disabled: boolean;
         href?: string;
         target?: string;
     }> & Readonly<{
@@ -72,6 +75,7 @@ export declare const WithHeaderPrefix: () => {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
                 title: string;
                 tagline?: string;
+                disabled: boolean;
                 href?: string;
                 target?: string;
             }> & Readonly<{
@@ -88,6 +92,7 @@ export declare const WithHeaderPrefix: () => {
             }, Readonly<{
                 title: string;
                 tagline?: string;
+                disabled: boolean;
                 href?: string;
                 target?: string;
             }> & Readonly<{
@@ -99,6 +104,7 @@ export declare const WithHeaderPrefix: () => {
         } & import('vue').ComponentOptionsBase<Readonly<{
             title: string;
             tagline?: string;
+            disabled: boolean;
             href?: string;
             target?: string;
         }> & Readonly<{
@@ -116,6 +122,14 @@ export declare const WithHeaderPrefix: () => {
         });
     };
     template: string;
+};
+export declare const Disabled: {
+    args: {
+        title: string;
+        tagline: string;
+        content: string;
+        disabled: boolean;
+    };
 };
 export declare const WithHref: {
     args: {
