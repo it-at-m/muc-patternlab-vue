@@ -1,10 +1,11 @@
 <template>
   <div
     class="card"
+    :aria-disabled="disabled"
     @click="handleClick($event)"
   >
     <a
-      :href="href"
+      :href="disabled ? undefined : href"
       :target="target"
       class="no-link-style"
     >
@@ -56,6 +57,11 @@ const props = defineProps<{
   tagline?: string;
 
   /**
+   * Disables all click listeners and links and changes the color of the card.
+   */
+  disabled: boolean;
+
+  /**
    * Optional href to link to another page
    */
   href?: string;
@@ -81,7 +87,7 @@ defineSlots<{
  * Emit a click event if href is undefined.
  */
 const handleClick = (event: Event) => {
-  if (!props.href) emit("click", event);
+  if (!props.href && !props.disabled) emit("click", event);
 };
 </script>
 
@@ -93,6 +99,12 @@ const handleClick = (event: Event) => {
   transition: background-color ease-in 150ms;
 }
 
+.card[aria-disabled="true"] {
+  cursor: default;
+  border: solid 1px var(--mde-color-neutral-grey-x-x-light);
+  border-bottom: solid 5px var(--mde-color-neutral-grey-disabled);
+}
+
 .card a {
   text-decoration: none !important;
   color: var(--mde-color-neutral-grey) !important;
@@ -100,7 +112,7 @@ const handleClick = (event: Event) => {
   height: 100%;
 }
 
-.card:hover {
+.card[aria-disabled="false"]:hover {
   background-color: var(--mde-color-neutral-beau-blue-x-light);
 }
 
@@ -116,6 +128,10 @@ const handleClick = (event: Event) => {
   color: var(--mde-color-brand-mde-blue);
   word-wrap: break-word;
   padding-bottom: 4px;
+}
+
+.card[aria-disabled="true"] .card-tagline {
+  color: var(--mde-color-neutral-grey-disabled);
 }
 
 .muc-divider {

@@ -12,8 +12,10 @@
     --mde-color-brand-mde-yellow: #FFE400;
     /** Neutral Colors */
     --mde-color-neutral-grey: #3A5368;
+    --mde-color-neutral-grey-disabled: #7A8D9F;
     --mde-color-neutral-grey-light: #617586;
     --mde-color-neutral-grey-x-light: #9CA8B3;
+    --mde-color-neutral-grey-x-x-light: #D3DBDE;
     --mde-color-neutral-beau-blue: #BDD4EA;
     --mde-color-neutral-beau-blue-light: #E5EEF5;
     --mde-color-neutral-beau-blue-x-light: #F2F6FA;
