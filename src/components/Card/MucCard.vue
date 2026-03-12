@@ -99,7 +99,7 @@ const handleClick = (event: Event) => {
   transition: background-color ease-in 150ms;
 }
 
-.card[aria-disabled=true] {
+.card[aria-disabled="true"] {
   cursor: default;
   border: solid 1px var(--mde-color-neutral-grey-x-x-light);
   border-bottom: solid 5px var(--mde-color-neutral-grey-disabled);
@@ -112,7 +112,7 @@ const handleClick = (event: Event) => {
   height: 100%;
 }
 
-.card[aria-disabled=false]:hover {
+.card[aria-disabled="false"]:hover {
   background-color: var(--mde-color-neutral-beau-blue-x-light);
 }
 
@@ -130,8 +130,8 @@ const handleClick = (event: Event) => {
   padding-bottom: 4px;
 }
 
-.card[aria-disabled=true] .card-tagline {
-  color: var(--mde-color-neutral-grey-disabled)
+.card[aria-disabled="true"] .card-tagline {
+  color: var(--mde-color-neutral-grey-disabled);
 }
 
 .muc-divider {
