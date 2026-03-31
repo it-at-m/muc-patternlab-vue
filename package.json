@@ -60,7 +60,7 @@
     "@vue/eslint-config-typescript": "14.7.0",
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.9.1",
-    "eslint": "9.39.3",
+    "eslint": "9.39.4",
     "eslint-plugin-storybook": "10.3.3",
     "eslint-plugin-vue": "10.8.0",
     "jsdom": "29.0.1",
