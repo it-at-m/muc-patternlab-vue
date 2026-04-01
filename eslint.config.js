@@ -1,4 +1,3 @@
-import jsEslintConfig from "@eslint/js";
 import vuePrettierEslintConfigSkipFormatting from "@vue/eslint-config-prettier/skip-formatting";
 import {
   defineConfigWithVueTs,
@@ -10,7 +9,6 @@ import { globalIgnores } from "eslint/config";
 
 export default defineConfigWithVueTs(
   ESLint.defaultConfig,
-  jsEslintConfig.configs.recommended,
   vueEslintConfig.configs["flat/essential"],
   vueTsConfigs.strict,
   vueTsConfigs.stylistic,
