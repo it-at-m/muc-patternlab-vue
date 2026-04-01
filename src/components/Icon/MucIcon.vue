@@ -25,5 +25,7 @@ defineProps<{
   color?: string;
 }>();
 
-const iconClass: ComputedRef<object> = computed(() => attr.class ?? "icon");
+const iconClass: ComputedRef<string | undefined> = computed(() =>
+  attr.class ? "icon" : undefined
+);
 </script>
