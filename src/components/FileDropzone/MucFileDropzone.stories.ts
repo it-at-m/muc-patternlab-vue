@@ -1,9 +1,16 @@
 import MucFileDropzone from "./MucFileDropzone.vue";
+import { fn } from "storybook/test";
+
 
 export default {
   component: MucFileDropzone,
   title: "MucFileDropzone",
   tags: ["autodocs"],
+  // 👇 Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked
+  args: {
+    onFiles: fn(),
+    onWarning: fn()
+  },
   parameters: {
     docs: {
       description: {
