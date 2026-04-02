@@ -30,6 +30,10 @@ declare const _default: {
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
     title: string;
     tags: string[];
+    args: {
+        onFiles: import('@vitest/spy').Mock<(...args: any[]) => any>;
+        onWarning: import('@vitest/spy').Mock<(...args: any[]) => any>;
+    };
     parameters: {
         docs: {
             description: {
