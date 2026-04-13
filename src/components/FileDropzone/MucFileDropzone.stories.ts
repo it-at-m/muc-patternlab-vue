@@ -24,6 +24,7 @@ export const Default = {};
 
 export const Example = {
   args: {
+    id: "exmaple",
     buttonText: "Dokument hochladen",
     additionalInformation: "Maximale Dateigröße: 2 MB",
     invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
@@ -33,5 +34,22 @@ export const Example = {
     maxTotalFileSize: 10,
     maxTotalFileSizeWarning:
       "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
+  },
+};
+
+export const Required = {
+  args: {
+    id: "required",
+    buttonText: "Dokument hochladen",
+    additionalInformation: "Maximale Dateigröße: 2 MB",
+    invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
+    label: "Label",
+    maxFileSize: 2,
+    maxFileSizeWarning:
+        "Eine Datei hat mehr als 2 MB und kann nicht angefügt werden.",
+    maxTotalFileSize: 10,
+    maxTotalFileSizeWarning:
+        "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
+    required: true,
   },
 };

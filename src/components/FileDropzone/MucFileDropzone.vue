@@ -1,4 +1,12 @@
 <template>
+  <label
+      v-if="label"
+      :for="'file-dropzone-' + id"
+      class="m-label"
+      :class="{ 'm-label--optional': !required }"
+  >
+    {{ label }}
+  </label>
   <div
     class="drop-zone"
     :class="{
@@ -53,7 +61,12 @@ const {
   maxFileSizeWarning,
   maxTotalFileSize = 0,
   maxTotalFileSizeWarning,
+  required = false,
 } = defineProps<{
+  /**
+   * Unique identifier for the file dropzone. Required property used to associate the textarea with its label and hint text for accessibility.
+   */
+  id: string;
   /**
    * Text on the upload button
    */
@@ -66,6 +79,10 @@ const {
    * Flag to disable the upload field
    */
   disabled?: boolean;
+  /**
+   * Displays a label above the file dropzone.
+   */
+  label?: string;
   /**
    * Flag to switch between multiple and single file upload
    */
@@ -90,6 +107,10 @@ const {
    * Warning for invalid file size sum
    */
   maxTotalFileSizeWarning?: string;
+  /**
+   * Sets this file dropzone as required. Default is false.
+   */
+  required?: boolean;
 }>();
 
 const emit = defineEmits<{
