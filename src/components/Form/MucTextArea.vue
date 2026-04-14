@@ -61,9 +61,7 @@
         </div>
       </div>
     </div>
-    <form-error-message
-      v-if="errorMsg"
-    >
+    <form-error-message v-if="errorMsg">
       {{ errorMsg }}
     </form-error-message>
   </div>

@@ -4,10 +4,10 @@ import { MucIcon } from "../Icon";
 
 <template>
   <span
-      class="m-error-message form-error-message"
-      tabindex="0"
-      role="alert"
-      aria-live="polite"
+    class="m-error-message form-error-message"
+    tabindex="0"
+    role="alert"
+    aria-live="polite"
   >
     <muc-icon icon="warning--filled" />
     <span>

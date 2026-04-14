@@ -1,8 +1,8 @@
 <template>
   <label
-      v-if="label"
-      class="m-label"
-      :class="{ 'm-label--optional': !required }"
+    v-if="label"
+    class="m-label"
+    :class="{ 'm-label--optional': !required }"
   >
     {{ label }}
   </label>
@@ -18,7 +18,12 @@
     @drop.prevent="onDrop"
     @click="selectFiles"
   >
-    <p v-if="label" class="visually-hidden">{{label}}</p>
+    <p
+      v-if="label"
+      class="visually-hidden"
+    >
+      {{ label }}
+    </p>
     <icon-file-upload />
     <muc-button
       variant="secondary"
@@ -29,8 +34,9 @@
       {{ buttonText }}
     </muc-button>
     <p
-        class="m-hint"
-        :id="'file-dropzone-hint-' + id">
+      class="m-hint"
+      :id="'file-dropzone-hint-' + id"
+    >
       {{ additionalInformation }}
     </p>
   </div>

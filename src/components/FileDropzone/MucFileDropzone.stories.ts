@@ -46,10 +46,10 @@ export const Required = {
     label: "Label",
     maxFileSize: 2,
     maxFileSizeWarning:
-        "Eine Datei hat mehr als 2 MB und kann nicht angefügt werden.",
+      "Eine Datei hat mehr als 2 MB und kann nicht angefügt werden.",
     maxTotalFileSize: 10,
     maxTotalFileSizeWarning:
-        "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
+      "Die Dateien haben zusammen mehr als 10 MB und können nicht angefügt werden.",
     required: true,
   },
 };
