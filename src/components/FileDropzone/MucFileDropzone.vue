@@ -1,7 +1,6 @@
 <template>
   <label
       v-if="label"
-      :for="'file-dropzone-' + id"
       class="m-label"
       :class="{ 'm-label--optional': !required }"
   >
@@ -13,22 +12,27 @@
       'is-dragover': isDragOver,
       'is-not-disabled': !disabled,
     }"
+    tabindex="0"
     @dragover.prevent="onDragOver"
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop"
     @click="selectFiles"
   >
+    <p v-if="label" class="visually-hidden">{{label}}</p>
     <icon-file-upload />
     <muc-button
       variant="secondary"
       icon="upload"
+      tabindex="-1"
       :disabled="disabled"
     >
       {{ buttonText }}
     </muc-button>
-    <span class="mde-b3">
+    <p
+        class="m-hint"
+        :id="'file-dropzone-hint-' + id">
       {{ additionalInformation }}
-    </span>
+    </p>
   </div>
 
   <form-error-message v-if="!validFileSizes && maxFileSizeWarning">
