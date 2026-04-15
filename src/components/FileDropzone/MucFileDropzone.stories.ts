@@ -24,7 +24,6 @@ export const Default = {};
 
 export const Example = {
   args: {
-    id: "exmaple",
     buttonText: "Dokument hochladen",
     additionalInformation: "Maximale Dateigröße: 2 MB",
     invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",
@@ -39,7 +38,6 @@ export const Example = {
 
 export const Required = {
   args: {
-    id: "required",
     buttonText: "Dokument hochladen",
     additionalInformation: "Maximale Dateigröße: 2 MB",
     invalidAmountWarning: "Es kann nur eine Datei hochgeladen werden.",

@@ -33,10 +33,7 @@
     >
       {{ buttonText }}
     </muc-button>
-    <p
-      class="m-hint"
-      :id="'file-dropzone-hint-' + id"
-    >
+    <p class="m-hint">
       {{ additionalInformation }}
     </p>
   </div>
@@ -73,10 +70,6 @@ const {
   maxTotalFileSizeWarning,
   required = false,
 } = defineProps<{
-  /**
-   * Unique identifier for the file dropzone. Required property used to associate the textarea with its label and hint text for accessibility.
-   */
-  id: string;
   /**
    * Text on the upload button
    */
