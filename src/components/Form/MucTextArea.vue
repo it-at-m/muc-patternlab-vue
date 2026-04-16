@@ -61,12 +61,7 @@
         </div>
       </div>
     </div>
-    <form-error-message
-      v-if="errorMsg"
-      tabindex="0"
-      role="alert"
-      aria-live="polite"
-    >
+    <form-error-message v-if="errorMsg">
       {{ errorMsg }}
     </form-error-message>
   </div>

@@ -1,26 +1,41 @@
 <template>
+  <label
+    v-if="label"
+    class="m-label"
+    :class="{ 'm-label--optional': !required }"
+  >
+    {{ label }}
+  </label>
   <div
     class="drop-zone"
     :class="{
       'is-dragover': isDragOver,
       'is-not-disabled': !disabled,
     }"
+    tabindex="0"
     @dragover.prevent="onDragOver"
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop"
     @click="selectFiles"
   >
+    <p
+      v-if="label"
+      class="visually-hidden"
+    >
+      {{ label }}
+    </p>
     <icon-file-upload />
     <muc-button
       variant="secondary"
       icon="upload"
+      tabindex="-1"
       :disabled="disabled"
     >
       {{ buttonText }}
     </muc-button>
-    <span class="mde-b3">
+    <p class="m-hint">
       {{ additionalInformation }}
-    </span>
+    </p>
   </div>
 
   <form-error-message v-if="!validFileSizes && maxFileSizeWarning">
@@ -53,6 +68,7 @@ const {
   maxFileSizeWarning,
   maxTotalFileSize = 0,
   maxTotalFileSizeWarning,
+  required = false,
 } = defineProps<{
   /**
    * Text on the upload button
@@ -66,6 +82,10 @@ const {
    * Flag to disable the upload field
    */
   disabled?: boolean;
+  /**
+   * Displays a label above the file dropzone.
+   */
+  label?: string;
   /**
    * Flag to switch between multiple and single file upload
    */
@@ -90,6 +110,10 @@ const {
    * Warning for invalid file size sum
    */
   maxTotalFileSizeWarning?: string;
+  /**
+   * Sets this file dropzone as required. Default is false.
+   */
+  required?: boolean;
 }>();
 
 const emit = defineEmits<{

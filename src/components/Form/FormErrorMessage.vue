@@ -3,7 +3,12 @@ import { MucIcon } from "../Icon";
 </script>
 
 <template>
-  <span class="m-error-message form-error-message">
+  <span
+    class="m-error-message form-error-message"
+    tabindex="0"
+    role="alert"
+    aria-live="polite"
+  >
     <muc-icon icon="warning--filled" />
     <span>
       <slot></slot>
