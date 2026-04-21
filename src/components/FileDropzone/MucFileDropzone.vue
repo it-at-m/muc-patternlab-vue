@@ -17,6 +17,8 @@
     @dragleave.prevent="onDragLeave"
     @drop.prevent="onDrop"
     @click="selectFiles"
+    @keydown.enter="selectFiles"
+    @keydown.space="selectFiles"
   >
     <p
       v-if="label"
