@@ -39,6 +39,7 @@ The supported MDE-Version can be taken out of the following table:
 
 | muc-patternlab-vue | MDE Version                                                            |
 |--------------------|------------------------------------------------------------------------|
+| >= 9.x             | [1.1.23](https://patternlab.muenchen.space/?p=documentation-changelog) |
 | >= 8.x             | [1.1.19](https://patternlab.muenchen.space/?p=documentation-changelog) |
 | >= 7.x             | [1.1.15](https://patternlab.muenchen.space/?p=documentation-changelog) |
 | >= 6.x             | [1.1.6](https://patternlab.muenchen.space/?p=documentation-changelog)  |
