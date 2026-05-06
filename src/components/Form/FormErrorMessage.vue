@@ -9,7 +9,7 @@ import { MucIcon } from "../Icon";
     aria-live="polite"
   >
     <muc-icon
-      class="icon--before"
+      class="icon icon--before"
       icon="warning--filled"
     />
     <span class="visually-hidden">Fehler:</span> <slot></slot>
