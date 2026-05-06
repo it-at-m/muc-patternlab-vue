@@ -12,6 +12,10 @@ type __VLS_Props = {
      */
     disabled?: boolean;
     /**
+     * Displays a label above the file dropzone.
+     */
+    label?: string;
+    /**
      * Flag to switch between multiple and single file upload
      */
     multiple?: boolean;
@@ -35,6 +39,10 @@ type __VLS_Props = {
      * Warning for invalid file size sum
      */
     maxTotalFileSizeWarning?: string;
+    /**
+     * Sets this file dropzone as required. Default is false.
+     */
+    required?: boolean;
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {
     /**

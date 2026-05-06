@@ -3,12 +3,14 @@ declare const _default: {
         buttonText: string;
         additionalInformation?: string;
         disabled?: boolean;
+        label?: string;
         multiple?: boolean;
         invalidAmountWarning?: string;
         maxFileSize?: number;
         maxFileSizeWarning?: string;
         maxTotalFileSize?: number;
         maxTotalFileSizeWarning?: string;
+        required?: boolean;
     }, {
         clearWarnings: () => void;
     }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
@@ -18,12 +20,14 @@ declare const _default: {
         buttonText: string;
         additionalInformation?: string;
         disabled?: boolean;
+        label?: string;
         multiple?: boolean;
         invalidAmountWarning?: string;
         maxFileSize?: number;
         maxFileSizeWarning?: string;
         maxTotalFileSize?: number;
         maxTotalFileSizeWarning?: string;
+        required?: boolean;
     }> & Readonly<{
         onWarning?: (() => any) | undefined;
         onFiles?: ((files: File[]) => any) | undefined;
@@ -53,5 +57,18 @@ export declare const Example: {
         maxFileSizeWarning: string;
         maxTotalFileSize: number;
         maxTotalFileSizeWarning: string;
+    };
+};
+export declare const Required: {
+    args: {
+        buttonText: string;
+        additionalInformation: string;
+        invalidAmountWarning: string;
+        label: string;
+        maxFileSize: number;
+        maxFileSizeWarning: string;
+        maxTotalFileSize: number;
+        maxTotalFileSizeWarning: string;
+        required: boolean;
     };
 };
