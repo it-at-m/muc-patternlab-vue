@@ -36,9 +36,6 @@
       <form-error-message
         id="checkbox-group-error"
         v-if="errorMsg"
-        tabindex="0"
-        role="alert"
-        aria-live="polite"
       >
         {{ errorMsg }}
       </form-error-message>

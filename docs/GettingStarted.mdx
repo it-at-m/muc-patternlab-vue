@@ -44,11 +44,6 @@ In your Webcomponents root you should import the MDE5-CSS from assets.muenchen.d
 </script>
 
 <template>
-  <link
-    href="https://assets.muenchen.de/mde/1.1.19/css/style.css"
-    rel="stylesheet"
-  />
-
   <div>
     <div v-html="mucIconsSprite"></div>
     <div v-html="customIconsSprite"></div>
@@ -57,9 +52,21 @@ In your Webcomponents root you should import the MDE5-CSS from assets.muenchen.d
 </template>
 
 <style>
+  @import url("https://assets.muenchen.de/mde/1.1.23/css/style.css");
   @import "@muenchen/muc-patternlab-vue/assets/css/custom-style.css";
-  @import "@muenchen/muc-patternlab-vue/muc-patternlab-vue.css";
+  @import "@muenchen/muc-patternlab-vue/style.css";
 </style>
+```
+
+### Font setup (required for local development)
+
+When using the library with web components, ensure the MDE fontfaces are loaded in your application's `index.html`:
+
+```html
+<link
+  href="https://assets.muenchen.de/mde/1.1.23/css/fonts.css"
+  rel="stylesheet"
+/>
 ```
 
 Import components from this library in your own component:
