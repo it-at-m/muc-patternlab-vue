@@ -36,7 +36,7 @@
         v-model="modelValue"
         :required="required"
         :aria-required="required"
-        @blur="currentCount = modelValue.length"
+        @blur="handleBlur"
       />
       <div
         v-if="maxlength"
@@ -126,4 +126,16 @@ const {
    */
   maxlength?: number;
 }>();
+
+const emit = defineEmits<{
+  /**
+   * Triggered when the textarea loses focus.
+   */
+  blur: [];
+}>();
+
+const handleBlur = () => {
+  currentCount.value = modelValue.value.length;
+  emit("blur");
+};
 </script>

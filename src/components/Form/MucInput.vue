@@ -39,6 +39,7 @@
         :maxlength="max"
         :autocomplete="autocomplete"
         :name="name"
+        @blur="handleBlur"
       />
       <ul
         v-if="isSearch && currentAvalOptions.length !== 0"
@@ -169,13 +170,18 @@ const slots = defineSlots<{
   prefix(): unknown;
 }>();
 
-const emits = defineEmits<
+const emit = defineEmits<{
   /**
    * Triggered when suffix-button is clicked.
    * @param e Click-Event
    */
-  (e: "suffixClick") => void
->();
+  suffixClick: [];
+
+  /**
+   * Triggered when the input loses focus.
+   */
+  blur: [];
+}>();
 
 /**
  * Computes whether the current type is "search".
@@ -206,5 +212,7 @@ const currentAvalOptions = computed(() => {
  */
 const handleOptionSelection = (option: string) => (modelValue.value = option);
 
-const handleSuffixClick = () => emits("suffixClick");
+const handleSuffixClick = () => emit("suffixClick");
+
+const handleBlur = () => emit("blur");
 </script>
