@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{n as t,t as n}from"./MucInput-xLpXlTRV.js";var r,i,a,o,s,c,l,u,d,f,p,m;e((()=>{t(),r={component:n,title:`Forms/MucInput`,tags:[`autodocs`],parameters:{docs:{description:{component:`The MucInput component is a text-based input field.
+import{n as e}from"./chunk-BneVvdWh.js";import{n as t,t as n}from"./MucInput-GjWd6Bew.js";var r,i,a,o,s,c,l,u,d,f,p,m;e((()=>{t(),r={component:n,title:`Forms/MucInput`,tags:[`autodocs`],parameters:{docs:{description:{component:`The MucInput component is a text-based input field.
         Various types are allowed e.g. datepicker or password.
          It supports various styling options like prefixes /suffixes, buttons and can also be displayed as a textarea.
 

@@ -73,10 +73,11 @@ declare function __VLS_template(): {
 };
 type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
 declare const __VLS_component: import('vue').DefineComponent<__VLS_PublicProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    blur: () => any;
     "update:modelValue": (value: string) => any;
-} & {
     suffixClick: () => any;
 }, string, import('vue').PublicProps, Readonly<__VLS_PublicProps> & Readonly<{
+    onBlur?: (() => any) | undefined;
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
     onSuffixClick?: (() => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;

@@ -11,6 +11,7 @@ declare const _default: {
         required?: boolean;
         maxlength?: number;
     }, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+        blur: () => any;
         "update:modelValue": (value: string) => any;
     }, string, import('vue').PublicProps, Readonly<{
         modelValue?: string;
@@ -24,6 +25,7 @@ declare const _default: {
         required?: boolean;
         maxlength?: number;
     }> & Readonly<{
+        onBlur?: (() => any) | undefined;
         "onUpdate:modelValue"?: ((value: string) => any) | undefined;
     }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, HTMLDivElement>;
     title: string;
