@@ -6,7 +6,6 @@ import { MucIcon } from "../Icon";
   <p
     class="m-error-message"
     role="alert"
-    aria-live="polite"
   >
     <muc-icon
       class="icon icon--before"
