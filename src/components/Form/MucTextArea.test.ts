@@ -4,7 +4,8 @@ import { describe, expect, it, vi } from "vitest";
 import MucTextArea from "./MucTextArea.vue";
 
 vi.mock("../../utils/countTextareaRows", () => ({
-  countTextareaRows: (text: string) => Math.max(2, (text.match(/\n/g)?.length ?? 0) + 3),
+  countTextareaRows: (text: string) =>
+    Math.max(2, (text.match(/\n/g)?.length ?? 0) + 3),
 }));
 
 describe("MucTextArea.vue", () => {
