@@ -58,3 +58,14 @@ export const CountTextArea = {
     maxlength: 50,
   },
 };
+
+export const AutoRows = {
+  args: {
+    ...Default.args,
+    id: "auto-rows-text-area",
+    label: "Auto rows textarea",
+    autoRows: true,
+    maxlength: 250,
+    placeholder: "Type multiple lines to grow the field",
+  },
+};

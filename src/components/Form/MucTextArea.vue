@@ -30,12 +30,13 @@
           ' ' +
           (maxlength ? 'textarea-count-' + id : '')
         "
-        :rows="rows"
+        :rows="displayRows"
         :placeholder="placeholder"
         :maxlength="maxlength"
         v-model="modelValue"
         :required="required"
         :aria-required="required"
+        @input="handleInput"
         @blur="handleBlur"
       />
       <div
@@ -68,8 +69,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
+import { countTextareaRows } from "../../utils/countTextareaRows";
 import FormErrorMessage from "./FormErrorMessage.vue";
 
 /**
@@ -85,6 +87,7 @@ const currentCount = ref<number>(modelValue.value.length);
 const {
   errorMsg,
   rows = 3,
+  autoRows = false,
   required = false,
 } = defineProps<{
   /**
@@ -98,8 +101,14 @@ const {
 
   /**
    * Number of rows displayed of the textarea. Default is three.
+   * Ignored when {@link autoRows} is true (rows are computed from content and viewport).
    */
   rows?: number;
+
+  /**
+   * When true, row count grows with wrapped text and shrinks on narrow viewports.
+   */
+  autoRows?: boolean;
 
   /**
    * Placeholder for empty input form.
@@ -134,8 +143,44 @@ const emit = defineEmits<{
   blur: [];
 }>();
 
+const autoRowCount = ref(rows);
+
+const displayRows = computed(() => (autoRows ? autoRowCount.value : rows));
+
+const syncAutoRows = (text: string) => {
+  if (!autoRows) return;
+  autoRowCount.value = countTextareaRows(text);
+};
+
+const handleInput = (event: Event) => {
+  if (autoRows) {
+    const target = event.target as HTMLTextAreaElement | null;
+    syncAutoRows(target?.value ?? "");
+  }
+};
+
 const handleBlur = () => {
   currentCount.value = modelValue.value.length;
   emit("blur");
 };
+
+const onWindowResize = () => syncAutoRows(modelValue.value);
+
+onMounted(() => {
+  if (!autoRows) return;
+  syncAutoRows(modelValue.value);
+  window.addEventListener("resize", onWindowResize);
+});
+
+onBeforeUnmount(() => {
+  if (!autoRows) return;
+  window.removeEventListener("resize", onWindowResize);
+});
+
+watch(
+  () => modelValue.value,
+  (value) => {
+    if (autoRows) syncAutoRows(value ?? "");
+  }
+);
 </script>
