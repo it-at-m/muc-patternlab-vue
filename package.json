@@ -73,7 +73,7 @@
     "vite": "8.0.13",
     "vite-plugin-dts": "4.5.4",
     "vitest": "4.1.6",
-    "vue-tsc": "3.2.8"
+    "vue-tsc": "3.2.9"
   },
   "dependencies": {
     "@splidejs/vue-splide": "0.6.12",
