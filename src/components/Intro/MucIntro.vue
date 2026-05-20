@@ -75,9 +75,7 @@ defineSlots<{
             <muc-divider v-if="divider" />
 
             <div class="m-intro-summary-text__text">
-              <p>
-                <slot />
-              </p>
+              <slot />
             </div>
           </div>
         </div>
@@ -120,9 +118,7 @@ defineSlots<{
             <muc-divider v-if="divider" />
 
             <div class="m-intro-vertical__content">
-              <p>
-                <slot />
-              </p>
+              <slot />
             </div>
           </div>
         </div>

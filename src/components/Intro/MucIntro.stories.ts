@@ -19,41 +19,117 @@ Used e.g. in https://stadt.muenchen.de/buergerservice/anliegen.html.
   },
 };
 
-export const Default = {
-  args: {
-    tagline: "Tagline",
-    title: "Intro with Title",
-    variant: "overview",
-    default:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n" +
-      "    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-  },
-};
+export const Template = () => ({
+  components: { MucIntro },
+  template: `
 
-export const Icon = {
-  args: {
-    tagline: "Tagline",
-    title: "Intro with Icon",
-    variant: "detail",
-    img: "docs/images/muc-patternlab.png",
-    default: Default.args.default,
-  },
-};
+    <MucIntro
+        tagline="Tagline"
+        title="Intro with Title"
+        variant="overview"
+    >
+      <template #default>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+      </template>
+    </MucIntro>
+  `,
+});
 
-export const MinimalDetail = {
-  args: {
-    title: "Smaller Intro with Title",
-    divider: false,
-    variant: "detail",
-    default: Default.args.default,
-  },
-};
+export const Icon = () => ({
+  components: { MucIntro },
+  template: `
 
-export const MinimalOverview = {
-  args: {
-    title: "Smaller Intro with Title",
-    divider: false,
-    variant: "overview",
-    default: Default.args.default,
-  },
-};
+    <MucIntro
+        tagline="Tagline"
+        title="Intro with Icon"
+        variant="detail"
+        img="docs/images/muc-patternlab.png"
+    >
+      <template #default>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+      </template>
+    </MucIntro>
+  `,
+});
+
+export const MinimalDetail = () => ({
+  components: { MucIntro },
+  template: `
+
+    <MucIntro
+        title="Smaller Intro with Title"
+        :divider="false"
+        variant="detail"
+    >
+      <template #default>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+      </template>
+    </MucIntro>
+  `,
+});
+
+export const MinimalOverview = () => ({
+  components: { MucIntro },
+  template: `
+
+    <MucIntro
+        title="Smaller Intro with Title"
+        :divider="false"
+        variant="overview"
+    >
+      <template #default>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+      </template>
+    </MucIntro>
+  `,
+});
+
+export const WithMultiplePTags = () => ({
+  components: { MucIntro },
+  template: `
+
+    <MucIntro
+        tagline="Tagline"
+        title="Intro with Title"
+        variant="overview"
+    >
+      <template #default>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+        <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          erat, sed diam voluptua.
+        </p>
+      </template>
+    </MucIntro>
+  `,
+});
