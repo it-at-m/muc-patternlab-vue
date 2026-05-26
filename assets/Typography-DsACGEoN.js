@@ -1,0 +1,9 @@
+import{i as e}from"./preload-helper-Cs4UwXAW.js";import{F as t,L as n,c as r,s as i}from"./blocks-DUQt6Wum.js";import{t as a}from"./mdx-react-shim-BfyKhd46.js";function o(e){let n={a:`a`,h1:`h1`,h2:`h2`,p:`p`,...t(),...e.components};return(0,c.jsxs)(c.Fragment,{children:[(0,c.jsx)(i,{title:`Typography`}),`
+`,(0,c.jsx)(n.h1,{id:`typography`,children:`Typography`}),`
+`,(0,c.jsxs)(n.p,{children:[`Reference: `,(0,c.jsx)(n.a,{href:`https://patternlab.muenchen.space/?p=viewall-guidelines-typography`,rel:`nofollow`,children:`https://patternlab.muenchen.space/?p=viewall-guidelines-typography`})]}),`
+`,(0,c.jsx)(n.h2,{id:`headings`,children:`Headings`}),`
+`,(0,c.jsx)(n.p,{children:`For all Headings just use the semantic h1 to h5 HTML Elements - they will automatically be styled according to the MDE Design System.`}),`
+`,(0,c.jsx)(n.h2,{id:`body`,children:`Body`}),`
+`,(0,c.jsx)(n.p,{children:`For the body there are three different sizes. Each with it's own class to be used.`}),`
+`,(0,c.jsxs)(n.p,{children:[`For all sizes the additional class `,(0,c.jsx)(`pre`,{children:`mde-bold`}),` can be used to make the text bold.`]}),`
+`,(0,c.jsxs)(`table`,{children:[(0,c.jsxs)(`tr`,{children:[(0,c.jsx)(`th`,{children:`Size`}),(0,c.jsx)(`th`,{children:`CSS Class`})]}),(0,c.jsxs)(`tr`,{children:[(0,c.jsx)(`td`,{children:`Body 1`}),(0,c.jsx)(`td`,{children:(0,c.jsx)(`pre`,{children:`mde-b1`})})]}),(0,c.jsxs)(`tr`,{children:[(0,c.jsx)(`td`,{children:`Body 2 (smaller)`}),(0,c.jsx)(`td`,{children:(0,c.jsx)(`pre`,{children:`mde-b2`})})]}),(0,c.jsxs)(`tr`,{children:[(0,c.jsx)(`td`,{children:`Body 3 (smallest)`}),(0,c.jsx)(`td`,{children:(0,c.jsx)(`pre`,{children:`mde-b3`})})]})]})]})}function s(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,c.jsx)(n,{...e,children:(0,c.jsx)(o,{...e})}):o(e)}var c;e((()=>{c=n(),a(),r()}))();export{s as default};
