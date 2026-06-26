@@ -49,7 +49,7 @@ const choicesInstance = ref<Choices>();
 const selectedValues = defineModel<MucSelectItemTypes | MucSelectItemTypes[]>(
   "modelValue",
   {
-    default: [],
+    default: () => [],
   }
 );
 
