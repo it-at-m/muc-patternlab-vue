@@ -32,7 +32,6 @@
     "node": ">=22.14"
   },
   "scripts": {
-    "postinstall": "patch-package",
     "build": "rimraf dist && npm run build-only && cp package.json dist/package.json",
     "test": "vitest",
     "build-only": "vite build",
@@ -77,7 +76,6 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "0.6.12",
-    "choices.js": "11.2.3",
-    "patch-package": "8.0.1"
+    "choices.js": "11.2.3"
   }
 }
