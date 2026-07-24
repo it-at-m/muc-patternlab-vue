@@ -3,6 +3,7 @@
     @click="handleClick($event)"
     :aria-disabled="disabled"
     class="m-button"
+    :type="type"
     :class="{
       'm-button--secondary': variant === 'secondary',
       'm-button--ghost': variant === 'ghost',
@@ -41,6 +42,7 @@ const {
   iconAnimated = false,
   iconShownLeft = false,
   spinIconOnClick = false,
+  type = undefined,
 } = defineProps<{
   /**
    * The variant prop gives you easy access to several different button styles.
@@ -74,6 +76,10 @@ const {
    * Default is `false`
    */
   iconShownLeft?: boolean;
+  /**
+   * Type of the button according to https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#the-button-element
+   */
+  type?: "submit" | "button" | "reset" | undefined;
 }>();
 
 defineSlots<{
