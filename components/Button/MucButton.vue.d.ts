@@ -32,6 +32,10 @@ type __VLS_Props = {
      * Default is `false`
      */
     iconShownLeft?: boolean;
+    /**
+     * Type of the button according to https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#the-button-element
+     */
+    type?: "submit" | "button" | "reset" | undefined;
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;

@@ -226,6 +226,7 @@ export declare const WithButton: () => {
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
+                type?: "submit" | "button" | "reset" | undefined;
             }> & Readonly<{
                 onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -244,6 +245,7 @@ export declare const WithButton: () => {
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
+                type?: "submit" | "button" | "reset" | undefined;
             }> & Readonly<{
                 onClick?: ((value: Event) => any) | undefined;
             }>, {}, {}, {}, {}, {}>;
@@ -257,6 +259,7 @@ export declare const WithButton: () => {
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
+            type?: "submit" | "button" | "reset" | undefined;
         }> & Readonly<{
             onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {

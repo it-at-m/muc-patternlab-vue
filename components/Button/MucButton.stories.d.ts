@@ -7,6 +7,7 @@ declare const _default: {
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
+            type?: "submit" | "button" | "reset" | undefined;
         }> & Readonly<{
             onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
@@ -25,6 +26,7 @@ declare const _default: {
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
+            type?: "submit" | "button" | "reset" | undefined;
         }> & Readonly<{
             onClick?: ((value: Event) => any) | undefined;
         }>, {}, {}, {}, {}, {}>;
@@ -38,6 +40,7 @@ declare const _default: {
         iconAnimated?: boolean;
         spinIconOnClick?: boolean;
         iconShownLeft?: boolean;
+        type?: "submit" | "button" | "reset" | undefined;
     }> & Readonly<{
         onClick?: ((value: Event) => any) | undefined;
     }>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
