@@ -33,9 +33,4 @@ export interface RadioButtonGroupInjection {
  * Different possible types used as value for a radiobutton-values
  */
 export type RadioButtonValueTypes =
-  | boolean
-  | string
-  | unknown[]
-  | Record<string, unknown>
-  | number
-  | null;
+  boolean | string | unknown[] | Record<string, unknown> | number | null;

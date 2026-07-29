@@ -28,6 +28,7 @@
     </p>
     <icon-file-upload />
     <muc-button
+      type="button"
       variant="secondary"
       icon="upload"
       tabindex="-1"

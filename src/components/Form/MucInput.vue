@@ -85,12 +85,7 @@ import FormErrorMessage from "./FormErrorMessage.vue";
  * Type includes all possible input types possible.
  */
 type InputType =
-  | "text"
-  | "password"
-  | "color"
-  | "search"
-  | "date"
-  | "datetime-local";
+  "text" | "password" | "color" | "search" | "date" | "datetime-local";
 
 /**
  * Input value from the input component.
