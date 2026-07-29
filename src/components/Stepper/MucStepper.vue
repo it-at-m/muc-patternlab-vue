@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed } from "vue";
 
 import MucStepperItem from "./MucStepperItem.vue";
 import { StepperItem } from "./MucStepperTypes";
@@ -67,13 +67,6 @@ const emit = defineEmits<{
   changeStep: [id: string];
 }>();
 
-watch(
-  () => activeItem,
-  () => {
-    indexOfActivItem.value = getIndexOfItem(activeItem);
-  }
-);
-
 /**
  * Returns the index of an item in the array
  * @param id id of the item
@@ -84,9 +77,9 @@ const getIndexOfItem = (id: string) => {
 };
 
 /**
- * Index of activ item
+ * Index of active item (recomputed when stepItems or activeItem change)
  */
-const indexOfActivItem = ref<number>(getIndexOfItem(activeItem));
+const indexOfActivItem = computed(() => getIndexOfItem(activeItem));
 
 const activePosition = computed(() =>
   indexOfActivItem.value >= 0 ? indexOfActivItem.value + 1 : 1
