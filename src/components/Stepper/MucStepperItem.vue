@@ -4,19 +4,15 @@
     :class="{ 'm-form-step--current': isActive }"
     :aria-current="isActive ? 'step' : undefined"
   >
-    <!--
-      Keep Patternlab's div.m-form-step__icon for circle styling.
-      Use a display:contents button wrapper for keyboard-accessible navigation.
-    -->
     <button
       v-if="isClickable"
       type="button"
       class="m-form-step__button"
       @click="handleClick"
     >
-      <div class="m-form-step__icon">
+      <span class="m-form-step__icon">
         <muc-icon :icon="item.icon" />
-      </div>
+      </span>
       <span class="visually-hidden">Zurück zu Schritt: {{ item.label }}</span>
     </button>
     <div
@@ -85,7 +81,6 @@ const handleClick = () => {
 </script>
 
 <style scoped>
-/* Lets Patternlab layout treat .m-form-step__icon as a direct child of .m-form-step */
 .m-form-step__button {
   appearance: none;
   margin: 0;
@@ -95,7 +90,17 @@ const handleClick = () => {
   font: inherit;
   color: inherit;
   cursor: pointer;
-  display: contents;
+  display: flex;
+  justify-content: center;
+}
+
+.m-form-step__button:focus {
+  outline: none;
+}
+
+.m-form-step__button:focus-visible .m-form-step__icon {
+  outline: 2px solid #005a9f;
+  outline-offset: 2px;
 }
 
 .disabled {

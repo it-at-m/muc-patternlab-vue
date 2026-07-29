@@ -71,11 +71,9 @@ describe("MucStepper.vue", () => {
     const buttons = wrapper.findAll("button.m-form-step__button");
     expect(buttons).toHaveLength(2);
     expect(buttons[0].text()).toContain("Zurück zu Schritt: Order");
-    expect(buttons[0].find("div.m-form-step__icon").exists()).toBe(true);
+    expect(buttons[0].find("span.m-form-step__icon").exists()).toBe(true);
 
-    const decorativeIcons = wrapper
-      .findAll("div.m-form-step__icon")
-      .filter((icon) => !icon.element.closest("button"));
+    const decorativeIcons = wrapper.findAll("div.m-form-step__icon");
     expect(decorativeIcons).toHaveLength(2);
     decorativeIcons.forEach((icon) => {
       expect(icon.attributes("tabindex")).toBeUndefined();
