@@ -4,11 +4,7 @@ import { computed, useSlots } from "vue";
 import { MucIcon } from "../Icon";
 
 type bannerType =
-  | "info"
-  | "success"
-  | "warning"
-  | "emergency"
-  | "emergency-light";
+  "info" | "success" | "warning" | "emergency" | "emergency-light";
 type bannerVariant = "content" | "header";
 
 const {
