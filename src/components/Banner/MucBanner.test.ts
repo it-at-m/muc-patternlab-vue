@@ -63,4 +63,53 @@ describe("MucBanner.vue", () => {
     expect(mucBanner.attributes("aria-label")).toBe("Emergency");
     expect(mucBanner.text()).toContain("This is an emergency message");
   });
+
+  it("renders with emergency-light type", () => {
+    const wrapper = mount(MucBanner, {
+      props: { variant: "content", type: "emergency-light" },
+      slots: {
+        default: "This is a light emergency message",
+      },
+    });
+
+    const mucBanner = wrapper.find(".m-banner");
+    expect(mucBanner.classes()).toContain("m-banner--emergency-light");
+    expect(mucBanner.attributes("role")).toBe("alert");
+    expect(mucBanner.attributes("aria-label")).toBe("Emergency");
+    expect(mucBanner.text()).toContain("This is a light emergency message");
+  });
+
+  it("renders left border when leftBorder is true", () => {
+    const wrapper = mount(MucBanner, {
+      props: {
+        variant: "content",
+        type: "emergency-light",
+        leftBorder: true,
+      },
+      slots: {
+        default: "Bordered message",
+      },
+    });
+
+    expect(wrapper.find(".m-banner").classes()).toContain(
+      "m-banner--left-border"
+    );
+  });
+
+  it("renders header and content slots", () => {
+    const wrapper = mount(MucBanner, {
+      props: { variant: "content", type: "emergency-light", leftBorder: true },
+      slots: {
+        header: "Fehler bei der Anmeldung",
+        default: "Ihre Anmeldung ist leider fehlgeschlagen.",
+      },
+    });
+
+    expect(wrapper.find(".m-banner__headline").text()).toBe(
+      "Fehler bei der Anmeldung"
+    );
+    expect(wrapper.find(".m-banner__content").text()).toBe(
+      "Ihre Anmeldung ist leider fehlgeschlagen."
+    );
+  });
 });
