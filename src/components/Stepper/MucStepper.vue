@@ -3,25 +3,28 @@
     <div class="container">
       <div class="m-component__grid">
         <div class="m-component__column">
-          <ol
-            class="m-form-steps"
-            role="list"
-            aria-label="Formularfortschritt"
-          >
-            <template
-              v-for="(item, index) in stepItems"
+          <h2 class="m-form-steps__heading visually-hidden">
+            <span class="m-form-steps__heading-counter">
+              Schritt
+              <span class="m-form-steps__current-step">{{
+                activePosition
+              }}</span>
+              <span class="m-form-steps__total-steps"
+                >von {{ stepItems.length }}:</span
+              >
+            </span>
+            <span class="m-form-steps__heading-text">{{ activeLabel }}</span>
+          </h2>
+          <ol class="m-form-steps">
+            <muc-stepper-item
+              v-for="item in stepItems"
               :key="item.id"
-            >
-              <muc-stepper-item
-                :item="item"
-                :is-active="isActive(item.id)"
-                :is-done="isDone(item.id)"
-                :disabled="disabled(item.id)"
-                :position="index + 1"
-                :total="stepItems.length"
-                @click="handleChange"
-              />
-            </template>
+              :item="item"
+              :is-active="isActive(item.id)"
+              :is-done="isDone(item.id)"
+              :disabled="disabled(item.id)"
+              @click="handleChange"
+            />
           </ol>
         </div>
       </div>
@@ -30,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed } from "vue";
 
 import MucStepperItem from "./MucStepperItem.vue";
 import { StepperItem } from "./MucStepperTypes";
@@ -64,13 +67,6 @@ const emit = defineEmits<{
   changeStep: [id: string];
 }>();
 
-watch(
-  () => activeItem,
-  () => {
-    indexOfActivItem.value = getIndexOfItem(activeItem);
-  }
-);
-
 /**
  * Returns the index of an item in the array
  * @param id id of the item
@@ -81,9 +77,17 @@ const getIndexOfItem = (id: string) => {
 };
 
 /**
- * Index of activ item
+ * Index of active item (recomputed when stepItems or activeItem change)
  */
-const indexOfActivItem = ref<number>(getIndexOfItem(activeItem));
+const indexOfActivItem = computed(() => getIndexOfItem(activeItem));
+
+const activePosition = computed(() =>
+  indexOfActivItem.value >= 0 ? indexOfActivItem.value + 1 : 1
+);
+
+const activeLabel = computed(
+  () => stepItems.find((item) => item.id === activeItem)?.label ?? ""
+);
 
 /**
  * Checks if an item is the activ item
