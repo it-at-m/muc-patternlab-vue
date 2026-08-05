@@ -126,7 +126,6 @@ const typeIcon = computed(() => {
 </template>
 
 <style>
-/* Not yet part of MDE patternlab – provided by muc-patternlab-vue. */
 .m-banner--danger {
   background-color: var(--mde-color-status-error-x-light, #f8f2f2);
   border-bottom: 1px solid var(--mde-color-status-error-light, #c79a9b);

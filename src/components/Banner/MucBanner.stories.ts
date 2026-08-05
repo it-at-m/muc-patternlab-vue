@@ -11,8 +11,6 @@ export default {
       description: {
         component: `A banner-component used for single-line informations. Available in multiple types.
 
-Supports an additional light danger style (\`danger\`).
-
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-banner)
 `,
       },
