@@ -9,9 +9,9 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `A banner-component used for informations. Available in multiple types.
+        component: `A banner-component used for single-line informations. Available in multiple types.
 
-Supports an optional \`header\` slot, a light emergency style (\`emergency-light\`), and an optional left accent border (\`leftBorder\`).
+Supports an additional light danger style (\`danger\`).
 
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=viewall-elements-banner)
 `,
@@ -52,36 +52,11 @@ export const Emergency = {
   },
 };
 
-export const EmergencyLight = {
+export const Danger = {
   args: {
+    default: "Hi, I'm a Danger-Banner!",
     variant: "content",
-    type: "emergency-light",
-    leftBorder: true,
-  },
-  render: (args: Record<string, unknown>) => ({
-    components: { MucBanner },
-    setup() {
-      return { args };
-    },
-    template: `
-      <muc-banner
-        :variant="args.variant"
-        :type="args.type"
-        :left-border="args.leftBorder"
-      >
-        <template #header>Hi, I'm an Emergency-Light-Banner!</template>
-        Hi, I'm the content of an Emergency-Light-Banner!
-      </muc-banner>
-    `,
-  }),
-};
-
-export const LeftBorder = {
-  args: {
-    default: "Hi, I'm a Warning-Banner with a left border!",
-    variant: "content",
-    type: "warning",
-    leftBorder: true,
+    type: "danger",
   },
 };
 
