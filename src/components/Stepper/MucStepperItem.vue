@@ -68,8 +68,7 @@ const emit = defineEmits<{
 }>();
 
 /**
- * Completed steps stay navigable via a real button (Patternlab: no tabindex on div).
- * Done steps keep their original step icon instead of a check icon.
+ * Checks if step is clickable
  */
 const isClickable = computed(() => isDone && !disabled && !isActive);
 
