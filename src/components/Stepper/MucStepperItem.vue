@@ -1,59 +1,33 @@
 <template>
   <li
     class="m-form-step"
-    :class="{
-      'm-form-step--current': isActive,
-      'show-cursor': isDone && !disabled && !isActive,
-    }"
-    @click="handleClick"
+    :class="{ 'm-form-step--current': isActive }"
+    :aria-current="isActive ? 'step' : undefined"
   >
+    <button
+      v-if="isClickable"
+      type="button"
+      class="m-form-step__button"
+      @click="handleClick"
+    >
+      <span class="m-form-step__icon">
+        <muc-icon :icon="item.icon" />
+      </span>
+      <span class="visually-hidden">Zurück zu Schritt: {{ item.label }}</span>
+    </button>
     <div
+      v-else
       class="m-form-step__icon"
       :class="{ disabled: disabled }"
-      :tabindex="getTabindex"
-      :aria-labelledby="ariaLabelledby"
-      :aria-label="getAriaLabel"
-      :aria-setsize="total"
-      :aria-posinset="position"
-      :aria-current="isActive ? 'step' : false"
     >
-      <muc-icon :icon="getIcon" />
+      <muc-icon :icon="item.icon" />
     </div>
     <div
       class="m-form-step__title"
       :class="{ disabled: disabled }"
     >
-      <span
-        :id="labelId"
-        aria-disabled="true"
-      >
-        {{ item.label }}</span
-      >
-
-      <span
-        class="visually-hidden"
-        :id="prefixId"
-      >
-        Schritt {{ position }} von {{ total }}:
-      </span>
-
-      <span
-        v-if="isDone"
-        class="visually-hidden"
-        :id="statusId"
-      >
-        – erledigt
-      </span>
+      <span>{{ item.label }}</span>
     </div>
-    <span
-      v-if="isActive"
-      class="visually-hidden"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      :aria-labelledby="ariaLabelledby"
-    >
-    </span>
   </li>
 </template>
 
@@ -63,7 +37,7 @@ import { computed } from "vue";
 import { MucIcon } from "../Icon";
 import { StepperItem } from "./MucStepperTypes";
 
-const { item, isActive, isDone, disabled, position, total } = defineProps<{
+const { item, isActive, isDone, disabled } = defineProps<{
   /**
    * Individual item to display inside the MucStepper component
    */
@@ -83,16 +57,6 @@ const { item, isActive, isDone, disabled, position, total } = defineProps<{
    * Disabled stepper
    */
   disabled: boolean;
-
-  /**
-   * position of the item in the step sequence
-   */
-  position: number;
-
-  /**
-   * total number of steps
-   */
-  total: number;
 }>();
 
 const emit = defineEmits<{
@@ -104,52 +68,38 @@ const emit = defineEmits<{
 }>();
 
 /**
- * Computed property set icon of step
+ * Checks if step is clickable
  */
-const getIcon = computed(() => (isDone ? "check" : item.icon));
-
-/**
- * Computed property set tabindex
- */
-const getTabindex = computed(() =>
-  isActive || (isDone && !disabled) ? 0 : -1
-);
-
-/**
- * Computed property set aria-label
- */
-const getAriaLabel = computed(() =>
-  isActive
-    ? "Aktueller Schritt: " + item.label
-    : "Zurück zu Schritt: " + item.label
-);
-
-/**
- * Stable element IDs used to compose the accessible name via aria-labelledby
- */
-const labelId = computed(() => `m-step-label-${item.id}`);
-const prefixId = computed(() => `m-step-prefix-${item.id}`);
-const statusId = computed(() => `m-step-status-${item.id}`);
-
-/**
- * Compose the accessible name in order: prefix -> visible label -> optional status
- */
-const ariaLabelledby = computed(() => {
-  const ids = [prefixId.value, labelId.value];
-  if (isDone) ids.push(statusId.value);
-  return ids.join(" ");
-});
+const isClickable = computed(() => isDone && !disabled && !isActive);
 
 const handleClick = () => {
-  if (isDone && !disabled) {
+  if (isClickable.value) {
     emit("click", item.id);
   }
 };
 </script>
 
 <style scoped>
-.show-cursor {
+.m-form-step__button {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.m-form-step__button:focus {
+  outline: none;
+}
+
+.m-form-step__button:focus-visible .m-form-step__icon {
+  outline: 2px solid #005a9f;
+  outline-offset: 2px;
 }
 
 .disabled {
