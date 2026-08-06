@@ -50,6 +50,14 @@ export const Emergency = {
   },
 };
 
+export const Danger = {
+  args: {
+    default: "Hi, I'm a Danger-Banner!",
+    variant: "content",
+    type: "danger",
+  },
+};
+
 export const Header = {
   args: {
     default: "Hi, I'm an Info-Banner!",

@@ -63,4 +63,19 @@ describe("MucBanner.vue", () => {
     expect(mucBanner.attributes("aria-label")).toBe("Emergency");
     expect(mucBanner.text()).toContain("This is an emergency message");
   });
+
+  it("renders with danger type", () => {
+    const wrapper = mount(MucBanner, {
+      props: { variant: "content", type: "danger" },
+      slots: {
+        default: "This is a danger message",
+      },
+    });
+
+    const mucBanner = wrapper.find(".m-banner");
+    expect(mucBanner.classes()).toContain("m-banner--danger");
+    expect(mucBanner.attributes("role")).toBe("alert");
+    expect(mucBanner.attributes("aria-label")).toBe("Danger");
+    expect(mucBanner.text()).toContain("This is a danger message");
+  });
 });

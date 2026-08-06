@@ -3,7 +3,7 @@ import { computed } from "vue";
 
 import { MucIcon } from "../Icon";
 
-type bannerType = "info" | "success" | "warning" | "emergency";
+type bannerType = "info" | "success" | "warning" | "emergency" | "danger";
 type bannerVariant = "content" | "header";
 
 const {
@@ -17,7 +17,7 @@ const {
   variant: bannerVariant;
 
   /**
-   * Changes the style of the banner. Available types are `info`, `success`, `warning` and `emergency`.
+   * Changes the style of the banner. Available types are `info`, `success`, `warning`, `emergency` and `danger`.
    */
   type?: bannerType;
 
@@ -41,6 +41,8 @@ const typeClass = computed(() => {
       return "m-banner--warning";
     case "emergency":
       return "m-banner--emergency";
+    case "danger":
+      return "m-banner--danger";
     default:
       return "m-banner--info";
   }
@@ -53,8 +55,8 @@ const typeRole = computed(() => {
     case "success":
       return "dialog";
     case "warning":
-      return "alert";
     case "emergency":
+    case "danger":
       return "alert";
     default:
       return "dialog";
@@ -71,6 +73,8 @@ const typeAriaLabel = computed(() => {
       return "Warnung";
     case "emergency":
       return "Emergency";
+    case "danger":
+      return "Danger";
     default:
       return "Information";
   }
@@ -82,6 +86,7 @@ const typeIcon = computed(() => {
       return "check";
     case "warning":
     case "emergency":
+    case "danger":
       return "warning";
     case "info":
     default:
@@ -119,3 +124,11 @@ const typeIcon = computed(() => {
     </template>
   </div>
 </template>
+
+<style>
+.m-banner--danger {
+  background-color: var(--mde-color-status-error-x-light, #f8f2f2);
+  border-bottom: 1px solid var(--mde-color-status-error-light, #c79a9b);
+  color: var(--mde-color-neutral-grey, #3a5368);
+}
+</style>
