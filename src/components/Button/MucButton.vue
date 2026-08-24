@@ -20,9 +20,9 @@
       :icon="icon"
       class="m-button__icon"
       :class="{
-        'm-button__icon--after': !iconShownLeft && variant != 'icon',
-        'm-button__icon--before': iconShownLeft && variant != 'icon',
-        'no-left-margin': variant == 'icon',
+        'm-button__icon--after': !iconShownLeft && !iconOnly,
+        'm-button__icon--before': iconShownLeft && !iconOnly,
+        'no-left-margin': iconOnly,
       }"
     />
     <slot v-if="iconShownLeft" />
@@ -34,7 +34,7 @@ import { ref } from "vue";
 
 import { MucIcon } from "../Icon";
 
-type buttonType = "primary" | "secondary" | "ghost" | "icon";
+type buttonType = "primary" | "secondary" | "ghost";
 
 const {
   variant = "primary",
@@ -58,6 +58,10 @@ const {
    * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
    */
   icon?: string;
+  /**
+   * If the button should only contain an icon this must be set to true.
+   */
+  iconOnly?: boolean;
   /**
    * Whether the Icon should be animated on hover (slide-right) or not.
    *
