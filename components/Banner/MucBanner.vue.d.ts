@@ -1,4 +1,4 @@
-type bannerType = "info" | "success" | "warning" | "emergency";
+type bannerType = "info" | "success" | "warning" | "emergency" | "danger";
 type bannerVariant = "content" | "header";
 type __VLS_Props = {
     /**
@@ -6,7 +6,7 @@ type __VLS_Props = {
      */
     variant: bannerVariant;
     /**
-     * Changes the style of the banner. Available types are `info`, `success`, `warning` and `emergency`.
+     * Changes the style of the banner. Available types are `info`, `success`, `warning`, `emergency` and `danger`.
      */
     type?: bannerType;
     noIcon?: boolean;

@@ -1,9 +1,10 @@
 declare const _default: {
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-            variant?: "icon" | "primary" | "secondary" | "ghost";
+            variant?: "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
+            iconOnly?: boolean;
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
@@ -20,9 +21,10 @@ declare const _default: {
             M: {};
             Defaults: {};
         }, Readonly<{
-            variant?: "icon" | "primary" | "secondary" | "ghost";
+            variant?: "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
+            iconOnly?: boolean;
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
@@ -34,9 +36,10 @@ declare const _default: {
         __isTeleport?: never;
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
-        variant?: "icon" | "primary" | "secondary" | "ghost";
+        variant?: "primary" | "secondary" | "ghost";
         disabled?: boolean;
         icon?: string;
+        iconOnly?: boolean;
         iconAnimated?: boolean;
         spinIconOnClick?: boolean;
         iconShownLeft?: boolean;
@@ -92,7 +95,14 @@ export declare const Disabled: {
 export declare const IconOnly: {
     args: {
         icon: string;
+        iconOnly: boolean;
+    };
+};
+export declare const IconOnlySecondary: {
+    args: {
+        icon: string;
         variant: string;
+        iconOnly: boolean;
     };
 };
 export declare const CopyButton: {

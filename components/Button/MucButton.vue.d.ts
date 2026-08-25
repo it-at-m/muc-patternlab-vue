@@ -1,4 +1,4 @@
-type buttonType = "primary" | "secondary" | "ghost" | "icon";
+type buttonType = "primary" | "secondary" | "ghost";
 type __VLS_Props = {
     /**
      * The variant prop gives you easy access to several different button styles.
@@ -14,6 +14,10 @@ type __VLS_Props = {
      * Choose an icon to be appended behind the slot. No icon will be placed if the prop is left empty.
      */
     icon?: string;
+    /**
+     * If the button should only contain an icon this must be set to true.
+     */
+    iconOnly?: boolean;
     /**
      * Whether the Icon should be animated on hover (slide-right) or not.
      *

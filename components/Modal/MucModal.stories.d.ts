@@ -130,9 +130,10 @@ export declare const Default: (args: any) => {
         });
         MucButton: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -149,9 +150,10 @@ export declare const Default: (args: any) => {
                 M: {};
                 Defaults: {};
             }, Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -163,9 +165,10 @@ export declare const Default: (args: any) => {
             __isTeleport?: never;
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{
-            variant?: "icon" | "primary" | "secondary" | "ghost";
+            variant?: "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
+            iconOnly?: boolean;
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;
@@ -251,9 +254,10 @@ export declare const Minimal: (args: any) => {
         });
         MucButton: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -270,9 +274,10 @@ export declare const Minimal: (args: any) => {
                 M: {};
                 Defaults: {};
             }, Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -284,9 +289,10 @@ export declare const Minimal: (args: any) => {
             __isTeleport?: never;
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{
-            variant?: "icon" | "primary" | "secondary" | "ghost";
+            variant?: "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
+            iconOnly?: boolean;
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;

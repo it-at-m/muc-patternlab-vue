@@ -220,9 +220,10 @@ export declare const WithButton: () => {
         });
         MucButton: {
             new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -239,9 +240,10 @@ export declare const WithButton: () => {
                 M: {};
                 Defaults: {};
             }, Readonly<{
-                variant?: "icon" | "primary" | "secondary" | "ghost";
+                variant?: "primary" | "secondary" | "ghost";
                 disabled?: boolean;
                 icon?: string;
+                iconOnly?: boolean;
                 iconAnimated?: boolean;
                 spinIconOnClick?: boolean;
                 iconShownLeft?: boolean;
@@ -253,9 +255,10 @@ export declare const WithButton: () => {
             __isTeleport?: never;
             __isSuspense?: never;
         } & import('vue').ComponentOptionsBase<Readonly<{
-            variant?: "icon" | "primary" | "secondary" | "ghost";
+            variant?: "primary" | "secondary" | "ghost";
             disabled?: boolean;
             icon?: string;
+            iconOnly?: boolean;
             iconAnimated?: boolean;
             spinIconOnClick?: boolean;
             iconShownLeft?: boolean;

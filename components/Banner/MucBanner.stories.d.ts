@@ -2,7 +2,7 @@ declare const _default: {
     component: {
         new (...args: any[]): import('vue').CreateComponentPublicInstanceWithMixins<Readonly<{
             variant: "header" | "content";
-            type?: "info" | "success" | "warning" | "emergency";
+            type?: "info" | "success" | "warning" | "emergency" | "danger";
             noIcon?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {}, false, {}, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, {}, HTMLDivElement, import('vue').ComponentProvideOptions, {
             P: {};
@@ -13,7 +13,7 @@ declare const _default: {
             Defaults: {};
         }, Readonly<{
             variant: "header" | "content";
-            type?: "info" | "success" | "warning" | "emergency";
+            type?: "info" | "success" | "warning" | "emergency" | "danger";
             noIcon?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, {}>;
         __isFragment?: never;
@@ -21,7 +21,7 @@ declare const _default: {
         __isSuspense?: never;
     } & import('vue').ComponentOptionsBase<Readonly<{
         variant: "header" | "content";
-        type?: "info" | "success" | "warning" | "emergency";
+        type?: "info" | "success" | "warning" | "emergency" | "danger";
         noIcon?: boolean;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
@@ -64,6 +64,13 @@ export declare const Warning: {
     };
 };
 export declare const Emergency: {
+    args: {
+        default: string;
+        variant: string;
+        type: string;
+    };
+};
+export declare const Danger: {
     args: {
         default: string;
         variant: string;
