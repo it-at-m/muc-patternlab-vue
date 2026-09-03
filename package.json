@@ -57,9 +57,9 @@
     "@vitejs/plugin-vue": "6.0.8",
     "@vue/eslint-config-prettier": "10.2.0",
     "@vue/eslint-config-typescript": "14.9.0",
-    "@vue/test-utils": "2.4.11",
+    "@vue/test-utils": "2.5.0",
     "@vue/tsconfig": "0.9.1",
-    "eslint": "10.8.1",
+    "eslint": "10.9.1",
     "eslint-plugin-storybook": "10.5.10",
     "eslint-plugin-vue": "10.10.0",
     "jsdom": "29.1.1",
@@ -72,10 +72,10 @@
     "vite": "8.2.2",
     "vite-plugin-dts": "4.5.4",
     "vitest": "4.1.11",
-    "vue-tsc": "3.3.10"
+    "vue-tsc": "3.3.11"
   },
   "dependencies": {
     "@splidejs/vue-splide": "0.6.12",
-    "choices.js": "11.2.3"
+    "choices.js": "11.2.4"
   }
 }
