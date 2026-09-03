@@ -94,12 +94,14 @@ export declare const Disabled: {
 };
 export declare const IconOnly: {
     args: {
+        default: string;
         icon: string;
         iconOnly: boolean;
     };
 };
 export declare const IconOnlySecondary: {
     args: {
+        default: string;
         icon: string;
         variant: string;
         iconOnly: boolean;
