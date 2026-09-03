@@ -14,7 +14,14 @@
       copied: animateIconSpin,
     }"
   >
-    <slot v-if="!iconShownLeft" />
+    <span
+      v-if="!iconShownLeft"
+      :class="{
+        'visually-hidden': iconOnly,
+      }"
+    >
+      <slot />
+    </span>
     <muc-icon
       v-if="icon"
       :icon="icon"
@@ -25,7 +32,14 @@
         'no-left-margin': iconOnly,
       }"
     />
-    <slot v-if="iconShownLeft" />
+    <span
+      v-if="iconShownLeft"
+      :class="{
+        'visually-hidden': iconOnly,
+      }"
+    >
+      <slot />
+    </span>
   </button>
 </template>
 

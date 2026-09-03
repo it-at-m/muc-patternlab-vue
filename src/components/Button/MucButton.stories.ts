@@ -49,6 +49,7 @@ export const Disabled = {
 
 export const IconOnly = {
   args: {
+    default: "Icon Only",
     icon: "arrow-right",
     iconOnly: true,
   },
@@ -56,6 +57,7 @@ export const IconOnly = {
 
 export const IconOnlySecondary = {
   args: {
+    default: "Icon Only Secondary",
     icon: "arrow-left",
     variant: "secondary",
     iconOnly: true,
