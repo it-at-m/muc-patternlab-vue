@@ -9,16 +9,6 @@ This library already contains MDE5-Patternlabs iconset. The documentation to it 
 Additionally, it adds some specialty icons from [Pictogrammers](https://pictogrammers.com/library/mdi) which can be accessed by embedding the SVG-Sprite `custom-icons.svg` as described in [the getting started guide](/docs/getting-started--docs#setup).
 
 <IconGallery>
-  <IconItem name="pencil">
-    <svg fill="currentColor">
-      <use href="#icon-pencil" />
-    </svg>
-  </IconItem>
-  <IconItem name="dots-vertical">
-    <svg fill="currentColor">
-      <use href="#icon-dots-vertical" />
-    </svg>
-  </IconItem>
   <IconItem name="circle-off-outline">
     <svg fill="currentColor">
       <use href="#icon-circle-off-outline" />
@@ -34,11 +24,6 @@ Additionally, it adds some specialty icons from [Pictogrammers](https://pictogra
       <use href="#icon-copy" />
     </svg>
   </IconItem>
-  <IconItem name="printer">
-    <svg fill="currentColor">
-      <use href="#icon-printer" />
-    </svg>
-  </IconItem>
   <IconItem name="paperclip-straight">
     <svg fill="currentColor">
       <use href="#icon-paperclip-straight" />
@@ -49,14 +34,9 @@ Additionally, it adds some specialty icons from [Pictogrammers](https://pictogra
       <use href="#icon-user-fill" />
     </svg>
   </IconItem>
-  <IconItem name="checklist">
+  <IconItem name="request">
     <svg fill="currentColor">
-      <use href="#icon-checklist" />
-    </svg>
-  </IconItem>
-  <IconItem name="order-bool-ascending">
-    <svg fill="currentColor">
-      <use href="#icon-order-bool-ascending" />
+      <use href="#icon-request" />
     </svg>
   </IconItem>
   <IconItem name="drag-vertical">
@@ -75,3 +55,78 @@ Additionally, it adds some specialty icons from [Pictogrammers](https://pictogra
     </svg>
   </IconItem>
 </IconGallery>
+
+# ⚠️ Deprecated Icons
+
+These Icons will be removed within the next major versions of this library.
+
+<table>
+  <tr>
+    <th>Old Icon</th>
+    <th>Instead Use</th>
+  </tr>
+  <tr>
+    <td>
+      <IconItem name="pencil">
+        <svg fill="currentColor">
+          <use href="#icon-pencil" />
+        </svg>
+      </IconItem>
+    </td>
+    <td>
+      <IconItem name="edit">
+        <svg fill="currentColor">
+          <use href="#icon-pencil" />
+        </svg>
+      </IconItem>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <IconItem name="dots-vertical">
+        <svg fill="currentColor">
+          <use href="#icon-dots-vertical" />
+        </svg>
+      </IconItem>
+    </td>
+    <td>
+      <IconItem name="ellipsis-vertical">
+        <svg fill="currentColor">
+          <use href="#icon-ellipsis-vertical" />
+        </svg>
+      </IconItem>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <IconItem name="order-bool-ascending">
+        <svg fill="currentColor">
+          <use href="#icon-order-bool-ascending" />
+        </svg>
+      </IconItem>
+    </td>
+    <td>
+      <IconItem name="checklist">
+        <svg fill="currentColor">
+          <use href="#icon-checklist" />
+        </svg>
+      </IconItem>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <IconItem name="printer">
+        <svg fill="currentColor">
+          <use href="#icon-printer" />
+        </svg>
+      </IconItem>
+    </td>
+    <td>
+      <IconItem name="print">
+        <svg fill="currentColor">
+          <use href="#icon-print" />
+        </svg>
+      </IconItem>
+    </td>
+  </tr>
+</table>
