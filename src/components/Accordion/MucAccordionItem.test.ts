@@ -7,7 +7,7 @@ import MucAccordionItem from "./MucAccordionItem.vue";
 describe("MucAccordionItem.vue", () => {
   it("renders with required props and content slot", () => {
     const wrapper = mount(MucAccordionItem, {
-      props: { id: "accordion-1", header: "Accordion Item 1", },
+      props: { id: "accordion-1", header: "Accordion Item 1" },
       slots: {
         content: "This is the content of Accordion Item 1",
       },
