@@ -170,6 +170,68 @@ describe("MucCalendar.vue", () => {
       });
     });
 
+    it("keeps only the first date when switching from multiple to single", async () => {
+      const wrapper = mountCalendar({
+        modelValue: [new Date(2024, 4, 1), new Date(2024, 4, 2)],
+      });
+
+      await tile(wrapper, "20").trigger("click");
+
+      expect(lastModelValue(wrapper)).toEqual(new Date(2024, 4, 20));
+    });
+
+    it("deselects the start of a former range when switching to single", async () => {
+      const wrapper = mountCalendar({
+        modelValue: { from: new Date(2024, 4, 5), to: new Date(2024, 4, 10) },
+      });
+
+      await tile(wrapper, "5").trigger("click");
+
+      expect(lastModelValue(wrapper)).toBeNull();
+    });
+
+    it("converts a range when switching to multiple mode", async () => {
+      const wrapper = mountCalendar({
+        variant: "multiple",
+        modelValue: { from: new Date(2024, 4, 5), to: null },
+      });
+
+      await tile(wrapper, "6").trigger("click");
+
+      expect(lastModelValue(wrapper)).toEqual([
+        new Date(2024, 4, 5),
+        new Date(2024, 4, 6),
+      ]);
+    });
+
+    it("uses a single date as range start when switching to range mode", async () => {
+      const wrapper = mountCalendar({
+        variant: "range",
+        modelValue: new Date(2024, 4, 5),
+      });
+
+      await tile(wrapper, "8").trigger("click");
+
+      expect(lastModelValue(wrapper)).toEqual({
+        from: new Date(2024, 4, 5),
+        to: new Date(2024, 4, 8),
+      });
+    });
+
+    it("restarts the range when switching from multiple to range mode", async () => {
+      const wrapper = mountCalendar({
+        variant: "range",
+        modelValue: [new Date(2024, 4, 5)],
+      });
+
+      await tile(wrapper, "8").trigger("click");
+
+      expect(lastModelValue(wrapper)).toEqual({
+        from: new Date(2024, 4, 8),
+        to: null,
+      });
+    });
+
     it("does not select anything when disabled", async () => {
       const wrapper = mountCalendar({ disabled: true });
 
@@ -268,6 +330,66 @@ describe("MucCalendar.vue", () => {
       await captionButtons(wrapper)[1].trigger("click");
       await captionButtons(wrapper)[0].trigger("click");
       expect(caption(wrapper)).toBe("2010 - 2021");
+    });
+
+    it("navigates back by year in month view and forward by twelve years in year view", async () => {
+      const wrapper = mountCalendar();
+
+      await captionButtons(wrapper)[1].trigger("click");
+      await captionButtons(wrapper)[0].trigger("click");
+      expect(caption(wrapper)).toBe("2023");
+      expect(captionButtons(wrapper)[2].attributes("aria-label")).toBe(
+        "Nächstes Jahr"
+      );
+
+      await captionButtons(wrapper)[1].trigger("click");
+      expect(captionButtons(wrapper)[0].attributes("aria-label")).toBe(
+        "Vorherige Jahre"
+      );
+      await captionButtons(wrapper)[2].trigger("click");
+      expect(caption(wrapper)).toBe("2030 - 2041");
+    });
+
+    it("disables navigation beyond min and max in month and year view", async () => {
+      const wrapper = mountCalendar({
+        min: new Date(2024, 0, 1),
+        max: new Date(2024, 11, 31),
+      });
+      const prevNext = () => {
+        const [prev, , next] = captionButtons(wrapper);
+        return [
+          prev.attributes("aria-disabled"),
+          next.attributes("aria-disabled"),
+        ];
+      };
+
+      await captionButtons(wrapper)[1].trigger("click");
+      expect(prevNext()).toEqual(["true", "true"]);
+
+      await captionButtons(wrapper)[1].trigger("click");
+      expect(prevNext()).toEqual(["true", "true"]);
+    });
+
+    it("allows navigation within min and max in month and year view", async () => {
+      const wrapper = mountCalendar({
+        min: new Date(2000, 0, 1),
+        max: new Date(2050, 11, 31),
+      });
+      const prevNext = () => {
+        const [prev, , next] = captionButtons(wrapper);
+        return [
+          prev.attributes("aria-disabled"),
+          next.attributes("aria-disabled"),
+        ];
+      };
+
+      expect(prevNext()).toEqual(["false", "false"]);
+
+      await captionButtons(wrapper)[1].trigger("click");
+      expect(prevNext()).toEqual(["false", "false"]);
+
+      await captionButtons(wrapper)[1].trigger("click");
+      expect(prevNext()).toEqual(["false", "false"]);
     });
 
     it("disables months and years outside of min and max", async () => {

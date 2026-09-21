@@ -81,4 +81,19 @@ describe("MucAccordion.vue", () => {
     expect(buttons[0].attributes("aria-expanded")).toBe("true");
     expect(buttons[1].attributes("aria-expanded")).toBe("true");
   });
+
+  it("closes an open item when it is clicked again", async () => {
+    const wrapper = mountAccordion({ defaultItem: "item-1" });
+    const buttons = wrapper.findAll(".m-accordion__section-button");
+
+    await buttons[0].trigger("click");
+
+    expect(buttons[0].attributes("aria-expanded")).toBe("false");
+    expect(buttons[1].attributes("aria-expanded")).toBe("false");
+
+    await buttons[1].trigger("click");
+
+    expect(buttons[0].attributes("aria-expanded")).toBe("false");
+    expect(buttons[1].attributes("aria-expanded")).toBe("true");
+  });
 });
