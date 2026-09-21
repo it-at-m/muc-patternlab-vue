@@ -55,9 +55,7 @@ describe("MucFileDropzone.vue", () => {
   it("renders a required label", () => {
     const wrapper = mountDropzone({ label: "Documents", required: true });
 
-    expect(wrapper.find("label").classes()).not.toContain(
-      "m-label--optional"
-    );
+    expect(wrapper.find("label").classes()).not.toContain("m-label--optional");
   });
 
   it("emits dropped files", async () => {
@@ -132,9 +130,7 @@ describe("MucFileDropzone.vue", () => {
 
     expect(wrapper.emitted("files")).toBeUndefined();
     expect(wrapper.emitted("warning")).toHaveLength(1);
-    expect(wrapper.find(".m-error-message").text()).toContain(
-      "File too large"
-    );
+    expect(wrapper.find(".m-error-message").text()).toContain("File too large");
   });
 
   it("warns about files exceeding the max total file size", async () => {
@@ -178,7 +174,7 @@ describe("MucFileDropzone.vue", () => {
   it("opens the file explorer on click, enter and space", async () => {
     const click = vi
       .spyOn(HTMLInputElement.prototype, "click")
-      .mockImplementation(() => {});
+      .mockReturnValue(undefined);
     const wrapper = mountDropzone();
     const dropZone = wrapper.find(".drop-zone");
 
@@ -192,7 +188,7 @@ describe("MucFileDropzone.vue", () => {
   it("does not open the file explorer when disabled", async () => {
     const click = vi
       .spyOn(HTMLInputElement.prototype, "click")
-      .mockImplementation(() => {});
+      .mockReturnValue(undefined);
     const wrapper = mountDropzone({ disabled: true });
 
     await wrapper.find(".drop-zone").trigger("click");
@@ -201,17 +197,15 @@ describe("MucFileDropzone.vue", () => {
   });
 
   it("emits files chosen in the file explorer", async () => {
-    let fileInput: HTMLInputElement | undefined;
-    vi.spyOn(HTMLInputElement.prototype, "click").mockImplementation(
-      function (this: HTMLInputElement) {
-        fileInput = this;
-      }
-    );
+    const click = vi
+      .spyOn(HTMLInputElement.prototype, "click")
+      .mockReturnValue(undefined);
     const wrapper = mountDropzone({ multiple: false });
     const files = [createFile("a.pdf", MB)];
 
     await wrapper.find(".drop-zone").trigger("click");
 
+    const fileInput = click.mock.contexts[0] as HTMLInputElement | undefined;
     expect(fileInput?.type).toBe("file");
     expect(fileInput?.multiple).toBe(false);
 
