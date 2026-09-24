@@ -107,13 +107,13 @@ const ariaRole = computed(() => {
     case "success":
       return "status";
     default:
-      return "status"; 
+      return "status";
   }
 });
 
-  const ariaLive = computed(() => {
-    return type === "error" ? "assertive" : "polite";
-  });
+const ariaLive = computed(() => {
+  return type === "error" ? "assertive" : "polite";
+});
 /*
 
 Computing the corresponding aria-label for the given comment-type, currently in german
