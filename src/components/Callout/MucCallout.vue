@@ -3,6 +3,9 @@
     class="m-callout"
     :class="calloutClass"
     :aria-label="typeAriaLabel"
+    :role="ariaRole"
+    :aria-live="ariaLive"
+    aria-atomic="true"
   >
     <div class="m-callout__inner">
       <div class="m-callout__icon">
@@ -94,6 +97,25 @@ const calloutClass = computed(() => {
 });
 
 /*
+Computing the corresponding aria-role for the given comment-type
+*/
+const ariaRole = computed(() => {
+  switch (type) {
+    case "error":
+      return "alert";
+    case "warning":
+    case "success":
+      return "status";
+    default:
+      return "status"; 
+  }
+});
+
+  const ariaLive = computed(() => {
+    return type === "error" ? "assertive" : "polite";
+  });
+/*
+
 Computing the corresponding aria-label for the given comment-type, currently in german
 */
 const typeAriaLabel = computed(() => {
