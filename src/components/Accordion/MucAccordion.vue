@@ -65,7 +65,11 @@ defineSlots<{
   /**
    * MucAccordionItems can be put into this slot.
    */
-  default(): unknown;
+  default(props: {
+    activeItems: string[];
+    onOpen: (id: string) => void;
+    onClose: (id: string) => void;
+  }): unknown;
 }>();
 
 /**
