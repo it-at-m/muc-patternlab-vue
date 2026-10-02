@@ -11,6 +11,7 @@ const objectItems = [
 ];
 
 const stringItems = ["String 1", "String 2", "String 3"];
+const trackedWrappers = new Set<VueWrapper>();
 
 const mountSelect = (props: Record<string, unknown> = {}) => {
   const wrapper: VueWrapper = mount(MucSelect, {
@@ -23,6 +24,7 @@ const mountSelect = (props: Record<string, unknown> = {}) => {
     },
     attachTo: document.body,
   });
+  trackedWrappers.add(wrapper);
   return wrapper;
 };
 
@@ -49,6 +51,8 @@ describe("MucSelect.vue", () => {
   });
 
   afterEach(() => {
+    trackedWrappers.forEach((wrapper) => wrapper.unmount());
+    trackedWrappers.clear();
     document.body.innerHTML = "";
   });
 
