@@ -6,16 +6,17 @@
     <input
       :id="'checkbox-' + id"
       class="m-checkboxes__input"
-      name="checkbox"
+      :name="name"
       type="checkbox"
       :checked="modelValue"
+      :aria-required="required ? true : undefined"
       @click.stop="clickedCheckbox"
     />
     <label
       class="m-label m-checkboxes__label"
       :for="'checkbox-' + id"
     >
-      {{ label }}
+      <slot name="label">{{ label }}</slot>
       <span
         :id="'checkbox-hint-' + id"
         class="m-hint"
@@ -32,20 +33,34 @@
  */
 const modelValue = defineModel<boolean>({ default: false });
 
-const { label } = defineProps<{
-  /**
-   *  Unique identifier for the checkbox. Required property used to associate the checkbox with its label and hint text for accessibility.
-   */
-  id: string;
-  /**
-   * Label is displayed to the right of the checkbox as information for the user.
-   */
-  label: string;
-  /**
-   * Optional hint shown beneath the checkbox
-   */
-  hint?: string;
-}>();
+withDefaults(
+  defineProps<{
+    /**
+     *  Unique identifier for the checkbox. Required property used to associate the checkbox with its label and hint text for accessibility.
+     */
+    id: string;
+    /**
+     * Label is displayed to the right of the checkbox as information for the user. Ignored when the `label` slot is set.
+     */
+    label?: string;
+    /**
+     * Optional hint shown beneath the checkbox
+     */
+    hint?: string;
+    /**
+     * Name of the input. Defaults to "checkbox".
+     */
+    name?: string;
+    /**
+     * Sets aria-required on the input.
+     */
+    required?: boolean;
+  }>(),
+  {
+    name: "checkbox",
+    required: false,
+  }
+);
 
 const emit = defineEmits<
   /**
