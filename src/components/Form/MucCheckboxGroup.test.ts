@@ -18,6 +18,26 @@ describe("MucCheckboxGroup.vue", () => {
     );
   });
 
+  it("renders the heading as h3 by default", () => {
+    const wrapper = mount(MucCheckboxGroup, {
+      props: { heading: "Options" },
+    });
+
+    expect(wrapper.find(".m-checkbox-group__heading").element.tagName).toBe(
+      "H3"
+    );
+  });
+
+  it("renders the heading with the given heading level", () => {
+    const wrapper = mount(MucCheckboxGroup, {
+      props: { heading: "Options", headingLevel: 4 },
+    });
+
+    const heading = wrapper.find(".m-checkbox-group__heading");
+    expect(heading.element.tagName).toBe("H4");
+    expect(heading.text()).toBe("Options");
+  });
+
   it("collapses and expands the collapsable checkboxes", async () => {
     const wrapper = mount(MucCheckboxGroup, {
       slots: {

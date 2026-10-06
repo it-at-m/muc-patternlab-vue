@@ -60,3 +60,22 @@ export const Error = () => ({
     </MucCheckboxGroup>
   `,
 });
+
+export const HeadingLevel = () => ({
+  components: { MucCheckbox, MucCheckboxGroup },
+  template: `
+    <MucCheckboxGroup
+      heading="Checkbox group with h4 heading"
+      :headingLevel="4"
+    >
+      <template #checkboxes>
+        <MucCheckbox
+          v-for="index in 3"
+          :key="'heading-level-checkbox-' + index"
+          :label="'Option ' + index"
+          :id="'heading-level-checkbox-' + index"
+        />
+      </template>
+    </MucCheckboxGroup>
+  `,
+});
