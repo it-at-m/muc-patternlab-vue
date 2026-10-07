@@ -52,4 +52,35 @@ describe("MucCheckbox.vue", () => {
     expect(wrapper.emitted("update:modelValue")).toEqual([[false]]);
     expect(wrapper.emitted("click")).toHaveLength(1);
   });
+
+  it("uses the default name and no aria-required", () => {
+    const input = mountCheckbox().find("input");
+
+    expect(input.attributes("name")).toBe("checkbox");
+    expect(input.attributes("aria-required")).toBeUndefined();
+  });
+
+  it("applies a custom name and aria-required", () => {
+    const input = mountCheckbox({
+      name: "checkbox-consent",
+      required: true,
+    }).find("input");
+
+    expect(input.attributes("name")).toBe("checkbox-consent");
+    expect(input.attributes("aria-required")).toBe("true");
+  });
+
+  it("renders the label slot instead of the label prop", () => {
+    const wrapper = mount(MucCheckbox, {
+      props: { id: "terms", label: "Plain label" },
+      slots: {
+        label: 'I accept the <a href="/terms">terms</a>',
+      },
+    });
+
+    const label = wrapper.find("label");
+    expect(label.find("a").attributes("href")).toBe("/terms");
+    expect(label.text()).toContain("I accept the terms");
+    expect(label.text()).not.toContain("Plain label");
+  });
 });
