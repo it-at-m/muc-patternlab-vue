@@ -7,8 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          `The MucToggle component allows users to switch between two states.
+        component: `The MucToggle component allows users to switch between two states.
           
 [🔗 Patternlab-Docs](https://patternlab.muenchen.space/?p=elements-switch-toggle)
 `,
