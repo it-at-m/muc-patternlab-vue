@@ -32,9 +32,17 @@ declare const _default: {
             detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             }> & {
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             };
         });
     };
@@ -70,9 +78,17 @@ declare const _default: {
         detailPageMargin?: boolean;
     }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
         $slots: Readonly<{
-            default(): unknown;
+            default(props: {
+                activeItems: string[];
+                onOpen: (id: string) => void;
+                onClose: (id: string) => void;
+            }): unknown;
         }> & {
-            default(): unknown;
+            default(props: {
+                activeItems: string[];
+                onOpen: (id: string) => void;
+                onClose: (id: string) => void;
+            }): unknown;
         };
     });
     title: string;
@@ -120,9 +136,17 @@ export declare const Template: () => {
             detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             }> & {
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             };
         });
         MucAccordionItem: {
@@ -214,9 +238,17 @@ export declare const Multiple: () => {
             detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             }> & {
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             };
         });
         MucAccordionItem: {
@@ -308,9 +340,17 @@ export declare const DetailPageMargin: () => {
             detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             }> & {
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             };
         });
         MucAccordionItem: {
@@ -402,9 +442,17 @@ export declare const WithMetadataHeader: () => {
             detailPageMargin?: boolean;
         }> & Readonly<{}>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {}, {}, string, {}, import('vue').GlobalComponents, import('vue').GlobalDirectives, string, import('vue').ComponentProvideOptions> & import('vue').VNodeProps & import('vue').AllowedComponentProps & import('vue').ComponentCustomProps & (new () => {
             $slots: Readonly<{
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             }> & {
-                default(): unknown;
+                default(props: {
+                    activeItems: string[];
+                    onOpen: (id: string) => void;
+                    onClose: (id: string) => void;
+                }): unknown;
             };
         });
         MucAccordionItem: {

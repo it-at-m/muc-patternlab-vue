@@ -16,4 +16,5 @@ import { MucPercentageSpinner } from './PercentageSpinner';
 import { MucSlider, MucSliderItem } from './Slider';
 import { MucSpinner } from './Spinner';
 import { MucStepper } from './Stepper';
-export { MucAccordion, MucAccordionItem, MucButton, MucBanner, MucIntro, MucCallout, MucCard, MucCardContainer, MucComment, MucCommentText, MucRadioButton, MucRadioButtonGroup, MucInput, MucTextArea, MucCheckboxGroup, MucCheckbox, MucSelect, MucErrorList, MucIcon, MucDivider, MucLink, MucModal, MucFileDropzone, MucCounter, MucPercentageSpinner, MucSpinner, MucStepper, MucCalendar, MucSlider, MucSliderItem, };
+import { MucToggle } from './Toggle';
+export { MucAccordion, MucAccordionItem, MucButton, MucBanner, MucIntro, MucCallout, MucCard, MucCardContainer, MucComment, MucCommentText, MucRadioButton, MucRadioButtonGroup, MucInput, MucTextArea, MucCheckboxGroup, MucCheckbox, MucSelect, MucErrorList, MucIcon, MucDivider, MucLink, MucModal, MucFileDropzone, MucCounter, MucPercentageSpinner, MucSpinner, MucStepper, MucToggle, MucCalendar, MucSlider, MucSliderItem, };

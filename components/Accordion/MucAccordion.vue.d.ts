@@ -26,12 +26,20 @@ declare function __VLS_template(): {
         /**
          * MucAccordionItems can be put into this slot.
          */
-        default(): unknown;
+        default(props: {
+            activeItems: string[];
+            onOpen: (id: string) => void;
+            onClose: (id: string) => void;
+        }): unknown;
     }> & {
         /**
          * MucAccordionItems can be put into this slot.
          */
-        default(): unknown;
+        default(props: {
+            activeItems: string[];
+            onOpen: (id: string) => void;
+            onClose: (id: string) => void;
+        }): unknown;
     };
     refs: {};
     rootEl: HTMLDivElement;
