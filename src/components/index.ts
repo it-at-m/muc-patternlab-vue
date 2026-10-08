@@ -26,6 +26,7 @@ import { MucPercentageSpinner } from "./PercentageSpinner";
 import { MucSlider, MucSliderItem } from "./Slider";
 import { MucSpinner } from "./Spinner";
 import { MucStepper } from "./Stepper";
+import { MucToggle } from "./Toggle";
 
 export {
   MucAccordion,
@@ -55,6 +56,7 @@ export {
   MucPercentageSpinner,
   MucSpinner,
   MucStepper,
+  MucToggle,
   MucCalendar,
   MucSlider,
   MucSliderItem,

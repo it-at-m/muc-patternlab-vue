@@ -25,3 +25,24 @@ export const Default = {
     hint: "This is a hint",
   },
 };
+
+export const WithLinkInLabel = {
+  args: {
+    id: "with-link",
+    name: "checkbox-terms",
+    required: true,
+  },
+  render: (args: Record<string, unknown>) => ({
+    components: { MucCheckbox },
+    setup() {
+      return { args };
+    },
+    template: `
+      <MucCheckbox v-bind="args">
+        <template #label>
+          I accept the <a href="#">terms of use</a>.
+        </template>
+      </MucCheckbox>
+    `,
+  }),
+};

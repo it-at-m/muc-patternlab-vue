@@ -5,9 +5,12 @@
   >
     <fieldset class="m-checkbox-group">
       <legend class="m-checkbox-group__legend">
-        <h3 class="m-checkbox-group__heading">
+        <component
+          :is="`h${headingLevel}`"
+          class="m-checkbox-group__heading"
+        >
           {{ heading }}
-        </h3>
+        </component>
       </legend>
       <div class="m-checkboxes m-checkboxes--collapse">
         <slot name="checkboxes" />
@@ -54,16 +57,25 @@ import FormErrorMessage from "./FormErrorMessage.vue";
  */
 const collapsed = ref(true);
 
-defineProps<{
-  /**
-   * Display a heading above the slots.
-   */
-  heading?: string;
-  /**
-   * Optional error message displayed below the group.
-   */
-  errorMsg?: string;
-}>();
+withDefaults(
+  defineProps<{
+    /**
+     * Display a heading above the slots.
+     */
+    heading?: string;
+    /**
+     * Level of the heading element (`h2`–`h6`). Defaults to 3.
+     */
+    headingLevel?: 2 | 3 | 4 | 5 | 6;
+    /**
+     * Optional error message displayed below the group.
+     */
+    errorMsg?: string;
+  }>(),
+  {
+    headingLevel: 3,
+  }
+);
 
 defineSlots<{
   /**
