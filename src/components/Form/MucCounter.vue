@@ -104,19 +104,24 @@ const {
   disabled?: boolean;
 }>();
 
+const hasMin = () => Number.isFinite(min);
+const hasMax = () => Number.isFinite(max);
+
 watch(
   () => min,
   () => {
-    if (min && modelValue.value < min) {
-      modelValue.value = min;
+    // Use Number.isFinite so min=0 is applied (truthy checks skip 0).
+    if (hasMin() && modelValue.value < (min as number)) {
+      modelValue.value = min as number;
     }
   }
 );
 watch(
   () => max,
   () => {
-    if (max && modelValue.value > max) {
-      modelValue.value = max;
+    // Use Number.isFinite so max=0 disables increment (truthy checks skip 0).
+    if (hasMax() && modelValue.value > (max as number)) {
+      modelValue.value = max as number;
     }
   }
 );
@@ -134,7 +139,7 @@ const clickedMinus = () => modelValue.value--;
  * Computed property if this plus button should be disabled
  */
 const disablePlus = computed(
-  () => (!!max && !(modelValue.value < max)) || disabled
+  () => (hasMax() && !(modelValue.value < (max as number))) || disabled
 );
 
 /**
@@ -142,7 +147,9 @@ const disablePlus = computed(
  */
 const disableMinus = computed(
   () =>
-    modelValue.value == 0 || (!!min && !(modelValue.value > min)) || disabled
+    modelValue.value == 0 ||
+    (hasMin() && !(modelValue.value > (min as number))) ||
+    disabled
 );
 </script>
 
