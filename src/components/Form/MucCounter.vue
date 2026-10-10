@@ -110,7 +110,6 @@ const hasMax = () => Number.isFinite(max);
 watch(
   () => min,
   () => {
-    // Use Number.isFinite so min=0 is applied (truthy checks skip 0).
     if (hasMin() && modelValue.value < (min as number)) {
       modelValue.value = min as number;
     }
@@ -119,7 +118,6 @@ watch(
 watch(
   () => max,
   () => {
-    // Use Number.isFinite so max=0 disables increment (truthy checks skip 0).
     if (hasMax() && modelValue.value > (max as number)) {
       modelValue.value = max as number;
     }
