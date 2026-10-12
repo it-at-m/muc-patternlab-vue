@@ -74,6 +74,25 @@ describe("MucCounter.vue", () => {
     expect(atMax.plus.attributes("aria-disabled")).toBe("true");
   });
 
+  it("disables the plus button when max is 0", async () => {
+    const wrapper = mountCounter({ modelValue: 0, max: 0 });
+    const { plus } = buttons(wrapper);
+
+    expect(plus.attributes("aria-disabled")).toBe("true");
+    expect(plus.classes()).toContain("counter-btn--disabled");
+
+    await plus.trigger("click");
+    expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+    expect(value(wrapper)).toBe("0");
+  });
+
+  it("clamps down to max 0 when max becomes 0", async () => {
+    const wrapper = mountCounter({ modelValue: 2, max: 5 });
+
+    await wrapper.setProps({ max: 0 });
+    expect(value(wrapper)).toBe("0");
+  });
+
   it("disables both buttons when disabled", () => {
     const { minus, plus } = buttons(
       mountCounter({ modelValue: 2, disabled: true })
