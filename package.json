@@ -59,7 +59,7 @@
     "@vue/eslint-config-typescript": "14.9.0",
     "@vue/test-utils": "2.5.1",
     "@vue/tsconfig": "0.9.1",
-    "eslint": "10.11.0",
+    "eslint": "10.12.0",
     "eslint-plugin-storybook": "10.6.1",
     "eslint-plugin-vue": "10.11.1",
     "jsdom": "29.1.1",
@@ -69,10 +69,10 @@
     "semantic-release-gitmoji": "1.6.9",
     "storybook": "10.6.1",
     "typescript": "5.9.3",
-    "vite": "8.3.2",
+    "vite": "8.3.4",
     "vite-plugin-dts": "4.5.4",
     "vitest": "4.1.11",
-    "vue-tsc": "3.3.11"
+    "vue-tsc": "3.3.12"
   },
   "dependencies": {
     "@splidejs/vue-splide": "0.6.12",
