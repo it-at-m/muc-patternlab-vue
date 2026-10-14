@@ -93,6 +93,14 @@ describe("MucSelect.vue", () => {
     expect(choices).toEqual(["Object 1", "Object 2", "Object 3"]);
   });
 
+  it("identifies the popup as a listbox", () => {
+    const wrapper = mountSelect();
+
+    expect(wrapper.find('[role="combobox"]').attributes("aria-haspopup")).toBe(
+      "listbox"
+    );
+  });
+
   it("preselects the model value", () => {
     const wrapper = mountSelect({ modelValue: "String 2" });
 
