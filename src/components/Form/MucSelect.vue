@@ -155,10 +155,7 @@ const createChoicesInstance = () => {
     },
   });
 
-  choices.containerOuter.element.setAttribute(
-    "aria-haspopup",
-    "listbox"
-  );
+  choices.containerOuter.element.setAttribute("aria-haspopup", "listbox");
   choicesInstance.value = choices;
 
   addChoices();
