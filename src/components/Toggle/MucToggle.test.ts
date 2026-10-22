@@ -71,7 +71,7 @@ describe("MucToggle.vue", () => {
     expect(label.classes()).toContain("m-toggle-switch__label--active");
   });
 
-  it("puts the active class on the unselected label", async () => {
+  it("highlights the left label while off and the right label while on", async () => {
     const wrapper = mountToggle({
       labelLeft: "Listenansicht",
       labelRight: "Kalenderansicht",
@@ -80,11 +80,11 @@ describe("MucToggle.vue", () => {
     const [left, right] = wrapper.findAll(".m-toggle-switch__label");
     expect(left.text()).toBe("Listenansicht");
     expect(right.text()).toBe("Kalenderansicht");
-    expect(left.classes()).not.toContain("m-toggle-switch__label--active");
-    expect(right.classes()).toContain("m-toggle-switch__label--active");
-
-    await wrapper.find("button").trigger("click");
     expect(left.classes()).toContain("m-toggle-switch__label--active");
     expect(right.classes()).not.toContain("m-toggle-switch__label--active");
+
+    await wrapper.find("button").trigger("click");
+    expect(left.classes()).not.toContain("m-toggle-switch__label--active");
+    expect(right.classes()).toContain("m-toggle-switch__label--active");
   });
 });
