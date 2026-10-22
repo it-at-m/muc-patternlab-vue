@@ -12,9 +12,7 @@
     <span
       v-if="labelLeft"
       class="m-toggle-switch__label"
-      :class="{
-        'm-toggle-switch__label--active': labelRight ? !modelValue : modelValue,
-      }"
+      :class="{ 'm-toggle-switch__label--active': modelValue }"
     >
       {{ labelLeft }}
     </span>
@@ -24,7 +22,7 @@
     <span
       v-if="labelRight"
       class="m-toggle-switch__label"
-      :class="{ 'm-toggle-switch__label--active': modelValue }"
+      :class="{ 'm-toggle-switch__label--active': !modelValue }"
     >
       {{ labelRight }}
     </span>
@@ -44,7 +42,7 @@ const { disabled = false } = defineProps<{
   labelLeft?: string;
   /**
    * Optional label displayed to the right of the toggle switch.
-   * When set, the left label is highlighted while off and this one while on.
+   * When set, the left label is the off state and this one is the on state.
    */
   labelRight?: string;
   /**
