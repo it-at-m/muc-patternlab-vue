@@ -62,11 +62,6 @@ const toggle = () => {
 </script>
 
 <style scoped>
-/*
- * MDE colors the inactive label with --link-color (blue) and the
- * --active label with --link-active-color (dark). The selected option
- * should be blue, so these two tokens are swapped.
- */
 .m-toggle-switch__label {
   color: var(--link-active-color);
 }
