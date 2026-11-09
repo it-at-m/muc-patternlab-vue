@@ -136,7 +136,7 @@ watch(
  * Must be executed for every change, as some of the values cannot be changed on the existing instance.
  */
 const createChoicesInstance = () => {
-  choicesInstance.value = new Choices(elementRef.value, {
+  const choices = new Choices(elementRef.value, {
     allowHTML: true,
     itemSelectText: "",
     noResultsText: noItemFoundMessage,
@@ -154,6 +154,10 @@ const createChoicesInstance = () => {
       isCaseSensitive: false,
     },
   });
+
+  choices.containerOuter.element.setAttribute("aria-haspopup", "listbox");
+  choicesInstance.value = choices;
+
   addChoices();
   setDefaultSelectedValue();
   choicesInstance.value.passedElement.element.addEventListener(
