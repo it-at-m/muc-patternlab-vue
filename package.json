@@ -51,7 +51,7 @@
     "@storybook/addon-docs": "10.6.5",
     "@storybook/addon-links": "10.6.5",
     "@storybook/vue3-vite": "10.6.5",
-    "@tsconfig/node24": "24.0.5",
+    "@tsconfig/node24": "24.0.6",
     "@types/jsdom": "21.1.7",
     "@types/node": "24.11.2",
     "@vitejs/plugin-vue": "6.0.10",
