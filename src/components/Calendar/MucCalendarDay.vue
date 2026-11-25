@@ -115,7 +115,7 @@ const addDaysToDate = (date: Date, days: number) =>
 }
 
 .table-header {
-  border-bottom: 1px solid var(--color-neutrals-blue);
+  border-bottom: 1px solid var(--mde-color-beau-blue);
 }
 
 .header-item {
@@ -126,6 +126,6 @@ const addDaysToDate = (date: Date, days: number) =>
 }
 
 .table-header {
-  border-bottom: 1px solid var(--color-neutrals-blue);
+  border-bottom: 1px solid var(--mde-color-beau-blue);
 }
 </style>

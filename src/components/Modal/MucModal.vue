@@ -120,7 +120,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: var(--color-neutrals-grey);
+  background-color: var(--mde-color-grey);
   opacity: 70%;
 }
 
@@ -131,8 +131,8 @@ dialog::backdrop {
   padding: 0 24px;
   align-items: center;
   align-self: stretch;
-  border-top: 1px solid var(--color-neutrals-blue);
-  background: var(--color-neutrals-blue-xlight);
+  border-top: 1px solid var(--mde-color-beau-blue);
+  background: var(--mde-color-beau-blue-xlight);
 }
 
 @media all and (max-width: 576px) {

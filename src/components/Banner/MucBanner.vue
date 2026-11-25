@@ -127,8 +127,8 @@ const typeIcon = computed(() => {
 
 <style>
 .m-banner--danger {
-  background-color: var(--mde-color-status-error-x-light, #f8f2f2);
-  border-bottom: 1px solid var(--mde-color-status-error-light, #c79a9b);
-  color: var(--mde-color-neutral-grey, #3a5368);
+  background-color: var(--mde-color-error-xlight);
+  border-bottom: 1px solid var(--mde-color-error-light);
+  color: var(--mde-color-grey);
 }
 </style>

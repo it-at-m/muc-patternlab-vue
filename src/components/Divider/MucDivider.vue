@@ -6,6 +6,6 @@
 .muc-divider {
   align-self: stretch;
   height: 0;
-  border-bottom: 1px var(--color-neutrals-blue) solid;
+  border-bottom: 1px var(--mde-color-beau-blue) solid;
 }
 </style>

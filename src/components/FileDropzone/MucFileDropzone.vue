@@ -285,11 +285,11 @@ defineExpose({
 
 <style scoped>
 .drop-zone {
-  background-color: #fff;
+  background-color: var(--mde-color-palette-neutral-0);
   width: 100%;
   height: 100%;
   position: relative;
-  border: 1px dashed var(--mde-color-brand-mde-blue-light);
+  border: 1px dashed var(--mde-color-blue-light);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -300,7 +300,7 @@ defineExpose({
 }
 
 .drop-zone.is-dragover.is-not-disabled {
-  background-color: #f1f1f1;
+  background-color: var(--mde-color-palette-neutral-50);
 }
 
 .drop-zone.is-not-disabled {

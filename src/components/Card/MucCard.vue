@@ -94,8 +94,8 @@ const handleClick = (event: Event) => {
 <style scoped>
 .card {
   cursor: pointer;
-  border: solid 1px var(--color-neutrals-blue);
-  border-bottom: solid 5px var(--color-brand-main-blue);
+  border: solid 1px var(--mde-color-beau-blue);
+  border-bottom: solid 5px var(--mde-color-blue);
   transition: background-color ease-in 150ms;
 }
 
@@ -107,13 +107,13 @@ const handleClick = (event: Event) => {
 
 .card a {
   text-decoration: none !important;
-  color: var(--mde-color-neutral-grey) !important;
+  color: var(--mde-color-grey) !important;
   display: block;
   height: 100%;
 }
 
 .card[aria-disabled="false"]:hover {
-  background-color: var(--mde-color-neutral-beau-blue-x-light);
+  background-color: var(--mde-color-beau-blue-xlight);
 }
 
 .card-content {
