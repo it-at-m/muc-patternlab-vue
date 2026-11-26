@@ -98,12 +98,12 @@ const handleClick = () => {
 }
 
 .m-form-step__button:focus-visible .m-form-step__icon {
-  outline: 2px solid #005a9f;
+  outline: 2px solid var(--mde-color-blue);
   outline-offset: 2px;
 }
 
 .disabled {
-  color: var(--mde-color-neutral-grey-x-light);
-  border-color: var(--mde-color-neutral-grey-x-light);
+  color: var(--mde-color-grey-xlight);
+  border-color: var(--mde-color-grey-xlight);
 }
 </style>

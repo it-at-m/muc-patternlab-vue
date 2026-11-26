@@ -19,7 +19,7 @@
       <p>
         <strong
           class="content-centered"
-          style="color: var(--color-brand-main-blue)"
+          style="color: var(--mde-color-blue)"
         >
           <span class="visually-hidden">
             Aktuell ausgewählte Anzahl für {{ label }} ist</span
@@ -168,8 +168,8 @@ const disableMinus = computed(
 
 .counter-btn--disabled {
   background-color: transparent;
-  border-color: var(--mde-color-neutral-grey-x-light);
-  color: var(--mde-color-neutral-grey-x-light);
+  border-color: var(--mde-color-grey-xlight);
+  color: var(--mde-color-grey-xlight);
 }
 
 .grid {

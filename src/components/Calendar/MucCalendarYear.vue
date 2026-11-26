@@ -55,6 +55,6 @@ const clickedYear = (date: Date) => emit("clicked", date);
 @import "MucCalendar.css";
 
 .off-year {
-  color: var(--color-neutrals-blue);
+  color: var(--mde-color-beau-blue);
 }
 </style>

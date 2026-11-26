@@ -45,7 +45,7 @@
 }
 
 .muc-calendar-current-item {
-  background: var(--color-neutrals-blue);
+  background: var(--mde-color-beau-blue);
 }
 
 .disabled-tile {

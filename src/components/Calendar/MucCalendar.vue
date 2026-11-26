@@ -491,8 +491,8 @@ provide(MucCalendarKey, {
 
 <style>
 .calendar-caption > .m-button--ghost.disabled {
-  background-color: var(--color-neutrals-blue-xlight);
-  border-color: var(--color-neutrals-blue-xlight);
+  background-color: var(--mde-color-beau-blue-xlight);
+  border-color: var(--mde-color-beau-blue-xlight);
 }
 </style>
 
@@ -573,7 +573,7 @@ provide(MucCalendarKey, {
   --calendar-animation-duration: 0.4s;
   --calendar-animation-timing: ease-in-out;
 
-  border: 1px solid var(--color-neutrals-blue);
+  border: 1px solid var(--mde-color-beau-blue);
   min-width: 330px;
   max-width: 900px;
   justify-content: center;
@@ -581,8 +581,8 @@ provide(MucCalendarKey, {
 
 .calendar-caption {
   padding: 5px;
-  border-bottom: 1px solid var(--color-neutrals-blue);
-  background-color: var(--color-neutrals-blue-xlight);
+  border-bottom: 1px solid var(--mde-color-beau-blue);
+  background-color: var(--mde-color-beau-blue-xlight);
   display: flex;
   justify-content: space-between;
   align-items: center;

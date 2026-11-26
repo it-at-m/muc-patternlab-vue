@@ -152,14 +152,14 @@ const clicked = () => {
 @import "MucCalendar.css";
 
 .selected {
-  background: var(--color-brand-main-blue);
+  background: var(--mde-color-blue);
   color: white;
 }
 
 .selected-range {
-  background: var(--color-neutrals-blue-xlight);
+  background: var(--mde-color-beau-blue-xlight);
 }
 .off-month {
-  color: var(--color-neutrals-blue);
+  color: var(--mde-color-beau-blue);
 }
 </style>
