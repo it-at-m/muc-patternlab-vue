@@ -54,10 +54,9 @@ jobs:
         with:
           name: library_dist
           path: ./dist
-      - name: upload storybook artifacts
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      - name: upload storybook pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          name: storybook_dist
           path: ./storybook-static
 
   deploy-npm:
@@ -92,21 +91,14 @@ jobs:
     needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      contents: write
+      pages: write
+      id-token: write
     # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Download build-results
-        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-        with:
-          name: storybook_dist
-          path: ./storybook-static
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         id: deployment
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
